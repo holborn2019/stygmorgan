@@ -27,12 +27,13 @@ class stygmorgan {open
 } {
   decl {RMGMO *rmgmo;} {private local
   }
-  Function {make_window()} {} {
+  Function {make_window()} {open
+  } {
     Fl_Window rmgmorganwin {
       callback {GuardaPref();
 Pexitprogram=1;
-o->hide();}
-      xywh {1312 150 1010 780} type Double box GTK_UP_BOX color 44 selection_color 47 hide resizable size_range {800 600 0 0}
+o->hide();} open
+      xywh {1304 101 1010 780} type Double box GTK_UP_BOX color 44 selection_color 47 hide resizable size_range {800 600 0 0}
     } {
       Fl_Group {} {
         xywh {1 325 71 450} box BORDER_BOX color 44 selection_color 7 labelfont 1
@@ -1117,7 +1118,7 @@ MoreParams(nc);}
 int nc=15;
 rmgmo->CM[nc].program=(int)o->value();
 rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
-DP15->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);} selected
+DP15->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
           xywh {940 750 64 21} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
@@ -1508,7 +1509,7 @@ if (o->value())
 {
 rmgmo->ostop();
 apaga();
-}}
+}} selected
           xywh {904 215 100 55} type Toggle box PLASTIC_THIN_UP_BOX down_box PLASTIC_THIN_DOWN_BOX shortcut 0x20 color 11 selection_color 3 labelsize 11 when 1
         }
         Fl_Box DCompas {
@@ -1686,35 +1687,35 @@ CreaCMixer();}
           xywh {810 109 90 22} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 12
         }
       }
-      Fl_Group Botones {
+      Fl_Group Botones {open
         xywh {355 325 160 450} box BORDER_BOX color 44
       } {
-        Fl_Group {} {
+        Fl_Group {} {open
           xywh {355 345 160 345} color 44
         } {
           Fl_Button bMainA {
             label {Main A}
             callback {rmgmo->nb=1;
 CVari(rmgmo->nb,0);}
-            xywh {360 345 155 30} type Radio box PLASTIC_THIN_UP_BOX shortcut 0x61 color 10 selection_color 2 labelsize 11 when 1
+            xywh {360 345 151 30} type Radio box PLASTIC_THIN_UP_BOX shortcut 0x61 color 10 selection_color 2 labelsize 11 when 1
           }
           Fl_Button bMainB {
             label {Main B}
             callback {rmgmo->nb=2;
 CVari(rmgmo->nb,0);}
-            xywh {360 450 155 30} type Radio box PLASTIC_THIN_UP_BOX shortcut 0x62 color 10 selection_color 2 labelsize 11 when 1
+            xywh {360 450 151 30} type Radio box PLASTIC_THIN_UP_BOX shortcut 0x62 color 10 selection_color 2 labelsize 11 when 1
           }
           Fl_Button bMainC {
             label {Main C}
             callback {rmgmo->nb=3;
 CVari(rmgmo->nb,0);}
-            xywh {360 555 155 30} type Radio box PLASTIC_THIN_UP_BOX shortcut 0x63 color 10 selection_color 2 labelsize 11 when 1
+            xywh {360 555 151 30} type Radio box PLASTIC_THIN_UP_BOX shortcut 0x63 color 10 selection_color 2 labelsize 11 when 1
           }
           Fl_Button bMainD {
             label {Main D}
             callback {rmgmo->nb=4;
 CVari(rmgmo->nb,0);}
-            xywh {360 660 155 30} type Radio box PLASTIC_THIN_UP_BOX shortcut 0x64 color 10 selection_color 2 labelsize 11 when 1
+            xywh {360 660 151 30} type Radio box PLASTIC_THIN_UP_BOX shortcut 0x64 color 10 selection_color 2 labelsize 11 when 1
           }
         }
         Fl_Button bEndingA {
@@ -1730,7 +1731,7 @@ rmgmo->sbot[rmgmo->nb]=0;
 ActuaBoton();
 buscala();
 }}
-          xywh {440 380 75 30} type Toggle box PLASTIC_THIN_UP_BOX color 12 selection_color 2 labelsize 11
+          xywh {440 380 71 30} type Toggle box PLASTIC_THIN_UP_BOX color 12 selection_color 2 labelsize 11
         }
         Fl_Button bEndingB {
           label {Ending B}
@@ -1745,7 +1746,7 @@ rmgmo->sbot[rmgmo->nb]=0;
 ActuaBoton();
 buscala();
 }}
-          xywh {440 485 75 30} type Toggle box PLASTIC_THIN_UP_BOX color 12 selection_color 2 labelsize 11
+          xywh {440 485 71 30} type Toggle box PLASTIC_THIN_UP_BOX color 12 selection_color 2 labelsize 11
         }
         Fl_Button bEndingC {
           label {Ending C}
@@ -1760,7 +1761,7 @@ rmgmo->sbot[rmgmo->nb]=0;
 ActuaBoton();
 buscala();
 }}
-          xywh {440 590 75 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x65 color 12 selection_color 2 labelsize 11
+          xywh {440 590 71 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x65 color 12 selection_color 2 labelsize 11
         }
         Fl_Button bIntroA {
           label {Intro A}
@@ -1775,7 +1776,7 @@ rmgmo->sbot[rmgmo->nb]=0;
 ActuaBoton();
 buscala();
 }}
-          xywh {360 380 75 30} type Toggle box PLASTIC_THIN_UP_BOX color 9 selection_color 2 labelsize 11
+          xywh {360 380 71 30} type Toggle box PLASTIC_THIN_UP_BOX color 9 selection_color 2 labelsize 11
         }
         Fl_Button bIntroB {
           label {Intro B}
@@ -1790,7 +1791,7 @@ rmgmo->sbot[rmgmo->nb]=0;
 ActuaBoton();
 buscala();
 }}
-          xywh {360 485 75 30} type Toggle box PLASTIC_THIN_UP_BOX color 9 selection_color 2 labelsize 11
+          xywh {360 485 71 30} type Toggle box PLASTIC_THIN_UP_BOX color 9 selection_color 2 labelsize 11
         }
         Fl_Button bIntroC {
           label {Intro C}
@@ -1805,7 +1806,7 @@ rmgmo->sbot[rmgmo->nb]=0;
 ActuaBoton();
 buscala();
 }}
-          xywh {360 590 75 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x69 color 9 selection_color 2 labelsize 11
+          xywh {360 590 71 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x69 color 9 selection_color 2 labelsize 11
         }
         Fl_Button bFillAA {
           label {Fill In AA}
@@ -1820,7 +1821,7 @@ rmgmo->sbot[rmgmo->nb]=0;
 ActuaBoton();
 buscala();
 }}
-          xywh {360 415 75 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x66 color 13 selection_color 2 labelsize 11
+          xywh {360 415 71 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x66 color 13 selection_color 2 labelsize 11
         }
         Fl_Button bFillAB {
           label {Fill In AB}
@@ -1835,7 +1836,7 @@ rmgmo->sbot[rmgmo->nb]=0;
 ActuaBoton();
 buscala();
 }}
-          xywh {440 415 75 30} type Toggle box PLASTIC_THIN_UP_BOX color 13 selection_color 2 labelsize 11
+          xywh {440 415 71 30} type Toggle box PLASTIC_THIN_UP_BOX color 13 selection_color 2 labelsize 11
         }
         Fl_Button bFillBA {
           label {Fill In BA}
@@ -1850,7 +1851,7 @@ rmgmo->sbot[rmgmo->nb]=0;
 ActuaBoton();
 buscala();
 }}
-          xywh {440 520 75 30} type Toggle box PLASTIC_THIN_UP_BOX color 13 selection_color 2 labelsize 11
+          xywh {440 520 71 30} type Toggle box PLASTIC_THIN_UP_BOX color 13 selection_color 2 labelsize 11
         }
         Fl_Button bFillBB {
           label {Fill In BB}
@@ -1865,7 +1866,7 @@ rmgmo->sbot[rmgmo->nb]=0;
 ActuaBoton();
 buscala();
 }}
-          xywh {360 520 75 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x67 color 13 selection_color 2 labelsize 11
+          xywh {360 520 71 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x67 color 13 selection_color 2 labelsize 11
         }
         Fl_Button bFillCC {
           label {Fill In CC}
@@ -1880,7 +1881,7 @@ rmgmo->sbot[rmgmo->nb]=0;
 ActuaBoton();
 buscala();
 }}
-          xywh {360 625 75 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x68 color 13 selection_color 2 labelsize 11
+          xywh {360 625 71 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x68 color 13 selection_color 2 labelsize 11
         }
         Fl_Button bFillDD {
           label {Fill In DD}
@@ -1895,12 +1896,12 @@ rmgmo->sbot[rmgmo->nb]=0;
 ActuaBoton();
 buscala();
 }}
-          xywh {360 695 80 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x6e color 13 selection_color 2 labelsize 11
+          xywh {360 695 71 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x6e color 13 selection_color 2 labelsize 11
         }
         Fl_Button AutoFill {
           label {Auto Fill In}
           callback {rmgmo->AFill=(int)o->value();}
-          xywh {360 735 155 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x6f color 9 selection_color 1 labelsize 11
+          xywh {360 735 151 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x6f color 9 selection_color 1 labelsize 11
         }
       }
       Fl_Box VName {

@@ -3750,7 +3750,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       Botones->color((Fl_Color)44);
       { Fl_Group* o = new Fl_Group(355, 345, 160, 345);
         o->color((Fl_Color)44);
-        { bMainA = new Fl_Button(360, 345, 155, 30, gettext("Main A"));
+        { bMainA = new Fl_Button(360, 345, 151, 30, gettext("Main A"));
           bMainA->type(102);
           bMainA->box(FL_PLASTIC_THIN_UP_BOX);
           bMainA->shortcut(0x61);
@@ -3760,7 +3760,7 @@ Fl_Double_Window* stygmorgan::make_window() {
           bMainA->callback((Fl_Callback*)cb_bMainA);
           bMainA->when(FL_WHEN_CHANGED);
         } // Fl_Button* bMainA
-        { bMainB = new Fl_Button(360, 450, 155, 30, gettext("Main B"));
+        { bMainB = new Fl_Button(360, 450, 151, 30, gettext("Main B"));
           bMainB->type(102);
           bMainB->box(FL_PLASTIC_THIN_UP_BOX);
           bMainB->shortcut(0x62);
@@ -3770,7 +3770,7 @@ Fl_Double_Window* stygmorgan::make_window() {
           bMainB->callback((Fl_Callback*)cb_bMainB);
           bMainB->when(FL_WHEN_CHANGED);
         } // Fl_Button* bMainB
-        { bMainC = new Fl_Button(360, 555, 155, 30, gettext("Main C"));
+        { bMainC = new Fl_Button(360, 555, 151, 30, gettext("Main C"));
           bMainC->type(102);
           bMainC->box(FL_PLASTIC_THIN_UP_BOX);
           bMainC->shortcut(0x63);
@@ -3780,7 +3780,7 @@ Fl_Double_Window* stygmorgan::make_window() {
           bMainC->callback((Fl_Callback*)cb_bMainC);
           bMainC->when(FL_WHEN_CHANGED);
         } // Fl_Button* bMainC
-        { bMainD = new Fl_Button(360, 660, 155, 30, gettext("Main D"));
+        { bMainD = new Fl_Button(360, 660, 151, 30, gettext("Main D"));
           bMainD->type(102);
           bMainD->box(FL_PLASTIC_THIN_UP_BOX);
           bMainD->shortcut(0x64);
@@ -3792,7 +3792,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         } // Fl_Button* bMainD
         o->end();
       } // Fl_Group* o
-      { bEndingA = new Fl_Button(440, 380, 75, 30, gettext("Ending A"));
+      { bEndingA = new Fl_Button(440, 380, 71, 30, gettext("Ending A"));
         bEndingA->type(1);
         bEndingA->box(FL_PLASTIC_THIN_UP_BOX);
         bEndingA->color((Fl_Color)12);
@@ -3800,7 +3800,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         bEndingA->labelsize(11);
         bEndingA->callback((Fl_Callback*)cb_bEndingA);
       } // Fl_Button* bEndingA
-      { bEndingB = new Fl_Button(440, 485, 75, 30, gettext("Ending B"));
+      { bEndingB = new Fl_Button(440, 485, 71, 30, gettext("Ending B"));
         bEndingB->type(1);
         bEndingB->box(FL_PLASTIC_THIN_UP_BOX);
         bEndingB->color((Fl_Color)12);
@@ -3808,7 +3808,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         bEndingB->labelsize(11);
         bEndingB->callback((Fl_Callback*)cb_bEndingB);
       } // Fl_Button* bEndingB
-      { bEndingC = new Fl_Button(440, 590, 75, 30, gettext("Ending C"));
+      { bEndingC = new Fl_Button(440, 590, 71, 30, gettext("Ending C"));
         bEndingC->type(1);
         bEndingC->box(FL_PLASTIC_THIN_UP_BOX);
         bEndingC->shortcut(0x65);
@@ -3817,7 +3817,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         bEndingC->labelsize(11);
         bEndingC->callback((Fl_Callback*)cb_bEndingC);
       } // Fl_Button* bEndingC
-      { bIntroA = new Fl_Button(360, 380, 75, 30, gettext("Intro A"));
+      { bIntroA = new Fl_Button(360, 380, 71, 30, gettext("Intro A"));
         bIntroA->type(1);
         bIntroA->box(FL_PLASTIC_THIN_UP_BOX);
         bIntroA->color((Fl_Color)9);
@@ -3825,7 +3825,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         bIntroA->labelsize(11);
         bIntroA->callback((Fl_Callback*)cb_bIntroA);
       } // Fl_Button* bIntroA
-      { bIntroB = new Fl_Button(360, 485, 75, 30, gettext("Intro B"));
+      { bIntroB = new Fl_Button(360, 485, 71, 30, gettext("Intro B"));
         bIntroB->type(1);
         bIntroB->box(FL_PLASTIC_THIN_UP_BOX);
         bIntroB->color((Fl_Color)9);
@@ -3833,7 +3833,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         bIntroB->labelsize(11);
         bIntroB->callback((Fl_Callback*)cb_bIntroB);
       } // Fl_Button* bIntroB
-      { bIntroC = new Fl_Button(360, 590, 75, 30, gettext("Intro C"));
+      { bIntroC = new Fl_Button(360, 590, 71, 30, gettext("Intro C"));
         bIntroC->type(1);
         bIntroC->box(FL_PLASTIC_THIN_UP_BOX);
         bIntroC->shortcut(0x69);
@@ -3842,7 +3842,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         bIntroC->labelsize(11);
         bIntroC->callback((Fl_Callback*)cb_bIntroC);
       } // Fl_Button* bIntroC
-      { bFillAA = new Fl_Button(360, 415, 75, 30, gettext("Fill In AA"));
+      { bFillAA = new Fl_Button(360, 415, 71, 30, gettext("Fill In AA"));
         bFillAA->type(1);
         bFillAA->box(FL_PLASTIC_THIN_UP_BOX);
         bFillAA->shortcut(0x66);
@@ -3851,7 +3851,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         bFillAA->labelsize(11);
         bFillAA->callback((Fl_Callback*)cb_bFillAA);
       } // Fl_Button* bFillAA
-      { bFillAB = new Fl_Button(440, 415, 75, 30, gettext("Fill In AB"));
+      { bFillAB = new Fl_Button(440, 415, 71, 30, gettext("Fill In AB"));
         bFillAB->type(1);
         bFillAB->box(FL_PLASTIC_THIN_UP_BOX);
         bFillAB->color((Fl_Color)13);
@@ -3859,7 +3859,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         bFillAB->labelsize(11);
         bFillAB->callback((Fl_Callback*)cb_bFillAB);
       } // Fl_Button* bFillAB
-      { bFillBA = new Fl_Button(440, 520, 75, 30, gettext("Fill In BA"));
+      { bFillBA = new Fl_Button(440, 520, 71, 30, gettext("Fill In BA"));
         bFillBA->type(1);
         bFillBA->box(FL_PLASTIC_THIN_UP_BOX);
         bFillBA->color((Fl_Color)13);
@@ -3867,7 +3867,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         bFillBA->labelsize(11);
         bFillBA->callback((Fl_Callback*)cb_bFillBA);
       } // Fl_Button* bFillBA
-      { bFillBB = new Fl_Button(360, 520, 75, 30, gettext("Fill In BB"));
+      { bFillBB = new Fl_Button(360, 520, 71, 30, gettext("Fill In BB"));
         bFillBB->type(1);
         bFillBB->box(FL_PLASTIC_THIN_UP_BOX);
         bFillBB->shortcut(0x67);
@@ -3876,7 +3876,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         bFillBB->labelsize(11);
         bFillBB->callback((Fl_Callback*)cb_bFillBB);
       } // Fl_Button* bFillBB
-      { bFillCC = new Fl_Button(360, 625, 75, 30, gettext("Fill In CC"));
+      { bFillCC = new Fl_Button(360, 625, 71, 30, gettext("Fill In CC"));
         bFillCC->type(1);
         bFillCC->box(FL_PLASTIC_THIN_UP_BOX);
         bFillCC->shortcut(0x68);
@@ -3885,7 +3885,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         bFillCC->labelsize(11);
         bFillCC->callback((Fl_Callback*)cb_bFillCC);
       } // Fl_Button* bFillCC
-      { bFillDD = new Fl_Button(360, 695, 80, 30, gettext("Fill In DD"));
+      { bFillDD = new Fl_Button(360, 695, 71, 30, gettext("Fill In DD"));
         bFillDD->type(1);
         bFillDD->box(FL_PLASTIC_THIN_UP_BOX);
         bFillDD->shortcut(0x6e);
@@ -3894,7 +3894,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         bFillDD->labelsize(11);
         bFillDD->callback((Fl_Callback*)cb_bFillDD);
       } // Fl_Button* bFillDD
-      { AutoFill = new Fl_Button(360, 735, 155, 30, gettext("Auto Fill In"));
+      { AutoFill = new Fl_Button(360, 735, 151, 30, gettext("Auto Fill In"));
         AutoFill->type(1);
         AutoFill->box(FL_PLASTIC_THIN_UP_BOX);
         AutoFill->shortcut(0x6f);

@@ -452,7 +452,7 @@ void rmgmedit::cb_SlLength(Fl_Counter* o, void* v) {
 rmgmedit::rmgmedit(RMGMO *rmgmo_) {
   char temp[80];
   int x1,y1,w1,h1;
-  
+  int speaker;
   static const char *pepe [] ={"stygmorgan"};
   
   int argc=1;
@@ -478,6 +478,8 @@ rmgmedit::rmgmedit(RMGMO *rmgmo_) {
   stygmorgan.get("rmgmeditwinY",y1,y);
   stygmorgan.get("rmgmeditwinW",w1,750);
   stygmorgan.get("rmgmeditwinH",h1,535);
+  stygmorgan.get("SpeakerOnOff",speaker,0);
+  if(speaker)Hear->value(1); else Hear->value(0);
   
   rmgmeditwin->icon((char *)p);
   
@@ -499,9 +501,7 @@ rmgmedit::rmgmedit(RMGMO *rmgmo_) {
   rmgmo->PendientesEE=0;
   memset(rmgmo->POEE, 0 ,sizeof rmgmo->POEE);
   
-  
   rmgmeditwin->show(argc,argv);
-  
   rmgmeditwin->resize(x1,y1,w1,h1);
   
   ReadPattern();
@@ -1257,4 +1257,5 @@ void rmgmedit::GuardaPrefs() {
   stygmorgan.set("rmgmeditwinY",rmgmeditwin->y());
   stygmorgan.set("rmgmeditwinW",rmgmeditwin->w());
   stygmorgan.set("rmgmeditwinH",rmgmeditwin->h());
+  stygmorgan.set("SpeakerOnOff",(int)Hear->value());
 }

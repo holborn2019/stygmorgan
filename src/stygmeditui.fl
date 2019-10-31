@@ -63,12 +63,13 @@ Function {type_cb(Fl_Widget* o,void* v)} {} {
   code {((rmgmedit*)(o->parent()->user_data()))->type_cb_i(o,v);} {}
 }
 
-class rmgmedit {} {
-  Function {rmgmedit(RMGMO *rmgmo_)} {C
+class rmgmedit {open
+} {
+  Function {rmgmedit(RMGMO *rmgmo_)} {open C
   } {
     code {char temp[80];
 int x1,y1,w1,h1;
-
+int speaker;
 static const char *pepe [] ={"stygmorgan"};
 
 int argc=1;
@@ -94,6 +95,8 @@ stygmorgan.get("rmgmeditwinX",x1,x);
 stygmorgan.get("rmgmeditwinY",y1,y);
 stygmorgan.get("rmgmeditwinW",w1,750);
 stygmorgan.get("rmgmeditwinH",h1,535);
+stygmorgan.get("SpeakerOnOff",speaker,0);
+if(speaker)Hear->value(1); else Hear->value(0);
 
 rmgmeditwin->icon((char *)p);
 
@@ -115,12 +118,11 @@ SelCh->value(0);
 rmgmo->PendientesEE=0;
 memset(rmgmo->POEE, 0 ,sizeof rmgmo->POEE);
 
-
 rmgmeditwin->show(argc,argv);
-
 rmgmeditwin->resize(x1,y1,w1,h1);
 
-ReadPattern();} {}
+ReadPattern();} {selected
+    }
   }
   decl {RMGMO *rmgmo;} {private local
   }
@@ -131,8 +133,8 @@ GuardaPrefs();
 o->hide();
 rmgmo->weventeditor=0;
 o->clear();
-delete rmgmeditwin;} selected
-      xywh {406 453 755 545} type Double color 44 labelsize 11 labelcolor 7 size_range {800 600 0 0} visible
+delete rmgmeditwin;}
+      xywh {1404 305 755 545} type Double color 44 labelsize 11 labelcolor 7 hide size_range {800 600 0 0}
     } {
       Fl_Browser EditBro {
         callback {int i,j,k;
@@ -412,8 +414,7 @@ rmgmeditwin->do_callback();}
  IsPitchBend->selection_color((Fl_Color)3);
  IsPitchBend->clear_visible_focus();} {}
   }
-  Function {ReadPattern()} {open
-  } {
+  Function {ReadPattern()} {} {
     code {int i;
 int fcana,feve; 
 char temp[256], evento[24],nota[64],pos[32],length[16],velo[16];
@@ -831,6 +832,7 @@ Eventwin->show(argc,argv);} {}
 stygmorgan.set("rmgmeditwinX",rmgmeditwin->x());
 stygmorgan.set("rmgmeditwinY",rmgmeditwin->y());
 stygmorgan.set("rmgmeditwinW",rmgmeditwin->w());
-stygmorgan.set("rmgmeditwinH",rmgmeditwin->h());} {}
+stygmorgan.set("rmgmeditwinH",rmgmeditwin->h());
+stygmorgan.set("SpeakerOnOff",(int)Hear->value());} {}
   }
 }
