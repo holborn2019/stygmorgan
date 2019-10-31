@@ -1,0 +1,154 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0304
+i18n_type 1
+i18n_include <libintl.h>
+i18n_function gettext
+header_name {.h}
+code_name {.cxx}
+decl {//Copyright(c) 2006 Josep Andreu (holborn)} {private local
+}
+
+decl {//License GNU/GPL version 2} {private local
+}
+
+decl {\#include <FL/Fl_Text_Buffer.h>} {public local
+}
+
+decl {\#include "stygmorgan.h"} {public local
+}
+
+class about {} {
+  Function {about()} {C
+  } {
+    code {Fl::visual(FL_DOUBLE|FL_INDEX);
+Fl::visual(FL_RGB);
+
+static const char *pepe [] ={"stygmorgan"};
+char temp[64];
+int argc=1;
+char **argv= (char **) pepe;
+
+make_window();
+aboutwin->position(x+100,y+160);
+bzero(temp,sizeof(temp));
+sprintf(temp, "About %s",PACKAGE);
+
+aboutwin->copy_label(temp);
+aboutwin->icon((char *)p);
+aboutwin->show(argc,argv);
+
+bzero(temp,sizeof(temp));
+sprintf(temp, "%s %s",PACKAGE,VERSION);
+progname->copy_label(temp);
+
+Fl_Text_Buffer *buf = new Fl_Text_Buffer(2000);
+Fl_Text_Buffer *buf1 = new Fl_Text_Buffer(20000);
+Fl_Text_Buffer *buf2 = new Fl_Text_Buffer(1000);
+Fl_Text_Buffer *buf3 = new Fl_Text_Buffer(1000);
+Fl_Text_Buffer *buf4 = new Fl_Text_Buffer(1000);
+
+bzero(temp,sizeof(temp));
+sprintf(temp,"%s/AUTHORS",HELPDIR);
+buf->insertfile(temp,1);
+TDA->buffer(buf);
+
+bzero(temp,sizeof(temp));
+sprintf(temp,"%s/LICENSE",HELPDIR);
+buf1->insertfile(temp,1);
+TDL->buffer(buf1);
+
+bzero(temp,sizeof(temp));
+sprintf(temp,"%s/THANKS",HELPDIR);
+buf2->insertfile(temp,1);
+TDTh->buffer(buf2);
+
+bzero(temp,sizeof(temp));
+sprintf(temp,"%s/DISCLAIMER",HELPDIR);
+buf3->insertfile(temp,1);           
+TDD->buffer(buf3);
+
+bzero(temp,sizeof(temp));
+sprintf(temp,"%s/TRANSLATE",HELPDIR);
+buf4->insertfile(temp,1);
+TDT->buffer(buf4);} {selected
+    }
+  }
+  Function {make_window()} {} {
+    Fl_Window aboutwin {
+      callback {aboutwin->clear();
+aboutwin->hide();
+wabout=0;
+delete aboutwin;}
+      xywh {1444 494 625 370} type Double color 44 labelcolor 7 hide
+    } {
+      Fl_Tabs {} {open
+        xywh {0 0 615 330} color 44 selection_color 47 labelcolor 7
+      } {
+        Fl_Group Tab1 {
+          label About
+          xywh {0 30 600 295} color 44 selection_color 47 labelcolor 7
+        } {
+          Fl_Box progname {
+            xywh {45 150 525 40} labelfont 1 labelsize 22 align 16
+          }
+          Fl_Box {} {
+            label {A Interactive Music Workstation Software}
+            xywh {20 185 565 40}
+          }
+          Fl_Box {} {
+            label {(c) 2006-2009, Josep Andreu}
+            xywh {155 220 305 25}
+          }
+          Fl_Box {} {
+            image {stygmicon128.xpm} xywh {65 75 505 60}
+          }
+        }
+        Fl_Group Tab2 {
+          label Authors
+          xywh {0 30 615 300} color 44 selection_color 47 labelcolor 7 hide
+        } {
+          Fl_Text_Display TDA {
+            xywh {5 35 605 290} color 44 selection_color 47 labelcolor 7 textcolor 7
+          }
+        }
+        Fl_Group {} {
+          label {Thanks to}
+          xywh {0 30 615 300} color 44 selection_color 47 labelcolor 7 hide
+        } {
+          Fl_Text_Display TDTh {
+            xywh {5 35 605 290} color 44 selection_color 47 labelcolor 7 textcolor 7
+          }
+        }
+        Fl_Group {} {
+          label Translate
+          xywh {0 30 615 300} color 44 selection_color 47 labelcolor 7 hide
+        } {
+          Fl_Text_Display TDT {
+            xywh {5 35 605 290} color 44 selection_color 47 labelcolor 7 textcolor 7
+          }
+        }
+        Fl_Group {} {
+          label License
+          xywh {0 30 615 300} color 44 selection_color 47 labelcolor 7 hide
+        } {
+          Fl_Text_Display TDL {
+            xywh {5 35 605 290} color 44 selection_color 47 labelcolor 7 textcolor 7
+          }
+        }
+        Fl_Group {} {
+          label Disclaimer
+          xywh {0 25 615 305} color 44 selection_color 47 labelcolor 7 hide
+        } {
+          Fl_Text_Display TDD {
+            xywh {5 30 605 295} color 44 selection_color 47 labelcolor 7 textcolor 7
+          }
+        }
+      }
+      Fl_Button {} {
+        label Close
+        callback {aboutwin->do_callback();}
+        xywh {530 340 85 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3
+      }
+    }
+  }
+}

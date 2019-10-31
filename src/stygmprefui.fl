@@ -1,0 +1,341 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0304
+i18n_type 1
+i18n_include <libintl.h>
+i18n_function gettext
+header_name {.h}
+code_name {.cxx}
+decl {//Copyright(c) 2006 Josep Andreu (holborn)} {private local
+}
+
+decl {//License GNU/GPL version 2} {private local
+}
+
+decl {\#include <Fl/Fl_Preferences.H>} {private local
+}
+
+decl {\#include <Fl/Fl_File_Chooser.H>} {private local
+}
+
+decl {\#include "stygmorgan.h"} {public local
+}
+
+class rmgmpref {open
+} {
+  Function {rmgmpref(RMGMO *rmgmo_)} {open C
+  } {
+    code {char temp[128];
+static const char *pepe [] ={"stygmorgan"};
+
+int argc=1;
+char **argv= (char **) pepe;
+
+Fl::visual(FL_DOUBLE|FL_INDEX);
+Fl::visual(FL_RGB);
+rmgmo=rmgmo_;
+make_window();
+rmgmprefwin->position(x+20,y+20);
+bzero(temp,sizeof(temp));
+sprintf(temp,"%s %s - Preferences",PACKAGE,VERSION);
+rmgmprefwin->copy_label(temp);
+rmgmprefwin->icon((char *)p);
+rmgmprefwin->show(argc,argv);} {}
+  }
+  decl {RMGMO *rmgmo;} {private local
+  }
+  Function {make_window()} {open
+  } {
+    Fl_Window rmgmprefwin {
+      callback {rmgmprefwin->hide();
+rmgmo->wpreferences=0;
+rmgmprefwin->clear();
+delete rmgmprefwin;} open
+      xywh {725 170 540 536} type Double color 44 selection_color 48 hide
+    } {
+      Fl_Button {} {
+        label Cancel
+        callback {rmgmprefwin->do_callback();}
+        xywh {455 475 80 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3
+      }
+      Fl_Button {} {
+        label Ok
+        callback {GuardaPrefs();
+rmgmprefwin->do_callback();}
+        xywh {370 475 80 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3
+      }
+      Fl_Check_Button ASF {
+        label {Use asfxload to load soundfont at startup?}
+        callback {if ((int) o->value() ) ASFGroup->activate(); else ASFGroup->deactivate();}
+        xywh {5 215 267 25} color 44 selection_color 3 labelsize 12 labelcolor 7
+      }
+      Fl_Group ASFGroup {
+        xywh {5 230 530 50} color 44 selection_color 47 labelcolor 7
+      } {
+        Fl_File_Input SFPath {
+          label SoundFont
+          xywh {5 250 530 30} color 44 labelsize 11 labelcolor 7 align 5 textcolor 7
+        }
+        Fl_Button {} {
+          label Browse
+          callback {char *filename;
+filename=fl_file_chooser("Browse:","(*.sf2)",NULL,0);
+if (filename==NULL) return;
+SFPath->value(filename);
+strcpy(rmgmo->ASFFilename,filename);}
+          xywh {455 226 70 20} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 11
+        }
+      }
+      Fl_Check_Button AConnect {
+        label {auto connect Midi devices at startup?}
+        callback {if ((int) o->value()) MBros->activate(); else MBros->deactivate();}
+        xywh {5 10 270 25} color 44 selection_color 3 labelsize 12 labelcolor 7
+      }
+      Fl_Group MBros {
+        xywh {5 35 525 175} box DOWN_BOX color 44 selection_color 47 labelcolor 7
+      } {
+        Fl_Browser BrIn {
+          label {Midi Input Devices}
+          xywh {15 60 250 145} type Hold color 44 selection_color 47 labelsize 11 labelcolor 7 align 1 when 1 textcolor 7
+        }
+        Fl_Browser BrOut {
+          label {Midi Output Devices }
+          xywh {270 60 255 145} type Hold color 44 selection_color 47 labelsize 11 labelcolor 7 align 1 when 1 textcolor 7
+        }
+      }
+      Fl_File_Input TempFilesDir {
+        label {Directory for temporal files}
+        xywh {5 305 530 30} color 44 selection_color 47 labelsize 11 labelcolor 7 align 5 textcolor 7
+      }
+      Fl_Button {} {
+        label Browse
+        callback {char *filename;
+filename=fl_dir_chooser("Browse:",rmgmo->TempDir,0);
+if (filename==NULL) return;
+TempFilesDir->value(filename);
+strcpy(rmgmo->TempDir,filename);}
+        xywh {455 282 70 20} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 11
+      }
+      Fl_Check_Button DRespect {
+        label {Maintain Mutes when pattern changes}
+        xywh {5 460 270 25} color 44 selection_color 3 labelsize 12 labelcolor 7
+      }
+      Fl_Check_Button DUseSysEx {
+        label {Use SysEx messages for Start/AutoF}
+        callback {if((int)o->value())
+{
+ DTextStart->activate();
+ DTextAutoF->activate();
+ }
+ else
+{  
+ DTextStart->deactivate();
+ DTextAutoF->deactivate();
+ }}
+        tooltip {Input form: F0 43 10 .... F7} xywh {5 345 270 25} color 44 selection_color 3 labelsize 12 labelcolor 7
+      }
+      Fl_Input DTextStart {
+        label {SysEx for Start button }
+        callback {strcpy(rmgmo->TextSTART,o->value());}
+        tooltip {Input form: F0 43 10 .... F7} xywh {5 385 465 25} color 44 selection_color 47 labelsize 10 labelcolor 7 align 5 textcolor 7
+      }
+      Fl_Input DTextAutoF {
+        label {SysEx for Auto Fill-In button }
+        callback {strcpy(rmgmo->TextAUTOF,o->value());}
+        tooltip {Input form: F0 43 10 .... F7} xywh {5 430 465 25} color 44 selection_color 47 labelsize 10 labelcolor 7 align 5 textcolor 7
+      }
+      Fl_Check_Button BANKLSB0 {
+        label {BANK LSB 0}
+        xywh {5 476 90 25} color 44 selection_color 3 labelsize 12 labelcolor 7
+      }
+      Fl_Check_Button BANKTRUCO {
+        label {BANK Truco}
+        xywh {100 476 100 25} color 44 selection_color 3 labelsize 12 labelcolor 7
+      }
+      Fl_Check_Button JTRANSPORT {
+        label {Use Jack Transport Tempo}
+        xywh {4 493 100 25} color 44 selection_color 3 labelsize 12 labelcolor 7
+      }
+    }
+    code {int i;
+int val=0;
+char sffile[80];
+
+
+ASF->clear_visible_focus();
+ASF->down_box(FL_NO_BOX);
+ASF->selection_color((Fl_Color)3);
+
+AConnect->clear_visible_focus();
+AConnect->down_box(FL_NO_BOX);
+AConnect->selection_color((Fl_Color)3);
+
+DRespect->clear_visible_focus();
+DRespect->down_box(FL_NO_BOX);
+DRespect->selection_color((Fl_Color)3);
+
+DUseSysEx->clear_visible_focus();
+DUseSysEx->down_box(FL_NO_BOX);
+DUseSysEx->selection_color((Fl_Color)3);
+
+BANKLSB0->clear_visible_focus();
+BANKLSB0->down_box(FL_NO_BOX);
+BANKLSB0->selection_color((Fl_Color)3);
+
+BANKTRUCO->clear_visible_focus();
+BANKTRUCO->down_box(FL_NO_BOX);
+BANKTRUCO->selection_color((Fl_Color)3);
+
+JTRANSPORT->clear_visible_focus();
+JTRANSPORT->down_box(FL_NO_BOX);
+JTRANSPORT->selection_color((Fl_Color)3);
+
+
+
+
+MiraClientes();
+
+Fl_Preferences stygmorgan (Fl_Preferences::USER, WEBSITE, PACKAGE);
+
+stygmorgan.get("TempDir",rmgmo->TempDir,"",126);
+TempFilesDir->value(rmgmo->TempDir);
+
+stygmorgan.get("AutoSF",val,0);
+ASF->value(val);
+ASF->do_callback();
+
+stygmorgan.get("SFFile",sffile,"",126);
+SFPath->value(sffile);
+
+stygmorgan.get("MutesPatternChange",rmgmo->Respect,0);
+DRespect->value(rmgmo->Respect);
+
+stygmorgan.get("Bank_LSB_0",rmgmo->BankLSBLS,0);
+BANKLSB0->value(rmgmo->BankLSBLS);
+
+stygmorgan.get("Bank_Truco_0",rmgmo->BankTruco,0);
+BANKTRUCO->value(rmgmo->BankTruco);
+
+stygmorgan.get("usejacktransport",rmgmo->usejacktransport,0);
+JTRANSPORT->value(rmgmo->usejacktransport);
+
+stygmorgan.get("AConnect",val,0);
+AConnect->value(val);
+AConnect->do_callback();
+
+stygmorgan.get("MidiInDevice",sffile,"",78);
+
+for(i=1;i<=BrIn->size();i++)
+ {
+    if (strcmp(BrIn->text(i),sffile)==0) 
+         { 
+           BrIn->select(i,1);
+           break;
+          } 
+  }         
+
+stygmorgan.get("MidiOutDevice",sffile,"",78);
+
+for(i=1;i<=BrOut->size();i++)
+ {
+    if (strcmp(BrOut->text(i),sffile)==0) 
+         { 
+           BrOut->select(i,1);
+           break;
+          } 
+  }
+  
+  
+stygmorgan.get("UseSysEX",rmgmo->usesysex,0);
+DUseSysEx->value(rmgmo->usesysex);
+DUseSysEx->do_callback();
+stygmorgan.get("ButStart",rmgmo->TextSTART,"",126);
+DTextStart->value(rmgmo->TextSTART);
+stygmorgan.get("ButAutoF",rmgmo->TextAUTOF,"",126);
+DTextAutoF->value(rmgmo->TextAUTOF);} {selected
+    }
+  }
+  Function {GuardaPrefs()} {open
+  } {
+    code {Fl_Preferences stygmorgan (Fl_Preferences::USER, WEBSITE, PACKAGE);
+
+stygmorgan.set("AConnect",(int)AConnect->value());
+if (BrIn->value() > 0 ) 
+{
+  stygmorgan.set("MidiInDevice",BrIn->text(BrIn->value()));
+  bzero(rmgmo->MID,sizeof(rmgmo->MID));
+  strcpy(rmgmo->MID,BrIn->text(BrIn->value()));
+  rmgmo->CambiaMidi=1;
+} 
+
+if (BrOut->value() > 0)
+{
+ stygmorgan.set("MidiOutDevice",BrOut->text(BrOut->value()));
+ bzero(rmgmo->MOD,sizeof(rmgmo->MOD));
+ strcpy(rmgmo->MOD,BrOut->text(BrOut->value()));
+ rmgmo->CambiaMidi=1; 
+}
+stygmorgan.set("AutoSF",(int)ASF->value());
+stygmorgan.set("SFFile",SFPath->value());
+
+if (((int)ASF->value()) && (SFPath->value() != NULL)) rmgmo->cargaASF();
+
+stygmorgan.set("TempDir",TempFilesDir->value());
+
+rmgmo->Respect=(int)DRespect->value();
+stygmorgan.set("MutesPatternChange",rmgmo->Respect);
+
+rmgmo->BankLSBLS=(int)BANKLSB0->value();
+stygmorgan.set("Bank_LSB_0",rmgmo->BankLSBLS);
+
+rmgmo->BankTruco=(int)BANKTRUCO->value();
+stygmorgan.set("Bank_Truco_0",rmgmo->BankTruco);
+
+rmgmo->usejacktransport=(int)JTRANSPORT->value();
+stygmorgan.set("usejacktransport",rmgmo->usejacktransport);
+
+rmgmo->usesysex=(int)DUseSysEx->value();
+stygmorgan.set("UseSysEX",rmgmo->usesysex);
+
+if (rmgmo->usesysex)
+{
+ stygmorgan.set("ButStart",rmgmo->TextSTART);
+ stygmorgan.set("ButAutoF",rmgmo->TextAUTOF);
+ rmgmo->ConvierteHexString();
+}} {}
+  }
+  Function {MiraClientes()} {open
+  } {
+    code {FILE *fp;
+char temp[128];
+char temp1[128];
+char *masque;
+char *name;
+
+if ((fp = fopen ("/proc/asound/seq/clients", "r")) != NULL)
+  {
+    bzero (temp, sizeof (temp));
+
+      while (fgets (temp, sizeof temp, fp) != NULL)
+           {
+             
+            if (strstr(temp,"Port") != NULL)
+             
+           {  
+             
+             strcpy(temp1,temp);
+             strtok(temp1,"\\"");
+             name=strtok(NULL,"\\"");
+             masque=strtok(NULL,")");
+             
+             
+             
+             if ((masque[3]=='W' ) && (strstr(name,"stygmorgan IN")==0)) BrOut->add(name);
+             if ((masque[2]=='R' ) && (strstr(name,"stygmorgan OUT")==0)) BrIn->add(name);
+             
+            } 
+           } 
+   }
+   
+   fclose(fp);} {}
+  }
+}
