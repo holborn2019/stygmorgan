@@ -1,0 +1,836 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0304
+i18n_type 1
+i18n_include <libintl.h>
+i18n_function gettext
+header_name {.h}
+code_name {.cxx}
+decl {//Copyright(c) 2006 Josep Andreu (holborn)} {private local
+}
+
+decl {//License GNU/GPL version 2} {private local
+}
+
+decl {\#include "stygmorgan.h"} {public local
+}
+
+decl {\#include "choice.h"} {private local
+}
+
+decl {\#include <Fl/Fl_Preferences.H>} {public local
+}
+
+decl {\#include <FL/Fl_Browser.H>} {public local
+}
+
+class ElBro {: {public Fl_Browser}
+} {
+  Function {ElBro(int X, int Y, int W, int H) : Fl_Browser(X,Y,W,H)} {} {
+    code {} {}
+  }
+  Function {resize(int X, int Y,int W, int H)} {} {
+    code {int i;
+int sizes[512];
+static const int colsizes[]= {60,100,32,110,160,160,0};
+
+
+memset(sizes, 0 , sizeof sizes); 
+
+for (i=0; i<=5;i++)
+{
+ sizes[i]=colsizes[i]* ( W-20) / 725;
+ } 
+
+sizes[6]=0;  
+   
+   
+
+  
+//init_sizes();  
+
+Fl_Browser::column_widths((const int*) sizes);
+
+Fl_Browser::resize(X,Y,W,H);} {}
+  }
+  Function {redraw()} {open
+  } {
+    code {resize(x(),y(),w(),h());
+// Fl_Browser::redraw();} {}
+  }
+}
+
+Function {type_cb(Fl_Widget* o,void* v)} {} {
+  code {((rmgmedit*)(o->parent()->user_data()))->type_cb_i(o,v);} {}
+}
+
+class rmgmedit {} {
+  Function {rmgmedit(RMGMO *rmgmo_)} {C
+  } {
+    code {char temp[80];
+int x1,y1,w1,h1;
+
+static const char *pepe [] ={"stygmorgan"};
+
+int argc=1;
+char **argv= (char **) pepe;
+
+Fl::visual(FL_DOUBLE|FL_INDEX);
+Fl::visual(FL_RGB);
+rmgmo=rmgmo_;
+
+
+
+static const int colsizes[]= {60,100,32,110,160,160,0};
+
+
+make_window();
+
+EditBro->column_widths((const int*) colsizes);
+
+make_eventwindow();
+
+Fl_Preferences stygmorgan (Fl_Preferences::USER, WEBSITE, PACKAGE);
+stygmorgan.get("rmgmeditwinX",x1,x);
+stygmorgan.get("rmgmeditwinY",y1,y);
+stygmorgan.get("rmgmeditwinW",w1,750);
+stygmorgan.get("rmgmeditwinH",h1,535);
+
+rmgmeditwin->icon((char *)p);
+
+sNote->value(1);
+sControl->value(1);
+sProgram->value(1);
+sPitchBend->value(1);
+DNomCh->copy_label("All");
+BaseChord->copy_label("---");
+IsNote->setonly();
+bzero(temp,sizeof(temp));
+sprintf(temp, "%s %s - %s - %s - Event Editor",PACKAGE,VERSION,rmgmo->nStyle.Name,rmgmo->nStyle.Pattern[rmgmo->Variacion].Name);
+rmgmeditwin->label(temp);
+
+chsel=0;
+SelCh->menu(choices);
+SelCh->value(0);
+
+rmgmo->PendientesEE=0;
+memset(rmgmo->POEE, 0 ,sizeof rmgmo->POEE);
+
+
+rmgmeditwin->show(argc,argv);
+
+rmgmeditwin->resize(x1,y1,w1,h1);
+
+ReadPattern();} {}
+  }
+  decl {RMGMO *rmgmo;} {private local
+  }
+  Function {make_window()} {} {
+    Fl_Window rmgmeditwin {
+      callback {pera=2;
+GuardaPrefs();
+o->hide();
+rmgmo->weventeditor=0;
+o->clear();
+delete rmgmeditwin;} selected
+      xywh {406 453 755 545} type Double color 44 labelsize 11 labelcolor 7 size_range {800 600 0 0} visible
+    } {
+      Fl_Browser EditBro {
+        callback {int i,j,k;
+
+if (o->value()== 1) 
+{
+o->select(1,0);
+return;
+}
+ 
+i=rmgmo->buscanum(o->text(o->value()));
+
+if ((Hear->value()) && ( rmgmo->PEG[rmgmo->Variacion][i].tipo == 2 ))
+rmgmo->envionota(rmgmo->pcp[rmgmo->PEG[rmgmo->Variacion][i].canal],rmgmo->PEG[rmgmo->Variacion][i].nota,127);
+
+
+if (Fl::event_button()==3) 
+{
+editaevento(i);
+//EditBro->redraw();
+return;
+}
+
+if (sAllE->value())
+{ 
+  for(j=2; j<=o->size(); j++)
+   {
+      k=rmgmo->buscanum(o->text(j));
+      if ((rmgmo->PEG[rmgmo->Variacion][k].tipo == rmgmo->PEG[rmgmo->Variacion][i].tipo) && (rmgmo->PEG[rmgmo->Variacion][k].nota == rmgmo->PEG[rmgmo->Variacion][i].nota)
+      && (rmgmo->PEG[rmgmo->Variacion][k].canal == rmgmo->PEG[rmgmo->Variacion][i].canal)) o->select(j,1);
+    }
+ }}
+        tooltip {Left Click Select - Rigth Click Edit} xywh {5 135 745 405} type Multi color 44 selection_color 52 labelcolor 7 textcolor 7
+      }
+      Fl_Group {} {
+        xywh {5 60 90 70} box THIN_DOWN_BOX color 44 selection_color 47 labelcolor 7
+      } {
+        Fl_Check_Button sNote {
+          label Note
+          callback {ReadPattern();}
+          xywh {10 65 60 15} down_box DOWN_BOX color 44 selection_color 3 labelsize 11 labelcolor 7 when 1
+        }
+        Fl_Check_Button sControl {
+          label Control
+          callback {ReadPattern();}
+          xywh {10 95 60 15} down_box DOWN_BOX color 44 selection_color 3 labelsize 11 labelcolor 7 when 1
+        }
+        Fl_Check_Button sProgram {
+          label Program
+          callback {ReadPattern();}
+          xywh {10 80 65 15} down_box DOWN_BOX color 44 selection_color 3 labelsize 11 labelcolor 7 when 1
+        }
+        Fl_Check_Button sPitchBend {
+          label {Pitch Bend}
+          callback {ReadPattern();}
+          xywh {10 110 80 15} down_box DOWN_BOX color 44 selection_color 3 labelsize 11 labelcolor 7 when 1
+        }
+      }
+      Fl_Menu_Bar {} {
+        callback {//EditBro->redraw();}
+        xywh {0 0 755 20} color 44 selection_color 47 labelcolor 7
+      } {
+        Submenu sFunctions {
+          label {&Functions}
+          xywh {0 0 100 20}
+        } {
+          MenuItem {} {
+            label {Brush Drums XG->GM}
+            callback {rmgmo->XGGM();
+ReadPattern();}
+            xywh {0 0 100 20}
+          }
+        }
+        Submenu {} {
+          label {&Help} open
+          xywh {0 0 100 20}
+        } {
+          MenuItem {} {
+            label Help
+            callback {rmgmo->ventana=7;
+//EditBro->redraw();
+ReadPattern();}
+            xywh {0 0 100 20} shortcut 0xffbe divider
+          }
+          MenuItem {} {
+            label About
+            callback {if(wabout) return;
+wabout=1;
+rmgmo->ventana=1;
+//EditBro->redraw();
+ReadPattern();}
+            xywh {0 0 100 20}
+          }
+        }
+      }
+      Fl_Button Hear {
+        callback {if (o->value() == 0) rmgmo->panico(1,0,15);}
+        tooltip {Hear Events} image {speaker2.xpm} xywh {605 35 40 40} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 align 64
+      }
+      Fl_Box {} {
+        xywh {100 60 90 70} box THIN_DOWN_BOX color 44 selection_color 47 labelcolor 7
+      }
+      Fl_Choice SelCh {
+        label {Midi Channel}
+        xywh {105 75 80 20} down_box BORDER_BOX color 44 selection_color 47 labelsize 11 labelcolor 7 align 5 textsize 11 textcolor 7
+      } {}
+      Fl_Box DNomCh {
+        xywh {105 100 80 25} box DOWN_BOX color 44 selection_color 47 labelsize 11 labelcolor 7
+      }
+      Fl_Box Disi {
+        label Display
+        xywh {5 35 185 20} box THIN_DOWN_BOX color 44 labelfont 1 labelcolor 1 align 16
+      }
+      Fl_Box {} {
+        label Select
+        xywh {210 35 185 20} box THIN_DOWN_BOX color 44 selection_color 47 labelfont 1 labelcolor 1 align 16
+      }
+      Fl_Group {} {open
+        xywh {210 60 185 60} box THIN_DOWN_BOX color 44 selection_color 47 labelcolor 7
+      } {
+        Fl_Check_Button sAllE {
+          label {All Equal Events}
+          xywh {215 65 175 20} down_box DOWN_BOX color 44 selection_color 3 labelsize 11 labelcolor 7 when 1
+        }
+        Fl_Button {} {
+          label Edit
+          callback {int i,j;
+
+for(i=2; i<=EditBro->size(); i++)
+ {
+   if (EditBro->selected(i))
+        {  
+          j=rmgmo->buscanum(EditBro->text(i));
+          editaevento(j);
+          break;
+          
+        }  
+  }}
+          xywh {220 90 80 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 11
+        }
+        Fl_Button {} {
+          label Delete
+          callback {int i;
+int j=0;
+for (i=2; i<=EditBro->size(); i++)
+
+
+{
+if (EditBro->selected(i)) 
+{
+
+rmgmo->borraevento(rmgmo->buscanum(EditBro->text(i))-j);
+j++;
+}
+}
+
+ReadPattern();}
+          xywh {305 90 80 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 11
+        }
+      }
+      Fl_Box {} {
+        label Insert
+        xywh {405 35 185 20} box THIN_DOWN_BOX color 44 selection_color 47 labelfont 1 labelcolor 1 align 16
+      }
+      Fl_Group {} {open
+        xywh {405 60 90 70} box THIN_DOWN_BOX color 44 selection_color 47 labelcolor 7
+      } {
+        Fl_Check_Button IsNote {
+          label Note
+          callback {ReadPattern();}
+          xywh {410 65 60 15} type Radio down_box DOWN_BOX color 44 selection_color 3 labelsize 11 labelcolor 7 when 1
+        }
+        Fl_Check_Button IsControl {
+          label Control
+          callback {ReadPattern();}
+          xywh {410 95 60 15} type Radio down_box DOWN_BOX color 44 selection_color 47 labelsize 11 labelcolor 7 when 1
+        }
+        Fl_Check_Button IsProgram {
+          label Program
+          callback {ReadPattern();}
+          xywh {410 80 65 15} type Radio down_box DOWN_BOX color 44 selection_color 3 labelsize 11 labelcolor 7 when 1
+        }
+        Fl_Check_Button IsPitchBend {
+          label {Pitch Bend}
+          callback {ReadPattern();}
+          xywh {410 110 80 15} type Radio down_box DOWN_BOX color 44 selection_color 3 labelsize 11 labelcolor 7 when 1
+        }
+      }
+      Fl_Group {} {open
+        xywh {500 60 90 70} box THIN_DOWN_BOX color 44 selection_color 47 labelcolor 7
+      } {
+        Fl_Button {} {
+          label Insert
+          callback {int index=0;
+int canal=0;
+int tipo=0;
+int i;
+
+for (i=2;i<=EditBro->size();i++)
+if (EditBro->selected(i))
+  {
+     index=rmgmo->buscanum(EditBro->text(i));
+     break;
+   }
+   
+if (IsNote->value()) tipo=2;
+if (IsControl->value()) tipo=3;
+if (IsProgram->value()) tipo=4;
+if (IsPitchBend->value()) tipo=5;
+
+canal=(int) SChMidi->value() -1;    
+     
+rmgmo->InsertaEvento(index,tipo,canal);
+
+ReadPattern();
+editaevento(index);}
+          xywh {505 65 80 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 11
+        }
+        Fl_Counter SChMidi {
+          label {Midi Ch.}
+          callback {o->parent()->redraw();}
+          xywh {505 105 80 20} type Simple box NO_BOX color 44 selection_color 47 labelsize 11 labelcolor 7 align 1 minimum 1 maximum 16 step 1 value 10 textcolor 7
+        }
+      }
+      Fl_Button {} {
+        label Ok
+        callback {rmgmeditwin->do_callback();}
+        xywh {660 55 85 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 11
+      }
+      Fl_Button {} {
+        label Cancel
+        callback {rmgmo->bcancel=2;
+rmgmeditwin->do_callback();}
+        xywh {660 25 85 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 11
+      }
+      Fl_Box BaseChord {
+        xywh {600 100 145 25} box DOWN_BOX color 44 selection_color 47 labelsize 11 labelcolor 7 align 16
+      }
+      Fl_Box LabelBaseChord {
+        label {Base Chord}
+        xywh {600 85 145 15} box THIN_DOWN_BOX color 44 selection_color 47 labelfont 1 labelsize 12 labelcolor 1 align 16
+      }
+    }
+    code {sNote->down_box(FL_NO_BOX);
+ sNote->selection_color((Fl_Color)3);
+ sNote->clear_visible_focus();    
+ 
+ sControl->down_box(FL_NO_BOX);
+ sControl->selection_color((Fl_Color)3);
+ sControl->clear_visible_focus();    
+ 
+ sProgram->down_box(FL_NO_BOX);
+ sProgram->selection_color((Fl_Color)3);
+ sProgram->clear_visible_focus();    
+ 
+ sPitchBend->down_box(FL_NO_BOX);
+ sPitchBend->selection_color((Fl_Color)3);
+ sPitchBend->clear_visible_focus();    
+ 
+ sAllE->down_box(FL_NO_BOX);
+ sAllE->selection_color((Fl_Color)3);
+ sAllE->clear_visible_focus();    
+ 
+ IsNote->down_box(FL_NO_BOX);
+ IsNote->selection_color((Fl_Color)3);
+ IsNote->clear_visible_focus();    
+ 
+ IsControl->down_box(FL_NO_BOX);
+ IsControl->selection_color((Fl_Color)3);
+ IsControl->clear_visible_focus();    
+ 
+ IsProgram->down_box(FL_NO_BOX);
+ IsProgram->selection_color((Fl_Color)3);
+ IsProgram->clear_visible_focus();    
+ 
+ IsPitchBend->down_box(FL_NO_BOX);
+ IsPitchBend->selection_color((Fl_Color)3);
+ IsPitchBend->clear_visible_focus();} {}
+  }
+  Function {ReadPattern()} {open
+  } {
+    code {int i;
+int fcana,feve; 
+char temp[256], evento[24],nota[64],pos[32],length[16],velo[16];
+char *posi = pos;
+char *noti = nota;
+
+
+EditBro->clear();
+
+bzero(temp,sizeof(temp));
+sprintf(temp, "@c@b@B44@C1@_%s\\t@c@b@B45@C1@_%s\\t@c@b@B44@C1@_%s\\t@c@b@B45@C1@_%s\\t@c@b@B44@C1@_%s\\t@c@b@B45@C1@_%s\\t@c@b@B44@C1@_%s", "Index","Position","Ch.","Event","Value 1","Value 2","Length"); 
+EditBro->add(temp);
+for (i=0; i<rmgmo->nStyle.Pattern[rmgmo->Variacion].eventos;i++)
+{
+  fcana=0; feve=0;
+
+
+
+switch (chsel)
+     {
+       case 0:
+        fcana=1;
+        break;
+       case 17:
+        if (rmgmo->pcp[rmgmo->PEG[rmgmo->Variacion][i].canal]==9) fcana=1;
+        break;
+       default:
+        if (rmgmo->PEG[rmgmo->Variacion][i].canal == (chsel - 1)) fcana=1;
+     }
+
+
+  if (fcana == 0 ) continue;
+
+
+  switch (rmgmo->PEG[rmgmo->Variacion][i].tipo)
+   {
+     case 2:
+     
+     if (sNote->value()) feve=1;
+      break;
+     
+     case 3:   
+     
+     if (sControl->value()) feve=1;
+      break;
+
+     case 4:   
+     
+     if (sProgram->value()) feve=1;
+      break;
+
+     case 5:
+     if (sPitchBend->value()) feve=1;
+     break;
+
+     default:
+       feve=1;
+
+   }
+
+if (feve==0) continue;
+
+if ((fcana) && (feve))
+{
+
+bzero(pos,sizeof(pos));
+bzero(evento,sizeof(evento));
+bzero(nota,sizeof(nota));
+bzero(length,sizeof(length));
+bzero(velo,sizeof(velo));
+
+rmgmo->convtickcompas(posi,i);
+
+sprintf(length,"%s","-");
+sprintf(velo,"%s","-");
+
+
+switch (rmgmo->PEG[rmgmo->Variacion][i].tipo)
+ { 
+ case 2:
+   
+   strcpy(evento,"Note");
+   
+   rmgmo->convnota(noti,i);
+   sprintf(velo,"%d",rmgmo->PEG[rmgmo->Variacion][i].velocity);
+   sprintf(length,"%d",rmgmo->PEG[rmgmo->Variacion][i].length);
+   
+   break; 
+ 
+ case 3:
+   strcpy(evento,"Control");   
+   sprintf(nota,"%s",rmgmo->CCn[rmgmo->PEG[rmgmo->Variacion][i].nota].Nom);
+   sprintf(velo,"%d",rmgmo->PEG[rmgmo->Variacion][i].velocity);  
+   break;
+ case 4:
+   strcpy(evento,"Program");    
+    sprintf(nota,"%s",rmgmo->PresetList[rmgmo->CalculaBanco(rmgmo->pcp[rmgmo->PEG[rmgmo->Variacion][i].canal])].PBanco[rmgmo->PEG[rmgmo->Variacion][i].nota].ProgName);
+   break;
+ case 5:
+   strcpy(evento,"PitchBend"); 
+    sprintf(nota,"%d",rmgmo->PEG[rmgmo->Variacion][i].nota);   
+   break;
+ default:
+   sprintf(evento,"%d", rmgmo->PEG[rmgmo->Variacion][i].tipo);
+}
+
+
+
+
+bzero(temp,sizeof(temp));
+if (i % 2 == 0)
+sprintf(temp, "@r@B44  %5d\\t@r@B45%s\\t@r@B44  %2d\\t@c@B45  %s\\t@c@B44  %s\\t@c@B45  %s\\t@c@B44   %s", i,pos, rmgmo->PEG[rmgmo->Variacion][i].canal+1,evento,nota,velo,length);
+else
+sprintf(temp, "@r@B46  %5d\\t@r@B47%s\\t@r@B46  %2d\\t@c@B47  %s\\t@c@B46  %s\\t@c@B47  %s\\t@c@B46   %s", i,pos, rmgmo->PEG[rmgmo->Variacion][i].canal+1,evento,nota,velo,length);
+
+
+EditBro->add(temp);
+
+}
+ 
+}
+
+// EditBro->redraw();} {}
+  }
+  Function {type_cb_i(Fl_Widget* o,void* v)} {} {
+    code {int i=0;
+char temp[28];
+long long cast_v=(long long)v;
+
+
+chsel=(int)cast_v;
+
+switch (chsel)
+{
+case 0:
+DNomCh->copy_label("All");
+BaseChord->copy_label("---");
+SChMidi->value(1);
+break;
+case 17:
+DNomCh->copy_label("Drums");
+BaseChord->copy_label("---");
+SChMidi->value(10);
+break;
+default:
+while ( (chsel -1) != rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].track)
+   {
+    i++;
+    if (i>16) break;
+   }
+DNomCh->copy_label(rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].Name);
+bzero(temp,sizeof(temp));
+
+if((rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].ChRoot <0) || (rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].ChRoot >23)) return;
+if((rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].ChType <0) || (rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].ChType >33)) return;
+
+
+sprintf(temp,"%s%s",rmgmo->NCE[rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].ChRoot].Nom,rmgmo->ChN[rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].ChType].Nom);
+BaseChord->copy_label(temp);
+
+SChMidi->value(chsel);
+}
+
+
+
+ReadPattern();} {}
+  }
+  Function {make_eventwindow()} {} {
+    Fl_Window Eventwin {
+      callback {Eventwin->hide();
+//EditBro->redraw();}
+      xywh {1655 276 340 290} type Double color 44 selection_color 47 labelcolor 7 hide
+    } {
+      Fl_Button {} {
+        label Ok
+        callback {int i;
+int pvelo=0;
+int plength=0;
+int lastselected=1;
+
+if (sAllE->value())
+{
+
+  if (presvelo->value()) pvelo=1;
+  if (preslength->value()) plength=1; 
+
+for (i=2;i<=EditBro->size();i++)
+{
+  if (EditBro->selected(i))
+  { 
+    rmgmo->selevent=rmgmo->buscanum(EditBro->text(i));
+    rmgmo->ActuaEvento(1, pvelo,plength,(unsigned int)SlPos->value(),(int)SlNote->value(),(int)SlVal1->value(),(int)SlVal2->value(),(int)SlVelo->value(),(int)SlLength->value());
+    if(lastselected==1) lastselected=i;
+  }
+}  
+
+
+}
+else
+{
+rmgmo->ActuaEvento(0,pvelo,plength,(unsigned int)SlPos->value(),(int)SlNote->value(),(int)SlVal1->value(),(int)SlVal2->value(),(int)SlVelo->value(),(int)SlLength->value());
+lastselected=EditBro->value();
+
+}
+Eventwin->do_callback();
+ReadPattern();
+EditBro->topline(lastselected);
+EditBro->select(lastselected,1);}
+        xywh {260 250 65 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 11
+      }
+      Fl_Button {} {
+        label Cancel
+        callback {Eventwin->do_callback();}
+        xywh {190 250 65 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 11
+      }
+      Fl_Box PosDis {
+        xywh {175 55 155 25} box THIN_DOWN_BOX color 44 selection_color 47 labelcolor 7 align 24
+      }
+      Fl_Counter SlPos {
+        label Position
+        callback {char pos[32];
+char *posi;
+o->parent()->redraw();
+
+bzero(pos,sizeof(pos));
+posi=pos;
+rmgmo->convtickcompasval(posi,(int)o->value());
+PosDis->copy_label(pos);
+SlVal2->maximum(rmgmo->longic - SlPos->value());}
+        xywh {15 55 155 25} box NO_BOX color 44 selection_color 47 labelsize 11 labelcolor 7 align 1 minimum 0 maximum 1 step 1 textcolor 7
+      }
+      Fl_Box NotaDis {
+        xywh {175 100 155 25} box THIN_DOWN_BOX color 44 selection_color 47 labelcolor 7 align 24
+      }
+      Fl_Counter SlNote {
+        label Note
+        callback {char note[32];
+char *notei;
+o->parent()->redraw();
+
+bzero(note,sizeof(note));
+notei=note;
+
+
+rmgmo->convnotaval(notei,(int)o->value());
+
+NotaDis->copy_label(note);}
+        xywh {15 100 155 25} box NO_BOX color 44 selection_color 47 labelsize 11 labelcolor 7 align 1 minimum 0 maximum 127 step 1 textcolor 7
+      }
+      Fl_Counter SlVal1 {
+        label Velocity
+        callback {o->parent()->redraw();}
+        xywh {15 160 155 25} box NO_BOX color 44 selection_color 47 labelsize 11 labelcolor 7 align 1 minimum 0 maximum 127 step 1 textcolor 7
+      }
+      Fl_Counter SlVal2 {
+        label Length
+        callback {o->parent()->redraw();}
+        xywh {15 210 155 25} box NO_BOX color 7 selection_color 47 labelsize 11 labelcolor 7 align 1 minimum 0 maximum 1 step 1 textcolor 7
+      }
+      Fl_Box DInfoq {
+        xywh {15 10 315 25} box THIN_DOWN_BOX color 44 selection_color 47 labelcolor 7 align 16
+      }
+      Fl_Counter SlVelo {
+        label {% Velocity}
+        callback {o->parent()->redraw();}
+        xywh {175 160 155 25} box NO_BOX color 7 selection_color 47 labelsize 11 labelcolor 7 align 1 minimum -50 maximum 50 step 1 textcolor 7
+      }
+      Fl_Check_Button presvelo {
+        label Preserve
+        xywh {0 135 70 15} down_box DOWN_BOX color 44 selection_color 3 labelsize 11 labelcolor 1
+      }
+      Fl_Check_Button preslength {
+        label Preserve
+        xywh {0 190 70 15} down_box DOWN_BOX color 44 selection_color 3 labelsize 11 labelcolor 1
+      }
+      Fl_Counter SlLength {
+        label {% Length}
+        callback {o->parent()->redraw();}
+        xywh {175 210 155 25} box NO_BOX color 44 selection_color 47 labelsize 11 labelcolor 7 align 1 minimum -50 maximum 50 step 1 textcolor 7
+      }
+    }
+    code {presvelo->down_box(FL_NO_BOX);
+presvelo->selection_color((Fl_Color)3);
+presvelo->clear_visible_focus();
+
+preslength->down_box(FL_NO_BOX);
+preslength->selection_color((Fl_Color)3);
+preslength->clear_visible_focus();} {}
+  }
+  Function {editaevento(int evento)} {} {
+    code {int x,y;
+
+char tmp[64],tmp1[64];
+
+Eventwin->hide();
+
+static const char *pepe [] ={"stygmorgan"};
+
+int argc=1;
+char **argv= (char **) pepe;
+
+
+rmgmo->selevent=evento;
+rmgmo->selcanal=rmgmo->pcp[rmgmo->PEG[rmgmo->Variacion][evento].canal];
+rmgmo->seltipo=rmgmo->PEG[rmgmo->Variacion][evento].tipo;
+
+
+
+
+SlPos->show();
+SlPos->maximum(rmgmo->longi -1);
+SlPos->lstep(100);
+SlPos->value((int)rmgmo->PEG[rmgmo->Variacion][evento].tick);
+SlPos->do_callback();
+
+if (sAllE->value())
+
+  {
+    SlPos->hide(); 
+    presvelo->show();
+    preslength->show();
+    SlVelo->show();
+    SlLength->show();
+  }
+ else 
+  {
+    SlPos->show();
+    presvelo->hide();
+    preslength->hide();
+    SlVelo->hide();
+    SlLength->hide();
+    
+  } 
+
+SlNote->minimum(0);
+SlNote->maximum(127);
+SlNote->lstep(10);
+SlNote->value((int)rmgmo->PEG[rmgmo->Variacion][evento].nota);
+SlNote->do_callback();
+
+SlVal1->label("Velocity");
+SlVal1->lstep(10);
+SlVal2->lstep(100);
+
+SlVelo->label("% Velocity");
+SlVelo->value(0);
+SlVelo->lstep(10);
+
+
+SlLength->value(0);
+SlLength->lstep(10);
+
+
+switch(rmgmo->seltipo)
+{
+         case 2:
+         SlNote->label("Note");
+         SlVal1->show();
+         SlVal2->show();
+         SlVal1->value((int)rmgmo->PEG[rmgmo->Variacion][evento].velocity);
+         SlVal2->value((int)rmgmo->PEG[rmgmo->Variacion][evento].length);
+         SlVal2->maximum(rmgmo->longi - rmgmo->PEG[rmgmo->Variacion][evento].tick);
+         
+         break;
+         case 3:
+         SlNote->label("Control");
+         SlVal1->show();
+         SlVal2->hide();
+         SlVelo->label("% Value");
+         SlVal1->label("Value");
+         SlVal1->value((int)rmgmo->PEG[rmgmo->Variacion][evento].velocity);
+         preslength->hide();
+         SlLength->hide();
+         break;
+         case 4:
+         SlNote->label("Program");
+         SlVal1->hide();
+         SlVal2->hide();
+         presvelo->hide();
+         preslength->hide();
+         SlVelo->hide();
+         SlLength->hide();     
+         break;
+         case 5:
+         SlNote->minimum(-4096);
+         SlNote->maximum(4096);
+         SlNote->label("PitchBend");
+         SlVal1->hide();
+         SlVal2->hide();
+         presvelo->hide();
+         preslength->hide();
+         SlVelo->hide();
+         SlLength->hide();     
+
+
+
+         }         
+
+
+bzero(tmp,sizeof(tmp));
+sprintf(tmp,"Event - %d",evento);
+
+bzero(tmp1,sizeof(tmp1));
+sprintf(tmp1,"Ticks per quarter : %d",rmgmo->nStyle.ppq);
+DInfoq->copy_label(tmp1);
+
+Fl::get_mouse(x,y);
+Eventwin->position(x,y);
+Eventwin->label(tmp);
+Eventwin->show(argc,argv);} {}
+  }
+  Function {GuardaPrefs()} {} {
+    code {Fl_Preferences stygmorgan (Fl_Preferences::USER, WEBSITE , PACKAGE);
+
+stygmorgan.set("rmgmeditwinX",rmgmeditwin->x());
+stygmorgan.set("rmgmeditwinY",rmgmeditwin->y());
+stygmorgan.set("rmgmeditwinW",rmgmeditwin->w());
+stygmorgan.set("rmgmeditwinH",rmgmeditwin->h());} {}
+  }
+}

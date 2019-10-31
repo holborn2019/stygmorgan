@@ -1,0 +1,233 @@
+#include <alsa/asoundlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <getopt.h>
+#include <string.h>
+
+
+struct mcasm
+{
+int track;
+char Name[16];
+int Canal;
+int ReadOnly;
+int NoteMute1;
+int NoteMute0;
+int ChMute4;
+int ChMute3;
+int ChMute2;
+int ChMute1;
+int ChMute0;
+int ChRoot;
+int ChType;
+int NTR;
+int NTT;
+int HKey;
+int LLim;
+int HLim;
+int RTR;
+int u[16];
+long ChM;
+} C;
+
+
+struct CanalMixer
+{ int OnOff;
+  int solo;
+  int more;
+  int pan;
+  int reverb;
+  int chorus;
+  int vol;
+  int program;
+  int ch;
+  int bMSB;
+  int bLSB;
+  int octave;
+  int transpose;
+};
+
+
+struct StylePattern
+{ 
+char Name[32];
+unsigned int bars;
+int start;
+int stop;
+int eventos;
+int numcasm;
+mcasm casm[16];
+CanalMixer CM[16];
+};
+
+
+struct StyleStr
+
+{ 
+char Name[32];
+int tipo;
+int style;
+int ppq;
+int cpq;
+int nominador;
+int denominator;
+int har;
+int bpm;
+int numpat;
+StylePattern Pattern[22];
+
+} nStyle;
+
+struct EventosGrabacion
+{
+int tipo;
+snd_seq_tick_time_t tick;
+int nota;
+int canal;
+int velocity;
+int length;
+} PEG[22][6000],tempEG;
+
+
+
+void
+show_help ()
+{
+  fprintf (stderr, "Usage: stystylist -i [Input File] [-o] [Output File]\n\n" );
+  fprintf (stderr,
+	   "  -h ,     --help \t\t\t display command-line help and exit\n");
+  fprintf (stderr,
+	   "  -i ,     --input \t\t\t Input File\n");
+  fprintf (stderr,
+	   "  -o ,     --output \t\t\t Output File\n");
+  fprintf (stderr, "\n");
+
+}
+
+int
+main(int argc, char *argv[])
+{
+ int option_index = 0, opt;
+ int exitwithhelp = 0;
+ int i,all_ok,have_output;
+ long tam;
+ FILE *fn;
+ FILE *fs;
+ char Outputfile[256];
+ char Inputfile[256];
+ char wbuf[2048];
+
+ bzero(Outputfile , sizeof(Outputfile));
+ bzero(Inputfile, sizeof(Inputfile));
+ 
+ fprintf (stderr,"\nstystylist show stygmoran style info.\nstystylist - Copyright (c) Josep Andreu 2019\n\n");
+
+  struct option opts[] = {
+    {"input", 1, NULL, 'i'},
+    {"output", 1, NULL, 'o'},
+    {"help", 0, NULL, 'h'},
+    {0, 0, 0, 0}
+  };
+
+  while (1)
+    {
+      opt = getopt_long (argc, argv, "i:o:h", opts, &option_index);
+      char *optarguments = optarg;
+
+      if (opt == -1)
+	break;
+      switch (opt)
+	{
+	case 'h':
+	  exitwithhelp = 1;
+	  break;
+       	case 'i':
+        if (optarguments != NULL)
+	    {
+	    strcpy(Inputfile,optarguments); 
+            if ((fs = fopen (Inputfile, "r")) == NULL) return 0;
+            all_ok=1;
+            }
+          break;  
+        case 'o':
+           if (optarguments != NULL)
+	    {
+	    have_output = 1;
+            strcpy(Outputfile,optarguments);
+            }
+            break;
+         }
+
+    }
+
+  if (exitwithhelp != 0)
+    {
+      show_help ();
+      return (0);
+    };
+
+  if ((argc < 5) || (!all_ok))
+{
+    fprintf (stderr, "Try 'stystylist --help' for usage options.\n");
+    return(0);
+}    
+
+ memset(&tempEG ,0 , sizeof (tempEG)); 
+ memset(&C ,0 , sizeof (C));
+ memset(&PEG ,0 ,sizeof (PEG));
+ memset(&nStyle, 0, sizeof (nStyle)); 
+
+
+printf("%s %s",Inputfile,Outputfile); 
+
+exit(0);
+
+  if ((fn = fopen (Outputfile, "w")) == NULL)  return(0);
+
+   memset (wbuf, 0, sizeof (wbuf));
+   sprintf(wbuf,"Style details on %s\n",Inputfile);    
+   fputs (wbuf, fn);
+
+   memset (wbuf, 0, sizeof (wbuf));
+   sprintf(wbuf,"\n\n");    
+   fputs (wbuf, fn);
+
+
+ while (!feof(fs))
+            {
+                i = fread(&nStyle, sizeof(nStyle),1,fs);
+                if(feof(fs)) break;  
+                for(i=0; i<22; i++)
+                {
+                tam = (long)(sizeof(tempEG) * nStyle.Pattern[i].eventos);
+                 fread(&PEG[i][0],tam,1,fs); 
+                }
+
+
+ 
+   memset (wbuf, 0, sizeof (wbuf));
+   sprintf(wbuf,"Name: %s\n",nStyle.Name);    
+   fputs (wbuf, fn);
+ 
+   memset (wbuf, 0, sizeof (wbuf));
+   sprintf(wbuf,"Type: %d Style: %d Num.Patterns: %d\n",nStyle.tipo,nStyle.style,nStyle.numpat);    
+   fputs (wbuf, fn);
+ 
+   memset (wbuf, 0, sizeof (wbuf));
+   sprintf(wbuf,"ppq: %d cpq: %d bpm: %d Nominator: %d Denominator: %d har %d\n",nStyle.ppq,nStyle.cpq,nStyle.bpm,nStyle.nominador,nStyle.denominator,nStyle.har);    
+   fputs (wbuf, fn);
+ 
+   memset (wbuf, 0, sizeof (wbuf));
+   sprintf(wbuf,"\n\n");    
+   fputs (wbuf, fn);
+ 
+              }
+
+
+fclose(fs);
+fclose(fn);
+exit(0);
+}
+
+

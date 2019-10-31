@@ -1,0 +1,262 @@
+stygmorgan <C> 2006 by Josep Andreu
+
+I'm sorry for the english :-)
+
+
+Introduction
+============
+
+stygmorgan is an emulator of which nowadays the manufacturers of musical
+keyboards denominate like Interactive Workstation, that is to say, an organ with
+automatic accompaniment and capable to create more or less complex musical
+sequences.
+
+stygmorgan means a step ahead on the old project "gmorgan" because it uses real
+time patterns, the source code of the program has been rewritten practically
+completely. 
+
+stygmorgan is the union of "style" "GM" and "organ",
+
+style: By the fact of being able to read .STY files (Files of musical styles) 
+"GM" the General Midi standard, because by default it comes to be used with an
+external sound source General Midi capable, a basic configuration of sounds to
+cause that most of keyboards, synthesizers ...could be compatible.
+"organ" to clarify the clothes? because with so many abbreviations he is
+preferable to call the things by its name.
+
+Two differentiated parts co-exist in stygmorgan:
+
+The organ, that is the part of the program that allows to turn a MIDI keyboard
+to an organ with automatic accompaniment.
+
+The sequencer, that allows to create and export as Midi File musical sequences. 
+
+The main new features with respect to gmorgan are:
+
+- Patterns in real time.
+- Read files of styles in sty, prs, mid formats.
+- Chord Recognition. (Fingered Bass)
+- Recognized Chords multiplied by ten. 
+- New techniques of harmonization, the possibilities increase proportion to the
+  chords.
+- Sensible graphical improvements.
+- New ALSA sequencer auto connection .
+- Load soundfonts at the startup.
+- The number of simultaneous sounds for the right part of the keyboard ups to
+  three.
+- Recordings.
+- Edition functions for the new format of style/pattern.
+
+The main newness with respect to gmorgan is the capacity to read and to
+reproduce files .STY, the old gmorgan use styles created in the own program,
+like a tracker, it was, an arduous single task within reach of people with ample
+musical knowledge, in addition it was limited seven tracks by pattern, that is
+to say, to almost create a style with his corresponding patterns was a
+impossible mission.
+
+Files .STY provide styles up to 22 patterns, each one up to 16 real time tracks
+, and although simultaneously single they reproduce 8, is able to reproduce one
+or other tracks depending on the specified chord. That is to say, a pattern can
+completely be different depending the chord is major, minor?. In addition there
+are hundreds of free patterns in Internet that with a single click of the mouse
+are ready to be able to interpret or to create sequences with them.
+
+In order to be able to make stygmorgan compatible with the well-known cards that
+incorporate a Wave Table synthesizer the number of simultaneous tracks that they
+reproduce are decreased to 7, incorporating the Percussion track to the Battery
+track.
+
+But everything is not gold what shines, some .STY files come with the sounds in
+another standard (XG), and normally when you import some style done with this XG
+standard is necessary to modify some parameters, even so usually is not too much
+what there is to change.
+
+This software has been developed in a pIII 933 with a sound card Creative Labs
+sblive (emu10k1) in an a Linux debian (sid) with kernel 2.6.17, but it is more
+than probable that it can then work in other much less powerful processors :-)
+it does not require of much power of process. 
+
+
+
+Requirements
+============
+
+- Linux, this software will not be ported to Win32 contrary to which it took with
+  gmorgan, so I feel much by the Windows users.
+
+- automake-1.9, maybe you can compile with older versions of automake but
+  automake1.9 version is recommended.
+
+- ALSA, stygmorgan uses the ALSA sequencer , so it must be compiled in-kernel or
+  activated like module. 
+
+- FLTK, Is the graphical toolkit used by stygmorgan, good, pretty and cheap.
+
+- A MIDI keyboard, is indispensable to use stygmorgan like organ, not thus if it
+  is tried to use the sequencer.
+
+- A sound card with Wave Table synthesizer or a software synthesizer of those
+  characteristics or an external source of sound compatible General Midi.
+
+
+stygmorgan is completely configurable and it can use any source of sound
+although it is not General Midi but for that it would have to edit all the
+sounds and patterns.
+
+How to start?
+=============
+ 
+stygmorgan is distributed with a example files of styles and sounds for a
+General Midi capable device, therefore first who is needed it is a sound source
+with this standard.
+
+If you are possessor of a sound card that incorporates a wave table synthesizer
+, you will need load a General Midi compatible soundfont, for sound cards like
+the emu10k1 we use the program "awesfx" <c> Takahasi Iwai available in most of
+linux distributions, available in the ALSA website: http://www.alsa-project.org
+
+sfxload "soundfont file"
+
+In case of not having some of these wonderful cards you would have to use a soft
+synthesizer, we recommend to use Qsynth a qt frontend of Fluidsynth. Lastest
+versions work really well with stygmorgan. Anyway you can use command line
+synth too ... 
+
+The command line to start Fluidsynth:
+
+fluidsynth "soundfont file"
+
+In case of preferring Timidity the command line is:
+
+timidity - j - iA - B2,8 - You - Efreverb=0
+
+If the configuration file of timidity not exist (/etc/timidity.cfg) you would
+have to create it and/or edit adding the following line:
+
+soundfont "soundfont file"
+
+Obvious in all the previous cases "soundfont file" is necessary to replace it by
+the path/name of your favorite soundfont. The bad news are that although
+compatible with General Midi all soundfonts sounds something different, the
+soundfont himself even sounds different for the different soft and hardware
+synthesizers.
+
+All the styles that are released with stygmorgan have been mixed using following
+soundfont:
+
+ftp://ftp.lysator.liu.se/pub/awe32/soundfonts/8RealGS20.zip
+
+It's really important to use this soundfont if you want that stygmorgan sounds
+without putting much effort, on the other hand, this soundfont is 8 Mb size and
+contains near 200 different sounds with acceptable quality.
+Once you have the sound source, the only thing that is needed is to execute
+stygmorgan, being executed for the first time creates the directory
+$HOME/.stygmorgan and puts a copy of the data that distributes the package so
+that you can work on them.
+
+When the program start go to the Preferences menu and select your MIDI devices.
+Once completed these steps already he is ready to work.
+
+How to improve the sound?
+=========================
+
+If you have a sound card emu10k1 compatible then you are a happy man (would have
+to pay to me to write this: -)), The soundfont with which has been mixed the
+styles has 8Mb size and is from my point of view a small wonder, but obvious,
+miracles with 8Mb cannot be done, others soundfonts can have or more quality or,
+perhaps better expressed, can be more of your affability, thanks to the friend
+Takahashi Iwai and his package awesfx is possible to load many soundfonts in the
+sound card, is enough with specifying the number of bank to which it is desired
+that they go, the normal operation thing would be to maintain 8RealGS20.sf2 like
+main soundfont and add the others soundfonts to other banks in the following
+form:
+
+asfxload 8RealGS20.sf2; asfxload - b3 "soundfontfile"
+
+We would have the sounds of the second soundfont in bank three, to be able to
+use them is simple, only it must open the window of "More Parameters" of the
+channel that wishes, (button "+") in each channel of the stygmorgan mixer and
+put "3" in the parameter MSB so that that sound uses it bank 3, obvious must
+assign a number of program in the channel of the mixer and save the sound u/o
+style that has modified if you wants that the changes are permanent. They are
+hundreds of soundfonts available in Internet of a great quality, not to mention
+the commercial ones.
+
+If you did the mentioned previously, you will observe that it does not appear
+the name of the sound, this has easy solution editing the file found in your
+$HOME/.stygmorgan GMPresetlist.txt , the file format is Bank, Program, Name of
+Sound:
+
+0 61 Brass Section 
+
+And this is simple if you use the utility 'sf2text' included in the package
+awesfx of the friend Takahashi Iwai who lists the content of programs of a
+soundfont file to a text file, then you only need to add to which already it
+has, things that can be done easily with a text editor. 
+
+Load DSP effects in a emu10k1 or compatible sound card
+======================================================
+
+If you wish to obtain exactly same sound of the demos of stygmorgan you need to
+use a hardware similar to emu10k1 and use the soundfont with which the example
+styles have been mixed, but you will need to load the DSP effects (Reverb and
+Chorus) in his hardware, for it is used the package "ld10k1" <c> Peter Zubaj
+that usually are available in all the distributions, available in:
+
+http://ld10k1.sf.net
+
+with stygmorgan are released the DSP effects used for the preparation of the
+example styles, unfortunately they are many sound cards with different
+processors, thus is necessary to compile the effects provided for each card,
+this can be done with the program "as10k1" available in the 'alsa-tools' package
+or in the ALSA website previously mentioned. The way is coping all the files
+".asm" to a directory and execute for each one:
+
+as10k1 "file.asm" 
+
+This generates "file.emu10k1" that is indeed those that is loaded in the memory
+of the sound card. Once compiled the process would be to execute the server
+ld10k1 in this way:
+
+ld10k1 - t8 &
+
+Once executed the server, copy the script 'pontodocap' to the directory where
+they are all the "file.emu10k1" and execute the script. If you made this
+procedure and then executes "alsamixer" you can observethat they appear many new
+controls in the mixer and are indeed the controllers of the parameters of the
+loaded effects.
+
+I noticed that some mixers like kmix does not accept to add controllers to the
+ALSA mixer, if you use kde you would have to close "kmix" before this procedure.
+Once completed you can execute "kmix" without problems. 
+
+If you wish to have these effects permanently you can automate this operation at
+the boot time, but this already depends much off witch linux distribution you
+have and it is not the purpose of this document. In any case you need to know
+that although appears many new controls, others disappear, the ALSA scripts
+executed when the system halts keeps the state of the mixer, obvious kept all
+the mixer data from the new controllers, but if there are not loaded in the next
+reboot will appear some errors in screen complaining the lack of that controller
+not exist at the moment of this boot procedure, no one of these errors is
+worrisome, and in any case, you can always force reload ALSA before halt with
+the command:
+
+/etc/init.d/alsa force-reload 
+
+ATTENTION: All this procedures loadind DSP effects are dangerous, if you are not
+an advanced user, the best thing is than it does not try it, it must know that
+all this software is in experimental phase, and that could damage the speakers.
+In addition there are many probabilities that the provided effects do not adjust
+exactly to the capacities of your sound card, this has been tested with a
+Creative Labs sblive with a emu10k1 kernel module: 00:09.0 0401:1102: 0002 (rev
+0a) 00:09.1 0980:1102: 7002 (rev 0a). 
+
+
+The spanish html help
+=====================
+
+Probably, now you know, is better if someone translates the docs :-) 
+
+
+
+

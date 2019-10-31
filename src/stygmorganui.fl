@@ -1,0 +1,3301 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0304
+i18n_type 1
+i18n_include <libintl.h>
+i18n_function gettext
+header_name {.h}
+code_name {.cxx}
+decl {//Copyright(c) 2006 Josep Andreu (holborn)} {private local
+}
+
+decl {//License GNU/GPL version 2} {private local
+}
+
+decl {\#include <FL/x.H>} {public local
+}
+
+decl {\#include <stygmicon128.xpm>} {private local
+}
+
+decl {\#include <FL/Fl_File_Chooser.H>} {public local
+}
+
+decl {\#include "stygmorgan.h"} {public local
+}
+
+class stygmorgan {open
+} {
+  decl {RMGMO *rmgmo;} {private local
+  }
+  Function {make_window()} {} {
+    Fl_Window rmgmorganwin {
+      callback {GuardaPref();
+Pexitprogram=1;
+o->hide();}
+      xywh {1312 150 1010 780} type Double box GTK_UP_BOX color 44 selection_color 47 hide resizable size_range {800 600 0 0}
+    } {
+      Fl_Group {} {
+        xywh {1 325 71 450} box BORDER_BOX color 44 selection_color 7 labelfont 1
+      } {
+        Fl_Dial Pan0 {
+          label Pan
+          callback {int nc=0;
+rmgmo->CM[nc].pan=(int)o->value();
+rmgmo->enviocontrol(nc,10,(int)o->value());
+poninfo(7,3,(int)o->value());}
+          xywh {20 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 98 maximum 127 step 1 value 64
+        }
+        Fl_Dial Reverb0 {
+          label Reverb
+          callback {int nc=0;
+rmgmo->CM[nc].reverb=(int)o->value();
+rmgmo->enviocontrol(nc,91,(int)o->value());
+poninfo(7,2,(int)o->value());}
+          xywh {20 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Dial Chorus0 {
+          label Chorus
+          callback {int nc=0;
+rmgmo->CM[nc].chorus=(int)o->value();
+rmgmo->enviocontrol(nc,93,(int)o->value());
+poninfo(7,1,(int)o->value());}
+          xywh {20 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Slider Vol0 {
+          callback {int nc=0;
+rmgmo->CM[nc].vol=(int)o->value();
+rmgmo->ActuVarVol(nc,nc);
+poninfo(7,0,(int)o->value());}
+          xywh {20 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
+        }
+        Fl_Button On0 {
+          label On
+          callback {int nc=0;
+rmgmo->CM[nc].OnOff=o->value();
+if (!rmgmo->CM[nc].OnOff) DP0->color((Fl_Color)0);
+else
+DP0->color((Fl_Color)230);
+DP0->redraw();}
+          xywh {20 365 40 25} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x31 color 11 selection_color 3 labelsize 13 align 64
+        }
+        Fl_Button Solo0 {
+          label Solo
+          callback {int nc=0;
+rmgmo->CM[nc].solo=o->value();
+if ((int)o->value()) PonSolo(nc); else QuitaSolo();}
+          xywh {13 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Button More0 {
+          label {+}
+          callback {int nc=0;
+if (rmgmo->wmore) o->value(0); else
+MoreParams(nc);}
+          xywh {41 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Box DP0 {
+          label Piano
+          xywh {5 710 65 25} box PLASTIC_DOWN_BOX color 230 labelsize 9 labelcolor 1 align 84
+        }
+        Fl_Box {} {
+          label {Left 1}
+          xywh {5 335 65 25} labelsize 15 labelcolor 52 align 16
+        }
+        Fl_Counter P0 {
+          label Program
+          callback {o->parent()->redraw();
+int nc=0;
+rmgmo->CM[nc].program=(int)o->value();
+rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
+DP0->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
+          xywh {1 750 64 15} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+        }
+      }
+      Fl_Group {} {
+        xywh {72 325 70 450} box BORDER_BOX color 44 labelfont 1 labelsize 17 labelcolor 1
+      } {
+        Fl_Dial Pan1 {
+          label Pan
+          callback {int nc=1;
+rmgmo->CM[nc].pan=(int)o->value();
+rmgmo->enviocontrol(nc,10,(int)o->value());
+poninfo(8,3,(int)o->value());}
+          xywh {90 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+        }
+        Fl_Dial Reverb1 {
+          label Reverb
+          callback {int nc=1;
+rmgmo->CM[nc].reverb=(int)o->value();
+rmgmo->enviocontrol(nc,91,(int)o->value());
+poninfo(8,2,(int)o->value());}
+          xywh {90 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Dial Chorus1 {
+          label Chorus
+          callback {int nc=1;
+rmgmo->CM[nc].chorus=(int)o->value();
+rmgmo->enviocontrol(nc,93,(int)o->value());
+poninfo(8,1,(int)o->value());}
+          xywh {90 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Slider Vol1 {
+          callback {int nc=1;
+rmgmo->CM[nc].vol=(int)o->value();
+rmgmo->ActuVarVol(nc,nc);
+poninfo(8,0,(int)o->value());}
+          xywh {90 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
+        }
+        Fl_Button On1 {
+          label On
+          callback {int nc=1;
+rmgmo->CM[nc].OnOff=o->value();
+if (!rmgmo->CM[nc].OnOff) DP1->color((Fl_Color)0);
+else
+DP1->color((Fl_Color)230);
+DP1->redraw();}
+          xywh {90 365 40 25} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x32 color 11 selection_color 3 labelsize 13 align 64
+        }
+        Fl_Button Solo1 {
+          label Solo
+          callback {int nc=1;
+rmgmo->CM[nc].solo=o->value();
+if ((int)o->value()) PonSolo(nc); else QuitaSolo();}
+          xywh {83 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Button More1 {
+          label {+}
+          callback {int nc=1;
+if (rmgmo->wmore) o->value(0); else
+MoreParams(nc);}
+          xywh {111 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Box DP1 {
+          label Piano
+          xywh {75 710 65 25} box PLASTIC_DOWN_BOX color 230 labelsize 9 labelcolor 1 align 84
+        }
+        Fl_Box {} {
+          label {Left 2}
+          xywh {75 335 65 25} labelsize 15 labelcolor 52
+        }
+        Fl_Counter P1 {
+          label Program
+          callback {o->parent()->redraw();
+int nc=1;
+rmgmo->CM[nc].program=(int)o->value();
+rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
+DP1->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
+          xywh {72 750 64 14} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+        }
+      }
+      Fl_Group {} {
+        xywh {141 325 72 450} box BORDER_BOX color 44
+      } {
+        Fl_Dial Pan2 {
+          label Pan
+          callback {int nc=2;
+rmgmo->CM[nc].pan=(int)o->value();
+rmgmo->enviocontrol(nc,10,(int)o->value());
+poninfo(9,3,(int)o->value());}
+          xywh {160 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+        }
+        Fl_Dial Reverb2 {
+          label Reverb
+          callback {int nc=2;
+rmgmo->CM[nc].reverb=(int)o->value();
+rmgmo->enviocontrol(nc,91,(int)o->value());
+poninfo(9,2,(int)o->value());}
+          xywh {160 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Dial Chorus2 {
+          label Chorus
+          callback {int nc=2;
+rmgmo->CM[nc].chorus=(int)o->value();
+rmgmo->enviocontrol(nc,93,(int)o->value());
+poninfo(9,1,(int)o->value());}
+          xywh {160 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Slider Vol2 {
+          callback {int nc=2;
+rmgmo->CM[nc].vol=(int)o->value();
+rmgmo->ActuVarVol(nc,nc);
+poninfo(9,0,(int)o->value());}
+          xywh {160 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
+        }
+        Fl_Button On2 {
+          label On
+          callback {int nc=2;
+rmgmo->CM[nc].OnOff=o->value();
+if (!rmgmo->CM[nc].OnOff) DP2->color((Fl_Color)0);
+else
+DP2->color((Fl_Color)230);
+DP2->redraw();}
+          xywh {160 365 40 25} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x33 color 11 selection_color 3 labelsize 13 align 64
+        }
+        Fl_Button Solo2 {
+          label Solo
+          callback {int nc=2;
+rmgmo->CM[nc].solo=o->value();
+if ((int)o->value()) PonSolo(nc); else QuitaSolo();}
+          xywh {153 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Button More2 {
+          label {+}
+          callback {int nc=2;
+if (rmgmo->wmore) o->value(0); else
+MoreParams(nc);}
+          xywh {181 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Box DP2 {
+          label Piano
+          xywh {145 710 65 25} box PLASTIC_DOWN_BOX color 230 labelsize 9 labelcolor 1 align 84
+        }
+        Fl_Box {} {
+          label {Right 1}
+          xywh {145 335 65 25} labelsize 15 labelcolor 52 align 16
+        }
+        Fl_Counter P2 {
+          label Program
+          callback {o->parent()->redraw();
+int nc=2;
+rmgmo->CM[nc].program=(int)o->value();
+rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
+DP2->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
+          xywh {141 750 64 14} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+        }
+      }
+      Fl_Group {} {
+        xywh {211 325 73 450} box BORDER_BOX color 44
+      } {
+        Fl_Dial Pan3 {
+          label Pan
+          callback {int nc=3;
+rmgmo->CM[nc].pan=(int)o->value();
+rmgmo->enviocontrol(nc,10,(int)o->value());
+poninfo(10,3,(int)o->value());}
+          xywh {230 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+        }
+        Fl_Dial Reverb3 {
+          label Reverb
+          callback {int nc=3;
+rmgmo->CM[nc].reverb=(int)o->value();
+rmgmo->enviocontrol(nc,91,(int)o->value());
+poninfo(10,2,(int)o->value());}
+          xywh {230 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Dial Chorus3 {
+          label Chorus
+          callback {int nc=3;
+rmgmo->CM[nc].chorus=(int)o->value();
+rmgmo->enviocontrol(nc,93,(int)o->value());
+poninfo(10,1,(int)o->value());}
+          xywh {230 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Slider Vol3 {
+          callback {int nc=3;
+rmgmo->CM[nc].vol=(int)o->value();
+rmgmo->ActuVarVol(nc,nc);
+poninfo(10,0,(int)o->value());}
+          xywh {230 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 minimum 127 maximum 0 step 1
+        }
+        Fl_Button On3 {
+          label On
+          callback {int nc=3;
+rmgmo->CM[nc].OnOff=o->value();
+if (!rmgmo->CM[nc].OnOff) DP3->color((Fl_Color)0);
+else
+DP3->color((Fl_Color)230);
+DP3->redraw();}
+          xywh {230 365 40 25} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x34 color 11 selection_color 3 labelsize 13 align 64
+        }
+        Fl_Button Solo3 {
+          label Solo
+          callback {int nc=3;
+rmgmo->CM[nc].solo=o->value();
+if ((int)o->value()) PonSolo(nc); else QuitaSolo();}
+          xywh {223 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Button More3 {
+          label {+}
+          callback {int nc=3;
+if (rmgmo->wmore) o->value(0); else
+MoreParams(nc);}
+          xywh {251 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Box DP3 {
+          label Piano
+          xywh {215 710 65 25} box PLASTIC_DOWN_BOX color 230 labelsize 9 labelcolor 1 align 84
+        }
+        Fl_Box {} {
+          label {Right 2}
+          xywh {215 335 65 25} labelsize 15 labelcolor 52
+        }
+        Fl_Counter P3 {
+          label Program
+          callback {o->parent()->redraw();
+int nc=3;
+rmgmo->CM[nc].program=(int)o->value();
+rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
+DP3->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
+          xywh {211 750 64 15} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+        }
+      }
+      Fl_Group {} {
+        xywh {280 325 75 450} box BORDER_BOX color 44
+      } {
+        Fl_Dial Pan4 {
+          label Pan
+          callback {int nc=4;
+rmgmo->CM[nc].pan=(int)o->value();
+rmgmo->enviocontrol(nc,10,(int)o->value());
+poninfo(11,3,(int)o->value());}
+          xywh {300 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+        }
+        Fl_Dial Reverb4 {
+          label Reverb
+          callback {int nc=4;
+rmgmo->CM[nc].reverb=(int)o->value();
+rmgmo->enviocontrol(nc,91,(int)o->value());
+poninfo(11,2,(int)o->value());}
+          xywh {300 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Dial Chorus4 {
+          label Chorus
+          callback {int nc=4;
+rmgmo->CM[nc].chorus=(int)o->value();
+rmgmo->enviocontrol(nc,93,(int)o->value());
+poninfo(11,1,(int)o->value());}
+          xywh {300 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Slider Vol4 {
+          callback {int nc=4;
+rmgmo->CM[nc].vol=(int)o->value();
+rmgmo->ActuVarVol(nc,nc);
+poninfo(11,0,(int)o->value());}
+          xywh {300 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 minimum 127 maximum 0 step 1
+        }
+        Fl_Button On4 {
+          label On
+          callback {int nc=4;
+rmgmo->CM[nc].OnOff=o->value();
+if (!rmgmo->CM[nc].OnOff) DP4->color((Fl_Color)0);
+else
+DP4->color((Fl_Color)230);
+DP4->redraw();}
+          xywh {300 365 40 25} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x35 color 11 selection_color 3 labelsize 13 align 64
+        }
+        Fl_Button Solo4 {
+          label Solo
+          callback {int nc=4;
+rmgmo->CM[nc].solo=o->value();
+if ((int)o->value()) PonSolo(nc); else QuitaSolo();}
+          xywh {293 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Button More4 {
+          label {+}
+          callback {int nc=4;
+if (rmgmo->wmore) o->value(0); else
+MoreParams(nc);}
+          xywh {321 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Box DP4 {
+          label Piano
+          xywh {286 710 66 25} box PLASTIC_DOWN_BOX color 230 labelsize 9 labelcolor 1 align 84
+        }
+        Fl_Box {} {
+          label {Right 3}
+          xywh {285 335 70 25} labelsize 15 labelcolor 52 align 16
+        }
+        Fl_Counter P4 {
+          label Program
+          callback {o->parent()->redraw();
+int nc=4;
+rmgmo->CM[nc].program=(int)o->value();
+rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
+DP4->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
+          xywh {286 750 64 20} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+        }
+      }
+      Fl_Group {} {
+        xywh {515 325 75 450} box BORDER_BOX color 44
+      } {
+        Fl_Dial Pan9 {
+          label Pan
+          callback {int nc=9;
+rmgmo->CM[nc].pan=(int)o->value();
+rmgmo->enviocontrol(nc,10,(int)o->value());
+poninfo(0,3,(int)o->value());}
+          xywh {531 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+        }
+        Fl_Dial Reverb9 {
+          label Reverb
+          callback {int nc=9;
+rmgmo->CM[nc].reverb=(int)o->value();
+rmgmo->enviocontrol(nc,91,(int)o->value());
+poninfo(0,2,(int)o->value());}
+          xywh {531 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Dial Chorus9 {
+          label Chorus
+          callback {int nc=9;
+rmgmo->CM[nc].chorus=(int)o->value();
+rmgmo->enviocontrol(nc,93,(int)o->value());
+poninfo(0,1,(int)o->value());}
+          xywh {531 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Slider Vol9 {
+          callback {int nc=9;
+rmgmo->CM[nc].vol=(int)o->value();
+rmgmo->ActuVarVol(nc,nc);
+poninfo(0,0,(int)o->value());}
+          xywh {531 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 minimum 127 maximum 0 step 1
+        }
+        Fl_Button On9 {
+          label On
+          callback {int nc=9;
+rmgmo->CM[nc].OnOff=o->value();
+if (!rmgmo->CM[nc].OnOff) DP9->color((Fl_Color)0);
+else
+DP9->color((Fl_Color)230);
+DP9->redraw();}
+          xywh {531 365 40 25} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x36 color 11 selection_color 3 labelsize 13 align 64
+        }
+        Fl_Button Solo9 {
+          label Solo
+          callback {int nc=9;
+rmgmo->CM[nc].solo=o->value();
+if ((int)o->value()) PonSolo(nc); else QuitaSolo();}
+          xywh {524 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Button More9 {
+          label {+}
+          callback {int nc=9;
+if (rmgmo->wmore) o->value(0); else
+MoreParams(nc);}
+          xywh {552 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Box DP9 {
+          label Piano
+          xywh {516 710 70 25} box PLASTIC_DOWN_BOX color 230 labelsize 9 labelcolor 1 align 84
+        }
+        Fl_Box {} {
+          label Drums
+          xywh {519 335 65 25} labelsize 15 labelcolor 52
+        }
+        Fl_Group VumCanal9 {
+          xywh {571 558 11 152} color 47
+        } {
+          Fl_Box {} {
+            xywh {572 685 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {572 665 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {572 645 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {572 625 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {572 605 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {572 585 10 20} box GTK_UP_BOX color 82 selection_color 133
+          }
+          Fl_Box {} {
+            xywh {572 565 10 20} box GTK_UP_BOX color 80 selection_color 1
+          }
+        }
+        Fl_Counter P9 {
+          label Program
+          callback {o->parent()->redraw();
+int nc=9;
+rmgmo->CM[nc].program=(int)o->value();
+rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
+DP9->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
+          xywh {520 750 64 19} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+        }
+      }
+      Fl_Group {} {
+        xywh {586 325 74 450} box BORDER_BOX color 44
+      } {
+        Fl_Dial Pan10 {
+          label Pan
+          callback {int nc=10;
+rmgmo->CM[nc].pan=(int)o->value();
+rmgmo->enviocontrol(nc,10,(int)o->value());
+poninfo(1,3,(int)o->value());}
+          xywh {604 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+        }
+        Fl_Dial Reverb10 {
+          label Reverb
+          callback {int nc=10;
+rmgmo->CM[nc].reverb=(int)o->value();
+rmgmo->enviocontrol(nc,91,(int)o->value());
+poninfo(1,2,(int)o->value());}
+          xywh {604 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Dial Chorus10 {
+          label Chorus
+          callback {int nc=10;
+rmgmo->CM[nc].chorus=(int)o->value();
+rmgmo->enviocontrol(nc,93,(int)o->value());
+poninfo(1,1,(int)o->value());}
+          xywh {604 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Slider Vol10 {
+          callback {int nc=10;
+rmgmo->CM[nc].vol=(int)o->value();
+rmgmo->ActuVarVol(nc,nc);
+poninfo(1,0,(int)o->value());}
+          xywh {602 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 minimum 127 maximum 0 step 1
+        }
+        Fl_Button On10 {
+          label On
+          callback {int nc=10;
+rmgmo->CM[nc].OnOff=o->value();
+if (!rmgmo->CM[nc].OnOff) DP10->color((Fl_Color)0);
+else
+DP10->color((Fl_Color)230);
+DP10->redraw();}
+          xywh {604 365 40 25} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x37 color 11 selection_color 3 labelsize 13 align 64
+        }
+        Fl_Button Solo10 {
+          label Solo
+          callback {int nc=10;
+rmgmo->CM[nc].solo=o->value();
+if ((int)o->value()) PonSolo(nc); else QuitaSolo();}
+          xywh {597 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Button More10 {
+          label {+}
+          callback {int nc=10;
+if (rmgmo->wmore) o->value(0); else
+MoreParams(nc);}
+          xywh {625 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Box DP10 {
+          label Piano
+          xywh {587 710 70 25} box PLASTIC_DOWN_BOX color 230 labelsize 9 labelcolor 1 align 84
+        }
+        Fl_Box {} {
+          label Bass
+          xywh {590 335 65 25} labelsize 15 labelcolor 52
+        }
+        Fl_Group VumCanal10 {
+          xywh {643 558 10 152}
+        } {
+          Fl_Box {} {
+            xywh {643 685 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {643 665 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {643 645 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {643 625 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {643 605 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {643 585 10 20} box GTK_UP_BOX color 82 selection_color 133
+          }
+          Fl_Box {} {
+            xywh {643 565 10 20} box GTK_UP_BOX color 80 selection_color 1
+          }
+        }
+        Fl_Counter P10 {
+          label Program
+          callback {o->parent()->redraw();
+int nc=10;
+rmgmo->CM[nc].program=(int)o->value();
+rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
+DP10->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
+          xywh {590 750 62 15} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+        }
+      }
+      Fl_Group {} {
+        xywh {657 325 73 450} box BORDER_BOX color 44
+      } {
+        Fl_Dial Pan11 {
+          label Pan
+          callback {int nc=11;
+rmgmo->CM[nc].pan=(int)o->value();
+rmgmo->enviocontrol(nc,10,(int)o->value());
+poninfo(2,3,(int)o->value());}
+          xywh {674 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+        }
+        Fl_Dial Reverb11 {
+          label Reverb
+          callback {int nc=11;
+rmgmo->CM[nc].reverb=(int)o->value();
+rmgmo->enviocontrol(nc,91,(int)o->value());
+poninfo(2,2,(int)o->value());}
+          xywh {674 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Dial Chorus11 {
+          label Chorus
+          callback {int nc=11;
+rmgmo->CM[nc].chorus=(int)o->value();
+rmgmo->enviocontrol(nc,93,(int)o->value());
+poninfo(2,1,(int)o->value());}
+          xywh {674 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Slider Vol11 {
+          callback {int nc=11;
+rmgmo->CM[nc].vol=(int)o->value();
+rmgmo->ActuVarVol(nc,nc);
+poninfo(2,0,(int)o->value());}
+          xywh {674 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 minimum 127 maximum 0 step 1
+        }
+        Fl_Button On11 {
+          label On
+          callback {int nc=11;
+rmgmo->CM[nc].OnOff=o->value();
+if (!rmgmo->CM[nc].OnOff) DP11->color((Fl_Color)0);
+else
+DP11->color((Fl_Color)230);
+DP11->redraw();}
+          xywh {674 365 40 25} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x38 color 11 selection_color 3 labelsize 13 align 64
+        }
+        Fl_Button Solo11 {
+          label Solo
+          callback {int nc=11;
+rmgmo->CM[nc].solo=o->value();
+if ((int)o->value()) PonSolo(nc); else QuitaSolo();}
+          xywh {667 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Button More11 {
+          label {+}
+          callback {int nc=11;
+if (rmgmo->wmore) o->value(0); else
+MoreParams(nc);}
+          xywh {695 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Box DP11 {
+          label Piano
+          xywh {658 710 70 25} box PLASTIC_DOWN_BOX color 230 labelsize 9 labelcolor 1 align 84
+        }
+        Fl_Box {} {
+          label {Acc 1}
+          xywh {659 335 71 25} labelsize 15 labelcolor 52
+        }
+        Fl_Group VumCanal11 {
+          xywh {714 558 10 147}
+        } {
+          Fl_Box {} {
+            xywh {714 685 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {714 665 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {714 645 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {714 625 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {714 605 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {714 585 10 20} box GTK_UP_BOX color 82 selection_color 133
+          }
+          Fl_Box {} {
+            xywh {714 565 10 20} box GTK_UP_BOX color 80 selection_color 1
+          }
+        }
+        Fl_Counter P11 {
+          label Program
+          callback {o->parent()->redraw();
+int nc=11;
+rmgmo->CM[nc].program=(int)o->value();
+rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
+DP11->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
+          xywh {660 750 62 20} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+        }
+      }
+      Fl_Group {} {
+        xywh {728 325 72 450} box BORDER_BOX color 44
+      } {
+        Fl_Dial Pan12 {
+          label Pan
+          callback {int nc=12;
+rmgmo->CM[nc].pan=(int)o->value();
+rmgmo->enviocontrol(nc,10,(int)o->value());
+poninfo(3,3,(int)o->value());}
+          xywh {745 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+        }
+        Fl_Dial Reverb12 {
+          label Reverb
+          callback {int nc=12;
+rmgmo->CM[nc].reverb=(int)o->value();
+rmgmo->enviocontrol(nc,91,(int)o->value());
+poninfo(3,2,(int)o->value());}
+          xywh {745 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Dial Chorus12 {
+          label Chorus
+          callback {int nc=12;
+rmgmo->CM[nc].chorus=(int)o->value();
+rmgmo->enviocontrol(nc,93,(int)o->value());
+poninfo(3,1,(int)o->value());}
+          xywh {745 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Slider Vol12 {
+          callback {int nc=12;
+rmgmo->CM[nc].vol=(int)o->value();
+rmgmo->ActuVarVol(nc,nc);
+poninfo(3,0,(int)o->value());}
+          xywh {745 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 minimum 127 maximum 0 step 1
+        }
+        Fl_Button On12 {
+          label On
+          callback {int nc=12;
+rmgmo->CM[nc].OnOff=o->value();
+if (!rmgmo->CM[nc].OnOff) DP12->color((Fl_Color)0);
+else
+DP12->color((Fl_Color)230);
+DP12->redraw();}
+          xywh {745 365 40 25} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x39 color 11 selection_color 3 labelsize 13 align 64
+        }
+        Fl_Button Solo12 {
+          label Solo
+          callback {int nc=12;
+rmgmo->CM[nc].solo=o->value();
+if ((int)o->value()) PonSolo(nc); else QuitaSolo();}
+          xywh {738 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Button More12 {
+          label {+}
+          callback {int nc=12;
+if (rmgmo->wmore) o->value(0); else
+MoreParams(nc);}
+          xywh {766 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Box DP12 {
+          label Piano
+          xywh {730 710 70 25} box PLASTIC_DOWN_BOX color 230 labelsize 9 labelcolor 1 align 84
+        }
+        Fl_Box {} {
+          label {Acc 2}
+          xywh {730 335 70 25} labelsize 15 labelcolor 52
+        }
+        Fl_Group VumCanal12 {
+          xywh {785 558 10 147}
+        } {
+          Fl_Box {} {
+            xywh {785 685 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {785 665 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {785 645 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {785 625 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {785 605 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {785 585 10 20} box GTK_UP_BOX color 82 selection_color 133
+          }
+          Fl_Box {} {
+            xywh {785 565 10 20} box GTK_UP_BOX color 80 selection_color 1
+          }
+        }
+        Fl_Counter P12 {
+          label Program
+          callback {o->parent()->redraw();
+int nc=12;
+rmgmo->CM[nc].program=(int)o->value();
+rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
+DP12->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
+          xywh {730 750 62 21} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+        }
+      }
+      Fl_Group {} {
+        xywh {799 325 71 450} box BORDER_BOX color 44
+      } {
+        Fl_Dial Pan13 {
+          label Pan
+          callback {int nc=13;
+rmgmo->CM[nc].pan=(int)o->value();
+rmgmo->enviocontrol(nc,10,(int)o->value());
+poninfo(4,3,(int)o->value());}
+          xywh {815 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+        }
+        Fl_Dial Reverb13 {
+          label Reverb
+          callback {int nc=13;
+rmgmo->CM[nc].reverb=(int)o->value();
+rmgmo->enviocontrol(nc,91,(int)o->value());
+poninfo(4,2,(int)o->value());}
+          xywh {815 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Dial Chorus13 {
+          label Chorus
+          callback {int nc=13;
+rmgmo->CM[nc].chorus=(int)o->value();
+rmgmo->enviocontrol(nc,93,(int)o->value());
+poninfo(4,1,(int)o->value());}
+          xywh {815 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Slider Vol13 {
+          callback {int nc=13;
+rmgmo->CM[nc].vol=(int)o->value();
+rmgmo->ActuVarVol(nc,nc);
+poninfo(4,0,(int)o->value());}
+          xywh {815 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 minimum 127 maximum 0 step 1
+        }
+        Fl_Button On13 {
+          label On
+          callback {int nc=13;
+rmgmo->CM[nc].OnOff=o->value();
+if (!rmgmo->CM[nc].OnOff) DP13->color((Fl_Color)0);
+else
+DP13->color((Fl_Color)230);
+DP13->redraw();}
+          xywh {815 365 40 25} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x30 color 11 selection_color 3 labelsize 13 align 64
+        }
+        Fl_Button Solo13 {
+          label Solo
+          callback {int nc=13;
+rmgmo->CM[nc].solo=o->value();
+if ((int)o->value()) PonSolo(nc); else QuitaSolo();}
+          xywh {808 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Button More13 {
+          label {+}
+          callback {int nc=13;
+if (rmgmo->wmore) o->value(0); else
+MoreParams(nc);}
+          xywh {836 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Box DP13 {
+          label Piano
+          xywh {800 710 70 25} box PLASTIC_DOWN_BOX color 230 labelsize 9 labelcolor 1 align 84
+        }
+        Fl_Box {} {
+          label {Acc 3}
+          xywh {800 335 70 25} labelsize 15 labelcolor 52
+        }
+        Fl_Group VumCanal13 {
+          xywh {855 558 10 147}
+        } {
+          Fl_Box {} {
+            xywh {855 685 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {855 665 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {855 645 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {855 625 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {855 605 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {855 585 10 20} box GTK_UP_BOX color 82 selection_color 133
+          }
+          Fl_Box {} {
+            xywh {855 565 10 20} box GTK_UP_BOX color 80 selection_color 1
+          }
+        }
+        Fl_Counter P13 {
+          label Program
+          callback {o->parent()->redraw();
+int nc=13;
+rmgmo->CM[nc].program=(int)o->value();
+rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
+DP13->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
+          xywh {800 750 62 20} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+        }
+      }
+      Fl_Group {} {
+        xywh {870 325 70 450} box BORDER_BOX color 44
+      } {
+        Fl_Dial Pan14 {
+          label Pan
+          callback {int nc=14;
+rmgmo->CM[nc].pan=(int)o->value();
+rmgmo->enviocontrol(nc,10,(int)o->value());
+poninfo(5,3,(int)o->value());}
+          xywh {885 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+        }
+        Fl_Dial Reverb14 {
+          label Reverb
+          callback {int nc=14;
+rmgmo->CM[nc].reverb=(int)o->value();
+rmgmo->enviocontrol(nc,91,(int)o->value());
+poninfo(5,2,(int)o->value());}
+          xywh {885 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Dial Chorus14 {
+          label Chorus
+          callback {int nc=14;
+rmgmo->CM[nc].chorus=(int)o->value();
+rmgmo->enviocontrol(nc,93,(int)o->value());
+poninfo(5,1,(int)o->value());}
+          xywh {885 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Slider Vol14 {
+          callback {int nc=14;
+rmgmo->CM[nc].vol=(int)o->value();
+rmgmo->ActuVarVol(nc,nc);
+poninfo(5,0,(int)o->value());}
+          xywh {885 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 minimum 127 maximum 0 step 1
+        }
+        Fl_Button On14 {
+          label On
+          callback {int nc=14;
+rmgmo->CM[nc].OnOff=o->value();
+if (!rmgmo->CM[nc].OnOff) DP14->color((Fl_Color)0);
+else
+DP14->color((Fl_Color)230);
+DP14->redraw();}
+          xywh {885 365 40 25} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x27 color 11 selection_color 3 labelsize 13 align 64
+        }
+        Fl_Button Solo14 {
+          label Solo
+          callback {int nc=14;
+rmgmo->CM[nc].solo=o->value();
+if ((int)o->value()) PonSolo(nc); else QuitaSolo();}
+          xywh {878 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Button More14 {
+          label {+}
+          callback {int nc=14;
+if (rmgmo->wmore) o->value(0); else
+MoreParams(nc);}
+          xywh {906 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Box DP14 {
+          label Piano
+          xywh {870 710 70 25} box PLASTIC_DOWN_BOX color 230 labelsize 9 labelcolor 1 align 84
+        }
+        Fl_Box {} {
+          label {Acc 4}
+          xywh {870 335 70 25} labelsize 15 labelcolor 52
+        }
+        Fl_Group VumCanal14 {
+          xywh {925 558 10 147}
+        } {
+          Fl_Box {} {
+            xywh {925 685 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {925 665 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {925 645 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {925 625 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {925 605 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {925 585 10 20} box GTK_UP_BOX color 82 selection_color 133
+          }
+          Fl_Box {} {
+            xywh {925 565 10 20} box GTK_UP_BOX color 80 selection_color 1
+          }
+        }
+        Fl_Counter P14 {
+          label Program
+          callback {o->parent()->redraw();
+int nc=14;
+rmgmo->CM[nc].program=(int)o->value();
+rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
+DP14->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
+          xywh {870 750 62 21} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+        }
+      }
+      Fl_Group {} {
+        xywh {940 325 71 450} box BORDER_BOX color 44 labeltype ENGRAVED_LABEL
+      } {
+        Fl_Dial Pan15 {
+          label Pan
+          callback {int nc=15;
+rmgmo->CM[nc].pan=(int)o->value();
+rmgmo->enviocontrol(nc,10,(int)o->value());
+poninfo(6,3,(int)o->value());}
+          xywh {955 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+        }
+        Fl_Dial Reverb15 {
+          label Reverb
+          callback {int nc=15;
+rmgmo->CM[nc].reverb=(int)o->value();
+rmgmo->enviocontrol(nc,91,(int)o->value());
+poninfo(6,2,(int)o->value());}
+          xywh {955 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Dial Chorus15 {
+          label Chorus
+          callback {int nc=15;
+rmgmo->CM[nc].chorus=(int)o->value();
+rmgmo->enviocontrol(nc,93,(int)o->value());
+poninfo(6,1,(int)o->value());}
+          xywh {955 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+        }
+        Fl_Slider Vol15 {
+          callback {int nc=15;
+rmgmo->CM[nc].vol=(int)o->value();
+rmgmo->ActuVarVol(nc,nc);
+poninfo(6,0,(int)o->value());}
+          xywh {955 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 minimum 127 maximum 0 step 1
+        }
+        Fl_Button On15 {
+          label On
+          callback {int nc=15;
+rmgmo->CM[nc].OnOff=o->value();
+if (!rmgmo->CM[nc].OnOff) DP15->color((Fl_Color)0);
+else
+DP15->color((Fl_Color)230);
+DP15->redraw();}
+          xywh {955 365 40 25} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0xa1 color 11 selection_color 3 labelsize 13 align 64
+        }
+        Fl_Button Solo15 {
+          label Solo
+          callback {int nc=15;
+rmgmo->CM[nc].solo=o->value();
+if ((int)o->value()) PonSolo(nc); else QuitaSolo();}
+          xywh {948 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Button More15 {
+          label {+}
+          callback {int nc=15;
+if (rmgmo->wmore) o->value(0); else
+MoreParams(nc);}
+          xywh {976 395 25 15} type Toggle box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 8 align 80
+        }
+        Fl_Box DP15 {
+          label Piano
+          xywh {940 710 70 25} box PLASTIC_DOWN_BOX color 230 labelsize 9 labelcolor 1 align 84
+        }
+        Fl_Box {} {
+          label {Acc 5}
+          xywh {940 335 70 25} labelsize 15 labelcolor 52
+        }
+        Fl_Group VumCanal15 {
+          xywh {995 558 10 147}
+        } {
+          Fl_Box {} {
+            xywh {995 685 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {995 665 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {995 645 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {995 625 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {995 605 10 20} box GTK_UP_BOX color 59 selection_color 2
+          }
+          Fl_Box {} {
+            xywh {995 585 10 20} box GTK_UP_BOX color 82 selection_color 133
+          }
+          Fl_Box {} {
+            xywh {995 565 10 20} box GTK_UP_BOX color 80 selection_color 1
+          }
+        }
+        Fl_Counter P15 {
+          label Program
+          callback {o->parent()->redraw();
+int nc=15;
+rmgmo->CM[nc].program=(int)o->value();
+rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
+DP15->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);} selected
+          xywh {940 750 64 21} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+        }
+      }
+      Fl_Menu_Bar Menu {
+        xywh {0 0 1020 25} box FLAT_BOX color 44 selection_color 47 labelcolor 7 textcolor 7
+      } {
+        Submenu File {
+          label {&File}
+          xywh {0 0 100 20}
+        } {
+          MenuItem NewSound {
+            label {New Sound}
+            callback {const char *pepe;
+
+pepe = fl_input("Please enter the name of the sound:");
+
+if (pepe != NULL)
+{
+rmgmo->isnews=1;
+strcpy(rmgmo->nSound.Name,pepe);
+VSound->label(rmgmo->nSound.Name);
+labelwin(5);
+}}
+            xywh {0 0 100 20}
+          }
+          MenuItem LoadSounds {
+            label {Read Sounds}
+            callback {char *filename;
+
+filename=fl_file_chooser("Read Sounds:","SNDR Files (*.sndr)",NULL,0);
+if (filename==NULL) return;
+rmgmo->readsounds(filename);
+Leer_Sounds();}
+            xywh {0 0 100 20}
+          }
+          MenuItem SaveSounds {
+            label {Save Sound}
+            callback {rmgmo->ponmixensound();
+if (rmgmo->isnews)rmgmo->savesound();
+else rmgmo->writesound((int)ListaSounds->value());
+
+rmgmo->readsounds(rmgmo->SoundsFilename);
+Leer_Sounds();
+labelwin(1);}
+            xywh {0 0 100 20}
+          }
+          MenuItem {} {
+            label {Delete Sound}
+            callback {rmgmo->deletesound(ListaSounds->value());
+rmgmo->readsounds(rmgmo->SoundsFilename);
+Leer_Sounds();}
+            xywh {0 0 100 20} divider
+          }
+          MenuItem LoadStyles {
+            label {Read Styles}
+            callback {char *filename;
+
+filename=fl_file_chooser("Read Styles:","STYR Files (*.styr)",NULL,0);
+if (filename==NULL) return;
+rmgmo->readstyles(filename);
+Leer_Styles(1);}
+            xywh {0 0 100 20}
+          }
+          MenuItem SaveStyles {
+            label {Save Style}
+            callback {SaveStylesFunction();}
+            xywh {0 0 100 20}
+          }
+          MenuItem DelStyle {
+            label {Delete Style}
+            callback {rmgmo->writestylec(rmgmo->numLista[(int)ListaStyles->value()],1);
+rmgmo->readstyles(rmgmo->StylesFilename);
+Leer_Styles(1);}
+            xywh {0 0 100 20} divider
+          }
+          MenuItem ImportSty {
+            label {Import .STY File}
+            callback {char *filename;
+Fl::focus(STST);
+rmgmo->panico(0,0,15);
+filename=fl_file_chooser("Import Style:","STY Files (*.sty)\\tprs Files(*.prs)\\tMidi Files(*.mid)",NULL,0);
+if (filename==NULL) return;
+rmgmo->isnew=1;
+rmgmo->ImportaMidi(filename);
+VStyle->copy_label(fl_filename_setext(rmgmo->nStyle.Name,""));
+labelwin(3);
+pontempo();
+ponmix();
+rmgmo->AsignaTabla();
+EnAp();
+CVari(0,1);}
+            xywh {0 0 100 20} divider
+          }
+          MenuItem {} {
+            label {Load Single Style}
+            callback {char *filename;
+filename=fl_file_chooser("Load single style:","stys files (*.stys)",NULL,0);
+if (filename==NULL) return;
+rmgmo->isnew=1;
+rmgmo->readsinglestyle(filename);
+VStyle->copy_label(fl_filename_setext(rmgmo->nStyle.Name,""));
+labelwin(3);
+rmgmo->bpm=rmgmo->nStyle.bpm;
+pontempo();
+ponmix();
+rmgmo->AsignaTabla();
+EnAp();
+CVari(0,1);}
+            xywh {0 0 100 20}
+          }
+          MenuItem {} {
+            label {Save Single Style}
+            callback {char *filename;
+
+
+filename=fl_file_chooser("Save single style:","stys files (*.stys)",rmgmo->nStyle.Name,0);
+if (filename==NULL) return;
+filename=fl_filename_setext(filename,".stys");
+rmgmo->savesinglestyle(filename);}
+            xywh {0 0 100 20} divider
+          }
+          MenuItem {} {
+            label {New Registration}
+            callback {const char *pepe;
+
+pepe=fl_input("Please enter the name of the registration:");
+if (pepe != NULL)
+{
+rmgmo->isnewr=1;
+strcpy(rmgmo->R.Name,pepe);
+labelwin(4);
+}
+else
+return;}
+            xywh {0 0 100 20}
+          }
+          MenuItem {} {
+            label {Read Registrations}
+            callback {char *filename;
+
+filename=fl_file_chooser("Read Registration:","(*)",NULL,0);
+if (filename==NULL) return;
+rmgmo->readregistrations(filename);
+Leer_Registrations();
+BroReg->value(BroReg->size());}
+            xywh {0 0 100 20}
+          }
+          MenuItem {} {
+            label {Save Registration}
+            callback {rmgmo->PonaReg();
+if (rmgmo->isnewr) 
+{
+rmgmo->saveregistration();
+rmgmo->readregistrations(rmgmo->RegisFilename);
+Leer_Registrations();
+labelwin(2);
+}
+else
+rmgmo->writeregistration((int)BroReg->value());
+Leer_Registrations();
+labelwin(2);}
+            xywh {0 0 100 20}
+          }
+          MenuItem {} {
+            label {Delete Registration}
+            callback {rmgmo->deleteregistration(BroReg->value());
+rmgmo->readregistrations(rmgmo->RegisFilename);
+Leer_Registrations();}
+            xywh {10 10 100 20} divider
+          }
+          MenuItem {} {
+            label {Load Preset Names}
+            callback {char *filename;
+filename=fl_file_chooser("Read Preset Names:","(*)",NULL,0);
+
+if (filename==NULL) return;
+rmgmo->loadpreset(filename);}
+            xywh {0 0 100 20}
+          }
+          MenuItem {} {
+            label {Load Drum Note Names}
+            callback {char *filename;
+filename=fl_file_chooser("Read Drum Note Names:","(*)",NULL,0);
+if (filename==NULL) return;
+rmgmo->loaddrumset(filename);}
+            xywh {0 0 100 20} divider
+          }
+          MenuItem Exit {
+            label Exit
+            callback {rmgmorganwin->do_callback();}
+            xywh {0 0 100 20}
+          }
+        }
+        Submenu sEdit {
+          label {&Edit}
+          xywh {0 0 100 20}
+        } {
+          MenuItem EPattern {
+            label {Pattern Events }
+            callback {if(rmgmo->weventeditor) return;
+pera=1;
+Botones->deactivate();
+ListaStyles->deactivate();
+SelectType->deactivate();
+ImportSty->deactivate();
+coord();
+rmgmo->vuelve=rmgmo->Variacion;
+rmgmo->ventana=2;
+rmgmo->weventeditor=1;}
+            xywh {0 0 100 20}
+          }
+          MenuItem MixerE {
+            label {Copy pattern mixer to...}
+            callback {if(rmgmo->wmixereditor) return;
+rmgmo->wmixereditor=1;
+Botones->deactivate();
+ListaStyles->deactivate();
+ImportSty->deactivate();
+SelectType->deactivate();
+CreaCMixer();}
+            xywh {0 0 100 20}
+          }
+          MenuItem {} {
+            label {Pattern Params}
+            callback {if(rmgmo->wpatterneditor) return;
+pera=1;
+Botones->deactivate();
+ListaStyles->deactivate();
+SelectType->deactivate();
+ImportSty->deactivate();
+coord();
+rmgmo->vuelve=rmgmo->Variacion;
+rmgmo->wpatterneditor=1;
+rmgmo->ventana=3;}
+            xywh {0 0 100 20} divider
+          }
+          MenuItem {} {
+            label {Style Params}
+            callback {if(rmgmo->wstyleeditor) return;
+ImportSty->deactivate();
+ListaStyles->deactivate();
+SelectType->deactivate();
+coord();
+rmgmo->wstyleeditor=1;
+rmgmo->ventana=4;}
+            xywh {0 0 100 20}
+          }
+        }
+        MenuItem {} {
+          label {&Preferences}
+          callback {if(rmgmo->wpreferences) return;
+coord();
+rmgmo->wpreferences=1;
+rmgmo->ventana=5;}
+          xywh {0 0 100 20}
+        }
+        MenuItem ElSeq {
+          label {&Sequencer}
+          callback {if (rmgmo->wsequencer) return;
+pera=1;
+Botones->deactivate();
+ListaStyles->deactivate();
+SelectType->deactivate();
+ImportSty->deactivate();
+BroReg->deactivate();
+STST->deactivate();
+FGBM->value(1);
+FGBM->do_callback();
+rmgmo->vuelve=rmgmo->Variacion;
+rmgmo->ventana=6;
+rmgmo->wsequencer=1;}
+          xywh {0 0 100 20}
+        }
+        Submenu {} {
+          label {&Help} open
+          xywh {0 0 100 20}
+        } {
+          MenuItem {} {
+            label Help
+            callback {coord();
+rmgmo->ventana=7;}
+            xywh {0 0 100 20} shortcut 0xffbe divider
+          }
+          MenuItem {} {
+            label About
+            callback {if(wabout) return;
+coord();
+wabout=1;
+rmgmo->ventana=1;}
+            xywh {0 0 100 20}
+          }
+        }
+      }
+      Fl_Group ElBueno {
+        xywh {0 25 1010 250} box BORDER_BOX color 44 selection_color 7 align 21
+      } {
+        Fl_Group {} {
+          xywh {812 139 89 132} box BORDER_BOX color 44
+        } {
+          Fl_Dial RTempo {
+            label Tempo
+            callback {if (rmgmo->splay) return;
+rmgmo->bpm=o->value();
+o->parent()->redraw();
+CTempo->value(rmgmo->bpm);
+rmgmo->set_tempo();}
+            xywh {823 185 65 65} box ROUND_UP_BOX color 47 selection_color 1 labelsize 11 labelcolor 52 minimum 20 maximum 300 step 1 value 120
+          }
+          Fl_Counter CTempo {
+            label Tempo
+            callback {o->parent()->redraw();
+if (rmgmo->splay) return;
+rmgmo->bpm=(int)o->value();
+RTempo->value(rmgmo->bpm);
+if (rmgmo->splay==0) rmgmo->set_tempo();}
+            xywh {825 160 64 21} type Simple box NO_BOX color 44 labelsize 10 labelcolor 52 align 1 minimum 20 maximum 300 step 1 value 120 textcolor 7
+          }
+        }
+        Fl_Browser ListaStyles {
+          label Styles
+          callback {if (o->size()== 0) return;
+if (o->text(o->value()) == NULL) return;
+if (! rmgmo->bplay)
+{ rmgmo->rela=1.0;
+  rmgmo->lppq=1; 
+} 
+rmgmo->EventoCambia=0;
+memset(&rmgmo->nStyle, 0 ,sizeof(rmgmo->nStyle));
+rmgmo->Estilo=rmgmo->numLista[(int)o->value()];
+rmgmo->readstyle(rmgmo->Estilo);
+labelwin(1);
+VStyle->label(rmgmo->nStyle.Name);
+rmgmo->isnew=0;
+if (! rmgmo->bplay) rmgmo->bpm=rmgmo->nStyle.bpm;
+CTempo->parent()->redraw();
+CTempo->value(rmgmo->bpm);
+pontempo();
+rmgmo->AsignaTabla();
+EnAp();
+int lavuelta=0;
+
+if (rmgmo->vuelve !=0 ) 
+{
+lavuelta=rmgmo->vuelve; 
+rmgmo->vuelve=0;
+}
+else lavuelta=1;
+
+if (rmgmo->bplay ) PCVari(0,lavuelta); else 
+    CVari(0,lavuelta);}
+          xywh {265 50 230 220} type Hold box GTK_THIN_DOWN_BOX color 44 selection_color 47 labelsize 16 labelcolor 52 align 1 textcolor 7
+        }
+        Fl_Browser ListaSounds {
+          label Sounds
+          callback {if (o->size()== 0) return;
+if (o->text(o->value()) == NULL) return;
+int actual=0;
+const char *pepe;
+actual=(int) o->value();
+rmgmo->Sonido=(int)o->value();
+SetSound(rmgmo->Sonido);
+if (Fl::event_button()==3)
+{
+pepe =fl_input("Please enter the new name of the sound:",rmgmo->nSound.Name);
+if (pepe != NULL)
+{
+strcpy(rmgmo->nSound.Name,pepe);
+VSound->label(rmgmo->nSound.Name);
+rmgmo->writesound((int)ListaSounds->value());
+rmgmo->readsounds(rmgmo->SoundsFilename);
+Leer_Sounds();
+SetSound(actual);
+
+}
+}}
+          xywh {5 50 165 220} type Hold box GTK_THIN_DOWN_BOX color 44 selection_color 47 labelsize 16 labelcolor 52 align 1 textcolor 7
+        }
+        Fl_Button STST {
+          label {Start/Stop}
+          callback {rmgmo->bplay=o->value();
+if (o->value())
+{
+ ElSeq->deactivate();
+ N1->activate(); 
+ rmgmo->ostart(); 
+} 
+ else 
+{
+rmgmo->ostop();
+apaga();
+}}
+          xywh {904 215 100 55} type Toggle box PLASTIC_THIN_UP_BOX down_box PLASTIC_THIN_DOWN_BOX shortcut 0x20 color 11 selection_color 3 labelsize 11 when 1
+        }
+        Fl_Box DCompas {
+          label 1
+          callback {if(rmgmo->bplay)
+{
+ rmgmo->EPlay();
+ semabplay();
+}
+
+rmgmo->miramidi();
+sema();
+
+if(rmgmo->splay) 
+{
+	rmgmo->SeqPlay();
+
+	if (sponmix) 
+		{
+			sponmix=0;
+			ponmix();
+		}
+
+	if (rmgmo->semi != rmgmo->osemi)
+		{ 
+			rmgmo->osemi=rmgmo->semi;
+			FunciLeds(0);
+		}
+}}
+          xywh {904 140 45 40} box BORDER_BOX color 44 selection_color 47 labelsize 20 labelcolor 1 align 80
+        }
+        Fl_Group marker {
+          xywh {905 185 90 25} box GTK_DOWN_BOX color 44 selection_color 44 labelcolor 44
+        } {
+          Fl_Box N1 {
+            xywh {906 190 20 15} box GTK_UP_BOX color 1 selection_color 9
+          }
+          Fl_Box N2 {
+            xywh {928 190 20 15} box GTK_UP_BOX color 2 selection_color 10
+          }
+          Fl_Box N3 {
+            xywh {950 190 20 15} box GTK_UP_BOX color 2 selection_color 10
+          }
+          Fl_Box N4 {
+            xywh {972 190 20 15} box GTK_UP_BOX color 2 selection_color 10
+          }
+        }
+        Fl_Group {} {
+          xywh {175 30 85 40}
+        } {
+          Fl_Button Sso {
+            label {@<-}
+            callback {if (o->value()) rmgmo->sel=0;
+ActuaDsel();}
+            xywh {175 35 40 35} type Radio box PLASTIC_THIN_UP_BOX color 9 selection_color 1 labelcolor 1
+          }
+          Fl_Button Sst {
+            label {@->}
+            callback {if (o->value()) rmgmo->sel=1;
+ActuaDsel();}
+            xywh {220 35 40 35} type Radio box PLASTIC_THIN_UP_BOX color 9 selection_color 1 labelcolor 1
+          }
+        }
+        Fl_Slider DMidi {
+          label {Midi In}
+          xywh {785 40 20 40} type {Vert Fill} box BORDER_BOX color 0 selection_color 2 labelsize 11 labelcolor 52 align 1 minimum 127 maximum 0 step 1
+        }
+        Fl_Box Dsel {
+          xywh {175 75 85 25} box BORDER_BOX color 47 labelcolor 1 align 16
+        }
+        Fl_Slider VolKeyb {
+          label Keyb
+          callback {rmgmo->KeybVol=(int) o->value();
+rmgmo->ActuKeybVol();}
+          xywh {175 115 35 155} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 1 labelsize 11 labelcolor 52 align 1 minimum 127 maximum 0 step 1 value 100
+        }
+        Fl_Counter CTranspose {
+          label Transpose
+          callback {o->parent()->redraw();
+rmgmo->transpose=(int)o->value();}
+          xywh {915 49 64 21} type Simple box NO_BOX color 44 labelsize 10 labelcolor 52 align 1 minimum -6 maximum 5 step 1 textcolor 7
+        }
+        Fl_Counter CSplit {
+          label Split
+          callback {o->parent()->redraw();
+rmgmo->split=(int)o->value();
+char temp[128];
+bzero(temp,sizeof(temp));
+sprintf(temp,"%s%d",rmgmo->NC[rmgmo->split % 12].Nom,(rmgmo->split / 12)-2);
+DSplit->copy_label(temp);}
+          xywh {915 87 64 21} type Simple box NO_BOX color 44 labelsize 10 labelcolor 52 align 1 minimum 48 maximum 70 step 1 value 60 textcolor 7
+        }
+        Fl_Slider VolAcc {
+          label Acc
+          callback {rmgmo->AccVol=(int)o->value();
+rmgmo->ActuAccVol();}
+          xywh {220 115 35 155} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 1 labelsize 11 labelcolor 52 align 1 minimum 127 maximum 0 step 1 value 100
+        }
+        Fl_Box DSplit {
+          label C
+          xywh {920 110 55 25} box BORDER_BOX color 44 labelcolor 1 align 80
+        }
+        Fl_Choice SelectType {
+          label {Style Type}
+          callback {rmgmo->SStipo=(int) o->value();
+Leer_Styles(1);}
+          xywh {640 138 140 25} box GTK_UP_BOX down_box BORDER_BOX color 44 selection_color 47 labelsize 11 labelcolor 52 align 5 textcolor 7
+        } {}
+        Fl_Group {} {
+          xywh {810 25 85 85}
+        } {
+          Fl_Button FGBM {
+            label {Fingered Bass}
+            callback {if((int) o->value()) rmgmo->TipoRecChord=2;}
+            xywh {820 70 70 35} type Radio box PLASTIC_THIN_UP_BOX color 9 selection_color 1 labelsize 11 labelcolor 1 align 128
+          }
+          Fl_Button FG {
+            label Fingered
+            callback {if((int) o->value()) rmgmo->TipoRecChord=1;}
+            xywh {820 30 70 35} type Radio box PLASTIC_THIN_UP_BOX color 9 selection_color 1 labelsize 11 labelcolor 1
+          }
+        }
+        Fl_Button STSync {
+          label {Sync Start}
+          callback {rmgmo->syncstart=(int)o->value();}
+          xywh {955 140 45 40} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x20 color 11 selection_color 3 labelsize 11 align 144 when 1
+        }
+        Fl_Output DMidiInDevice {
+          label {Midi In Device}
+          xywh {640 45 140 25} box BORDER_BOX color 47 selection_color 47 labelsize 11 labelcolor 52 align 5 textcolor 1
+        }
+        Fl_Output DMidiOutDevice {
+          label {Midi Out Device}
+          xywh {640 90 140 25} box BORDER_BOX color 47 selection_color 47 labelsize 11 labelcolor 52 align 5 textcolor 1
+        }
+        Fl_Browser BroReg {
+          label Registrations
+          callback {if (o->size()== 0) return;
+if (o->text(o->value()) == NULL) return;
+int actual=0;
+const char *pepe;
+actual=(int) o->value();
+SetRegistration(actual);
+labelwin(2);
+if (Fl::event_button()==3)
+{
+pepe =fl_input("Please enter the new name of the Registration:",rmgmo->R.Name);
+if (pepe != NULL)
+{
+strcpy(rmgmo->R.Name,pepe);
+rmgmo->PonaReg();
+rmgmo->writeregistration((int)BroReg->value());
+rmgmo->readregistrations(rmgmo->RegisFilename);
+labelwin(4);
+}
+}}
+          xywh {500 50 135 220} type Hold box GTK_THIN_DOWN_BOX color 44 selection_color 47 labelsize 16 labelcolor 52 align 1 textcolor 7
+        }
+        Fl_Box DInfoControl {
+          xywh {640 250 168 20} box BORDER_BOX color 47 labelsize 13 labelcolor 7 align 84
+        }
+        Fl_Box {} {
+          label label
+          xywh {645 185 35 17} box GTK_UP_BOX color 110 hide
+        }
+        Fl_Button {} {
+          label {Copy Mixer}
+          callback {if(rmgmo->wmixereditor) return;
+rmgmo->wmixereditor=1;
+Botones->deactivate();
+ListaStyles->deactivate();
+ImportSty->deactivate();
+SelectType->deactivate();
+CreaCMixer();}
+          xywh {810 109 90 22} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 12
+        }
+      }
+      Fl_Group Botones {
+        xywh {355 325 160 450} box BORDER_BOX color 44
+      } {
+        Fl_Group {} {
+          xywh {355 345 160 345} color 44
+        } {
+          Fl_Button bMainA {
+            label {Main A}
+            callback {rmgmo->nb=1;
+CVari(rmgmo->nb,0);}
+            xywh {360 345 155 30} type Radio box PLASTIC_THIN_UP_BOX shortcut 0x61 color 10 selection_color 2 labelsize 11 when 1
+          }
+          Fl_Button bMainB {
+            label {Main B}
+            callback {rmgmo->nb=2;
+CVari(rmgmo->nb,0);}
+            xywh {360 450 155 30} type Radio box PLASTIC_THIN_UP_BOX shortcut 0x62 color 10 selection_color 2 labelsize 11 when 1
+          }
+          Fl_Button bMainC {
+            label {Main C}
+            callback {rmgmo->nb=3;
+CVari(rmgmo->nb,0);}
+            xywh {360 555 155 30} type Radio box PLASTIC_THIN_UP_BOX shortcut 0x63 color 10 selection_color 2 labelsize 11 when 1
+          }
+          Fl_Button bMainD {
+            label {Main D}
+            callback {rmgmo->nb=4;
+CVari(rmgmo->nb,0);}
+            xywh {360 660 155 30} type Radio box PLASTIC_THIN_UP_BOX shortcut 0x64 color 10 selection_color 2 labelsize 11 when 1
+          }
+        }
+        Fl_Button bEndingA {
+          label {Ending A}
+          callback {if (o->value())
+{
+rmgmo->nb=12;
+CVari(rmgmo->nb,0);
+}
+else
+{
+rmgmo->sbot[rmgmo->nb]=0;
+ActuaBoton();
+buscala();
+}}
+          xywh {440 380 75 30} type Toggle box PLASTIC_THIN_UP_BOX color 12 selection_color 2 labelsize 11
+        }
+        Fl_Button bEndingB {
+          label {Ending B}
+          callback {if(o->value())
+{
+rmgmo->nb=13;
+CVari(rmgmo->nb,0);
+}
+else
+{
+rmgmo->sbot[rmgmo->nb]=0;
+ActuaBoton();
+buscala();
+}}
+          xywh {440 485 75 30} type Toggle box PLASTIC_THIN_UP_BOX color 12 selection_color 2 labelsize 11
+        }
+        Fl_Button bEndingC {
+          label {Ending C}
+          callback {if (o->value())
+{
+rmgmo->nb=14;
+CVari(rmgmo->nb,0);
+}
+else
+{
+rmgmo->sbot[rmgmo->nb]=0;
+ActuaBoton();
+buscala();
+}}
+          xywh {440 590 75 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x65 color 12 selection_color 2 labelsize 11
+        }
+        Fl_Button bIntroA {
+          label {Intro A}
+          callback {if (o->value())
+{
+rmgmo->nb=9;
+CVari(rmgmo->nb,0);
+}
+else
+{
+rmgmo->sbot[rmgmo->nb]=0;
+ActuaBoton();
+buscala();
+}}
+          xywh {360 380 75 30} type Toggle box PLASTIC_THIN_UP_BOX color 9 selection_color 2 labelsize 11
+        }
+        Fl_Button bIntroB {
+          label {Intro B}
+          callback {if (o->value())
+{
+rmgmo->nb=10;
+CVari(rmgmo->nb,0);
+}
+else
+{
+rmgmo->sbot[rmgmo->nb]=0;
+ActuaBoton();
+buscala();
+}}
+          xywh {360 485 75 30} type Toggle box PLASTIC_THIN_UP_BOX color 9 selection_color 2 labelsize 11
+        }
+        Fl_Button bIntroC {
+          label {Intro C}
+          callback {if(o->value())
+{
+rmgmo->nb=11;
+CVari(rmgmo->nb,0);
+}
+else
+{
+rmgmo->sbot[rmgmo->nb]=0;
+ActuaBoton();
+buscala();
+}}
+          xywh {360 590 75 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x69 color 9 selection_color 2 labelsize 11
+        }
+        Fl_Button bFillAA {
+          label {Fill In AA}
+          callback {if (o->value())
+{
+rmgmo->nb=5;
+CVari(rmgmo->nb,0);
+}
+else
+{
+rmgmo->sbot[rmgmo->nb]=0;
+ActuaBoton();
+buscala();
+}}
+          xywh {360 415 75 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x66 color 13 selection_color 2 labelsize 11
+        }
+        Fl_Button bFillAB {
+          label {Fill In AB}
+          callback {if (o->value())
+{
+rmgmo->nb=16;
+CVari(rmgmo->nb,0);
+}
+else
+{
+rmgmo->sbot[rmgmo->nb]=0;
+ActuaBoton();
+buscala();
+}}
+          xywh {440 415 75 30} type Toggle box PLASTIC_THIN_UP_BOX color 13 selection_color 2 labelsize 11
+        }
+        Fl_Button bFillBA {
+          label {Fill In BA}
+          callback {if (o->value())
+{
+rmgmo->nb=15;
+CVari(rmgmo->nb,0);
+}
+else
+{
+rmgmo->sbot[rmgmo->nb]=0;
+ActuaBoton();
+buscala();
+}}
+          xywh {440 520 75 30} type Toggle box PLASTIC_THIN_UP_BOX color 13 selection_color 2 labelsize 11
+        }
+        Fl_Button bFillBB {
+          label {Fill In BB}
+          callback {if (o->value())
+{
+rmgmo->nb=6;
+CVari(rmgmo->nb,0);
+}
+else
+{
+rmgmo->sbot[rmgmo->nb]=0;
+ActuaBoton();
+buscala();
+}}
+          xywh {360 520 75 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x67 color 13 selection_color 2 labelsize 11
+        }
+        Fl_Button bFillCC {
+          label {Fill In CC}
+          callback {if (o->value())
+{
+rmgmo->nb=7;
+CVari(rmgmo->nb,0);
+}
+else
+{
+rmgmo->sbot[rmgmo->nb]=0;
+ActuaBoton();
+buscala();
+}}
+          xywh {360 625 75 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x68 color 13 selection_color 2 labelsize 11
+        }
+        Fl_Button bFillDD {
+          label {Fill In DD}
+          callback {if (o->value())
+{
+rmgmo->nb=8;
+CVari(rmgmo->nb,0);
+}
+else
+{
+rmgmo->sbot[rmgmo->nb]=0;
+ActuaBoton();
+buscala();
+}}
+          xywh {360 695 80 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x6e color 13 selection_color 2 labelsize 11
+        }
+        Fl_Button AutoFill {
+          label {Auto Fill In}
+          callback {rmgmo->AFill=(int)o->value();}
+          xywh {360 735 155 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x6f color 9 selection_color 1 labelsize 11
+        }
+      }
+      Fl_Box VName {
+        xywh {610 275 175 50} box BORDER_BOX color 44 labelfont 1 labelsize 22 labelcolor 1 align 80
+      }
+      Fl_Box VChord {
+        xywh {785 275 225 50} box BORDER_BOX color 44 labelfont 1 labelsize 22 labelcolor 1 align 80
+      }
+      Fl_Box VSound {
+        xywh {5 275 280 50} box BORDER_BOX color 44 labelfont 1 labelsize 22 labelcolor 1 align 80
+      }
+      Fl_Box VStyle {
+        xywh {285 275 325 50} box BORDER_BOX color 44 labelfont 1 labelsize 22 labelcolor 1 align 80
+      }
+    }
+    code {int i;
+SelectType->add("All");
+for (i=0; i<=17; i++) SelectType->add(rmgmo->CStyle[i].Nom);
+SelectType->value(0);
+
+SelectType->color2(ElBueno->color());
+CTranspose->clear_visible_focus();
+CSplit->clear_visible_focus();
+CTempo->clear_visible_focus();
+
+P0->clear_visible_focus();
+P1->clear_visible_focus();
+P2->clear_visible_focus();
+P3->clear_visible_focus();
+P4->clear_visible_focus();
+P9->clear_visible_focus();
+P10->clear_visible_focus();
+P11->clear_visible_focus();
+P12->clear_visible_focus();
+P13->clear_visible_focus();
+P14->clear_visible_focus();
+P15->clear_visible_focus();} {}
+  }
+  Function {stygmorgan(int argc, char **argv,RMGMO *rmgmo_)} {C
+  } {
+    code {int x,y,w,h;
+
+
+Fl::scheme("none");
+fl_open_display();
+Fl::visual(FL_DOUBLE|FL_INDEX);
+Fl::visual(FL_RGB);
+
+rmgmo=rmgmo_;
+
+make_window();
+
+N1->deactivate();
+N2->deactivate();
+N3->deactivate();
+N4->deactivate();
+
+ActuaDsel();
+
+Fl_Preferences stygmorgan (Fl_Preferences::USER, WEBSITE, PACKAGE);
+
+stygmorgan.get("rmgmorganwinX",x,4);
+stygmorgan.get("rmgmorganwinY",y,29);
+stygmorgan.get("rmgmorganwinW",w,1024);
+stygmorgan.get("rmgmorganwinH",h,780);
+stygmorgan.get("Estilo",rmgmo->Estilo,1);
+stygmorgan.get("Sonido",rmgmo->Sonido,1);
+stygmorgan.get("Acc_Volume",rmgmo->AccVol,100);
+stygmorgan.get("Keyb_Volume",rmgmo->KeybVol,100);
+stygmorgan.get("SplitPoint",rmgmo->split,60);
+
+rmgmorganwin->resize(x,y,w,h);
+ActuaVarios();
+ActuaMidDevices();
+Leer_Registrations();
+Leer_Sounds();
+
+Fl::background(163,163,163);
+
+rmgmorganwin->show(argc,argv);
+put_icon(rmgmorganwin);
+
+while (espera == 0) usleep(1);
+
+rmgmo->panico(1,0,15);
+
+if (rmgmo->numsounds > 0) 
+{
+ ListaSounds->value(rmgmo->Sonido);
+ ListaSounds->do_callback();
+} 
+else
+ponmixsound();
+
+if (rmgmo->numstyles > 0) 
+{
+ Leer_Styles(rmgmo->Estilo); 
+} 
+else
+{
+ponmix();
+EnAp();
+}
+
+labelwin(1);
+void * v=DCompas;
+Fl::add_timeout(.5,tick,v);} {}
+  }
+  Function {tick(void* v)} {return_type {static void}
+  } {
+    code {Fl_Box *o = (Fl_Box*)v;
+o->do_callback();
+Fl::repeat_timeout(0.004,tick,v);} {}
+  }
+  Function {MoreParams(int i)} {} {
+    Fl_Window More {
+      callback {More->hide();
+Actua_More();
+rmgmo->wmore=0;
+delete More;} open
+      xywh {1023 352 100 255} type Double box BORDER_BOX color 44 hide
+    } {
+      Fl_Counter Octave {
+        label Octave
+        callback {rmgmo->CM[rmgmo->selmix].octave=(int)o->value();
+o->parent()->redraw();}
+        xywh {5 55 90 25} type Simple box NO_BOX color 44 selection_color 44 labelsize 11 labelcolor 7 align 1 minimum -2 maximum 2 step 1 textcolor 1
+        code0 {o->value(rmgmo->CM[rmgmo->selmix].octave);}
+      }
+      Fl_Counter Transpose {
+        label Transpose
+        callback {o->parent()->redraw();
+rmgmo->CM[rmgmo->selmix].transpose=(int)o->value();}
+        xywh {5 100 90 25} type Simple box NO_BOX color 44 selection_color 44 labelsize 11 labelcolor 7 align 1 minimum -6 maximum 6 step 1 textcolor 1
+      }
+      Fl_Counter bMSB {
+        label {Bank MSB}
+        callback {o->parent()->redraw();
+rmgmo->CM[rmgmo->selmix].bMSB=(int)o->value();
+ActuaBanco(rmgmo->selmix);}
+        xywh {5 145 90 25} box NO_BOX color 44 selection_color 44 labelsize 11 labelcolor 7 align 1 minimum 0 maximum 127 step 1 textcolor 1
+      }
+      Fl_Counter bLSB {
+        label {Bank LSB}
+        callback {o->parent()->redraw();
+rmgmo->CM[rmgmo->selmix].bLSB=(int)o->value();
+ActuaBanco(rmgmo->selmix);}
+        xywh {5 190 90 25} box NO_BOX color 44 selection_color 44 labelsize 11 labelcolor 7 align 1 minimum 0 maximum 127 step 1 textcolor 1
+      }
+      Fl_Button {} {
+        label Ok
+        callback {More->do_callback();}
+        xywh {10 225 80 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3
+      }
+      Fl_Box LMore {
+        xywh {0 5 100 25} labeltype ENGRAVED_LABEL labelsize 16 labelcolor 7 align 16
+      }
+    }
+    code {rmgmo->wmore=1;
+int x,y;
+static const char *pepe [] ={"stygmorgan"};
+int argc=1;
+char **argv= (char **) pepe;
+
+bMSB->lstep(10);
+bMSB->clear_visible_focus();
+bLSB->lstep(10);
+bLSB->clear_visible_focus();
+rmgmo->selmix = i;
+Octave->value(rmgmo->CM[i].octave);
+Octave->clear_visible_focus();
+Transpose->value(rmgmo->CM[i].transpose);
+Transpose->clear_visible_focus();
+bMSB->value(rmgmo->CM[i].bMSB);
+bLSB->value(rmgmo->CM[i].bLSB);
+
+switch(i)
+{
+       case 0:
+       LMore->label("Left 1");
+       break;
+              
+       
+       case 1:
+       LMore->label("Left 2");
+       break;
+       
+       
+       case 2:
+       LMore->label("Right 1");
+       break;
+       
+       
+       
+       case 3:
+       LMore->label("Right 2");
+       break;
+       
+       
+       case 4:
+       LMore->label("Right 3");
+       break;
+       
+       
+       case 9:
+       LMore->label("Drums");
+       break;
+       
+       
+       case 10:
+       LMore->label("Bass");
+       break;
+       
+       
+       case 11:
+       LMore->label("Acc 1");
+       break;
+       
+
+       case 12:
+       LMore->label("Acc 2");
+       break;
+       
+       
+       case 13:
+       LMore->label("Acc 3");
+       break;
+       
+       
+       case 14:
+       LMore->label("Acc 4");
+       break;
+       
+       
+       case 15:
+       LMore->label("Acc 5");
+       break;
+       
+       
+
+}       
+       
+   
+     
+
+Fl::get_mouse(x,y);
+More->position(x,y);
+More->icon((char*)p);
+More->show(argc, argv);} {}
+  }
+  Function {ponmix()} {} {
+    code {P9->parent()->redraw();
+P9->value(rmgmo->CM[9].program);
+P10->parent()->redraw();
+P10->value(rmgmo->CM[10].program);
+P11->parent()->redraw();
+P11->value(rmgmo->CM[11].program);
+P12->parent()->redraw();
+P12->value(rmgmo->CM[12].program);
+P13->parent()->redraw();
+P13->value(rmgmo->CM[13].program);
+P14->parent()->redraw();
+P14->value(rmgmo->CM[14].program);
+P15->parent()->redraw();
+P15->value(rmgmo->CM[15].program);
+
+
+DP9->label(rmgmo->PresetList[rmgmo->CalculaBanco(9)].PBanco[rmgmo->CM[9].program].ProgName);
+DP10->label(rmgmo->PresetList[rmgmo->CalculaBanco(10)].PBanco[rmgmo->CM[10].program].ProgName);
+DP11->label(rmgmo->PresetList[rmgmo->CalculaBanco(11)].PBanco[rmgmo->CM[11].program].ProgName);
+DP12->label(rmgmo->PresetList[rmgmo->CalculaBanco(12)].PBanco[rmgmo->CM[12].program].ProgName);
+DP13->label(rmgmo->PresetList[rmgmo->CalculaBanco(13)].PBanco[rmgmo->CM[13].program].ProgName);
+DP14->label(rmgmo->PresetList[rmgmo->CalculaBanco(14)].PBanco[rmgmo->CM[14].program].ProgName);
+DP15->label(rmgmo->PresetList[rmgmo->CalculaBanco(15)].PBanco[rmgmo->CM[15].program].ProgName);
+
+
+Pan9->value(rmgmo->CM[9].pan);
+Pan10->value(rmgmo->CM[10].pan);
+Pan11->value(rmgmo->CM[11].pan);
+Pan12->value(rmgmo->CM[12].pan);
+Pan13->value(rmgmo->CM[13].pan);
+Pan14->value(rmgmo->CM[14].pan);
+Pan15->value(rmgmo->CM[15].pan);
+
+
+ActuVolp();
+
+
+
+Reverb9->value(rmgmo->CM[9].reverb);
+Reverb10->value(rmgmo->CM[10].reverb);
+Reverb11->value(rmgmo->CM[11].reverb);
+Reverb12->value(rmgmo->CM[12].reverb);
+Reverb13->value(rmgmo->CM[13].reverb);
+Reverb14->value(rmgmo->CM[14].reverb);
+Reverb15->value(rmgmo->CM[15].reverb);
+
+
+
+Chorus9->value(rmgmo->CM[9].chorus);
+Chorus10->value(rmgmo->CM[10].chorus);
+Chorus11->value(rmgmo->CM[11].chorus);
+Chorus12->value(rmgmo->CM[12].chorus);
+Chorus13->value(rmgmo->CM[13].chorus);
+Chorus14->value(rmgmo->CM[14].chorus);
+Chorus15->value(rmgmo->CM[15].chorus);
+
+
+ActuaOnOffP();
+ponmixsound();
+ActuaSolo();} {}
+  }
+  Function {PonSolo(int mcanal)} {} {
+    code {int i;
+
+for (i=0; i<=4; i++)
+{ 
+  if ((rmgmo->CM[i].solo) && (mcanal != i ))
+  
+       { 
+         rmgmo->CM[mcanal].solo = 0;
+         ActuaSolo();
+         return;
+       }
+       
+}
+
+for (i=9; i<=15; i++)
+{ 
+  if ((rmgmo->CM[i].solo) && (mcanal != i ))
+  
+       { 
+         rmgmo->CM[mcanal].solo = 0;
+         ActuaSolo();
+         return;
+       }
+       
+}
+
+ rmgmo->AyudaSolo(mcanal);
+   
+   MoreSolo();} {}
+  }
+  Function {ActuaOnOff()} {} {
+    code {On0->value(rmgmo->CM[0].OnOff);
+On1->value(rmgmo->CM[1].OnOff);
+On2->value(rmgmo->CM[2].OnOff);
+On3->value(rmgmo->CM[3].OnOff);
+On4->value(rmgmo->CM[4].OnOff);
+ActuaDP();} {}
+  }
+  Function {QuitaSolo()} {} {
+    code {rmgmo->AyudaQuitaSolo();
+MoreSolo();} {}
+  }
+  Function {ActuaSolo()} {} {
+    code {Solo0->value(rmgmo->CM[0].solo);
+Solo1->value(rmgmo->CM[1].solo);
+Solo2->value(rmgmo->CM[2].solo);
+Solo3->value(rmgmo->CM[3].solo);
+Solo4->value(rmgmo->CM[4].solo);
+Solo9->value(rmgmo->CM[9].solo);
+Solo10->value(rmgmo->CM[10].solo);
+Solo11->value(rmgmo->CM[11].solo);
+Solo12->value(rmgmo->CM[12].solo);
+Solo13->value(rmgmo->CM[13].solo);
+Solo14->value(rmgmo->CM[14].solo);
+Solo15->value(rmgmo->CM[15].solo);} {}
+  }
+  Function {Actua_More()} {} {
+    code {More0->value(0);
+More1->value(0);
+More2->value(0);
+More3->value(0);
+More4->value(0);
+
+More9->value(0);
+More10->value(0);
+More11->value(0);
+More12->value(0);
+More13->value(0);
+More14->value(0);
+More15->value(0);} {}
+  }
+  Function {pontempo()} {} {
+    code {RTempo->value(rmgmo->bpm);
+rmgmo->set_tempo();} {}
+  }
+  Function {Leer_Styles(int num)} {} {
+    code {int i;
+int k=0;
+memset(rmgmo->numLista, 0, sizeof rmgmo->numLista);
+ListaStyles->clear();
+for (i=0;i<rmgmo->numstyles;i++)
+{
+   if (rmgmo->SStipo == 0)
+   {
+   k++;
+   ListaStyles->add(rmgmo->StyleNom[i].Name);
+   rmgmo->numLista[k]=i+1;
+   }
+   else
+   if (rmgmo->StyleNom[i].style == ( rmgmo->SStipo -1 ))
+   {
+   k++;
+   ListaStyles->add(rmgmo->StyleNom[i].Name);
+   rmgmo->numLista[k]=i+1;
+      
+   }
+}
+
+ListaStyles->value(num);
+ListaStyles->do_callback();} {}
+  }
+  Function {EnAp()} {} {
+    code {if ( rmgmo->tvb[1] != 0) bMainA->show(); else bMainA->hide();
+if ( rmgmo->tvb[2] != 0) bMainB->show(); else bMainB->hide();
+if ( rmgmo->tvb[3] != 0) bMainC->show(); else bMainC->hide();
+if ( rmgmo->tvb[4] != 0) bMainD->show(); else bMainD->hide();
+if ( rmgmo->tvb[5] != 0) bFillAA->show(); else bFillAA->hide();
+if ( rmgmo->tvb[6] != 0) bFillBB->show(); else bFillBB->hide();
+if ( rmgmo->tvb[7] != 0) bFillCC->show(); else bFillCC->hide();
+if ( rmgmo->tvb[8] != 0) bFillDD->show(); else bFillDD->hide();
+if ( rmgmo->tvb[9] != 0) bIntroA->show(); else bIntroA->hide();
+if ( rmgmo->tvb[10] != 0) bIntroB->show(); else bIntroB->hide();
+if ( rmgmo->tvb[11] != 0) bIntroC->show(); else bIntroC->hide();
+if ( rmgmo->tvb[12] != 0) bEndingA->show(); else bEndingA->hide();
+if ( rmgmo->tvb[13] != 0) bEndingB->show(); else bEndingB->hide();
+if ( rmgmo->tvb[14] != 0) bEndingC->show(); else bEndingC->hide();
+if ( rmgmo->tvb[15] != 0) bFillBA->show(); else bFillBA->hide();
+if ( rmgmo->tvb[16] != 0) bFillAB->show(); else bFillAB->hide();} {}
+  }
+  Function {ActuaBoton()} {} {
+    code {if ( ! rmgmo->sbot[1]) bMainA->value(0); else bMainA->setonly();
+if ( ! rmgmo->sbot[2]) bMainB->value(0); else bMainB->setonly();
+if ( ! rmgmo->sbot[3]) bMainC->value(0); else bMainC->setonly();
+if ( ! rmgmo->sbot[4]) bMainD->value(0); else bMainD->setonly();
+
+
+if ( ! rmgmo->sbot[5]) bFillAA->value(0); else bFillAA->value(1);
+if ( ! rmgmo->sbot[6]) bFillBB->value(0); else bFillBB->value(1);
+if ( ! rmgmo->sbot[7]) bFillCC->value(0); else bFillCC->value(1);
+if ( ! rmgmo->sbot[8]) bFillDD->value(0); else bFillDD->value(1);
+if ( ! rmgmo->sbot[9]) bIntroA->value(0); else bIntroA->value(1);
+if ( ! rmgmo->sbot[10]) bIntroB->value(0); else bIntroB->value(1);
+if ( ! rmgmo->sbot[11]) bIntroC->value(0); else bIntroC->value(1);
+if ( ! rmgmo->sbot[12]) bEndingA->value(0); else  bEndingA->value(1);
+if ( ! rmgmo->sbot[13]) bEndingB->value(0); else bEndingB->value(1); 
+if ( ! rmgmo->sbot[14]) bEndingC->value(0); else bEndingC->value(1); 
+if ( ! rmgmo->sbot[15]) bFillBA->value(0); else bFillBA->value(1);
+if ( ! rmgmo->sbot[16]) bFillAB->value(0); else bFillAB->value(1);} {}
+  }
+  Function {CVari(int boton,int vari)} {} {
+    code {int i;
+int excep=0;
+
+if (boton != 0)
+ vari=rmgmo->tvb[boton];
+else
+ boton=rmgmo->tbotvar[vari];
+ 
+   
+
+if (! rmgmo->bplay)
+{
+if (rmgmo->siguiente == 0) rmgmo->siguiente=vari;
+rmgmo->buscacs(vari);
+rmgmo->Variacion=vari;
+VName->label(rmgmo->nStyle.Pattern[vari].Name);
+rmgmo->mirapc(rmgmo->Variacion);
+rmgmo->BuscaSi();
+rmgmo->ponmixpatternenmix(rmgmo->Variacion);
+ponmix();
+for(i=5; i<22; i++)rmgmo->sbot[i]=0;
+if (boton < 5)
+for(i=1; i<5; i++) if ((rmgmo->sbot[i] == 1 ) && (i != boton)) rmgmo->sbot[i]=0;
+rmgmo->sbot[boton]=1;
+
+
+ActuaBoton();
+rmgmo->BuscaNext();
+Fl::focus(STST);
+}
+
+else
+
+{
+if ((rmgmo->AFill) && (boton<5))
+{
+
+
+switch(boton)
+{
+    case 1:
+    if (rmgmo->tvb[15]!=0) boton=15; else boton +=4;
+    break;
+    case 2:
+    if (rmgmo->tvb[16]!=0) boton=16; else
+    {
+     boton +=3;
+     excep=1;
+    } 
+    break;
+    case 3:
+    boton +=4;
+    break;
+    case 4:
+    boton +=4;
+}    
+rmgmo->sbot[boton]=1;
+ActuaBoton();
+rmgmo->siguiente=rmgmo->tvb[boton];
+switch(boton)
+{
+
+  case 5:
+  if(excep==0)
+  rmgmo->tiene=rmgmo->tvb[1];
+  else
+  rmgmo->tiene=rmgmo->tvb[2];
+  break;    
+  case 6:
+  rmgmo->tiene=rmgmo->tvb[2];
+  break;    
+  case 7:
+  rmgmo->tiene=rmgmo->tvb[3];
+  break;    
+  case 8:
+  rmgmo->tiene=rmgmo->tvb[4];
+  break;    
+  case 15:
+  rmgmo->tiene=rmgmo->tvb[1];
+  break;    
+  case 16:
+  rmgmo->tiene=rmgmo->tvb[2];
+  break;    
+
+
+
+}
+
+}
+else
+{
+if(boton<5)
+for(i=1; i<5; i++) if ((rmgmo->sbot[i] == 1 ) && (i != boton)) rmgmo->sbot[i]=0;
+rmgmo->sbot[boton]=1;
+ActuaBoton();
+rmgmo->siguiente=rmgmo->tvb[boton];
+switch(boton)
+{
+
+  case 5:
+  rmgmo->tiene=rmgmo->tvb[1];
+  break;    
+  case 6:
+  rmgmo->tiene=rmgmo->tvb[2];
+  break;    
+  case 7:
+  rmgmo->tiene=rmgmo->tvb[3];
+  break;    
+  case 8:
+  rmgmo->tiene=rmgmo->tvb[4];
+  break;    
+  case 15:
+  rmgmo->tiene=rmgmo->tvb[1];
+  break;    
+  case 16:
+  rmgmo->tiene=rmgmo->tvb[2];
+  break;    
+}
+}
+}} {}
+  }
+  Function {buscala()} {} {
+    code {int i;
+for (i=1; i<5; i++)
+{
+ if (rmgmo->sbot[i])
+   {
+     CVari(i,0);
+     break;      
+   }    
+ }} {}
+  }
+  Function {Leer_Sounds()} {} {
+    code {int i;
+ListaSounds->clear();
+for (i=0;i<rmgmo->numsounds;i++)
+ListaSounds->add(rmgmo->SoundNom[i].Name);} {}
+  }
+  Function {ponmixsound()} {} {
+    code {P0->parent()->redraw();
+P0->value(rmgmo->CM[0].program);
+P1->parent()->redraw();
+P1->value(rmgmo->CM[1].program);
+P2->parent()->redraw();
+P2->value(rmgmo->CM[2].program);
+P3->parent()->redraw();
+P3->value(rmgmo->CM[3].program);
+P4->parent()->redraw();
+P4->value(rmgmo->CM[4].program);
+
+
+DP0->label(rmgmo->PresetList[rmgmo->CalculaBanco(0)].PBanco[rmgmo->CM[0].program].ProgName);
+DP1->label(rmgmo->PresetList[rmgmo->CalculaBanco(1)].PBanco[rmgmo->CM[1].program].ProgName);
+DP2->label(rmgmo->PresetList[rmgmo->CalculaBanco(2)].PBanco[rmgmo->CM[2].program].ProgName);
+DP3->label(rmgmo->PresetList[rmgmo->CalculaBanco(3)].PBanco[rmgmo->CM[3].program].ProgName);
+DP4->label(rmgmo->PresetList[rmgmo->CalculaBanco(4)].PBanco[rmgmo->CM[4].program].ProgName);
+
+
+
+Pan0->value(rmgmo->CM[0].pan);
+Pan1->value(rmgmo->CM[1].pan);
+Pan2->value(rmgmo->CM[2].pan);
+Pan3->value(rmgmo->CM[3].pan);
+Pan4->value(rmgmo->CM[4].pan);
+
+
+ActuVols();
+
+
+Reverb0->value(rmgmo->CM[0].reverb);
+Reverb1->value(rmgmo->CM[1].reverb);
+Reverb2->value(rmgmo->CM[2].reverb);
+Reverb3->value(rmgmo->CM[3].reverb);
+Reverb4->value(rmgmo->CM[4].reverb);
+
+
+Chorus0->value(rmgmo->CM[0].chorus);
+Chorus1->value(rmgmo->CM[1].chorus);
+Chorus2->value(rmgmo->CM[2].chorus);
+Chorus3->value(rmgmo->CM[3].chorus);
+Chorus4->value(rmgmo->CM[4].chorus);
+
+
+ActuaOnOff();} {}
+  }
+  Function {ActuaOnOffP()} {} {
+    code {On9->value(rmgmo->CM[9].OnOff);
+On10->value(rmgmo->CM[10].OnOff);
+On11->value(rmgmo->CM[11].OnOff);
+On12->value(rmgmo->CM[12].OnOff);
+On13->value(rmgmo->CM[13].OnOff);
+On14->value(rmgmo->CM[14].OnOff);
+On15->value(rmgmo->CM[15].OnOff);
+ActuaDP();} {}
+  }
+  Function {apaga()} {} {
+    code {N1->deactivate();
+N2->deactivate();
+N3->deactivate();
+N4->deactivate();
+ElSeq->activate();
+FunciLeds(1);
+DMidi->value(0);} {}
+  }
+  Function {PCVari(int boton,int vari)} {} {
+    code {int i;
+boton=rmgmo->tbotvar[vari];
+rmgmo->siguiente=vari;
+rmgmo->buscacs(vari);
+rmgmo->Variacion=vari;
+VName->label(rmgmo->nStyle.Pattern[vari].Name);
+rmgmo->mirapc(rmgmo->Variacion);
+rmgmo->rema=0;
+rmgmo->cs=0;
+rmgmo->BuscaSi();
+rmgmo->ponmixpatternenmix(rmgmo->Variacion);
+ponmix();
+for(i=5; i<22; i++)rmgmo->sbot[i]=0;
+rmgmo->sbot[boton]=1;
+ActuaBoton();
+rmgmo->BuscaNext();
+Fl::focus(STST);} {}
+  }
+  Function {ActuaDsel()} {} {
+    code {switch (rmgmo->sel)
+{    
+     case 0:
+     
+     Dsel->label("Sounds");
+     break;
+     
+     case 1:
+     Dsel->label("Patterns");
+     break;
+}} {}
+  }
+  Function {ActuVolp()} {} {
+    code {Vol9->value(rmgmo->CM[9].vol);
+Vol10->value(rmgmo->CM[10].vol);
+Vol11->value(rmgmo->CM[11].vol);
+Vol12->value(rmgmo->CM[12].vol);
+Vol13->value(rmgmo->CM[13].vol);
+Vol14->value(rmgmo->CM[14].vol);
+Vol15->value(rmgmo->CM[15].vol);} {}
+  }
+  Function {ActuVols()} {} {
+    code {Vol0->value(rmgmo->CM[0].vol);
+Vol1->value(rmgmo->CM[1].vol);
+Vol2->value(rmgmo->CM[2].vol);
+Vol3->value(rmgmo->CM[3].vol);
+Vol4->value(rmgmo->CM[4].vol);} {}
+  }
+  Function {CreaCMixer()} {} {
+    Fl_Window CMixer {
+      label {Copy Mixer settings to:}
+      callback {pera=2;
+CMixer->hide();
+rmgmo->wmixereditor=0;
+CMixer->clear();
+delete CMixer;} open
+      xywh {1565 204 260 335} type Double color 44 hide
+    } {
+      Fl_Button {} {
+        label Ok
+        callback {int i;
+Fl_Check_Button *pepe;
+
+
+for (i=3; i<CMixer->children(); i++)
+  {
+
+  pepe = (Fl_Check_Button*) CMixer->child(i);
+
+  if (pepe->value())
+  rmgmo->ponmixenmixpattern(i-2); 
+  }
+
+CMixer->do_callback();}
+        xywh {168 285 75 30} box PLASTIC_THIN_UP_BOX color 11 selection_color 3
+      }
+      Fl_Button CCCancel {
+        label Cancel
+        callback {rmgmo->bcancel=1;
+CMixer->do_callback();}
+        xywh {168 245 75 30} box PLASTIC_THIN_UP_BOX color 11 selection_color 3
+      }
+      Fl_Button {} {
+        label {Select All}
+        callback {int i;
+Fl_Check_Button *pepe;
+
+
+for (i=3; i<CMixer->children(); i++)
+  {
+
+  pepe = (Fl_Check_Button*) CMixer->child(i);
+  pepe->value(1);
+   
+  }}
+        xywh {168 35 75 30} box PLASTIC_THIN_UP_BOX color 11 selection_color 3
+      }
+    }
+    code {int i,x,y;
+static const char *pepe [] ={"stygmorgan"};
+int argc=1;
+char **argv= (char **) pepe;
+CMixer->hide();
+
+for (i=1; i<rmgmo->nStyle.numpat; i++)
+ {
+   
+    Fl_Check_Button *obutton = new Fl_Check_Button(25,20 *i,140,18,rmgmo->nStyle.Pattern[i].Name);
+    obutton->user_data((void*) i);
+    if (i== rmgmo->Variacion) obutton->value(1);
+    CMixer->add(obutton); 
+    obutton->down_box(FL_NO_BOX);
+    obutton->color((Fl_Color)44);
+    obutton->labelcolor((Fl_Color)FL_WHITE);
+    obutton->selection_color((Fl_Color)3);
+    obutton->labelsize((Fl_Fontsize)11);
+    obutton->clear_visible_focus();    
+  }
+            
+Fl::get_mouse(x,y);
+CMixer->position(x,y);
+CMixer->icon((char*)p);
+CMixer->show(argc,argv);} {}
+  }
+  Function {SetSound(int num)} {} {
+    code {rmgmo->panico(123,0,4);
+rmgmo->isnews=0;
+memset(&rmgmo->nSound, 0 ,sizeof(rmgmo->nSound));
+rmgmo->readsound(num);
+VSound->label(rmgmo->nSound.Name);
+rmgmo->ponsoundenmix();
+ponmixsound();
+ListaSounds->select(num,1);} {}
+  }
+  Function {coord()} {} {
+    code {x=rmgmorganwin->x();
+y=rmgmorganwin->y();} {}
+  }
+  Function {SaveStylesFunction()} {} {
+    code {int i;
+
+i=ListaStyles->value();
+
+
+if (rmgmo->isnew) 
+{
+
+rmgmo->savestyle();
+SelectType->value(0);
+rmgmo->SStipo=0;
+rmgmo->readstyles(rmgmo->StylesFilename);
+Leer_Styles(rmgmo->numstyles);
+}
+else
+if (rmgmo->EventoCambia)
+rmgmo->writestylec(rmgmo->numLista[(int)ListaStyles->value()],0);
+else
+{
+rmgmo->writestyle(rmgmo->numLista[(int)ListaStyles->value()]);
+rmgmo->readstyles(rmgmo->StylesFilename);
+Leer_Styles(i);
+}} {}
+  }
+  Function {GuardaPref()} {} {
+    code {Fl_Preferences stygmorgan (Fl_Preferences::USER, WEBSITE, PACKAGE);
+
+stygmorgan.set("rmgmorganwinX",rmgmorganwin->x());
+stygmorgan.set("rmgmorganwinY",rmgmorganwin->y());
+stygmorgan.set("rmgmorganwinW",rmgmorganwin->w());
+stygmorgan.set("rmgmorganwinH",rmgmorganwin->h());
+
+stygmorgan.set("StylesFilename",rmgmo->StylesFilename);
+stygmorgan.set("SoundsFilename",rmgmo->SoundsFilename);
+stygmorgan.set("PresetFilename",rmgmo->PresetFilename);
+stygmorgan.set("DrumSetFilename",rmgmo->DrumSetFilename);
+stygmorgan.set("RegistrationFilename",rmgmo->RegisFilename);
+
+stygmorgan.set("TypeChordRec",rmgmo->TipoRecChord);
+stygmorgan.set("SplitPoint",rmgmo->split);
+
+stygmorgan.set("Estilo",rmgmo->Estilo);
+stygmorgan.set("Sonido",rmgmo->Sonido);
+stygmorgan.set("Pattern",rmgmo->Variacion);
+stygmorgan.set("Acc_Volume",rmgmo->AccVol);
+stygmorgan.set("Keyb_Volume",rmgmo->KeybVol);
+stygmorgan.set("Transpose",rmgmo->transpose);} {}
+  }
+  Function {Leer_Registrations()} {} {
+    code {int i;
+BroReg->clear();
+for (i=0;i<rmgmo->numregis;i++)
+BroReg->add(rmgmo->RegisNom[i].Name);} {}
+  }
+  Function {SetRegistration(int num)} {} {
+    code {rmgmo->isnewr=0;
+memset(&rmgmo->R, 0 ,sizeof(rmgmo->R));
+rmgmo->readregistration(num);
+BroReg->select(num,1);
+PonLaReg();} {}
+  }
+  Function {ActuaVarios()} {} {
+    code {if(rmgmo->TipoRecChord==1) FG->setonly();
+if(rmgmo->TipoRecChord==2) FGBM->setonly();
+STSync->value(rmgmo->syncstart);
+VolKeyb->value(rmgmo->KeybVol);
+VolKeyb->do_callback();
+VolAcc->value(rmgmo->AccVol);
+VolAcc->do_callback();
+if (rmgmo->sel==0) Sso->setonly();
+if (rmgmo->sel==1) Sst->setonly();
+ActuaDsel();
+AutoFill->value(rmgmo->AFill);
+CSplit->parent()->redraw();
+CSplit->value(rmgmo->split);
+CSplit->do_callback();
+CTranspose->parent()->redraw();
+CTranspose->value(rmgmo->transpose);} {}
+  }
+  Function {PonLaReg()} {} {
+    code {rmgmo->RegaPon();
+ActuaVarios();
+SetSound(rmgmo->Sonido);
+SelectType->value(0);
+rmgmo->SStipo=0;
+Leer_Styles(rmgmo->Estilo);
+rmgmo->bpm=rmgmo->R.tempo;
+pontempo();
+rmgmo->Variacion=rmgmo->R.Pattern;
+if (rmgmo->bplay) PCVari(0,rmgmo->Variacion); else
+CVari(0,rmgmo->Variacion);} {}
+  }
+  Function {semabplay()} {} {
+    code {if ( rmgmo->hay )
+            {
+              rmgmo->hay = 0;
+              ponmix();
+              VName->label(rmgmo->nStyle.Pattern[rmgmo->Variacion].Name);
+              if (( rmgmo->tbotvar[rmgmo->Variacion] >=12) && (rmgmo->tbotvar[rmgmo->Variacion] <=14)) rmgmo->siguiente=0;
+              rmgmo->sbot[rmgmo->tbotvar[rmgmo->ultima]]=0;
+              rmgmo->sbot[rmgmo->tbotvar[rmgmo->Variacion]]=1;
+              ActuaBoton();
+            }
+
+           if (rmgmo->endi)
+            {
+              rmgmo->endi=0;
+              STST->value(0);
+              apaga();
+            }
+
+           if (rmgmo->sic)
+             {
+              DCompas->label(rmgmo->dcompas);
+              rmgmo->sic=0;
+              
+             }
+             
+           if (rmgmo->negra != rmgmo->onegra)
+           { 
+             
+             rmgmo->onegra=rmgmo->negra;
+             
+             switch(rmgmo->onegra)
+              {
+
+           case 1:
+              N1->activate();
+              N2->deactivate();
+              N3->deactivate();
+              N4->deactivate();
+              break;
+           case 2:
+              N2->activate();
+              N1->deactivate();
+              N3->deactivate();
+              N4->deactivate();
+              break;
+           case 3:
+              N3->activate();
+              N2->deactivate();
+              N1->deactivate();
+              N4->deactivate();
+              break;
+           case 4:
+              N4->activate();
+              N2->deactivate();
+              N3->deactivate();
+              N1->deactivate();
+              break;
+
+              }
+           }
+           
+          if (rmgmo->semi != rmgmo->osemi)
+          { 
+            rmgmo->osemi=rmgmo->semi;
+            FunciLeds(0);
+          }} {}
+  }
+  Function {sema()} {} {
+    code {if (rmgmo->CambiaMidi)
+             {
+               rmgmo->CambiaMidi=0;
+               ActuaMidDevices();
+               rmgmo->Conecta();
+             }  
+
+
+if (rmgmo->CambiaTempo)
+             {
+              rmgmo->CambiaTempo=0; 
+              RTempo->value(rmgmo->bpm);
+              CTempo->parent()->redraw();
+              CTempo->value(rmgmo->bpm);
+              }
+
+          
+  if ((rmgmo->weventeditor==1) && (rmgmo->genmidi==0) &&(rmgmo->PendientesEE > 0))
+    {
+     time_t ahora;
+     int k=rmgmo->PendientesEE;
+   
+     for (int i=0; i<k; i++)
+          {
+           ahora=time(NULL); 
+           if ((rmgmo->POEE[i].estado==1) && ((ahora >=rmgmo->POEE[i].delta)))
+              {
+               rmgmo->POEE[i].estado=0;
+               rmgmo->envionota(rmgmo->POEE[i].canal,rmgmo->POEE[i].nota,0);
+               rmgmo->ActuPenEE(); 
+               }  
+           }
+          
+     }     
+          
+                   
+             
+            
+            if (rmgmo->ponvum)
+             {
+             rmgmo->ponvum=0;
+             DMidi->value(rmgmo->vum);
+             }
+
+            if (pera == 2 )
+             {
+               pera=0;
+               ImportSty->activate();
+               ListaStyles->activate();
+               Botones->activate();
+               SelectType->activate();
+               STST->activate();
+               BroReg->activate();
+		if (rmgmo->bcancel==2)
+               		{ 
+                		if(rmgmo->bplay)
+                			{
+                			STST->value(0);
+                			STST->do_callback();
+                			}
+                		ListaStyles->do_callback();
+                			
+               		}               
+               	if (rmgmo->bcancel==0) 
+               		{
+                		if(rmgmo->bplay)
+               				 {
+                			  STST->value(0);
+                			  STST->do_callback();
+                			 }
+        		        SaveStylesFunction(); 
+              		} 
+  
+             else rmgmo->bcancel=0;
+             }
+
+
+             if (rmgmo->cc)
+             {
+             VChord->label(rmgmo->NombreAcorde);
+             rmgmo->cc=0;
+             }
+
+             if (rmgmo->ponstart)
+             {
+               rmgmo->ponstart=0;
+               rmgmo->bplay=1;
+               STST->value(1);
+               STST->do_callback();
+             }
+             
+             
+            if (rmgmo->cambioc)
+           {
+                 rmgmo->cambioc=0;
+
+                if (programa==0)
+                     {
+                       if (rmgmo->sel) Sst->setonly(); else   Sso->setonly();
+                       ActuaDsel();
+                     }
+                 else
+                     {
+                      switch(rmgmo->sel)
+                          {
+                            case 0:
+
+                              if (programa <= rmgmo->numsounds)
+
+                                   {
+                                     ListaSounds->value(programa);
+                                     ListaSounds->do_callback();
+                                  }
+                               break;
+                             case 1:
+
+                               if ((programa < 16 ) && (rmgmo->tvb[programa] != 0)) CVari(programa,0);
+                               break;
+
+                           }
+
+                       }
+
+             }
+             
+    
+    
+   if  (rmgmo->tapaga==1) 
+   { rmgmo->tapaga=0;
+     FunciLeds(1);
+   }
+   
+   if (rmgmo->rtplay==1)
+    { 
+      rmgmo->rtplay=3; 
+     if (STST->value()) STST->value(0); else STST->value(1);
+     STST->do_callback();
+    } 
+     
+   if (rmgmo->rtplay==2)
+    { 
+      rmgmo->rtplay=0; 
+     if (STST->value()) STST->value(0); else STST->value(0);
+     STST->do_callback();
+    } 
+     
+      
+   
+   if (rmgmo->pbStart)
+   {
+     rmgmo->pbStart=0;
+     if (STST->value()) STST->value(0); else STST->value(1);
+     STST->do_callback();
+   }
+   
+    if (rmgmo->pbAutoF)
+   {
+     rmgmo->pbAutoF=0;
+     if (AutoFill->value()) AutoFill->value(0); else AutoFill->value(1);
+     AutoFill->do_callback();
+   }} {}
+  }
+  Function {MoreSolo()} {} {
+    code {ActuaOnOff();
+ActuaOnOffP();} {}
+  }
+  Function {ActuaMidDevices()} {} {
+    code {DMidiInDevice->value(rmgmo->MID);
+DMidiOutDevice->value(rmgmo->MOD);} {}
+  }
+  Function {labelwin(int i)} {} {
+    code {char temp[512];
+char loque[128];
+
+bzero(loque,sizeof(loque));
+
+
+switch(i)
+{
+  case 1:
+  sprintf(loque,"Style - %s",rmgmo->nStyle.Name);
+  break;
+  case 2:
+  sprintf(loque,"Registation - %s",rmgmo->R.Name);
+  break;
+  case 3:
+  sprintf(loque,"Style - %s (Data not Saved)",rmgmo->nStyle.Name);
+  break;
+  case 4:
+  sprintf(loque,"Registation - %s (Data not saved)",rmgmo->R.Name);
+  break;
+  case 5:
+  sprintf(loque,"Sound - %s (Data not Saved)",rmgmo->nSound.Name);
+
+}
+
+
+
+bzero(temp,sizeof(temp));
+
+sprintf(temp,"%s %s - %s",PACKAGE,VERSION,loque);
+
+rmgmorganwin->copy_label(temp);} {}
+  }
+  Function {AcutaLeds(int ifun)} {} {
+    code {Fl_Group * Elg=VumCanal9;
+
+int i;
+int lacosa=0;
+//int lapapa=0;
+
+for(i=9; i<=15;i++)
+{
+  if (ifun==1)
+  {
+   lacosa=0;
+ //  lapapa=1;
+   }
+    else 
+   {
+    lacosa=rmgmo->lastvelo[i];
+ //   lapapa=rmgmo->cocas[i];
+   }  
+
+switch(i)
+   { 
+      
+      case 10:
+            Elg=VumCanal10;
+            break;
+      case 11:
+            Elg=VumCanal11;
+            break;
+      case 12:
+            Elg=VumCanal12;
+            break;
+      case 13:
+            Elg=VumCanal13;
+            break;                        
+      case 14:
+            Elg=VumCanal14;
+            break;
+      case 15:
+            Elg=VumCanal15;
+            break;      
+    }        
+
+for ( int t=0; t<Elg->children(); t++ ) 
+  {          
+    Fl_Widget *w = Elg->child(t);
+    
+    if (((t+1)*127/7.5) >= lacosa)
+      {
+           switch(t)
+              {
+               case 5:
+               w->color(82);
+               break;
+               case 6:
+               w->color(80);
+               break; 
+               default:
+               w->color(59);
+               } 
+      
+      }
+    else
+      {     
+           switch(t)
+             {
+               case 5:
+               w->color(133);
+               break;
+               case 6:
+               w->color(1);
+               break;
+               default:    
+               w->color(2);
+             }  
+      }         
+   
+    w->redraw(); 
+  }
+  
+  rmgmo->cocas[i]=0;
+  rmgmo->lastvelo[i]=0;
+  
+  }} {}
+  }
+  Function {FunciLeds(int ifun)} {} {
+    code {if (ifun==0)
+{
+  AcutaLeds(ifun);
+  return;
+}
+
+if (ifun==1)
+{  
+  for (int t=9; t<=15; t++)
+    {
+       rmgmo->lastvelo[t]=0;
+       rmgmo->cocas[t]=1;
+  
+     }  
+     
+    AcutaLeds(ifun); 
+ }} {}
+  }
+  Function {ActuaBanco(int can)} {} {
+    code {switch(can)
+{
+ case 0:
+        P0->parent()->redraw();
+        P0->value(rmgmo->CM[can].program);
+        P0->do_callback();
+        break;
+case 1:
+ P1->parent()->redraw();
+ P1->value(rmgmo->CM[can].program);
+        P1->do_callback();
+        break;
+case 2:
+ P2->parent()->redraw(); 
+ P2->value(rmgmo->CM[can].program);
+        P2->do_callback();
+        break;
+case 3:
+ P3->parent()->redraw();
+ P3->value(rmgmo->CM[can].program);
+        P3->do_callback();
+        break;
+case 4:
+ P4->parent()->redraw();
+ P4->value(rmgmo->CM[can].program);
+        P4->do_callback();
+        break;
+case 9:
+ P9->parent()->redraw();
+ P9->value(rmgmo->CM[can].program);
+        P9->do_callback();
+        break;
+ case 10:
+  P10->parent()->redraw();
+  P10->value(rmgmo->CM[can].program);
+        P10->do_callback();
+        break;
+case 11:
+ P11->parent()->redraw();
+ P11->value(rmgmo->CM[can].program);
+        P11->do_callback();
+        break;
+case 12:
+ P12->parent()->redraw();
+ P12->value(rmgmo->CM[can].program);
+        P12->do_callback();
+        break;
+case 13:
+ P13->parent()->redraw();
+ P13->value(rmgmo->CM[can].program);
+        P13->do_callback();
+        break;
+case 14:
+ P14->parent()->redraw();
+ P14->value(rmgmo->CM[can].program);
+        P14->do_callback();
+        break;
+case 15:
+ P15->parent()->redraw();
+ P15->value(rmgmo->CM[can].program);
+        P15->do_callback();
+        break;
+}} {}
+  }
+  Function {put_icon(Fl_Window* window)} {} {
+    code {hints = NULL;
+XpmCreatePixmapFromData(fl_display, DefaultRootWindow(fl_display),(char **)stygmicon128,&p ,&mask, NULL);
+if (hints == NULL) hints = XGetWMHints(fl_display, fl_xid(window));
+hints->icon_pixmap=p;
+hints->icon_mask=mask; 
+hints->flags = IconPixmapHint | IconMaskHint;
+XSetWMHints(fl_display, fl_xid(window), hints);
+window->icon((char * ) p);} {}
+  }
+  Function {poninfo(int track, int control, int value)} {open
+  } {
+    code {char temp[256];
+bzero(temp,sizeof(temp));
+sprintf(temp,"%s %s=%d",rmgmo->UTNames[track].Nom,rmgmo->UCNames[control].Nom,value);
+DInfoControl->copy_label(temp);} {}
+  }
+  Function {ActuaDP()} {} {
+    code {if (!rmgmo->CM[0].OnOff) DP0->color((Fl_Color)0);
+else
+DP0->color((Fl_Color)230);
+DP0->redraw();
+if (!rmgmo->CM[1].OnOff) DP1->color((Fl_Color)0);
+else
+DP1->color((Fl_Color)230);
+DP1->redraw();
+if (!rmgmo->CM[2].OnOff) DP2->color((Fl_Color)0);
+else
+DP2->color((Fl_Color)230);
+DP2->redraw();
+if (!rmgmo->CM[3].OnOff) DP3->color((Fl_Color)0);
+else
+DP3->color((Fl_Color)230);
+DP3->redraw();
+if (!rmgmo->CM[4].OnOff) DP4->color((Fl_Color)0);
+else
+DP4->color((Fl_Color)230);
+DP4->redraw();
+if (!rmgmo->CM[9].OnOff) DP9->color((Fl_Color)0);
+else
+DP9->color((Fl_Color)230);
+DP9->redraw();
+if (!rmgmo->CM[10].OnOff) DP10->color((Fl_Color)0);
+else
+DP10->color((Fl_Color)230);
+DP10->redraw();
+if (!rmgmo->CM[11].OnOff) DP11->color((Fl_Color)0);
+else
+DP11->color((Fl_Color)230);
+DP11->redraw();
+if (!rmgmo->CM[12].OnOff) DP12->color((Fl_Color)0);
+else
+DP12->color((Fl_Color)230);
+DP12->redraw();
+if (!rmgmo->CM[13].OnOff) DP13->color((Fl_Color)0);
+else
+DP13->color((Fl_Color)230);
+DP13->redraw();
+if (!rmgmo->CM[14].OnOff) DP14->color((Fl_Color)0);
+else
+DP14->color((Fl_Color)230);
+DP14->redraw();
+if (!rmgmo->CM[15].OnOff) DP15->color((Fl_Color)0);
+else
+DP15->color((Fl_Color)230);
+DP15->redraw();} {}
+  }
+}

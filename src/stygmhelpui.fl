@@ -1,0 +1,42 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0304
+i18n_type 1
+i18n_include <libintl.h>
+i18n_function gettext
+header_name {.h}
+code_name {.cxx}
+decl {//Copyright(c) 2006 Josep Andreu (holborn)} {private local
+}
+
+decl {//License GNU/GPL version 2} {private local
+}
+
+decl {\#include "stygmorgan.h"} {public local
+}
+
+decl {\#include <FL/Fl_Help_Dialog.H>} {public local
+}
+
+class stygmhelp {open
+} {
+  Function {stygmhelp()} {open C
+  } {
+    code {Fl::visual(FL_DOUBLE|FL_INDEX);
+Fl::visual(FL_RGB);
+
+static const char *pepe [] ={"stygmorgan"};
+char temp[128];
+int argc=1;
+char **argv= (char **) pepe;
+
+
+Fl_Help_Dialog *visor = new Fl_Help_Dialog;
+
+bzero(temp,sizeof(temp));
+sprintf(temp,"%s/html/stygmorgan.html",HELPDIR);
+visor->load(temp);
+visor->position(x+100,y+160);
+visor->show(argc,argv);} {selected
+    }
+  }
+}

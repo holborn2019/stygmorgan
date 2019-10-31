@@ -1,0 +1,223 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0304
+i18n_type 1
+i18n_include <libintl.h>
+i18n_function gettext
+header_name {.h}
+code_name {.cxx}
+decl {//Copyright(c) 2006 Josep Andreu (holborn)} {private local
+}
+
+decl {//License GNU/GPL version 2} {private local
+}
+
+decl {\#include "stygmorgan.h"} {public local
+}
+
+decl {\#include <Fl/Fl_Check_Button.H>} {private local
+}
+
+class rmgmpp {open
+} {
+  Function {rmgmpp(RMGMO *rmgmo_)} {C
+  } {
+    code {char temp[128];
+static const char *pepe [] ={"stygmorgan"};
+
+int argc=1;
+char **argv= (char **) pepe;
+Fl::visual(FL_DOUBLE|FL_INDEX);
+Fl::visual(FL_RGB);
+rmgmo=rmgmo_;
+make_window();
+rmgmppwin->position(x,y);
+bzero(temp,sizeof(temp));
+sprintf(temp, "%s %s - %s - %s - Pattern Parameters",PACKAGE,VERSION,rmgmo->nStyle.Name,rmgmo->nStyle.Pattern[rmgmo->Variacion].Name);
+rmgmppwin->label(temp);
+rmgmppwin->icon((char *)p);
+rmgmppwin->show(argc,argv);} {}
+  }
+  decl {RMGMO *rmgmo;} {private local
+  }
+  Function {make_window()} {open
+  } {
+    Fl_Window rmgmppwin {
+      callback {pera=2;
+rmgmppwin->hide();
+rmgmo->wpatterneditor=0;
+rmgmppwin->clear();
+delete rmgmppwin;} open
+      xywh {158 42 830 335} type Double color 44 labelcolor 7 hide
+    } {
+      Fl_Button {} {
+        label Cancel
+        callback {rmgmo->bcancel=1;
+rmgmppwin->do_callback();}
+        xywh {735 275 80 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3
+      }
+      Fl_Button {} {
+        label Ok
+        callback {calcula();
+rmgmppwin->do_callback();}
+        xywh {735 305 80 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3
+      }
+      Fl_Choice PatChoice {
+        label {Original Channel/Track}
+        callback {calcula();
+ASeCh((int)o->value());} open
+        xywh {10 25 150 25} down_box BORDER_BOX color 44 selection_color 47 labelsize 11 labelcolor 7 align 5 textcolor 7
+      } {}
+      Fl_Counter DChannel {
+        label {Dest. Channel}
+        callback {o->parent()->redraw();
+rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[(int)PatChoice->value()].Canal=(int)o->value()-1;}
+        xywh {10 75 100 25} type Simple box NO_BOX selection_color 47 labelsize 11 labelcolor 7 align 5 minimum 1 maximum 16 step 1 value 1 textcolor 7
+      }
+      Fl_Counter ChordRoot {
+        label {Chord Root}
+        callback {o->parent()->redraw();
+DChordRoot->copy_label(rmgmo->NC[(int)o->value()].Nom);
+rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[(int)PatChoice->value()].ChRoot=(int)o->value();}
+        xywh {10 120 100 25} type Simple box NO_BOX color 44 labelsize 11 labelcolor 7 align 5 minimum 1 maximum 12 step 1 value 1 textcolor 7
+      }
+      Fl_Counter ChordType {
+        label {Chord Type}
+        callback {o->parent()->redraw();
+DChordType->copy_label(rmgmo->ChN[(int)o->value()].Nom);
+rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[(int)PatChoice->value()].ChType=(int)o->value();}
+        xywh {10 165 100 25} type Simple box NO_BOX color 44 selection_color 47 labelsize 11 labelcolor 7 align 5 minimum 0 maximum 32 step 1 value 1 textcolor 7
+      }
+      Fl_Box DChordRoot {
+        xywh {120 120 90 30} box DOWN_BOX color 44 labelcolor 1
+      }
+      Fl_Box DChordType {
+        xywh {120 165 90 30} box DOWN_BOX color 44 labelcolor 1
+      }
+      Fl_Counter NTT {
+        label NTT
+        callback {o->parent()->redraw();
+rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[(int)PatChoice->value()].NTT=(int)o->value();}
+        xywh {10 210 100 25} type Simple box NO_BOX color 44 selection_color 47 labelsize 11 labelcolor 7 align 5 minimum 1 maximum 12 step 1 value 1 textcolor 7
+      }
+      Fl_Counter RTR {
+        label RTR
+        callback {o->parent()->redraw();
+rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[(int)PatChoice->value()].RTR=(int)o->value();}
+        xywh {10 255 100 25} type Simple box NO_BOX color 44 selection_color 47 labelsize 11 labelcolor 7 align 5 minimum 1 maximum 12 step 1 value 1 textcolor 7
+      }
+      Fl_Box {} {
+        xywh {215 20 610 245} box DOWN_BOX color 44
+      }
+    }
+    code {int i,j,k,l,udata;
+char temp[128];
+char pep[64];
+
+
+DChannel->clear_visible_focus();
+DChordRoot->clear_visible_focus();
+NTT->clear_visible_focus();
+RTR->clear_visible_focus();
+
+
+for (i=0; i<rmgmo->nStyle.Pattern[rmgmo->Variacion].numcasm; i++)
+{
+bzero(pep,sizeof(pep));
+for (j=0;j<(int)strlen(rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].Name);j++)
+if (rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].Name[j]!=47)pep[j]=rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].Name[j];
+bzero(temp,sizeof(temp));
+sprintf(temp ,"%d_%s",rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].track+1,pep);
+PatChoice->add(temp);
+}
+
+PatChoice->value(0);
+k=0;
+l=0;
+udata=100;
+for(j=0; j<=4; j++)
+ {
+
+for (i=0;i<8; i++)
+ {
+
+ switch (i)
+    {
+      case 1:
+          l=90;   
+          break;
+      default:
+          l=75;
+    }
+    
+                
+Fl_Check_Button *obot = new Fl_Check_Button(230+i*l, 50+j*45, 45, 25,rmgmo->ChN[k].Nom);
+      obot->down_box(FL_NO_BOX);
+      obot->align(FL_ALIGN_TOP_LEFT);
+      obot->labelcolor((Fl_Color)FL_WHITE);
+      obot->color((Fl_Color)44);
+      obot->selection_color((Fl_Color)3);
+      obot->labelsize((Fl_Fontsize)11);
+      obot->clear_visible_focus();  
+      obot->user_data((void*) udata);
+
+      
+k++;
+udata=100+k;
+
+rmgmppwin->add(obot);
+
+if ((j==4) && (i==1)) break;
+}
+
+}
+rmgmppwin->end();
+
+rmgmo->ulase=0;
+ASeCh(0);} {selected
+    }
+  }
+  Function {ASeCh(int tr)} {} {
+    code {int i,j;
+unsigned long lolo=0;
+Fl_Check_Button *pepe;
+
+rmgmo->ulase=tr;
+DChannel->value(rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[tr].Canal+1);
+ChordRoot->value(rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[tr].ChRoot);
+ChordType->value(rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[tr].ChType);
+ChordRoot->do_callback();
+ChordType->do_callback();
+NTT->value(rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[tr].NTT);
+RTR->value(rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[tr].RTR);
+
+for(i=0; i<33; i++)
+{
+lolo=1;
+if (i==0) lolo = 1; else 
+for (j=1; j<=i; j++) lolo *=2;
+pepe = (Fl_Check_Button*) rmgmppwin->child(11+i);
+if ( (rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[tr].ChM & lolo) == lolo) pepe->value(1); else pepe->value(0); 
+   
+}} {}
+  }
+  Function {calcula()} {} {
+    code {int i,j;
+unsigned long tito=0;
+unsigned long lolo=0;
+Fl_Check_Button *pepe;
+
+for(i=0; i<33; i++)
+{
+
+lolo=1;
+if (i==0) lolo = 1; else for (j=1; j<=i; j++) lolo *=2;
+
+pepe = (Fl_Check_Button*) rmgmppwin->child(11+i);
+
+if ((int) pepe->value() == 1) tito=tito+lolo;
+
+}
+
+rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[rmgmo->ulase].ChM=tito;} {}
+  }
+}

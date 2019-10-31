@@ -1,0 +1,548 @@
+0 27 High Q
+0 28 Slap
+0 29 Scratch Push
+0 30 Scratch Pull
+0 31 Sticks
+0 32 Square Click
+0 33 Metronome Click
+0 34 Metronome Bell
+0 35 Acoustic Bass Drum
+0 36 Bass Drum 1
+0 37 Side Stick
+0 38 Acoustic Snare
+0 39 Hand Clap
+0 40 Electric Snare 
+0 41 Low Floor Tom
+0 42 Closed Hi-Hat
+0 43 High Floor Tom 
+0 44 Pedal Hi-Hat 
+0 45 Low Tom
+0 46 Open Hi-Hat
+0 47 Low-Mid Tom
+0 48 Hi-Mid Tom
+0 49 Crash Cymbal 1
+0 50 High Tom
+0 51 Ride Cymbal 1
+0 52 Chinese Cymbal
+0 53 Ride Bell
+0 54 Tambourine
+0 55 Splash Cymbal
+0 56 Cowbell
+0 57 Crash Cymbal 2
+0 58 Vibraslap
+0 59 Ride Cymbal 2
+0 60 Hi Bongo
+0 61 Low Bongo
+0 62 Mute Hi Conga
+0 63 Open Hi Conga
+0 64 Low Conga
+0 65 High Timbale
+0 66 Low Timbale
+0 67 High Agogo
+0 68 Low Agogo
+0 69 Cabasa
+0 70 Maracas
+0 71 Short Whistle
+0 72 Long Whistle
+0 73 Short Guiro
+0 74 Long Guiro
+0 75 Claves
+0 76 Hi Wood Block
+0 77 Low Wood Block
+0 78 Mute Cuica
+0 79 Open Cuica
+0 80 Mute Triangle
+0 81 Open Triangle
+0 82 Shaker
+0 83 Jungle Bell
+0 84 Belltree
+0 85 Castanets
+0 86 Mute Surdo
+0 87 Open Surdo
+8 27 High Q
+8 28 Slap
+8 29 Scratch Push
+8 30 Scratch Pull
+8 31 Sticks
+8 32 Square Click
+8 33 Metronome Click
+8 34 Metronome Bell
+8 35 Acoustic Bass Drum
+8 36 Kick Drum 1
+8 37 Side Stick
+8 38 Acoustic Snare
+8 39 Hand Clap
+8 40 Electric Snare 
+8 41 Room Low Tom 2
+8 42 Closed Hi-Hat
+8 43 Room Low Tom 1 
+8 44 Pedal Hi-Hat 
+8 45 Room Mid Tom 2
+8 46 Open Hi-Hat
+8 47 Room Mid Tom 1
+8 48 Room Hi Tom 2
+8 49 Crash Cymbal 1
+8 50 Room High Tom 1
+8 51 Ride Cymbal 1
+8 52 Chinese Cymbal
+8 53 Ride Bell
+8 54 Tambourine
+8 55 Splash Cymbal
+8 56 Cowbell
+8 57 Crash Cymbal 2
+8 58 Vibraslap
+8 59 Ride Cymbal 2
+8 60 Hi Bongo
+8 61 Low Bongo
+8 62 Mute Hi Conga
+8 63 Open Hi Conga
+8 64 Low Conga
+8 65 High Timbale
+8 66 Low Timbale
+8 67 High Agogo
+8 68 Low Agogo
+8 69 Cabasa
+8 70 Maracas
+8 71 Short Whistle
+8 72 Long Whistle
+8 73 Short Guiro
+8 74 Long Guiro
+8 75 Claves
+8 76 Hi Wood Block
+8 77 Low Wood Block
+8 78 Mute Cuica
+8 79 Open Cuica
+8 80 Mute Triangle
+8 81 Open Triangle
+8 82 Shaker
+8 83 Jungle Bell
+8 84 Belltree
+8 85 Castanets
+8 86 Mute Surdo
+8 87 Open Surdo
+16 27 High Q
+16 28 Slap
+16 29 Scratch Push
+16 30 Scratch Pull
+16 31 Sticks
+16 32 Square Click
+16 33 Metronome Click
+16 34 Metronome Bell
+16 35 Acoustic Bass Drum
+16 36 MONDO Kick
+16 37 Side Stick
+16 38 Gated SD
+16 39 Hand Clap
+16 40 Electric Snare 
+16 41 Room Low Tom 2
+16 42 Closed Hi-Hat
+16 43 Room Low Tom 1 
+16 44 Pedal Hi-Hat 
+16 45 Room Mid Tom 2
+16 46 Open Hi-Hat
+16 47 Room Mid Tom 1
+16 48 Room Hi Tom 2
+16 49 Crash Cymbal 1
+16 50 Room High Tom 1
+16 51 Ride Cymbal 1
+16 52 Chinese Cymbal
+16 53 Ride Bell
+16 54 Tambourine
+16 55 Splash Cymbal
+16 56 Cowbell
+16 57 Crash Cymbal 2
+16 58 Vibraslap
+16 59 Ride Cymbal 2
+16 60 Hi Bongo
+16 61 Low Bongo
+16 62 Mute Hi Conga
+16 63 Open Hi Conga
+16 64 Low Conga
+16 65 High Timbale
+16 66 Low Timbale
+16 67 High Agogo
+16 68 Low Agogo
+16 69 Cabasa
+16 70 Maracas
+16 71 Short Whistle
+16 72 Long Whistle
+16 73 Short Guiro
+16 74 Long Guiro
+16 75 Claves
+16 76 Hi Wood Block
+16 77 Low Wood Block
+16 78 Mute Cuica
+16 79 Open Cuica
+16 80 Mute Triangle
+16 81 Open Triangle
+16 82 Shaker
+16 83 Jungle Bell
+16 84 Belltree
+16 85 Castanets
+16 86 Mute Surdo
+16 87 Open Surdo
+25 27 High Q
+25 28 Slap
+25 29 Scratch Push
+25 30 Scratch Pull
+25 31 Sticks
+25 32 Square Click
+25 33 Metronome Click
+25 34 Metronome Bell
+25 35 Acoustic Bass Drum
+25 36 808 BD
+25 37 808 Rim Shot
+25 38 808 Snare Drum
+25 39 Hand Clap
+25 40 Gated SD 
+25 41 808 Low Tom 2
+25 42 808 CHH
+25 43 808 Low Tom 1 
+25 44 808 CHH 
+25 45 808 Mid Tom 2
+25 46 808 OHH
+25 47 808 Mid Tom 1
+25 48 808 Hi Tom 2
+25 49 808 Cymbal
+25 50 808 High Tom 1
+25 51 Ride Cymbal 1
+25 52 Reverse Cymbal
+25 53 Ride Bell
+25 54 Tambourine
+25 55 Splash Cymbal
+25 56 Cowbell
+25 57 Crash Cymbal 2
+25 58 Vibraslap
+25 59 Ride Cymbal 2
+25 60 Hi Bongo
+25 61 Low Bongo
+25 62 808 Hi Conga
+25 63 808 Mid Conga
+25 64 808 Low Conga
+25 65 High Timbale
+25 66 Low Timbale
+25 67 High Agogo
+25 68 Low Agogo
+25 69 Cabasa
+25 70 808 Maracas
+25 71 Short Whistle
+25 72 Long Whistle
+25 73 Short Guiro
+25 74 Long Guiro
+25 75 808 Claves
+25 76 Hi Wood Block
+25 77 Low Wood Block
+25 78 Mute Cuica
+25 79 Open Cuica
+25 80 Mute Triangle
+25 81 Open Triangle
+25 82 Shaker
+25 83 Jungle Bell
+25 84 Belltree
+25 85 Castanets
+25 86 Mute Surdo
+25 87 Open Surdo
+24 27 High Q
+24 28 Slap
+24 29 Scratch Push
+24 30 Scratch Pull
+24 31 Sticks
+24 32 Square Click
+24 33 Metronome Click
+24 34 Metronome Bell
+24 35 Acoustic Bass Drum
+24 36 Elec BD
+24 37 Side Stick
+24 38 Elec SD
+24 39 Hand Clap
+24 40 Gated SD 
+24 41 Elec Low Tom 2
+24 42 Closed Hi-Hat
+24 43 Elec Low Tom 1 
+24 44 Pedal Hi-Hat 
+24 45 Elec Mid Tom 2
+24 46 Open Hi-Hat
+24 47 Elec Mid Tom 1
+24 48 Elec Hi Tom 2
+24 49 Crash Cymbal 1
+24 50 Elec High Tom 1
+24 51 Ride Cymbal 1
+24 52 Reverse Cymbal
+24 53 Ride Bell
+24 54 Tambourine
+24 55 Splash Cymbal
+24 56 Cowbell
+24 57 Crash Cymbal 2
+24 58 Vibraslap
+24 59 Ride Cymbal 2
+24 60 Hi Bongo
+24 61 Low Bongo
+24 62 Mute Hi Conga
+24 63 Open Hi Conga
+24 64 Low Conga
+24 65 High Timbale
+24 66 Low Timbale
+24 67 High Agogo
+24 68 Low Agogo
+24 69 Cabasa
+24 70 Maracas
+24 71 Short Whistle
+24 72 Long Whistle
+24 73 Short Guiro
+24 74 Long Guiro
+24 75 Claves
+24 76 Hi Wood Block
+24 77 Low Wood Block
+24 78 Mute Cuica
+24 79 Open Cuica
+24 80 Mute Triangle
+24 81 Open Triangle
+24 82 Shaker
+24 83 Jungle Bell
+24 84 Belltree
+24 85 Castanets
+24 86 Mute Surdo
+24 87 Open Surdo
+40 27 High Q
+40 28 Slap
+40 29 Scratch Push
+40 30 Scratch Pull
+40 31 Sticks
+40 32 Square Click
+40 33 Metronome Click
+40 34 Metronome Bell
+40 35 Acoustic Bass Drum
+40 36 Bass Drum 1
+40 37 Side Stick
+40 38 Brush Tap
+40 39 Brush Slap
+40 40 Brush Swirl 
+40 41 Low Floor Tom
+40 42 Closed Hi-Hat
+40 43 High Floor Tom 
+40 44 Pedal Hi-Hat 
+40 45 Low Tom
+40 46 Open Hi-Hat
+40 47 Low-Mid Tom
+40 48 Hi-Mid Tom
+40 49 Crash Cymbal 1
+40 50 High Tom
+40 51 Ride Cymbal 1
+40 52 Chinese Cymbal
+40 53 Ride Bell
+40 54 Tambourine
+40 55 Splash Cymbal
+40 56 Cowbell
+40 57 Crash Cymbal 2
+40 58 Vibraslap
+40 59 Ride Cymbal 2
+40 60 Hi Bongo
+40 61 Low Bongo
+40 62 Mute Hi Conga
+40 63 Open Hi Conga
+40 64 Low Conga
+40 65 High Timbale
+40 66 Low Timbale
+40 67 High Agogo
+40 68 Low Agogo
+40 69 Cabasa
+40 70 Maracas
+40 71 Short Whistle
+40 72 Long Whistle
+40 73 Short Guiro
+40 74 Long Guiro
+40 75 Claves
+40 76 Hi Wood Block
+40 77 Low Wood Block
+40 78 Mute Cuica
+40 79 Open Cuica
+40 80 Mute Triangle
+40 81 Open Triangle
+40 82 Shaker
+40 83 Jungle Bell
+40 84 Belltree
+40 85 Castanets
+40 86 Mute Surdo
+40 87 Open Surdo
+48 27 Closed HH
+48 28 Pedal HH
+48 29 Open HH
+48 30 Hide Cymbal
+48 31 Sticks
+48 32 Square Click
+48 33 Metronome Click
+48 34 Metronome Bell
+48 35 Concert BD2
+48 36 Concert BD1
+48 37 Side Stick
+48 38 Concert SD
+48 39 Castanets
+48 40 Concert SD 
+48 41 Timpani F
+48 42 Timpani F#
+48 43 Timpani G 
+48 44 Timpani G# 
+48 45 Timpani A
+48 46 Timpani A#
+48 47 Timpani B
+48 48 Timpani c
+48 49 Timpani c#
+48 50 Timpani d
+48 51 Timpani d#
+48 52 Timpani e
+48 53 Timpani f
+48 54 Tambourine
+48 55 Splash Cymbal
+48 56 Cowbell
+48 57 Concert Cymbal 2
+48 58 Vibraslap
+48 59 Concert Cymbal 1
+48 60 Hi Bongo
+48 61 Low Bongo
+48 62 Mute Hi Conga
+48 63 Open Hi Conga
+48 64 Low Conga
+48 65 High Timbale
+48 66 Low Timbale
+48 67 High Agogo
+48 68 Low Agogo
+48 69 Cabasa
+48 70 Maracas
+48 71 Short Whistle
+48 72 Long Whistle
+48 73 Short Guiro
+48 74 Long Guiro
+48 75 Claves
+48 76 Hi Wood Block
+48 77 Low Wood Block
+48 78 Mute Cuica
+48 79 Open Cuica
+48 80 Mute Triangle
+48 81 Open Triangle
+48 82 Shaker
+48 83 Jungle Bell
+48 84 Belltree
+48 85 Castanets
+48 86 Mute Surdo
+48 87 Open Surdo
+48 88 Applause
+32 27 High Q
+32 28 Slap
+32 29 Scratch Push
+32 30 Scratch Pull
+32 31 Sticks
+32 32 Square Click
+32 33 Metronome Click
+32 34 Metronome Bell
+32 35 Acoustic Bass Drum
+32 36 Bass Drum 1
+32 37 Side Stick
+32 38 Acoustic Snare
+32 39 Hand Clap
+32 40 Electric Snare 
+32 41 Low Floor Tom
+32 42 Closed Hi-Hat
+32 43 High Floor Tom 
+32 44 Pedal Hi-Hat 
+32 45 Low Tom
+32 46 Open Hi-Hat
+32 47 Low-Mid Tom
+32 48 Hi-Mid Tom
+32 49 Crash Cymbal 1
+32 50 High Tom
+32 51 Ride Cymbal 1
+32 52 Chinese Cymbal
+32 53 Ride Bell
+32 54 Tambourine
+32 55 Splash Cymbal
+32 56 Cowbell
+32 57 Crash Cymbal 2
+32 58 Vibraslap
+32 59 Ride Cymbal 2
+32 60 Hi Bongo
+32 61 Low Bongo
+32 62 Mute Hi Conga
+32 63 Open Hi Conga
+32 64 Low Conga
+32 65 High Timbale
+32 66 Low Timbale
+32 67 High Agogo
+32 68 Low Agogo
+32 69 Cabasa
+32 70 Maracas
+32 71 Short Whistle
+32 72 Long Whistle
+32 73 Short Guiro
+32 74 Long Guiro
+32 75 Claves
+32 76 Hi Wood Block
+32 77 Low Wood Block
+32 78 Mute Cuica
+32 79 Open Cuica
+32 80 Mute Triangle
+32 81 Open Triangle
+32 82 Shaker
+32 83 Jungle Bell
+32 84 Belltree
+32 85 Castanets
+32 86 Mute Surdo
+32 87 Open Surdo
+56 27 High Q
+56 28 Slap
+56 29 Scratch Push
+56 30 Scratch Pull
+56 31 Sticks
+56 32 Square Click
+56 33 Metronome Click
+56 34 Metronome Bell
+56 35 Acoustic Bass Drum
+56 36 Bass Drum 1
+56 37 Side Stick
+56 38 Acoustic Snare
+56 39 High Q
+56 40 Slap
+56 41 Scratch Push
+56 42 Scratch Pull
+56 43 Sticks
+56 44 Sqare Click
+56 45 Metronome Click
+56 46 Metronome Bell
+56 47 Guitar sld fing.
+56 48 Guitar cutt down
+56 49 Guitar cutt up
+56 50 String slap
+56 51 Fl. Key Click
+56 52 Laughing
+56 53 Screamming
+56 54 Punch
+56 55 Heart Beat
+56 56 Footsteps 1
+56 57 Footsteps 2
+56 58 Aplause
+56 59 Door Creaking
+56 60 Door
+56 61 Scratch
+56 62 Windchime
+56 63 Car-Engine
+56 64 Car-Stop
+56 65 Car-Pass
+56 66 Car-Crash
+56 67 Siren
+56 68 Train
+56 69 Jetplane
+56 70 Helicopter
+56 71 Starship
+56 72 Gun Shot
+56 73 Machine Gun
+56 74 Lasergun
+56 75 Explosion
+56 76 Dog
+56 77 Horse-Gallop
+56 78 Birds
+56 79 Rain
+56 80 Thunder
+56 81 Wind
+56 82 Seashore
+56 83 Stream
+56 84 Bubble
+

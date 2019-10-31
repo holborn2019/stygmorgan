@@ -1,0 +1,1530 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=iso-8859-1">
+	<TITLE>stygmorgan Help</TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice.org 2.0  (Linux)">
+	<META NAME="CREATED" CONTENT="20060801;14142700">
+	<META NAME="CHANGEDBY" CONTENT="Josep Andreu Costa">
+	<META NAME="CHANGED" CONTENT="20060807;81600">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { size: 3.5cm 2.5cm }
+		H1 { color: #000000 }
+		P { color: #000000 }
+		H4 { color: #000000 }
+		H3 { color: #000000 }
+		H2 { color: #000000 }
+		H5 { color: #000000 }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="es-ES" TEXT="#000000" BACKGROUND="stygmicon128back2.jpg" DIR="LTR">
+<H1 ALIGN=LEFT STYLE="margin-right: 4.39cm"><FONT SIZE=2><FONT SIZE=7 STYLE="font-size: 32pt">stygmorgan
+</FONT>&lt;C&gt; 2006 por Josep Andreu</FONT></H1>
+<HR>
+<H2 STYLE="margin-right: 4.39cm; margin-top: 0.2cm; margin-bottom: 0.1cm">
+&Iacute;ndice:</H2>
+<HR>
+<H3 STYLE="margin-top: 0.12cm; margin-bottom: 0.2cm"><A HREF="#Introduccion_Texto">Introducci&oacute;n</A></H3>
+<H3 STYLE="margin-top: 0.12cm; margin-bottom: 0.2cm"><A HREF="#Requisitos_Texto">Requisitos</A></H3>
+<H3 STYLE="margin-top: 0.12cm; margin-bottom: 0.2cm"><A HREF="#ComoEmepzar_Texto">C&oacute;mo
+empezar?</A></H3>
+<H3 STYLE="margin-top: 0.12cm; margin-bottom: 0.2cm"><A HREF="#LieaComandos_Texto">Opciones
+de la linea de comandos</A></H3>
+<H3 STYLE="margin-top: 0.12cm; margin-bottom: 0.2cm"><A HREF="#Preferencias_Texto">Men&uacute;
+Preferencias</A></H3>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+1. <A HREF="#AutoConnect_Texto">Auto conectar los dispositivos MIDI
+al inicio del programa</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+2. <A HREF="#Autoasfxload_Texto">Usar asfxload para cargar un
+soundfont al inicio del programa</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+3. <A HREF="#DirTemporales_Texto">Directorio para ficheros temporales</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+4. <A HREF="#MantenerMute_Texto">Mantener Mute cuando cambia el
+patr&oacute;n</A></P>
+<H3><A HREF="#ConceptosBasicos_Texto">Conceptos B&aacute;sicos</A></H3>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+1. <A HREF="#Estilos_texto">Patrones</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+2. <A HREF="#Sonidos_Texto">Sonidos</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+3. <A HREF="#Registraciones_Texto">Registraciones</A></P>
+<H3><A HREF="#VPrincipal_Texto">Ventana Principal</A></H3>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(1)">1. Selector de Sonido</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(2)">2. Selector de Estilo</A></P>
+<P STYLE="margin-left: 0.02cm; margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(3)">3. Selector de Registracion</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(4)">4. Selector de tipo de Estilo</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(5)">5. Indicador de dispositivos MIDI</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(6)">6. Indicador de entrada MIDI</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(7)">7. Selector de tipo de acorde</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(8)">8. Transpositor</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(9)">9. Punto de divisi&oacute;n del Teclado</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(10)">10. Indicador de comp&aacute;s.</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(11)">11. Inicio Sincronizado</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(12)">12. Indicador de negra</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(13)">13. Controladores de Tempo</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(14)">14. Bot&oacute;n de Inicio/Parada</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(15)">15. Indicador de Acorde</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(16)">16. Indicador de Patr&oacute;n</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(17)">17. Mezclador de Estilo</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(18)">18. Selector de Patr&oacute;n</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(19)">19. Indicador de Estilo</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(20)">20 .Indicador de Sonido</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(21)">21. Mezclador Teclado Izquierdo</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(22)">22. Mezclador Teclado Derecho</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(23)">23. Indicador Auto Fill-In</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(23)">24 .Selector de Cambio</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(25)">25. Volumen de Sonido</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MW(26)">26. Volumen de Estilo</A></P>
+<H3><A HREF="#Mezclador_Texto">Mezclador</A> 
+</H3>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MZ(1)">1. Nombre de Pista</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MZ(2)">2. Selector de Encendido/Apagado</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MZ(3)">3. Selector Solo</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MZ(4)">4. M&aacute;s Par&aacute;metros</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MZ(5)">5. Controlador de Panor&aacute;mico</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MZ(6)">6. Controlador de Reverberaci&oacute;n</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MZ(7)">7. Controlador de Chorus</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MZ(8)">8. Indicador de Velocity</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MZ(9)">9. Controlador de Volumen</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MZ(10)">10. Indicador de Programa</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MZ(11)">11. Selector de Programa</A></P>
+<H3><A HREF="#MasParametors_Texto">Mas Parametros</A></H3>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MP(1)">1. Selector de Octava</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MP(2)">2. Selector de Transposici&oacute;n</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MP(3)">3. Selector de Banco (M)</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#MP(4)">4. Selector de Banco (L)</A></P>
+<H3><A HREF="#OpcionesMenu_Texto">Opciones del Men&uacute;</A></H3>
+<H4 STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#OM_MenuArchivo">Men&uacute; Archivo</A></H4>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#OM_Sonidos_Texto">Sonidos</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#OM_Estilos_Texto">Estilos</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#OM_Registraciones_Texto">Registraciones</A></P>
+<P STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm; line-height: 100%">
+<A HREF="#OM_FicherosNombre_Texto">Ficheros de Nombre </A>
+</P>
+<H4><A HREF="#MenuEditar_Texto"><U>Men&uacute; Editar</U></A></H4>
+<P><A HREF="#EditordeEventos_Texto">Editor de eventos</A></P>
+<P><A HREF="#Copiarmezclador_Texto">Copiar mezclador del patr&oacute;n
+a</A></P>
+<P><A HREF="#EditorPatrones_Texto">Editor de patrones</A></P>
+<P><A HREF="#EditorEstilos_Texto">Editor de Estilos</A></P>
+<H3><A HREF="#Secuenciador_Texto">Secuenciador</A></H3>
+<H3><A HREF="#Consejos_Texto">Consejos y Trucos</A></H3>
+<HR>
+<H2 STYLE="margin-right: 4.39cm"><A NAME="Introduccion_Texto"></A>Introducci&oacute;n</H2>
+<P>stygmorgan es un emulador de lo que hoy en d&iacute;a los
+fabricantes de teclados musicales denominan como Estaci&oacute;n de
+Trabajo Interactiva, es decir, un &oacute;rgano con acompa&ntilde;amiento
+autom&aacute;tico y con la capacidad de crear secuencias musicales
+mas o menos complejas.</P>
+<P>stygmorgan significa un paso adelante sobre el antiguo proyecto
+'gmorgan' pues usa patrones</P>
+<P>en tiempo real, el c&oacute;digo fuente del programa pr&aacute;cticamente
+se ha reescrito completamente. 
+</P>
+<P>stygmorgan es la uni&oacute;n de 'style' 'gm' y 'organ',</P>
+<P>style: Por el hecho de ser capaz de importar ficheros .STY.
+(Ficheros de estilos musicales) 
+</P>
+<P>'gm' El est&aacute;ndar General Midi, porque por defecto viene
+configurado para ser usado con una fuente de sonidos General Midi,
+una configuraci&oacute;n de sonidos b&aacute;sicos dispuestos en un
+determinado orden para hacer que la mayor&iacute;a de teclados,
+sintetizadores o m&oacute;dulos de sonido comerciales o no, pudieran
+ser compatibles.</P>
+<P>'organ' Para aclarar la ropa ... porque con tantas siglas es
+preferible llamar a las cosas por su nombre.</P>
+<P>Existen dos partes bien diferenciadas dentro de stygmorgan:</P>
+<UL>
+	<LI><P>El &oacute;rgano, que es la parte del programa que le permite
+	convertir un teclado MIDI cualquiera en un &oacute;rgano con
+	acompa&ntilde;amiento autom&aacute;tico</P>
+	<LI><P>El secuenciador, que le permite crear bases musicales que
+	posteriormente pueden ser exportadas en formato MidiFile para as&iacute;
+	poder ampliarlas en otros secuenciadores con otras capacidades de
+	edici&oacute;n pero que no tienen las peculiaridades de stygmorgan. 
+	</P>
+</UL>
+<P>Este peque&ntilde;o diagrama muestra el funcionamiento b&aacute;sico
+de stygmorgan.</P>
+<P><IMG SRC="stygmorgandia.png" NAME="gr&aacute;ficos4" ALIGN=LEFT WIDTH=660 HEIGHT=248 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P>Las principales novedades con respecto a gmorgan son:</P>
+<UL>
+	<LI><P>Patrones en tiempo real.</P>
+	<LI><P>Importa ficheros de estilos con formato sty, prs, mid.</P>
+	<LI><P>Reconocimiento de acorde con inversi&oacute;n y bajo.
+	(Fingered Bass)</P>
+	<LI><P>El n&uacute;mero de acordes reconocidos se multiplica por
+	diez. 
+	</P>
+	<LI><P>Nuevas t&eacute;cnicas de armonizaci&oacute;n, las
+	posibilidades aumentan en proporci&oacute;n al n&uacute;mero de
+	acordes reconocidos.</P>
+	<LI><P>Sensibles mejoras gr&aacute;ficas.</P>
+	<LI><P>Nuevo sistema de Auto-Conexi&oacute;n.</P>
+	<LI><P>Capacidad de cargar soundfonts al inicio del programa en su
+	tarjeta de audio.</P>
+	<LI><P>El n&uacute;mero de sonidos simult&aacute;neos para la parte
+	derecha del teclado para a tres.</P>
+	<LI><P>Registraciones.</P>
+	<LI><P>Funciones de edici&oacute;n para el nuevo formato de
+	estilo/patr&oacute;n.</P>
+</UL>
+<P>La principal novedad con respecto a gmorgan es la capacidad de
+importar y reproducir ficheros .STY, el viejo gmorgan usaba estilos
+creados en el propio programa, como si de un 'tracker' se tratara,
+una ardua tarea solo al alcance de personas con amplios conocimientos
+musicales, adem&aacute;s estaba limitado a siete pistas de
+acompa&ntilde;amiento por patr&oacute;n, es decir, crear un estilo
+con sus patrones correspondientes era casi misi&oacute;n imposible.</P>
+<P>Los ficheros .STY proporcionan estilos de hasta 22 patrones, hasta
+16 pistas en tiempo real, y aunque simult&aacute;neamente solo
+reproducen 8, es capaz de reproducir una u otras pistas dependiendo
+del acorde especificado. Es decir, un patr&oacute;n puede ser
+completamente diferente dependiendo si el acorde es mayor, menor ....
+Adem&aacute;s hay cientos de patrones libres en internet que con un
+solo 'click' del rat&oacute;n quedan listos para poder interpretar o
+crear secuencias con ellos.</P>
+<P>Para poder compatibilizar stygmorgan con las conocidas tarjetas
+que incorporan un sintetizador de 'Wave Table' incorporado se ha
+reducido el numero de pistas simultaneas que se reproducen a 7,
+incorporando las pistas de Percusi&oacute;n al canal de la Bater&iacute;a.</P>
+<P>Pero no es oro todo lo que reluce, algunos ficheros .STY vienen
+con los sonidos en otro est&aacute;ndar (XG), y normalmente cuando se
+importa alg&uacute;n estilo hecho con este est&aacute;ndar hay que
+editar algunos par&aacute;metros a&uacute;n as&iacute; no suele ser
+demasiado lo que hay que cambiar.</P>
+<P>Este software ha sido programado en un pIII 933 con una tarjeta de
+audio Creative Labs sblive (emu10k1) en un sistema operativo Linux
+debian (sid) con una versi&oacute;n del kernel 2.6.17, pero es m&aacute;s
+que probable que pueda funcionar en otros procesadores mucho menos
+potentes pues no requiere de mucha potencia de proceso. 
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<HR>
+<H2><A NAME="Requisitos_Texto"></A>Requisitos</H2>
+<P><BR><BR>
+</P>
+<UL>
+	<LI><P>Linux , este software no ser&aacute; portado a Win32
+	contrariamente a lo que se hizo con gmorgan, as&iacute; que lo
+	siento mucho por los usuarios de windows.</P>
+	<LI><P>ALSA, stygmorgan usa el secuenciador ALSA, as&iacute; que
+	debe de estar compilado en el kernel o activado como m&oacute;dulo. 
+	</P>
+	<LI><P>FLTK, Es la librer&iacute;a gr&aacute;fica usada por
+	stygmorgan, buena, bonita y barata.</P>
+	<LI><P>Un teclado MIDI, es indispensable para usar stygmorgan como
+	&oacute;rgano, no as&iacute; si se pretende usar solo el
+	secuenciador.</P>
+	<LI><P>Una tarjeta de sonido con sintetizador 'Wave Table'
+	incorporado o un sintetizador por software de esas caracter&iacute;sticas
+	o una fuente de sonido externa compatible General Midi. stygmorgan
+	es completamente configurable y puede usar cualquier fuente de
+	sonido aunque no sea General Midi pero para eso deber&iacute;a
+	editar todos los sonidos y patrones.</P>
+</UL>
+<HR>
+<H2><A NAME="ComoEmepzar_Texto"></A>Como Empezar</H2>
+<P>stygmorgan es distribuido con una serie de estilos y sonidos de
+ejemplo compatibles con General Midi, por lo tanto lo primero que se
+necesita es una fuente de sonido compatible con este est&aacute;ndar.</P>
+<P>Si usted es poseedor de una tarjeta de sonido que incorpore un
+sintetizador 'Wave Table', tendra que cargar un fichero de soundfont
+compatible General Midi previamente, en las tarjetas de audio emu10k1
+y compatibles esto se hace con el programa 'awesfx' &lt;c&gt;
+Takahasi Iwai disponible para la mayor&iacute;a de distribuciones y
+en su defecto lo puede conseguir en la web de ALSA:
+<A HREF="http://www.alsa-project.org/"><U><FONT COLOR="#000080">http://www.alsa-project.org</FONT></U></A></P>
+<P>El comando seria:</P>
+<P><SAMP>sfxload 'soundfont file'</SAMP></P>
+<P>En caso de no disponer de alguna de estas magnificas tarjetas
+usted deber&iacute;a de utilizar un sintetizador por software, en
+Linux disponemos de Fluidsynth y Timidity. Los comandos para arrancar
+estos sintetizadores serian:</P>
+<P>f<SAMP>luidsynth 'soundfont file'</SAMP></P>
+<P>En caso de preferir Timidity el comando seria:</P>
+<P><SAMP>timidity -j -iA -B2,8 -Os -Efreverb=0</SAMP></P>
+<P>En caso de no existir un fichero de configuraci&oacute;n de
+timidity llamado /etc/timidity.cfg usted deber&iacute;a de crearlo
+y/o a&ntilde;adir la siguiente linea.</P>
+<P><SAMP>soundfont 'soundfont file'</SAMP></P>
+<P>Obviamente en todos los casos anteriores 'soundfont file' hay que
+sustituirlo por la ruta/nombre de su soundfont favorito. Las malas
+noticias son que aunque compatibles con General Midi todos los
+soundfonts suenan algo diferentes, incluso el mismo soundfont suena
+diferente en los diferentes sintetizadores bien sean por hardware o
+software.</P>
+<P>Todos los estilos que se distribuyen con stygmorgan han sido
+mezclados usando el siguiente soundfont:</P>
+<P><A HREF="ftp://ftp.lysator.liu.se/pub/awe32/soundfonts/8RealGS20.zip"><U><FONT COLOR="#000080">ftp://ftp.lysator.liu.se/pub/awe/soundfonts/8RealGS20.zip</FONT></U></A></P>
+<P>Realmente es importante usar este soundfont si usted quiere que
+stygmorgan suene bien sin poner mucho esfuerzo por su parte, este
+soundfont es de s&oacute;lo 8 Mb de tama&ntilde;o y contiene cerca de
+200 sonidos diferentes con una mas que aceptable calidad.</P>
+<P>Una vez que usted dispone de la fuente de sonido, lo &uacute;nico
+que se necesita es ejecutar stygmorgan, el programa al ser ejecutado
+por primera vez crea el directorio $HOME/.stygmorgan y pone una copia
+de los datos que distribuye el paquete para que usted pueda trabajar
+sobre ellos.</P>
+<P>Una vez arrancado el software s&oacute;lo tiene que dirigirse al
+Men&uacute; Preferencias y seleccionar cual, de entre los
+dispositivos MIDI disponibles prefiere. Una vez completados estos
+pasos ya est&aacute; listo para funcionar.</P>
+<H4>Como mejorar el sonido?</H4>
+<P>Si usted dispone de una tarjeta de audio compatible con emu10k1
+entonces usted es un hombre feliz (me deber&iacute;an de pagar por
+escribir esto :-)), realmente el soundfont con el que han sido
+mezclados los estilos para s&oacute;lo tener 8Mb es desde mi punto de
+vista una peque&ntilde;a maravilla, pero obviamente milagros con 8Mb
+no se pueden hacer, y es bien cierto que en otros soundfonts General
+Midi o soundfonts espec&iacute;ficos de un instrumento en particular
+pueden tener o m&aacute;s calidad o, tal vez mejor expresado, ser m&aacute;s
+de su agrado, bien, pues gracias al amigo Takahashi Iwai y su paquete
+awesfx es posible cargar muchos soundfonts simult&aacute;neos en la
+tarjeta de audio, basta con especificar el numero de banco al que se
+desea que se dirijan, lo normal ser&iacute;a mantener el
+8RealGS20.sf2 como soundfont principal y a&ntilde;adir los otros a
+otros bancos de la forma siguiente:</P>
+<P><SAMP>asfxload 8RealGS20.sf2 ; asfxload -b3 'soundfontfile'</SAMP></P>
+<P>Una vez hecho esto dispondr&iacute;amos de los sonidos del segundo
+soundfont en el banco tres, para poder usarlos es sencillo, s&oacute;lo
+tiene que abrir la ventana de 'Mas Par&aacute;metros' del canal que
+desee, (el bot&oacute;n '+') en cada canal del mezclador de
+stygmorgan, y poner un '3' en el par&aacute;metro MSB para que ese
+sonido lo use del banco 3, obviamente tiene que asignar el numero de
+programa en el canal del mezclador y salvar el sonido u/o estilo que
+haya modificado si quiere que los cambios sean permanentes. Tiene que
+saber que hay cientos de soundfonts disponibles en internet de una
+gran calidad, por no hablar de los comerciales.</P>
+<P>Si hizo lo anteriormente citado, observar&aacute; que no le
+aparece el nombre del sonido, esto tiene facil soluci&oacute;n
+editando el fichero que encontrara en su $HOME/.stygmorgan llamado
+GMPresetlist.txt, el formato del fichero es Banco, Programa, Nombre
+de Sonido:</P>
+<P>0 61 Brass Section 
+</P>
+<P>Y esto se hace de forma sencilla usando la utilidad 'sf2text'
+incluida en el paquete awesfx del amigo Takahashi Iwai que lista el
+contenido de programas de un fichero soundfont a un fichero de texto,
+la cuesti&oacute;n es a&ntilde;adirlo a lo que ya hay, cosa que se
+puede hacer facilmente con cualquier editor de texto. 
+</P>
+<H4>Carga de Efectos para tarjetas de audio compatibles emu10k1</H4>
+<P>Si usted desea obtener con stygmorgan exactamente el mismo sonido
+que hay en las 'demos' necesitar&iacute;a usar un hardware similar a
+emu10k1 y usar el soundfont con el que han sido mezclados los estilos
+de ejemplo, pero aun as&iacute; necesitar&aacute; cargar los efectos
+(Reverb y Chorus) en su hardware, para ello se usa el paquete
+'ld10k1' &lt;c&gt; Peter Zubaj que suele estar disponible en todas
+las distribuciones, en su defecto lo puede conseguir en:</P>
+<P><A HREF="http://ld10k1.sf.net/"><U><FONT COLOR="#000080">http://ld10k1.sf.net</FONT></U></A></P>
+<P>Junto con stygmorgan se distribuye los efectos usados para la
+confecci&oacute;n de los estilos de ejemplo, desgraciadamente hay
+muchas tarjetas de audio con diferentes procesadores por lo cual hay
+que compilar los efectos suministrados para cada tarjeta, esto se
+hace con el programa 'as10k1' disponible en el paquete 'alsa-tools' o
+en su defecto en la web de ALSA anteriormente citada. El proceso
+seria copiar todos los ficheros '.asm' a un directorio y ejecutar
+para cada uno:</P>
+<P><SAMP>as10k1 'fichero.asm'</SAMP> 
+</P>
+<P>Esto generara los 'fichero.emu10k1' que son precisamente los que
+se cargan en la memoria de la tarjeta de audio. Una vez compilados el
+proceso ser&iacute;a ejecutar el servidor ld10k1:</P>
+<P><SAMP>ld10k1 -t8 &amp;</SAMP></P>
+<P>Una vez ejecutado el servidor hay que copiar el script
+'pontodocap' al directorio donde se encuentran los 'ficheros.emu10k1'
+y ejecutarlo. Si usted realiza esta operaci&oacute;n y luego ejecuta
+'alsamixer' observara que aparecen muchos nuevos controles en el
+mezclador y son precisamente los controladores de los par&aacute;metros
+de los efectos cargados.</P>
+<P>He observado que algunos mezcladores como kmix no aceptan bien que
+se a&ntilde;adan controladores al mezclador ALSA en caliente, si
+usted usa kde deber&iacute;a de cerrar 'kmix' antes de hacer esta
+operaci&oacute;n. Una vez completada puede volver a ejecutar 'kmix'
+sin problemas 
+</P>
+<P>Si usted desea tener permanentemente estos efectos puede
+automatizar esta operaci&oacute;n al iniciar el ordenador, pero esto
+ya depende mucho de su distribuci&oacute;n de Linux y no es caso de
+este documento. En todo caso debe de saber que aunque aparecen muchos
+nuevos controles, otros desaparecen, que los scripts que al apagar el
+ordenador guardan el estado del mezclador obviamente le guardaran
+todos los datos de los nuevos controladores pero que si no los carga
+al reiniciar le aparecer&aacute;n algunos errores en pantalla
+quej&aacute;ndose de la falta de ese controlador en el momento del
+inicio, ninguno de estos errores es preocupante, y en todo caso usted
+siempre puede reiniciar alsa en caliente con el comando:</P>
+<P><SAMP>/etc/init.d/alsa force-reload </SAMP>
+</P>
+<P><SAMP>A<EM>TENCION: Todo este proceso de carga de efectos es un
+poco delicado, si usted no es un usuario avanzado, lo mejor es que no
+lo intente, tiene que saber que todo este software est&aacute; en
+fase experimental, y que podr&iacute;a da&ntilde;arle los altavoces
+de su equipo reproductor de sonido. Adem&aacute;s hay muchas
+probabilidades de que los efectos suministrados no se ajusten
+exactamente a las capacidades de su tarjeta de audio, esto ha sido
+testeado con una sblive con el modulo emu10k1: 00:09.0 0401:
+1102:0002 (rev 0a) 00:09.1 0980: 1102:7002 (rev 0a).</EM> </SAMP>
+</P>
+<HR>
+<H2><A NAME="LieaComandos_Texto"></A>Opciones de la linea de comandos</H2>
+<P>Las Opciones de la linea de comandos se dividen en dos grupos
+principales, las propias del programa y las propias del interfaz
+gr&aacute;fico FLTK, estas ultimas son gen&eacute;ricas para todos
+los programas que usan esta librer&iacute;a y no es prop&oacute;sito
+de este documento detallarlas, puede encontrar toda la informaci&oacute;n
+necesaria al respecto en los paquetes de documentaci&oacute;n de FLTK
+que proporciona su distribuci&oacute;n de Linux.</P>
+<P>Cuando usted inicia stygmorgan autom&aacute;ticamente se cargan
+los ficheros de datos distribuidos por el paquete, Sonidos, Estilos,
+Registraciones, asi como los nombres de los programas y sonidos de
+percusi&oacute;n del est&aacute;ndar General Midi, si usted deseara
+cargar alg&uacute;n fichero diferente tiene que usar las opciones de
+programa de la linea de comandos, esto har&aacute; que se cargue el
+fichero que usted especifique y a su vez se guarde en la
+configuraci&oacute;n como predeterminado.</P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>stygmorgan 0.27 - Copyright (c)
+2006 Josep Andreu (Holborn)</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>Usage: rmgmorgan [OPTIONS]</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>Program Options:</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>----------------</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-h --help Display this
+command-help.</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-l &lt;File&gt;, --load &lt;File&gt;
+Read styles file.</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-d &lt;File&gt;, --sload &lt;File&gt;
+Read sounds file.</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-e &lt;File&gt;, --rload &lt;File&gt;
+Read registrations file.</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-p &lt;File&gt;, --ppreset
+&lt;File&gt; Load preset program names.</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-r &lt;File&gt;, --rpreset
+&lt;File&gt; Load preset drums note names.</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><BR><BR>
+</P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>FLTK Options:</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-------------</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-bg2 color</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-bg color</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-di[splay] host:n.n</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-dn[d]</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-fg color</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-g[eometry] WxH+X+Y</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-i[conic]</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-k[bd]</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-na[me] classname</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-nod[nd]</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-nok[bd]</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-not[ooltips]</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-s[cheme] scheme</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-ti[tle] windowtitle</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><SAMP>-to[oltips]</SAMP></P>
+<P STYLE="margin-bottom: 0.1cm"><BR><BR>
+</P>
+<HR>
+<H2><A NAME="Preferencias_Texto"></A>Men&uacute; Preferencias</H2>
+<P>La mayor&iacute;a de sus preferencias (Ficheros de datos, tama&ntilde;os
+y posiciones de pantalla ...) se guardan autom&aacute;ticamente al
+salir del programa en el directorio de cada usuario
+($HOME/.fltk/stygmorgan.berlios.de/stygmorgan.prefs). Este men&uacute;
+es precisamente para especificar algunas preferencias especiales.</P>
+<P>Si usted es un usuario avanzado de Linux y maneja programas de
+audio/MIDI sabr&aacute; que hay multitud de programas encargados de
+conectar sus dispositivos MIDI, aconnect, aconnectgui, qjackctl ...
+stygmorgan le ofrece la posibilidad de auto conectar los dispositivos
+MIDI al inicio para que usted no tenga que preocuparse de esos
+menesteres.</P>
+<H5><A NAME="AutoConnect_Texto"></A>Auto conectar los dispositivos
+MIDI al inicio del programa</H5>
+<P>Si usted marca esta opci&oacute;n se activaran las cajas de
+dialogo con los dispositivos MIDI disponibles, stygmorgan conectara
+al inicio del programa usando el programa 'aconnect' con los
+dispositivos que usted seleccione.</P>
+<H5><A NAME="Autoasfxload_Texto"></A>Usar asfxload para cargar un
+soundfont al inicio del programa</H5>
+<P>Esta opci&oacute;n es para usuarios con tarjetas de audio con
+sintetizador 'Wave Table' incorporado. Si usted marca esta opci&oacute;n
+se activara la caja de dialogo en donde puede escoger la ruta del
+soundfont que desea que stygmorgan cargue al inicio, use el bot&oacute;n
+'Explorar' para seleccionar el fichero deseado. stygmorgan usa
+asfxload para cargar el soundfont en su tarjeta de audio.</P>
+<H5><A NAME="DirTemporales_Texto"></A>Directorio para ficheros
+temporales</H5>
+<P>stygmorgan usa este directorio para crear algunos ficheros
+temporales, esta predeterminado que sea $HOME/.stygmorgan, s&oacute;lo
+deber&iacute;a de cambiarlo en caso de que usted tuviera alguna
+oscura raz&oacute;n para hacerlo. En ese caso use el bot&oacute;n
+'Explorar' para seleccionar el directorio que desee. 
+</P>
+<H5><A NAME="MantenerMute_Texto"></A>Mantener Mute cuando cambia el
+patr&oacute;n</H5>
+<P>Esta opci&oacute;n es para mantener o no el estado de
+'Encendido/Apagado' de los canales al cambiar de patr&oacute;n, si lo
+activa al cambiar de patr&oacute;n no se cambiara el estado de los
+canales, en caso contrario al cambiar de patr&oacute;n todos los
+canales se pondr&aacute;n en 'Encendido' 
+</P>
+<P><BR><BR>
+</P>
+<HR>
+<H2><A NAME="ConceptosBasicos_Texto"></A>Conceptos B&aacute;sicos</H2>
+<H4><A NAME="Estilos_texto"></A>Estilos</H4>
+<P>Los Estilos son la parte fundamental del programa, b&aacute;sicamente
+es un conjunto de patrones en un determinado estilo de ritmo,
+seleccionando un estilo podr&aacute; interpretar en el teclado
+musical la canci&oacute;n que desee con un acompa&ntilde;amiento
+autom&aacute;tico basado en ese estilo, una enriquecedora experiencia
+es interpretar la misma canci&oacute;n seleccionando estilos
+diferentes.</P>
+<P>Debido a que el numero de estilos que stygmorgan puede almacenar
+es pr&aacute;cticamente ilimitado y para facilitar la selecci&oacute;n
+de los mismos en pantalla se han clasificado en distintos tipos de
+ritmos musicales que se detallan a continuaci&oacute;n: 
+</P>
+<P>8 Beat, 16 Beat, Jazz, Swing, Salsa, Disco-Dance, March-Polka,
+Reggae, Country, World, Ballade, Waltz, Rock, Blues, Shuffle,
+Brasilian, Funk, Other.</P>
+<P>Seleccionando alguno de estos tipos stygmorgan s&oacute;lo
+mostrar&aacute; en pantalla los estilos pertenecientes a ese tipo,
+para facilitar la selecci&oacute;n.</P>
+<P>Cada estilo puede tener un m&aacute;ximo de 20 patrones, el n&uacute;mero
+de patrones que puede contener un fichero .STY es variable, los
+patrones se dividen en cuatro clases:</P>
+<P>Main, Fill In, Intro Ending</P>
+<P>Los patrones <STRONG>Main</STRONG>, son las distintas variaciones
+sobre el ritmo base del estilo, el numero de compases que puede tener
+cada patr&oacute;n es variable.</P>
+<P>Los patrones <STRONG>Fill In</STRONG><EM>, </EM>son los peque&ntilde;os
+'rellenos' que se interpretan para cambiar de variaci&oacute;n o
+volver al inicio del patr&oacute;n (redobles de bater&iacute;a ...),
+la duraci&oacute;n de estos patrones est&aacute; limitada a un
+comp&aacute;s. 
+</P>
+<P>Los patrones <STRONG>Intro</STRONG>, son peque&ntilde;as
+introducciones a la canci&oacute;n sobre el estilo preseleccionado
+&uacute;tiles para introducirse en el estilo. En ficheros .STY de
+calidad suelen haber tres, desde una introducci&oacute;n de bater&iacute;a
+sencilla hasta alguna mucho m&aacute;s orquestada.</P>
+<P>Los patrones <STRONG>Ending</STRONG><EM>,</EM> son para los
+finales de las canciones, de hecho stygmorgan se para al finalizar la
+interpretaci&oacute;n de un patr&oacute;n Ending, como en el caso de
+los patrones Intro, en los ficheros .STY de calidad suelen haber
+tres, desde un final sencillo a uno mucho mas complicado. 
+</P>
+<P>La selecci&oacute;n de los patrones se puede hacer desde el
+teclado MIDI, el cambio de programa numero uno en su teclado MIDI
+activa la selecci&oacute;n de cambio de sonido o de patr&oacute;n,
+as&iacute; pues una vez seleccionado el cambio de patr&oacute;n, a
+partir del cambio de programa dos, estar&aacute;n disponibles todos
+los patrones que el estilo disponga en el siguiente orden Main, Fill
+In, Intro , Ending y Fill In especiales. 
+</P>
+<P>Cada estilo viene con un tempo predeterminado, usted puede cambiar
+este tempo con cualquiera de los selectores de tempo en pantalla una
+vez seleccionado el estilo.</P>
+<P>Todos los par&aacute;metros, notas musicales de cada patr&oacute;n
+son modificables con los distintos editores que proporciona
+stygmorgan, as&iacute; que usted siempre podr&aacute; adecuar los
+estilos a sus preferencias.</P>
+<P>En el men&uacute; Archivo usted dispone de las opciones para
+borrar estilos o salvar los nuevos estilos importados, es importante
+que recuerde que cuando edita un estilo y acepta los cambios estos se
+guardan autom&aacute;ticamente. 
+</P>
+<P><BR><BR>
+</P>
+<H4><A NAME="Sonidos_Texto"></A>Sonidos</H4>
+<P>Es la parte que prefija lo que sonara al interpretar en su teclado
+MIDI, en cada sonido se almacena tanto el sonido de la parte
+izquierda como el de la derecha del teclado, para la parte izquierda
+usted puede combinar dos sonidos y para la derecha tres, ajustando
+los vol&uacute;menes, panor&aacute;micos, reverberaci&oacute;n etc.</P>
+<P>El numero de sonidos es tambi&eacute;n ilimitado as&iacute; que
+usted puede salvar cada sonido que cree. 
+</P>
+<P>La mejor manera es modificar el sonido hasta que este c&oacute;modo
+para la interpretaci&oacute;n y en ese momento escoger la opci&oacute;n
+del men&uacute; Archivo (Nuevo Sonido), stygmorgan le preguntara
+entonces que nombre le quiere asignar, una vez asignado el nombre
+salve el sonido con la opci&oacute;n del men&uacute; Archivo (Salvar
+Sonido) y ya tendr&aacute; ese nuevo sonido disponible para el
+futuro. 
+</P>
+<P><BR><BR>
+</P>
+<H4><A NAME="Registraciones_Texto"></A>Registraciones</H4>
+<P>Las registraciones almacenan los par&aacute;metros necesarios para
+poder interpretar r&aacute;pidamente diferentes canciones con s&oacute;lo
+un 'click' del rat&oacute;n, numero de estilo, numero de sonido,
+patr&oacute;n, tempo, transposici&oacute;n, etc.</P>
+<P>Cuando usted haya preparado el programa para interpretar alguna
+canci&oacute;n no olvide crear una nueva registraci&oacute;n en el
+men&uacute; Archivo y salvarla, de esta manera usted siempre la podr&aacute;
+recuperar de forma r&aacute;pida y no necesitar&aacute; volver a
+ajustar los par&aacute;metros.</P>
+<P>N&oacute;tese que las registraciones almacenan los vol&uacute;menes
+generales del sonido y del acompa&ntilde;amiento pero NO los cambios
+que usted pudiera hacer en el mezclador en la parte del sonido o del
+acompa&ntilde;amiento, si necesitar&aacute; hacer cambios deber&iacute;a
+de o bien crear un nuevo sonido o modificar el estilo dejando esos
+cambios guardados de forma permanente. 
+</P>
+<HR>
+<H2><A NAME="VPrincipal_Texto"></A>Ventana Principal</H2>
+<P><IMG SRC="MainWin.png" NAME="gr&aacute;ficos1" ALIGN=LEFT WIDTH=743 HEIGHT=556 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P><A NAME="MW(1)"></A><STRONG>(1) Selector de Sonido. </STRONG>Esta
+lista le permite seleccionar con el bot&oacute;n izquierdo del rat&oacute;n
+el sonido que desee en su teclado MIDI, el sonido engloba los sonidos
+de la a parte derecha e izquierda de su teclado MIDI, el indicador de
+sonido (<STRONG>19)</STRONG> le mostrar&aacute; el nombre del sonido
+seleccionado y ver&aacute; que el contenido del mezclador del Teclado
+Derecho e Izquierdo (<STRONG>20)</STRONG> y (<STRONG>21) </STRONG>se
+modifica con los par&aacute;metros del sonido seleccionado.</P>
+<P>Pulsando sobre un elemento de esta lista con el bot&oacute;n
+derecho del rat&oacute;n le permite renombrar el sonido seleccionado.</P>
+<P>Crear sonidos nuevos es sumamente sencillo, s&oacute;lo tiene que
+modificar los par&aacute;metros del mezclador hasta que el sonido se
+adec&uacute;e a sus necesidades, una vez conseguido, en el men&uacute;
+Archivo pulse la opci&oacute;n Nuevo Sonido, introduzca el nombre que
+desea para ese sonido y pulse la opci&oacute;n Salvar Sonido del men&uacute;
+Archivo.</P>
+<P>Si desea borrar sonidos no deseados seleccione el sonido y use la
+opci&oacute;n Borrar Sonido del men&uacute; Archivo.</P>
+<P><A NAME="MW(2)"></A><STRONG>(2) Selector de Estilo. </STRONG>Esta
+lista le permite seleccionar con el bot&oacute;n izquierdo del rat&oacute;n
+el estilo que desee. Cada estilo tiene un tempo prefijado, el
+indicador de tempo mostrar&aacute; el valor del tempo prefijado en el
+estilo, excepto cuando este cambio de estilo se hace con el
+acompa&ntilde;amiento en marcha, si usted selecciona un estilo
+estando el acompa&ntilde;amiento autom&aacute;tico funcionando
+stygmorgan respetara el tempo prefijado.</P>
+<P><A NAME="MW(3)"></A><STRONG>(3) Selector de Registraci&oacute;n.
+</STRONG>Esta liste le permite seleccionar con el bot&oacute;n
+izquierdo del rat&oacute;n la una disposici&oacute;n prefijada para
+iniciar la interpretaci&oacute;n, muy util para no tener que estar
+ajustando par&aacute;metros continuamente.</P>
+<P>Pulsando sobre un elemento de la lista con el bot&oacute;n derecho
+del rat&oacute;n le permite renombrar la registraci&oacute;n
+seleccionada. 
+</P>
+<P>Al igual que con los sonidos es crear nuevas registraciones es
+sumamente sencillo, una vez ajustados los par&aacute;metros, cuando
+el programa esta ya en disposici&oacute;n de comenzar la
+interpretaci&oacute;n, escoja en el men&uacute; Archivo la opci&oacute;n
+Nueva Registraci&oacute;n, introduzca el nombre apropiado y salve con
+la opci&oacute;n Salvar Registraci&oacute;n del men&uacute; Archivo,
+as&iacute; podr&aacute; recuperar la disposici&oacute;n del programa
+con un s&oacute;lo click.</P>
+<P>Si desea borrar alguna registraci&oacute;n puede hacerlo en el
+men&uacute; Archivo en la opci&oacute;n Borrar Registraci&oacute;n.</P>
+<P>Note que la registraci&oacute;n almacena el n&uacute;mero de
+sonido as&iacute; como el n&uacute;mero de estilo, si usted borra
+sonidos o estilos el contenido de las registraciones puede verse
+alterado.</P>
+<P><A NAME="MW(4)"></A><STRONG>(4) Selector de Tipo de Estilo. </STRONG>Este
+men&uacute; desplegable le muestra la lista de tipos de estilo,
+seleccionando 'Todos' se muestran todos, pero si usted selecciona un
+tipo determinado en la lista de selecci&oacute;n de estilos s&oacute;lo
+le aparecer&aacute;n los que concuerden con el tipo seleccionado. 
+</P>
+<P><A NAME="MW(5)"></A><STRONG>(5) Indicador de Dispositivos MIDI.
+</STRONG>Estos indicadores le muestran a que dispositivos MIDI esta
+conectado stygmorgan en caso de haber activado la auto conexi&oacute;n
+de dispositivos en la ventana de Preferencias.</P>
+<P><A NAME="MW(6)"></A><STRONG>(6) Indicador de Entrada MIDI. </STRONG>Este
+indicador se ilumina al llegar datos MIDI provenientes del Teclado
+MIDI, el indicador mide el 'Velocity sensitivity' de la &uacute;ltima
+nota interpretada, y es s&oacute;lo a modo de orientaci&oacute;n.</P>
+<P><A NAME="MW(7)"></A><STRONG>(7) Selector de Tipo de Acorde. </STRONG>Estos
+dos botones le permiten seleccionar de que stygmorgan reconocer&aacute;
+los acordes que usted interprete en la parte izquierda del teclado.
+Las opciones son:</P>
+<P><STRONG>Fingered Chord: </STRONG>stygmorgan reconocer&aacute; el
+acorde e interpretara el bajo en la nota fundamental del acorde sea
+cual sea la inversi&oacute;n del acorde que usted interprete en el
+teclado MIDI.</P>
+<P><STRONG>Fingered Bass: </STRONG>stygmorgan reconocer&aacute; el
+acorde e interpretar&aacute; el bajo en la nota mas grave de la
+inversi&oacute;n del acorde que usted interprete en el teclado MIDI.</P>
+<P>Los acordes reconocidos son:</P>
+<P>Maj 6 Maj7 lyd Maj(9) Maj7(9) 6/9</P>
+<P>m m6 m7 m7(b5) m9 m7(9) m7(11) m(Maj7) m/(Maj7)(9)</P>
+<P>dim dim7</P>
+<P>7 7(Sus4) 7(b5) 7(9) 7(#11) 7(13) 7(b9) 7(b13) 7(#9)</P>
+<P>+ +Maj7 +7 (Sus4) 2</P>
+<P>En todas su inversiones principales y alguna m&aacute;s :)</P>
+<P>En el modo Fingered Bass la posibilidades son casi ilimitadas.</P>
+<P><A NAME="MW(8)"></A><STRONG>(8) Transpositor. </STRONG>Si usted no
+es un gran int&eacute;rprete el transpositor le permite cambiar el
+tono del sonido generado. 
+</P>
+<P><A NAME="MW(9)"></A><STRONG>(9) Punto de divisi&oacute;n del
+Teclado. </STRONG>Aqu&iacute; selecciona el punto de divisi&oacute;n
+entre el teclado izquierdo y el derecho, es decir entre la zona para
+interpretar los acordes y la zona para interpretar las melod&iacute;as.
+El punto ideal depender&aacute; de la extensi&oacute;n en octavas de
+su teclado MIDI.</P>
+<P><A NAME="MW(10)"></A><STRONG>(10) Indicador de Comp&aacute;s. </STRONG>Este
+indicador le indica el comp&aacute;s del patr&oacute;n seleccionado,
+la longitud en compases de los patrones es variable seg&uacute;n los
+estilos, este indicador es &uacute;til para saber en que momento hay
+que pulsar los botones de cambio de patr&oacute;n, por ejemplo en el
+caso de querer intercalar un 'Fill-In'.</P>
+<P><A NAME="MW(11)"></A><STRONG>(11) Inicio Sincronizado. </STRONG>Si
+usted activa este bot&oacute;n el acompa&ntilde;amiento comenzar&aacute;
+en el momento en el que stygmorgan reconozca un acorde, esto es &uacute;til
+por ejemplo para poder interpretar temas cuya melod&iacute;a comienza
+en anacrusa.</P>
+<P><A NAME="MW(12)"></A><STRONG>(12) Indicador de negra. </STRONG>Indica
+en que negra del comp&aacute;s est&aacute; el acompa&ntilde;amiento,
+obviamente dependiendo del numerador del comp&aacute;s,
+desgraciadamente para compases de amalgama 5/4 por ejemplo u otros de
+mayor complicaci&oacute;n no est&aacute; preparado. En compases de
+pulso ternario 12/8, 6/8 se toma como 'negra' el tresillo de corchea.</P>
+<P><A NAME="MW(13)"></A><STRONG>(13) Controladores de Tempo. </STRONG>Estos
+controladores le permiten ajustar el tempo (La velocidad de la
+m&uacute;sica), existen dos para poder efectuar ajustes gordos y
+finos r&aacute;pidamente.</P>
+<P><A NAME="MW(14)"></A><STRONG>(14) Bot&oacute;n de Inicio/Parada.
+</STRONG>Este bot&oacute;n arranca/para el acompa&ntilde;amiento
+autom&aacute;tico.</P>
+<P><A NAME="MW(15)"></A><STRONG>(15) Indicador de Acorde. </STRONG>Este
+panel indica el acorde que stygmorgan ha reconocido.</P>
+<P><A NAME="MW(16)"></A><STRONG>(16) Indicador de Patr&oacute;n. </STRONG>Este
+panel le indica el patr&oacute;n seleccionado.</P>
+<P><A NAME="MW(17)"></A><STRONG>(17) Mezclador de Estilo. </STRONG>Canales
+del mezclador pertenecientes al acompa&ntilde;amiento autom&aacute;tico.</P>
+<P><A NAME="MW(18)"></A><STRONG>(18) Selector de Patr&oacute;n.</STRONG>
+Estos botones le permiten seleccionar los diferentes patrones que
+contiene un estilo predeterminado, los patrones Main son mandatorios,
+s&oacute;lo se puede seleccionar uno y siempre en el momento de la
+interpretaci&oacute;n deber&iacute;a de haber uno seleccionado
+excepto en el momento que se selecciona uno del tipo Ending, sin
+embargo si selecciona un patr&oacute;n del tipo Intro, stygmorgan le
+permite seleccionar el siguiente patr&oacute;n que se reproducir&aacute;
+al finalizar el patr&oacute;n Intro. 
+</P>
+<P>stygmorgan siempre interpreta los patrones completos, si usted
+selecciona uno desde el momento que este empieza se interpretara
+completo, excepto cuando usted selecciona un patr&oacute;n del tipo
+Fill-In, estos patrones se intercalan en el &uacute;ltimo compas del
+patr&oacute;n seleccionado, es decir si un patr&oacute;n tiene cuatro
+compases y usted selecciona un patr&oacute;n del tipo Fill-In en el
+comp&aacute;s dos, stygmorgan lo reproducir&aacute; en el momento que
+llegue al cuarto comp&aacute;s del patr&oacute;n actual.</P>
+<P>Normalmente los teclados comerciales no disponen de la posibilidad
+de seleccionar los patrones del tipo Fill-In, los suelen interpretar
+de forma autom&aacute;tica si usted da las instrucciones pertinentes
+al aparato, en stygmorgan esto no es as&iacute; eso hace que a veces
+la selecci&oacute;n de patrones requiera de alg&uacute;n click de m&aacute;s
+de encendido y apagado, no obstante le otorga algunas posibilidades
+mas que las que tiene en un teclado convencional. Existe la
+posibilidad de emula el comportamiento de un teclado comercial con el
+bot&oacute;n <STRONG>(23) </STRONG>Auto Fill In, este lo que hace es
+intercalar el Fill-In autom&aacute;ticamente cuando usted cambia de
+de un patr&oacute;n del tipo Main a otro de ese mismo tipo.</P>
+<P><A NAME="MW(19)"></A><STRONG>(19) Indicador de Estilo. </STRONG>Es
+el panel que le indica que estilo est&aacute; seleccionado.</P>
+<P><A NAME="MW(20)"></A><STRONG>(20) Indicador de Sonido. </STRONG>Es
+el panel que le indica que sonido est&aacute; seleccionado.</P>
+<P><A NAME="MW(21)"></A><STRONG>(21) Mezclador Teclado Izquierdo. </STRONG>Son
+los dos canales del mezclador que controlan los sonidos asignados a
+la parte izquierda del teclado MIDI.</P>
+<P><A NAME="MW(22)"></A><STRONG>(22) Mezclador Teclado Derecho. </STRONG>Son
+los tres canales del mezclador que controlan los sonidos asignados a
+la parte derecha del teclado MIDI.</P>
+<P><A NAME="MW(23)"></A><STRONG>(23) Indicador Auto-Fill In.
+</STRONG>Activando este bot&oacute;n stygmorgan intercalara un patr&oacute;n
+de Fill-In cada vez que usted cambie de un patr&oacute;n de tipo Main
+a otro de ese mismo tipo.</P>
+<P><A NAME="MW(24)"></A><STRONG>(24) Selector de Cambio. </STRONG>Selecciona
+como se comportar&aacute; stygmorgan cuando recibe un mensaje MIDI de
+cambio de programa, las opciones son Patrones o Sonidos, esta opci&oacute;n
+se controla desde este controlador o bien con el mensaje MIDI de
+cambio de programa numero uno. Una vez seleccionado el comportamiento
+es diferente para cada caso, en el caso de seleccionar la opci&oacute;n
+de Sonido stygmorgan cambiar&aacute; de sonido al recibir un mensaje
+MIDI de cambio de programa (siempre superior a uno), de manera que el
+cambio de programa dos corresponder&aacute; al primer sonido de la
+lista de sonidos y as&iacute; sucesivamente. Si por el contrario
+usted lo sit&uacute;a en la opci&oacute;n de patrones al recibir un
+mensaje MIDI de cambio de programa (siempre superior a uno)
+stygmorgan cambiar&aacute; de patr&oacute;n, el mensaje MIDI de
+programa numero dos siempre coincide con el patr&oacute;n Main A. La
+asignaci&oacute;n completa se detalla es: 
+</P>
+<P>Programa 2 Main A</P>
+<P>Programa 3 Main B</P>
+<P>Programa 4 Main C</P>
+<P>Programa 5 Main D</P>
+<P>Programa 6 Fill In AA</P>
+<P>Programa 7 Fill In BB</P>
+<P>Programa 8 Fill In CC</P>
+<P>Programa 9 Fill In DD 
+</P>
+<P>Programa 10 Intro A</P>
+<P>Programa 11 Intro B</P>
+<P>Programa 12 Intro C</P>
+<P>Programa 13 Ending A</P>
+<P>Programa 14 Ending B</P>
+<P>Programa 15 Ending C</P>
+<P>Programa 16 Fill-In AB</P>
+<P>Programa 17 Fill-In BA</P>
+<P><A NAME="MW(25)"></A><STRONG>(25) Volumen de Sonido. </STRONG>Este
+potenci&oacute;metro deslizante controla el volumen de todo el
+sonido, tanto la parte izquierda del teclado como la derecha, es
+decir la de los cinco canales que corresponden al sonido. El motivo
+es poder balancear los vol&uacute;menes generales con respecto a los
+del acompa&ntilde;amiento. Recuerde que las registraciones almacenan
+estos valores. 
+</P>
+<P><A NAME="MW(26)"></A><STRONG>(26) Volumen de Estilo. </STRONG>Este
+potenci&oacute;metro deslizante controla el volumen de todo el
+acompa&ntilde;amiento autom&aacute;tico del estilo, el motivo es
+poder ajustar el volumen general del acompa&ntilde;amiento pues cada
+estilo puede estar grabado con diferente intensidad de volumen. 
+</P>
+<HR>
+<H2><A NAME="Mezclador_Texto"></A>Mezclador</H2>
+<OL>
+	<P><IMG SRC="MezWin.png" NAME="gr&aacute;ficos2" ALIGN=LEFT WIDTH=329 HEIGHT=583 BORDER=0><BR CLEAR=LEFT></P>
+</OL>
+<P><A NAME="MZ(1)"></A><STRONG>(1) Nombre de la Pista.</STRONG></P>
+<P><A NAME="MZ(2)"></A><STRONG>(2) Selector de Encendido/Apagado.
+</STRONG>Tambi&eacute;n llamado 'Mute' en alguna parte de este
+documento, controla si se reproduce esta pista o no, al cambiar de
+patr&oacute;n todos estos selectores pasan a la posici&oacute;n de
+Encendido a menos que usted especifique lo contrario en la ventana de
+Preferencias.</P>
+<P><A NAME="MZ(3)"></A><STRONG>(3) Selector de Solo. </STRONG>Activando
+este bot&oacute;n se reproducir&aacute; s&oacute;lo el contenido de
+esta pista, apag&aacute;ndose el resto, desactivando la opci&oacute;n
+el resto de pistas volver&aacute;n a su estado anterior. 
+</P>
+<P><A NAME="MZ(4)"></A><STRONG>(4) M&aacute;s Par&aacute;metros.
+</STRONG>Pulsando este bot&oacute;n aparece una ventana con mas
+controladores para la pista. V&eacute;ase m&aacute;s adelante en este
+documento.</P>
+<P><A NAME="MZ(5)"></A><STRONG>(5) Controlador de Panor&aacute;mico.
+</STRONG>Este controlador desplaza a derecha e izquierda de sus
+altavoces el sonido de la pista, esto se consigue trav&eacute;s de un
+mensaje de control MIDI que es enviado a su sintetizador (fuente de
+sonido) que haya seleccionado.</P>
+<P><A NAME="MZ(6)"></A><STRONG>(6) Controlador de Reverberaci&oacute;n.
+</STRONG>Este controlador maneja la cantidad de volumen de esta pista
+que ser&aacute; enviado al efecto de Reverberaci&oacute;n de su
+sintetizador (fuente de sonido) igual que en la caso del panor&aacute;mico
+se hace enviando un mensaje de control MIDI, observe los
+sintetizadores por software Timidty y Fluidsynth incorporan estos
+efectos, tendr&aacute; que activarlos en la configuraci&oacute;n del
+programa, en el caso de las famosas tarjetas de audio que incorporan
+un sintetizador 'Wave Table' el hecho de incorporar estos efectos no
+es una tarea trivial, una peque&ntilde;a guia de como proceder esta
+explicada en el capitulo <A HREF="#ComoEmepzar_Texto">Como Empezar.</A>
+</P>
+<P><A NAME="MZ(7)"></A>(<STRONG>7) Controlador de Chorus. </STRONG>Este
+controlador maneja la cantidad de volumen de esta pista que ser&aacute;
+enviado al efecto de Chorus de su sintetizador (fuente de sonido)
+igual que en la caso del panor&aacute;mico se hace enviando un
+mensaje de control MIDI, observe los sintetizadores por software
+Timidty y Fluidsynth incorporan estos efectos, tendr&aacute; que
+activarlos en la configuraci&oacute;n del programa, en el caso de las
+famosas tarjetas de audio que incorporan un sintetizador 'Wave Table'
+el hecho de incorporar estos efectos no es una tarea trivial, una
+peque&ntilde;a gu&iacute;a de como proceder esta explicada en el
+capitulo Como Empezar. 
+</P>
+<P><A NAME="MZ(8)"></A><STRONG>(8) Indicador de Velocity. </STRONG>Este
+indicador le muestra el nivel m&aacute;ximo de velocity sensitivity
+en cada subdivisi&oacute;n de semi-corchea del comp&aacute;s,
+recuerde que el velocity sensitivity no es el volumen, en realidad
+est&aacute; simplemente para indicarle si hay actividad en la pista o
+no. 
+</P>
+<P><A NAME="MZ(9)"></A><STRONG>(9) Control de Volumen. </STRONG>Este
+potenci&oacute;metro deslizante controla el volumen de la pista
+especifica a trav&eacute;s como en casos anteriores de un mensaje de
+control MIDI que es enviado a su sintetizador (fuente de sonido).</P>
+<P><A NAME="MZ(10)"></A><STRONG>(10) Indicador de Programa. </STRONG>Muestra
+el nombre del programa (instrumento) seleccionado para esta pista.
+Estos nombre se obtienen de un fichero con los nombres de programas
+General Midi que carga stygmorgan al inicio, si usted quiere usar
+otro tipo de bancos de sonidos extras deber&aacute; de editar este
+fichero de nombres, como se indica en el cap&iacute;tulo <A HREF="#ComoEmepzar_Texto">Como
+Empezar.</A></P>
+<P><A NAME="MZ(11)"></A><STRONG>(11) Selector de Programa. </STRONG>Este
+selector le permite escoger el timbre del instrumento que desea para
+esta pista, el selector tiene avance r&aacute;pido y lento para poder
+ajustar r&aacute;pidamente el numero de programa.</P>
+<HR>
+<H2><A NAME="MasParametors_Texto"></A>M&aacute;s Par&aacute;metros</H2>
+<P><IMG SRC="MoreWin.png" NAME="gr&aacute;ficos3" ALIGN=LEFT WIDTH=292 HEIGHT=300 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P><A NAME="MP(1)"></A><STRONG>(1) Selector de Octava.</STRONG> Le
+permite variar la octava (altura de la nota) en que sonar&aacute; los
+sonidos asignados a la pista en cuesti&oacute;n. Util a la hora de
+importar estilos pues alg&uacute;n sonido pudiera no coincidir en su
+octava. 
+</P>
+<P><A NAME="MP(2)"></A><STRONG>(2) Selector de Transposici&oacute;n.
+</STRONG>Le permite varia la nota dentro del rango de una octava, me
+temo que esta parte &uacute;til, lo que se dice &uacute;til no es.
+:-)</P>
+<P><A NAME="MP(3)"></A><STRONG>(3) Selector de Banco (M).</STRONG> En
+caso de tener varios soundfonts cargados es aqu&iacute; donde puede
+escoger el Banco al que corresponde el programa que seleccionado, la
+(M) es (Most Significant Byte), lo que le interesa saber es que con
+este control podr&aacute; escoger entre los 127 primeros bancos.</P>
+<P><A NAME="MP(4)"></A><STRONG>(4) Selector de Banco (L). </STRONG>En
+caso de tener varios soundfonts cargados es aqu&iacute; donde puede
+escoger el Banco al que corresponde el programa que seleccionado, la
+(L) es (Less Significant Byte), lo que le interesa saber es que con
+este control se selecciona el banco del valor que asigne multiplicado
+por 127 mas el valor del Selector de Banco (M) es decir para
+conseguir el Banco 128 que es donde se encuentran los sonidos de
+Bater&iacute;a, deber&iacute;a de poner el valor de este control a 1
+y el de el Selector de Banco (M) a 1 tambi&eacute;n: (127*1) +1 = 128
+que es el banco de los sonidos de bater&iacute;a en un soundfont
+General Midi. Desgraciadamente no todos los sintetizadores son
+capaces de interpretar los sonidos de bater&iacute;a en un canal MIDI
+distinto del 10 que es el asignado a la pista Bater&iacute;a en
+stygmorgan. 
+</P>
+<H2><A NAME="OpcionesMenu_Texto"></A>Opciones del men&uacute;</H2>
+<H4 STYLE="margin-top: 0.12cm; margin-bottom: 0.2cm; text-decoration: none"><A NAME="OM_MenuArchivo"></A>
+Men&uacute; Archivo</H4>
+<HR>
+<H4 STYLE="margin-top: 0.1cm; margin-bottom: 0.2cm"><A NAME="OM_Sonidos_Texto"></A>
+<EM><U>Sonidos</U></EM></H4>
+<P><STRONG>Nuevo Sonido</STRONG>. Crea un sonido nuevo en memoria,
+este no se incluye en la lista de sonidos hasta que usted use la
+opci&oacute;n Salvar Sonido. 
+</P>
+<P><STRONG>Leer Sonidos. </STRONG>Le permite escoger un fichero nuevo
+de sonidos, la lista de sonidos sera reemplazada por el contenido del
+fichero seleccionado, as&iacute; mismo ese fichero se guardar&aacute;
+en las preferencias como predeterminado. Es decir ser&aacute; el
+fichero de sonidos que stygmorgan cargue al iniciar el programa.</P>
+<P><STRONG>Salvar Sonido.</STRONG> Esta opci&oacute;n es para guardar
+los cambios que usted pudiera hacer en un sonido ya existente,
+guardar&aacute; el sonido seleccionado en la lista de sonidos. En
+caso de haber creado un Sonido con la opci&oacute;n del men&uacute;
+antes mencionada agregar&aacute; el nuevo sonido a la lista de
+sonidos.</P>
+<P><STRONG>Borrar Sonido. </STRONG>Borra el sonido seleccionado en la
+lista de sonidos. Atenci&oacute;n, recuerde que las registraciones
+s&oacute;lo almacenan el n&uacute;mero de sonido, si usted borra
+sonidos previos podr&iacute;a afectar al contenido de la
+registraci&oacute;n.</P>
+<H4><A NAME="OM_Estilos_Texto"></A><EM><U>Estilos</U></EM></H4>
+<P><STRONG>Leer Estilos. </STRONG>Le permite escoger un fichero nuevo
+de estilos, la lista de estilos ser&aacute; reemplazada por el
+contenido del fichero seleccionado, as&iacute; mismo ese fichero se
+guardar&aacute; en las preferencias como el fichero de estilos
+predeterminado, es decir ser&aacute; el fichero de estilos que
+stygmorgan cargue al iniciar el programa.</P>
+<P><STRONG>Salvar Estilo. </STRONG>Salva un nuevo estilo importado
+con la opci&oacute;n importar estilos. Los editores de estilo guardan
+autom&aacute;ticamente las modificaciones que usted pudiera realizar,
+de hecho usted s&oacute;lo deber&iacute;a de usar esta opci&oacute;n
+si importa un estilo y no realiza ninguna modificaci&oacute;n en &eacute;l,
+pues en caso de efectuar alguna stygmorgan se encargar&iacute;a de
+salvarlo autom&aacute;ticamente.</P>
+<P><STRONG>Borrar Estilo.</STRONG> Borra el estilo seleccionado en la
+lista de estilos. Atenci&oacute;n recuerde que las registraciones
+s&oacute;lo almacenan el n&uacute;mero del estilo, si usted borra
+estilos previos estas se ver&iacute;an afectadas</P>
+<P><STRONG>Importar Estilos. </STRONG>Esta opci&oacute;n le permite
+a&ntilde;adir nuevos estilos, stygmorgan le permite escoger un
+fichero nuevo de estilo, los formatos de fichero que reconoce
+stygmorgan en el momento de confeccionar esta documentaci&oacute;n
+son:</P>
+<P>.STY .PRS .MID</P>
+<P>Seleccione el tipo que desee importar en la ventana de selecci&oacute;n
+de fichero. El formato .PRS es similar al fichero .STY, de hecho las
+diferencias son ignoradas por stygmorgan. 
+</P>
+<P>Si desea importar un fichero .MID tiene que saber que debe de
+tener un formato especial, que si no lo tuviere las consecuencias
+pueden ser impredecibles, de hecho stygmorgan no reconocer&iacute;a
+diferentes patrones dentro del fichero y tomar&iacute;a todo el
+fichero como un estilo de un s&oacute;lo patr&oacute;n. Tiene un
+ejemplo de un fichero .MID listo para ser importado en el directorio
+de la documentaci&oacute;n del programa. (50pop.mid). Los requisitos
+necesarios son sencillos, s&oacute;lo tiene que observar tres cosas,
+lo primero es poner marcadores con su programa de secuenciador
+favorito indicando donde empieza cada patr&oacute;n, lo segundo es
+que el nombre del marcador debe de coincidir con los nombres de los
+patrones que usa stygmorgan, es decir Main A Main B Intro A Intro C
+etc, y el tercero es que el primer patr&oacute;n, el del primer
+comp&aacute;s y de duraci&oacute;n de un comp&aacute;s deber&iacute;a
+de llamarse 'SInt', en este patr&oacute;n usted podr&iacute;a poner
+los datos de programas y controles MIDI aunque esto &uacute;ltimo no
+es estrictamente necesario. Observe el fichero de ejemplo 50pop.mid
+para mas detalles. 
+</P>
+<P>Si usted pretende importar estilos le recomiendo que lea el
+capitulo de consideraciones sobre importar estilos de este documento.</P>
+<H4><A NAME="OM_Registraciones_Texto"></A><EM><U>Registraciones</U></EM></H4>
+<P><STRONG>Nueva Registraci&oacute;n. </STRONG>Crea una registraci&oacute;n
+nueva en memoria, esta no se incluye en la lista de registraciones,
+si desea guardarla use la opci&oacute;n Salvar Registraci&oacute;n.</P>
+<P><STRONG>Leer Registraciones.</STRONG> Le permite escoger un
+fichero nuevo de registraciones, la lista de registraciones ser&aacute;
+reemplazada por el contenido del fichero seleccionado, as&iacute;
+mismo ese fichero se guardar&aacute; en las preferencias como
+predeterminado. Es decir ser&aacute; el fichero de registraciones que
+stygmorgan cargue al iniciar el programa.</P>
+<P><STRONG>Salvar Registraci&oacute;n.</STRONG> Esta opci&oacute;n es
+para guardar los cambios que usted pudiera efectuar en una
+registraci&oacute;n ya existente, guardar&aacute; la registraci&oacute;n
+seleccionada en la lista de registraciones. En caso de haber creado
+una nueva registracion con la opci&oacute;n del men&uacute; antes
+mencionada agregar&aacute; la nueva registraci&oacute;n a la lista de
+registraciones.</P>
+<P><STRONG>Borrar Registraci&oacute;n.</STRONG> Borra la registraci&oacute;n
+seleccionada en la lista de registraciones.</P>
+<H4><A NAME="OM_FicherosNombre_Texto"></A><EM><U>Ficheros de Nombres</U></EM></H4>
+<P><STRONG>Cargar Nombres de Instrumento.</STRONG> Si usted desea
+usar stygmorgan con una fuente de sonido que no sea compatible
+General Midi, o quiere a&ntilde;adir nuevos sonidos en nuevos bancos,
+deber&iacute;a de editar el fichero de nombres de instrumento como ya
+se explic&oacute; en la secci&oacute;n 'Como mejorar el sonido' del
+capitulo <A HREF="#ComoEmepzar_Texto">Como Empezar</A>. Esta opci&oacute;n
+del men&uacute; le permite seleccionar el fichero de nombres de
+instrumento que usar&aacute; stygmorgan, as&iacute; mismo guardar&aacute;
+en las preferencias como predeterminado el fichero que usted
+seleccione y cargue con esta opci&oacute;n del men&uacute;.</P>
+<P><STRONG>Cargar Nombres de instrumentos de Bater&iacute;a.
+</STRONG>stygmorgan s&oacute;lo usa el fichero de nombres de
+instrumentos de bater&iacute;a en la edici&oacute;n de eventos de
+patrones, si usted desea usar stygmorgan con una fuente de sonido no
+compatible General Midi deber&iacute;a de editar este fichero si
+desea que stygmorgan le muestre los nombres de los instrumentos en el
+editor de eventos, as&iacute; mismo guardar&aacute; en las
+preferencias como predeterminado el fichero que usted seleccione y
+cargue con esta opci&oacute;n del men&uacute;. 
+</P>
+<HR>
+<H4><A NAME="MenuEditar_Texto"></A>Men&uacute; Editar</H4>
+<H4><A NAME="EditordeEventos_Texto"></A><U>Editor de Eventos</U></H4>
+<P>El editor de eventos le permite modificar, borrar o insertar
+nuevos eventos en el patr&oacute;n seleccionado. El formato en el que
+stygmorgan almacena los estilos permite que un patr&oacute;n tenga 16
+pistas (Instrumentos) diferentes aunque simult&aacute;neamente se
+reproducen solo siete, pero usted puede hacer que se reproduzcan unas
+u otras pistas dependiendo del acorde seleccionado, por este motivo
+cada pista tiene un canal de MIDI de origen y uno de destino.</P>
+<P>Este editor siempre trabaja con el canal de MIDI de origen, cuando
+seleccionamos un patr&oacute;n y escogemos editarlo con este editor
+tiene que entender que todas las pistas disponibles pasan a poder ser
+editadas, en el editor de patrones podr&aacute; averiguar que canal
+MIDI de destino tiene cada canal MIDI de origen.</P>
+<P><IMG SRC="EvWin.png" NAME="gr&aacute;ficos5" ALIGN=LEFT WIDTH=751 HEIGHT=537 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P><STRONG>Secci&oacute;n Display</STRONG></P>
+<P>La secci&oacute;n Display nos permite seleccionar que eventos se
+mostraran en pantalla, hay dos selectores, el men&uacute; desplegable
+que selecciona el canal de MIDI, y los selectores de tipo de evento.</P>
+<P>El selector de canal de MIDI ofrece la posibilidad de mostrar o
+bien un canal individual, o todos, o los canales de Bater&iacute;a,
+recuerde que para poder compatibilizar el programa con las tarjetas
+de sonido emu10k1 se agregan los canales de percusi&oacute;n a la
+bater&iacute;a en el canal MIDI de salida. Recuerde que los canales
+mostrados son los canales de origen, en este caso las pistas de
+percusi&oacute;n que normalmente est&aacute;n en el canal de origen 9
+al reproducirse son a&ntilde;adidas al canal de destino 10, pues bien
+en ese supuesto caso si selecciona en el men&uacute; la opci&oacute;n
+'Drums' se mostrar&iacute;an los eventos de los canales 9 y 10.</P>
+<P>Seleccionando un canal la lista de eventos mostrar&aacute; todos
+los eventos del canal a menos que usemos los selectores de tipo de
+eventos a mostrar. Estos son Nota, Control, Cambio de Programa, Pitch
+Bend.</P>
+<P><STRONG>Secci&oacute;n Select</STRONG></P>
+<P>La secci&oacute;n de selecci&oacute;n nos da la posibilidad de o
+bien seleccionar un evento individual o marcando la opci&oacute;n
+'All Equal Events' seleccionar todos los eventos similares al
+seleccionado. 
+</P>
+<P>El bot&oacute;n 'Borrar' borra todos los eventos seleccionados.</P>
+<P>Una vez seleccionados los eventos deseados pulse el bot&oacute;n
+Edit para abrir la ventana de edici&oacute;n. Si desea editar un
+evento de forma individual puede abrir esta ventana tambi&eacute;n
+pulsando en la lista de eventos con el bot&oacute;n derecho del rat&oacute;n
+sobre el evento deseado. 
+</P>
+<P><IMG SRC="editevent1.png" NAME="gr&aacute;ficos7" ALIGN=LEFT HSPACE=16 WIDTH=348 HEIGHT=323 BORDER=0><IMG SRC="editevent.png" NAME="gr&aacute;ficos6" ALIGN=LEFT WIDTH=348 HEIGHT=323 BORDER=0><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P>Esta ventana tiene diferentes par&aacute;metros para cada tipo de
+evento, si no son familiares para usted le recomiendo que lea alg&uacute;n
+manual sobre el protocolo MIDI. Dependiendo de si usted edita un
+evento de forma individual o si edita m&uacute;ltiples eventos
+seleccionados los par&aacute;metros de esta ventana cambiaran. En el
+ejemplo, la primera ventana edita un evento de forma individual, aqu&iacute;
+si podr&aacute; editar la posici&oacute;n que ocupa el evento en el
+patr&oacute;n. La leyenda superior le indica la resoluci&oacute;n con
+la que est&aacute; creado el patr&oacute;n. En la segunda ventana de
+ejemplo se editan m&uacute;ltiples patrones seleccionados, en el tipo
+de evento del ejemplo modificando la nota, se modificaran las notas
+de todos los eventos seleccionados, observe las dos casillas llamadas
+'preserve', observar&aacute; que solo aparecen al editar m&uacute;ltiples
+eventos, su funci&oacute;n en caso de activarlos es preservar el
+velocity y la duraci&oacute;n original de cada evento a&uacute;n
+cuando se modifique la nota, si no se activaran se copiar&iacute;a
+para cada evento el velocity y la duraci&oacute;n del evento
+original. Obviamente esto tiene varias combinaciones posibles para
+permitirle editar cada par&aacute;metro preservando o no los dem&aacute;s.
+</P>
+<P>El par&aacute;metro <EM>%Velocity </EM>suma un porcentaje al valor
+velocity de cada evento seleccionado, es decir, preservando su valor
+y sum&aacute;ndo un porcentaje del mismo, muy &uacute;til si por
+ejemplo usted deseara subir el volumen de un instrumento concreto de
+la bater&iacute;a por ejemplo, 
+</P>
+<P>El par&aacute;metro <EM>%Length</EM> suma un porcentaje al valor
+de la duraci&oacute;n de cada evento seleccionado, es decir,
+preservando su valor y sumando un porcentaje del mismo.</P>
+<P><STRONG>Secci&oacute;n Insert</STRONG></P>
+<P>Le permite insertar eventos en la posici&oacute;n seleccionada,
+usted puede seleccionar el tipo de evento as&iacute; como el canal
+MIDI de dicho evento, los eventos se insertan con valores
+predeterminados que posteriormente tendra que editar.</P>
+<P><STRONG>Secci&oacute;n Base Chord</STRONG></P>
+<P>Le informa el acorde de base con el que se realiz&oacute; esta
+pista, observar&aacute; que muchos patrones tiene pistas basadas en
+diferentes acordes. Si activa el bot&oacute;n con la doble flecha,
+podr&aacute; escuchar los eventos seleccionados.</P>
+<P><STRONG>Men&uacute; Funciones</STRONG></P>
+<P>En el momento de realizar este documento la &uacute;nica funci&oacute;n
+disponible es:</P>
+<P><STRONG>Brush (XG-&gt;GM) </STRONG>Esta funci&oacute;n se ha
+implementado para ayudar en el caso de que usted importara un fichero
+de estilo realizado para el formato XG, desgraciadamente el formato
+GM (General Midi) aunque mucho m&aacute;s generalizado, no contiene
+muchos de los sonidos que si contiene el formato XG, esta funci&oacute;n
+trata de buscar equivalencias para algunos sonidos debido a que este
+problema se agudiza en patrones de swing que usen escobillas (Brush),
+un caso t&iacute;pico ser&iacute;a que usted ha importado un patr&oacute;n
+de swing realizado en XG y en la bater&iacute;a usted escucha algunos
+sonidos gal&aacute;cticos que desde luego no pertenecen a ese estilo
+de musica. Esta funci&oacute;n le soluciona ese problema, solo tiene
+que editar el programa de la bater&iacute;a en el mezclador de ese
+patr&oacute;n situ&aacute;ndolo en el n&uacute;mero 40 (Brush), abrir
+el editor de eventos y ejecutar esta funci&oacute;n. Desgraciadamente
+las equivalencias no tienen un volumen apropiado, as&iacute; que
+probablemente necesitar&aacute; hacer una selecci&oacute;n m&uacute;ltiple
+de los nuevos sonidos y ajustar el volumen con el par&aacute;metro
+%Velocity. 
+</P>
+<HR>
+<H4><A NAME="Copiarmezclador_Texto"></A>Copiar mezclador del patr&oacute;n
+a...</H4>
+<P>Esta ventana le permite seleccionar a que patrones del estilo
+desea copiar la disposici&oacute;n del mezclador de estilo. Muy &uacute;til
+si usted importa un patr&oacute;n y desea modificar los sonidos o
+ajustar los volumenes.</P>
+<HR>
+<H4><A NAME="EditorPatrones_Texto"></A>Editor de patrones</H4>
+<P>Esta ventana le permite editar algunos par&aacute;metros propios
+para cada pista de un patr&oacute;n.</P>
+<P><IMG SRC="EdPatWin.png" NAME="gr&aacute;ficos8" ALIGN=LEFT WIDTH=751 HEIGHT=330 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P>En el men&uacute; desplegable usted puede seleccionar cada pista,
+observe que se antepone al nombre de cada pista el canal MIDI de
+origen. Una vez seleccionada la pista en el panel de la derecha puede
+asignar la reproducci&oacute;n o no de la pista para cada tipo de
+acorde reconocido por stygmorgan.</P>
+<P>As&iacute; mismo puede definir el Chord Root (centro tonal) y tipo
+Chord Type (Tipo de acorde) que se asigna a esa pista y que
+stygmorgan usa para la armonizaci&oacute;n de la pista con respecto a
+los acordes que usted pudiera interpretar en el teclado MIDI.
+Obviamente estos par&aacute;metros no deber&iacute;an de modificarse
+si lo que usted edita es simplemente peque&ntilde;as variaciones en
+las notas de las pistas, otro caso ser&iacute;a si usted pretende
+generar un patr&oacute;n nuevo o sobre todo y muy importante si usted
+importa un estilo desde un fichero .MID, stygmorgan crea una tabla de
+valores predeterminada en el caso de importar un fichero .MID y
+pudiera darse el caso que usted necesitara modificar estos valores.</P>
+<P>En el momento de escribir este documento stygmorgan dista mucho de
+reproducir los estilos con el mismo comportamiento que tendr&iacute;a
+un teclado musical comercial. Las implementaciones de los par&aacute;metros
+NTT y RTR no est&aacute;n completas. Usted no deber&iacute;a de
+preocuparse demasiado en el caso de importar estilos de estos
+valores, adem&aacute;s stygmorgan usa sus propias t&eacute;cnicas
+para alguno de estos aspectos, el hecho de incorporar los sonidos de
+percusi&oacute;n a la bater&iacute;a con el fin de compatibilizar con
+las tarjetas de sonido emu10k1 y compatibles hace que algunos de los
+posibles valores de estos par&aacute;metros carezcan de importancia
+pues stygmorgan ya reconoce si el instrumento es de armonizaci&oacute;n
+fija (caso de la bateria ... ) o no. A continuaci&oacute;n se
+detallan los valores que si deber&iacute;a de considerar y el modo de
+operaci&oacute;n de stygmorgan en caso de encontrar esos valores.</P>
+<P><EM>NTT=2 + RTR =1</EM> 
+</P>
+<P>La pista que contenga estos valores, normalmente pistas con
+instrumentos arm&oacute;nicos, piano, violines ... en caso de usted
+cambiar de acorde en el teclado MIDI, interpretar&aacute; ese acorde
+independientemente del contenido de eventos MIDI (notas musicales) de
+la pista. Con esto se consigue que aunque la pista pudiera contener
+por ejemplo un acorde de violines de cuatro compases de duraci&oacute;n,
+en caso de usted cambiar de acorde la armon&iacute;a le seguiria
+acompa&ntilde;ando. 
+</P>
+<P>NTT=3 + RTR = 2 + Canal de MIDI=11</P>
+<P>Observe que el canal de MIDI once corresponde normalmente a la
+pista de Bajo, lo que hace stygmorgan con estos valores es hacer que
+cuando useted cambia de acorde en el teclado MIDI la siguiente nota
+que se interprete de la pista del Bajo del patr&oacute;n sea la
+fundamental del acorde que usted interpret&oacute;.</P>
+<P><CODE>Nota. La implementaci&oacute;n de las funciones de NTT y RTR
+no esta completada en parte por la falta de informaci&oacute;n no de
+las funciones que suponen los valores asignados a estos par&aacute;metros
+sino por el desconocimiento absoluto de las t&eacute;cnicas de
+armonizaci&oacute;n de las notas del patr&oacute;n con respecto a los
+acordes interpretados en el teclado MIDI que use un teclado
+comercial, stygmorgan ha implementado su propia t&eacute;cnica y esta
+hace que la mayor&iacute;a de estas funciones asignables a estos
+valores no tengan ning&uacute;n sentido. A&uacute;n as&iacute; quedan
+muchas funciones interesantes por implementar, labor que espero pueda
+completarse en futuras versiones de stygmorgan.</CODE></P>
+<HR>
+<H4><A NAME="EditorEstilos_Texto"></A><CODE>Editor de Estilos</CODE></H4>
+<P><IMG SRC="EdStyWin.png" NAME="gr&aacute;ficos9" ALIGN=LEFT WIDTH=483 HEIGHT=223 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P><CODE>Esta ventana le permite renombrar, clasificar el estilo en
+uno de los tipos predeterminados y seleccionar el tempo determinado
+del estilo.</CODE></P>
+<HR>
+<P><BR><BR>
+</P>
+<H2><A NAME="Secuenciador_Texto"></A>Secuenciador</H2>
+<P><BR><BR>
+</P>
+<P><IMG SRC="SeqWin.png" NAME="gr&aacute;ficos10" ALIGN=LEFT WIDTH=750 HEIGHT=543 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P>El secuenciador le permite crear bases de canciones usando los
+estilos de stygmorgan, con solo introducir los acordes de la canci&oacute;n
+y las repeticiones de las distintas partes de la misma. El dise&ntilde;o
+difiere del estilo lineal de un secuenciador normal, y esta orientado
+a facilitar la introducci&oacute;n de acordes, por ejemplo, desde una
+partitura de una canci&oacute;n. Es realmente sencillo introducir un
+gui&oacute;n de acordes de una canci&oacute;n y sus distintas partes,
+en menos de dos minutos usted puede tener una base bastante aceptable
+con la que practicar improvisaci&oacute;n o exportarla a formato Midi
+File para posteriormente poder desarrollarla en un secuenciador
+convencional.</P>
+<P>La ventana del secuenciador tiene cuatro partes principales:</P>
+<OL>
+	<LI><P> La lista de celdas.</P>
+	<LI><P> Los par&aacute;metros generales de la canci&oacute;n.</P>
+	<LI><P> Los indicadores de informaci&oacute;n.</P>
+	<LI><P> Los controles de posici&oacute;n y funcionamiento.      
+	</P>
+</OL>
+<P><BR><BR>
+</P>
+<P><STRONG>Las Celdas</STRONG></P>
+<P><IMG SRC="SeqWin1.png" NAME="gr&aacute;ficos11" ALIGN=LEFT WIDTH=360 HEIGHT=121 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P>El secuenciador dispone de 128 celdas, cada celda equivale a un
+comp&aacute;s de la canci&oacute;n, el n&uacute;mero de acordes que
+usted puede introducir en cada comp&aacute;s depende directamente del
+estilo seleccionado para ese comp&aacute;s, lo cuadros de dialogo de
+introducci&oacute;n de acordes se activaran o desactivaran en
+relaci&oacute;n al numerador del comp&aacute;s del estilo
+seleccionado para esa celda dependiendo de si es  2/4, 3/4,  4/4 etc.
+</P>
+<P>El estilo se selecciona en la entrada Sty., haga click ahi y podra
+o bien introducir el n&uacute;mero de estilo desde el teclado del
+ordenador o bien haciendo 'drag' con el rat&oacute;n. Al introducir
+el estilo vera que la lista de estilos situada en la parte inferior
+de la ventana cambia, esta lista de estilos es solo para informarle
+de que estilo corresponde a cada n&uacute;mero de estilo. Al
+seleccionar un estilo autom&aacute;ticamente el patr&oacute;n se
+pondr&aacute; en el valor '1'.</P>
+<P>El patr&oacute;n se selecciona de la misma manera que el estilo,
+en la entrada Pat. Vera que la lista de la parte inferior le muestra
+los patrones disponibles para el estilo seleccionado y sus n&uacute;meros
+correspondientes, como en el caso del estilo es puramente
+informativa.</P>
+<P>No es necesario introducir el numero de estilo y patr&oacute;n
+para cada celda, si usted quiere mantener el estilo y/o patr&oacute;n
+con dejar esos valores en las siguientes celdas a cero, reproducir&aacute;n
+el ultimo estilo/patr&oacute;n seleccionado. Si solo pretende hacer
+un cambio de patr&oacute;n tampoco es necesario introducir el n&uacute;mero
+de estilo, puede dejar el estilo a 0 e introducir el n&uacute;mero de
+patr&oacute;n que desee.  
+</P>
+<P>Una vez introducido el estilo patr&oacute;n ya estamos en
+disposici&oacute;n de introducir los acordes en los blancos cuadros
+de introducci&oacute;n de acordes, en la parte inferior de la ventana
+y a modo de informaci&oacute;n podr&aacute; ver la lista de acordes
+reconocidos por stygmorgan, a&uacute;n as&iacute; el programa dispone
+de un analizador ortogr&aacute;fico de cifrado de acordes y le
+avisar&aacute; si el acorde introducido no corresponde a ninguno de
+los reconocidos. stygmorgan le permite introducir un acorde por negra
+del comp&aacute;s.</P>
+<P>Los botones '8' y '16' situados en la segunda y cuarta negra del
+comp&aacute;s le permiten indicar a stygmorgan que el acorde
+siguiente entra con anticipaci&oacute;n r&iacute;tmica, la
+anticipaci&oacute;n es de una corchea si enciende el bot&oacute;n '8'
+o de una semicorchea si enciende el bot&oacute;n '16', esto produce
+que stygmorgan armonice la &uacute;ltima corchea o semicorchea de las
+negras segunda y cuarta en relaci&oacute;n al acorde siguiente.</P>
+<P>El bot&oacute;n 'End' indica al secuenciador que se ha alcanzado
+el final de la canci&oacute;n, la reproducci&oacute;n de la canci&oacute;n
+se parar&aacute; autom&aacute;ticamente al alcanzar la celda que
+tenga activado este bot&oacute;n. As&iacute; mismo si exporta a
+formato MIDI file   ser&aacute; en ese punto donde acabe la
+exportaci&oacute;n.</P>
+<P>El resto de  par&aacute;metros de cada celda son los encargados de
+manejar las repeticiones de las distintas partes de la canci&oacute;n.
+Los botones A,B,C,D,E,F  son marcadores. Tenga presente que cuando
+stygmorgan se dispone a interpretar una celda lo primero que mira es
+si tiene que saltar a otra celda, para eso precisamente son las
+entradas To   Rep. 
+</P>
+<P>Esto que parece complicado es sencillo, en la entrada To: usted
+deber&iacute;a de indicar alguno de los marcadores, A,B,C,D,E,F,  es
+decir ...  To A   Rep. 4   esto hace que cuando el secuenciador llega
+a esa celda salta a la celda marcada como 'A' (Con el bot&oacute;n
+'A' activado).  Y saltar&aacute; las 4 veces primeras veces que pase
+por esa celda, eso repetir&iacute;a el tramo de celdas entre la que
+dispone del marcador 'A' encendido y la celda en donde usted
+introdujo estos datos. En realidad es una simulaci&oacute;n de las
+barras de repetici&oacute;n de una partitura, esto plantea el
+problema de que en las partituras suele haber diferentes casillas
+para interpretar seg&uacute;n la repetici&oacute;n en curso ( lo que
+se denomina como casilla de primera, casilla de segunda ...), pues,
+esto se soluciona con la entrada To:   At:    es decir,  To B At 2 
+que significa que la segunda vez que pase el secuenciador por esa
+celda saltara a la celda marcada como B, un ejemplo de casilla de
+segunda, que obviamente empezar&iacute;a en la celda que tenga la
+'B'. 
+</P>
+<P>A&uacute;n facilitando la labor de la introducci&oacute;n de
+acordes pues se evita introducir muchas repeticiones de los mismos ,
+tampoco le aconsejo que monte un sistema de saltos de mucha
+complicaci&oacute;n, a veces es mas sencillo usar las funciones de
+copia de celdas del men&uacute; Edit que montar un sistema de
+repeticiones que puede llegar a ser quasi macabro. :-)       
+</P>
+<P>Tiene que entender que si usa repeticiones/saltos el n&uacute;mero
+de celda nada tiene que ver con el n&uacute;mero de comp&aacute;s de
+la canci&oacute;n, los indicadores de celda y comp&aacute;s le
+informan de la posici&oacute;n de reproducci&oacute;n del
+secuenciador. As&iacute; mismo, los indicadores de estilo, patr&oacute;n
+y acorde le informan de que es lo que se est&aacute; reproduciendo.</P>
+<P>Tiene que ser consciente de las limitaciones que tiene este
+dise&ntilde;o,  si usted por ejemplo inicia la canci&oacute;n en una
+celda determinada distinta a la primera, dependiendo de los saltos o
+repeticiones que haya usted introducido pudiera darse el caso que no
+respetara la estructura de saltos correctamente, porque milagros no
+se pueden hacer. Cada vez que inicie la reproducci&oacute;n todos los
+contadores de repeticiones/saltos se ponen a cero. La realidad es que
+el secuenciador solo interpretar&iacute;a bien los saltos si se
+inicia la reproducci&oacute;n desde la primera celda.  
+</P>
+<P>El bot&oacute;n 'Tempo Track' activa o no la pista de tiempo que
+puede ser editada en la ventana que se abre usando la opci&oacute;n
+'Tempo Track' del men&uacute;. Si activa esta pista, el secuenciador
+efectuara los cambios de tempo especificados. En otro caso el tempo
+de la canci&oacute;n ser&iacute;a el especificado en la casilla
+Tempo.</P>
+<P><IMG SRC="TempoTrack.png" NAME="gr&aacute;ficos12" ALIGN=LEFT WIDTH=293 HEIGHT=358 BORDER=0><BR CLEAR=LEFT><BR><BR>
+</P>
+<P>El uso de la pista de tiempo es sencillo, solo hay que introducir
+valores, el n&uacute;mero de valores a introducir es limitado a uno
+por cada negra de cada celda, suficiente para hacer efectos de
+retardo o aceleraci&oacute;n. En la ventana tiene las opciones para
+a&ntilde;adir, modificar, o borrar.   
+</P>
+<P><STRONG>Opciones del Men&uacute;</STRONG></P>
+<P><STRONG><U>Men&uacute; Archivo</U></STRONG></P>
+<P>Las canciones se guardan a disco en el formato .stysong propio de
+stygmorgan, en el men&uacute; tiene las opciones de 
+</P>
+<P>Load Song/Save Song para cargar/guardar su trabajo.</P>
+<P>La opci&oacute;n New Song borra el contenido del secuenciador y lo
+deja listo para crear una nueva canci&oacute;n.</P>
+<P>La opci&oacute;n Export to Midi-File exporta la canci&oacute;n que
+contenga el secuenciador al formato MIDI file, antes depoder exportar
+la canci&oacute;n es preciso que se cumplan una serie de requisitos,
+como por ejemplo que haya una celda marcada con End, (Final de la
+canci&oacute;n), en caso de no cumplirse los requisitos stygmorgan le
+informar&aacute; de que tiene que hacer.  
+</P>
+<P><STRONG><U>Men&uacute; Edit</U></STRONG></P>
+<P>En el men&uacute; edit tiene las opciones de Copiar,Mover y Borrar
+celdas, se abrir&aacute; una ventana donde usted debe introducir los
+n&uacute;meros de celda que desee copiar, mover o borrar.</P>
+<HR>
+<H2><A NAME="Consejos_Texto"></A>Consejos y Trucos</H2>
+<P><BR><BR>
+</P>
+<P>La m&uacute;sica es sonido, si realmente quiere que stygmorgan
+suene bien, le recomiendo que lea los apartados como mejorar el
+sonido y carga de efectos en tarjetas de audio compatibles emu10k1.
+Por experiencia le aseguro que si usted carga soundfonts de m&aacute;s
+calidad stygmorgan sonar&aacute; mucho mejor, realmente es un trabajo
+arduo editar todos los sonidos de cada pista de cada patr&oacute;n de
+cada estilo, realmente arduo, y tal vez le parezca complicado.</P>
+<P>Mi primer consejo ser&iacute;a que lo intentara primero con los
+sonidos y no con los patrones, es mucho mas f&aacute;cil crear
+sonidos que estar editando el mezclador de cada patr&oacute;n, de
+hecho con 3 clicks puede crear sonidos con otros soundfonts que le
+van a sonar mucho mejor.   
+</P>
+<P>Use las registraciones, se ahorrar&aacute; mucho tiempo.  
+</P>
+<H4>Consideraciones al importar estilos.</H4>
+<P> Muchos estilos est&aacute;n realizados bajo el est&aacute;ndar
+XG, propiedad de Yamaha, muchos de los sonidos son coincidentes con
+los GM, as&iacute; que en caso de importar un estilo basado en XG
+tampoco es el fin del mundo, eso s&iacute;, puede ocurrir que usted
+tenga que buscar alg&uacute;n sonido diferente y que le suene bien,
+pues no siempre y sobretodo con los sonidos mas sintetizados se
+compatibilizan bien.</P>
+<P>La mejor manera es editar el patr&oacute;n Main A hasta que este
+suena m&iacute;nimamente bien, recuerde que si en algo no coinciden
+sobretodo los diferentes est&aacute;ndares es en el n&uacute;mero del
+programa de bater&iacute;a, eso lo tendr&aacute; que modificar
+seguro, escoja el m&aacute;s adecuado al tipo de ritmo del estilo
+importado. Una vez mezclado el patr&oacute;n Main A y asignados los
+sonidos, vol&uacute;menes, efectos correspondientes, copie el
+contenido del mezclador a todos los dem&aacute;s patrones con la
+opci&oacute;n del  men&uacute; Editar 'Copiar mezclador patr&oacute;n
+a', se le abrir&aacute; una ventana, marque la casilla All, esto
+copiar&aacute; el mezclador del patr&oacute;n Main A al resto de
+patrones y usted tendr&aacute; todos los patrones mezclados
+m&iacute;nimamente bien. Tiene que tener en cuenta que algunos
+patrones, sobretodo los del tipo Intro o Ending, pudieran usar otros
+sonidos, es decir  programas diferentes para ciertas pistas que los
+correspondientes al Main A, es bueno antes de efectuar la copia del
+mezclador cerciorarse de si eso es as&iacute; o no, para
+posteriormente editar los patrones que pudieran estar en esta
+situaci&oacute;n.</P>
+<P>Como ya se ha explicado y con reiteraci&oacute;n stygmorgan
+intenta identificar todos los patrones de percusi&oacute;n y
+asignarles el canal de salida de la bater&iacute;a, podr&iacute;a
+ocurrir que usted importara alg&uacute;n estilo y que stygmorgan no
+identificara bien alguna pista de percusi&oacute;n, la situaci&oacute;n
+ser&iacute;a que al reproducir el patr&oacute;n  sonar&iacute;an unos
+sonidos de percusi&oacute;n con sonido de piano que ni apagando todas
+las pistas del estilo cesar&iacute;an. Si llegara este caso use la
+opci&oacute;n Editar Patrones del men&uacute; Editar, y patr&oacute;n
+por patr&oacute;n tendr&aacute; que tratar de identificar que pista
+es la causante de esto, normalmente suele ser la pista 9 aunque
+pudiera haber mas pistas de percusi&oacute;n, por el nombre de la
+pista se puede orientar, una vez reconocida la pista tendr&aacute;
+que asignar el canal MIDI de salida 10.  
+</P>
+<P>Otro punto a considerar es que algunos estilos confeccionados para
+los teclados comerciales mas modernos, usan bancos de sonidos que no
+corresponden ni al est&aacute;ndar GM ni al XG, por ejemplo sonidos
+de efecto de la percusi&oacute;n que se produce en el rasgueo de una
+guitarra, estas t&eacute;cnicas son relativamente nuevas y va a ser
+dif&iacute;cil encontrar soundfonts con ese tipo de sonido, (la
+esperanza es lo &uacute;ltimo que se pierde), usted identificar&aacute;
+ r&aacute;pidamente estas pistas pues suelen tener una nota
+repiti&eacute;ndose que no tiene mucho que ver con la armonizaci&oacute;n
+musical del estilo, y suele ubicarse en alguna de las pistas
+normalmente asignadas a guitarra o piano, solo le puedo aconsejar que
+haga lo que pueda, una soluci&oacute;n r&aacute;pida es apagar la
+pista. Tiene que saber que esto ocurre en un m&iacute;nimo porcentaje
+de estilos y que puede importar estilos de teclados de ultima
+generaci&oacute;n sin demasiados problemas.       
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P><BR><BR>
+</P>
+<P> 
+</P>
+<P><BR><BR>
+</P>
+</BODY>
+</HTML>

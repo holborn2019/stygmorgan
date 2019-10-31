@@ -1,0 +1,87 @@
+# data file for the Fltk User Interface Designer (fluid)
+version 1.0304
+i18n_type 1
+i18n_include <libintl.h>
+i18n_function gettext
+header_name {.h}
+code_name {.cxx}
+decl {//Copyright(c) 2006 Josep Andreu (holborn)} {private local
+}
+
+decl {//License GNU/GPL version 2} {private local
+}
+
+decl {\#include "stygmorgan.h"} {public local
+}
+
+class rmgmstye {} {
+  Function {rmgmstye(RMGMO *rmgmo_)} {C
+  } {
+    code {char temp[128];
+static const char *pepe [] ={"stygmorgan"};
+
+int argc=1;
+char **argv= (char **) pepe;
+
+Fl::visual(FL_DOUBLE|FL_INDEX);
+Fl::visual(FL_RGB);
+rmgmo=rmgmo_;
+make_window();
+rmgmstyewin->position(x,y);
+sprintf(temp, "%s - Style Parameters",rmgmo->nStyle.Name);
+rmgmstyewin->label(temp);
+
+rmgmstyewin->icon((char *)p);
+rmgmstyewin->show(argc,argv);} {}
+  }
+  decl {RMGMO *rmgmo;} {private local
+  }
+  Function {make_window()} {} {
+    Fl_Window rmgmstyewin {
+      callback {pera=2;
+rmgmstyewin->hide();
+rmgmo->wstyleeditor=0;
+rmgmstyewin->clear();
+delete rmgmstyewin;}
+      xywh {1406 409 475 190} type Double color 44 hide
+    } {
+      Fl_Input EName {
+        label Name selected
+        xywh {15 30 325 30} color 47 labelsize 11 labelcolor 7 align 5 textcolor 7
+      }
+      Fl_Button {} {
+        label Cancel
+        callback {rmgmo->bcancel=1;
+rmgmstyewin->do_callback();}
+        xywh {370 20 80 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3
+      }
+      Fl_Button {} {
+        label Ok
+        callback {rmgmo->nStyle.style=(int)Estyle->value();
+strcpy(rmgmo->nStyle.Name,EName->value());
+rmgmo->nStyle.bpm=(int)StTempo->value();
+rmgmstyewin->do_callback();}
+        xywh {370 55 80 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3
+      }
+      Fl_Choice Estyle {
+        label {Style Type} open
+        xywh {15 85 325 25} box NO_BOX down_box BORDER_BOX color 44 selection_color 47 labelsize 11 labelcolor 7 align 5 textcolor 7
+      } {}
+      Fl_Counter StTempo {
+        label Tempo
+        callback {o->parent()->redraw();}
+        xywh {15 135 105 25} box NO_BOX labelsize 11 labelcolor 7 align 5 minimum 20 maximum 300 step 1 value 120 textcolor 7
+      }
+    }
+    code {int i;
+
+for (i=0; i<=17; i++)
+  Estyle->add(rmgmo->CStyle[i].Nom);
+
+ StTempo->lstep(10);  
+  
+  EName->value(rmgmo->nStyle.Name);
+  Estyle->value(rmgmo->nStyle.style);
+  StTempo->value(rmgmo->nStyle.bpm);} {}
+  }
+}
