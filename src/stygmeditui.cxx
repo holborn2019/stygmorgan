@@ -156,12 +156,12 @@ void rmgmedit::cb_About(Fl_Menu_* o, void* v) {
 
 unsigned char rmgmedit::menu__i18n_done = 0;
 Fl_Menu_Item rmgmedit::menu_[] = {
- {"&Functions", 0,  0, 0, 64, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
- {"Brush Drums XG->GM", 0,  (Fl_Callback*)rmgmedit::cb_Brush, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
+ {"&Functions", 0,  0, 0, 64, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
+ {"Brush Drums XG->GM", 0,  (Fl_Callback*)rmgmedit::cb_Brush, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
  {0,0,0,0,0,0,0,0,0},
- {"&Help", 0,  0, 0, 64, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
- {"Help", 0xffbe,  (Fl_Callback*)rmgmedit::cb_Help, 0, 128, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
- {"About", 0,  (Fl_Callback*)rmgmedit::cb_About, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
+ {"&Help", 0,  0, 0, 64, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
+ {"Help", 0xffbe,  (Fl_Callback*)rmgmedit::cb_Help, 0, 128, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
+ {"About", 0,  (Fl_Callback*)rmgmedit::cb_About, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
  {0,0,0,0,0,0,0,0,0},
  {0,0,0,0,0,0,0,0,0}
 };

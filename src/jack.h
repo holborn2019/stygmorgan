@@ -27,6 +27,7 @@
 
 void JACKInit(RMGMO * rmgmo_);
 int JACKstart (RMGMO * rmgmo_, jack_client_t * jackclient);
+int jackpontempo(int bpm);
 void JACKfinish ();
 int timebase(jack_transport_state_t state, jack_position_t *pos, void *arg);
 void actualiza_tap(double val);

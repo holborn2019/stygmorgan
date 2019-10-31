@@ -253,6 +253,7 @@ if ((S[cas].style !=0) && (S[cas].style != Estilo))
   Estilo = S[cas].style;
   readstyle(Estilo);
   set_tempo();
+  if(jack)pontempoenjack();
   PonPatron(S[cas].pattern);
   CNStyle=1;
   CNPattern=1;
@@ -546,6 +547,7 @@ for (i=1; i<200; i++)
        {
         bpm = SongF.TemT[i].tempo;
         set_tempo();
+        if(jack)pontempoenjack();
         MTempo=bpm;
         break;
        }

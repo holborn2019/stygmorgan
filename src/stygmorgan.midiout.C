@@ -22,6 +22,7 @@
 */
 
 #include "stygmorgan.h"
+#include "jack.h"
 
 
 void 
@@ -74,9 +75,16 @@ sacadirecto(3,&midievent);
 }
 
 
+
+void
+RMGMO::pontempoenjack()
+{
+if (usejacktransport) jackpontempo(bpm);
+}
+
+
 void 
 RMGMO::set_tempo() 
-
 {
 
 

@@ -89,7 +89,25 @@ JACKstart (RMGMO * rmgmo_, jack_client_t * jackclient_)
 
 };
 
+int
+jackpontempo(int bpm)
+{
+    int salida;
+    jack_position_t pos;
+    
+    salida = 0;
+  
+    jack_transport_query(jackclient, &pos);
 
+    if(JackOUT->usejacktransport)
+     {
+        pos.beats_per_minute = JackOUT->bpm;
+        salida = jack_transport_reposition(jackclient,&pos);
+     }
+
+     return salida;
+ 
+}
 
 int
 jackprocess (jack_nframes_t nframes, void *arg)
@@ -99,7 +117,7 @@ jackprocess (jack_nframes_t nframes, void *arg)
     jack_midi_event_t midievent;
     jack_position_t pos;
     jack_transport_state_t astate;
-
+ 
 
      astate = jack_transport_query(jackclient, &pos);
 
@@ -107,9 +125,12 @@ jackprocess (jack_nframes_t nframes, void *arg)
      {
      if( JackOUT->bpm != pos.beats_per_minute)
      {
+      if ((pos.beats_per_minute>29) && (pos.beats_per_minute<301))
+      {
       JackOUT->bpm = pos.beats_per_minute;
       JackOUT->CambiaTempo=1;
       JackOUT->set_tempo();
+      }
      } 
      }
   

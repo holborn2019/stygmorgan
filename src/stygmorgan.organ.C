@@ -172,6 +172,7 @@ RMGMO::ostart()
       snd_seq_start_queue(midi_out,queue_id, NULL);
       rela=1.0;
       set_tempo();
+      if(jack)pontempoenjack();
       snd_seq_drain_output(midi_out); 
       cs = 0;
       vcompas=0;

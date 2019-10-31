@@ -210,6 +210,7 @@ void sequencer::cb_Titulo(Fl_Input* o, void* v) {
 void sequencer::cb_STempo_i(Fl_Value_Input* o, void*) {
   SongF.bpm=(int)o->value();
 rmgmo->bpm=SongF.bpm;
+ if(jack)rmgmo->pontempoenjack();
 rmgmo->set_tempo();
 }
 void sequencer::cb_STempo(Fl_Value_Input* o, void* v) {
@@ -1495,6 +1496,7 @@ void sequencer::prepara() {
    STempo->value(rmgmo->bpm); 
   }
   rmgmo->set_tempo();
+  if(jack)rmgmo->pontempoenjack();
   
   if(S[rmgmo->cas].pattern != 0) vari=S[rmgmo->cas].pattern;
   else

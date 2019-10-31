@@ -121,12 +121,12 @@ memset(rmgmo->POEE, 0 ,sizeof rmgmo->POEE);
 rmgmeditwin->show(argc,argv);
 rmgmeditwin->resize(x1,y1,w1,h1);
 
-ReadPattern();} {selected
-    }
+ReadPattern();} {}
   }
   decl {RMGMO *rmgmo;} {private local
   }
-  Function {make_window()} {} {
+  Function {make_window()} {open
+  } {
     Fl_Window rmgmeditwin {
       callback {pera=2;
 GuardaPrefs();
@@ -134,7 +134,7 @@ o->hide();
 rmgmo->weventeditor=0;
 o->clear();
 delete rmgmeditwin;}
-      xywh {1404 305 755 545} type Double color 44 labelsize 11 labelcolor 7 hide size_range {800 600 0 0}
+      xywh {1401 302 755 545} type Double color 44 labelsize 11 labelcolor 7 hide size_range {800 600 0 0}
     } {
       Fl_Browser EditBro {
         callback {int i,j,k;
@@ -198,26 +198,26 @@ if (sAllE->value())
         xywh {0 0 755 20} color 44 selection_color 47 labelcolor 7
       } {
         Submenu sFunctions {
-          label {&Functions}
-          xywh {0 0 100 20}
+          label {&Functions} open
+          xywh {0 0 100 20} labelcolor 7
         } {
           MenuItem {} {
             label {Brush Drums XG->GM}
             callback {rmgmo->XGGM();
 ReadPattern();}
-            xywh {0 0 100 20}
+            xywh {0 0 100 20} labelcolor 7
           }
         }
         Submenu {} {
           label {&Help} open
-          xywh {0 0 100 20}
+          xywh {0 0 100 20} labelcolor 7
         } {
           MenuItem {} {
             label Help
             callback {rmgmo->ventana=7;
 //EditBro->redraw();
 ReadPattern();}
-            xywh {0 0 100 20} shortcut 0xffbe divider
+            xywh {0 0 100 20} shortcut 0xffbe labelcolor 7 divider
           }
           MenuItem {} {
             label About
@@ -225,8 +225,8 @@ ReadPattern();}
 wabout=1;
 rmgmo->ventana=1;
 //EditBro->redraw();
-ReadPattern();}
-            xywh {0 0 100 20}
+ReadPattern();} selected
+            xywh {0 0 100 20} labelcolor 7
           }
         }
       }

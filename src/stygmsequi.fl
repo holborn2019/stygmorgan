@@ -68,7 +68,8 @@ for ( int t=0; t<children(); t++ )
   }
 }
 
-class sequencer {} {
+class sequencer {open
+} {
   Function {sequencer(RMGMO *rmgmo_)} {C
   } {
     code {Fl::visual(FL_DOUBLE|FL_INDEX);
@@ -97,8 +98,7 @@ stygmseqwin->show(argc,argv);
 
 
 void * v=Casi;
-Fl::add_timeout(.5,tick,v);} {selected
-    }
+Fl::add_timeout(.5,tick,v);} {}
   }
   decl {RMGMO *rmgmo;} {private local
   }
@@ -122,14 +122,14 @@ rmgmo->bass=0;
 rmgmo->wsequencer=0;
 stygmseqwin->clear();
 stygmseqwin->hide();
-delete stygmseqwin;}
+delete stygmseqwin;} open
       xywh {1312 141 800 600} type Double color 44 selection_color 47 labelcolor 7 hide resizable size_range {800 600 0 0}
     } {
-      Fl_Menu_Bar {} {open
+      Fl_Menu_Bar {} {
         xywh {0 0 800 25} box FLAT_BOX color 44 selection_color 47 labelcolor 7 textcolor 7
       } {
         Submenu {} {
-          label {&File} open
+          label {&File}
           xywh {0 0 100 20}
         } {
           MenuItem {} {
@@ -255,6 +255,7 @@ labelwin();}
           label Tempo
           callback {SongF.bpm=(int)o->value();
 rmgmo->bpm=SongF.bpm;
+ if(jack)rmgmo->pontempoenjack();
 rmgmo->set_tempo();}
           xywh {745 30 45 30} box BORDER_BOX color 46 selection_color 47 labelsize 11 labelcolor 7 minimum 20 maximum 300 step 1 value 120 textsize 19 textcolor 1
         }
@@ -1229,6 +1230,7 @@ if (SongF.MasterT)
  STempo->value(rmgmo->bpm); 
 }
 rmgmo->set_tempo();
+if(jack)rmgmo->pontempoenjack();
 
 if(S[rmgmo->cas].pattern != 0) vari=S[rmgmo->cas].pattern;
 else
@@ -1246,7 +1248,8 @@ if(S[i].pattern != 0)
 rmgmo->PonPatron(vari);
 rmgmo->CNPattern=1;
 rmgmo->MiraAcorde(rmgmo->cas,1);
-rmgmo->BuscaRepes();} {}
+rmgmo->BuscaRepes();} {selected
+    }
   }
   Function {prepara_WTT()} {} {
     Fl_Window WTT {

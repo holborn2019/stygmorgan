@@ -1359,10 +1359,11 @@ Fl_Menu_Item* stygmorgan::ElSeq = stygmorgan::menu_Menu + 26;
 
 void stygmorgan::cb_RTempo_i(Fl_Dial* o, void*) {
   if (rmgmo->splay) return;
-rmgmo->bpm=o->value();
+rmgmo->bpm=(int)o->value();
 o->parent()->redraw();
 CTempo->value(rmgmo->bpm);
 rmgmo->set_tempo();
+if(jack)rmgmo->pontempoenjack();
 }
 void stygmorgan::cb_RTempo(Fl_Dial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->parent()->user_data()))->cb_RTempo_i(o,v);
@@ -1373,7 +1374,11 @@ void stygmorgan::cb_CTempo_i(Fl_Counter* o, void*) {
 if (rmgmo->splay) return;
 rmgmo->bpm=(int)o->value();
 RTempo->value(rmgmo->bpm);
-if (rmgmo->splay==0) rmgmo->set_tempo();
+if (rmgmo->splay==0)
+{
+if(jack) rmgmo->pontempoenjack();
+ rmgmo->set_tempo();
+ };
 }
 void stygmorgan::cb_CTempo(Fl_Counter* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->parent()->user_data()))->cb_CTempo_i(o,v);
@@ -1382,7 +1387,7 @@ void stygmorgan::cb_CTempo(Fl_Counter* o, void* v) {
 void stygmorgan::cb_ListaStyles_i(Fl_Browser* o, void*) {
   if (o->size()== 0) return;
 if (o->text(o->value()) == NULL) return;
-if (! rmgmo->bplay)
+if (!rmgmo->bplay)
 { rmgmo->rela=1.0;
   rmgmo->lppq=1; 
 } 
@@ -1393,7 +1398,7 @@ rmgmo->readstyle(rmgmo->Estilo);
 labelwin(1);
 VStyle->label(rmgmo->nStyle.Name);
 rmgmo->isnew=0;
-if (! rmgmo->bplay) rmgmo->bpm=rmgmo->nStyle.bpm;
+if (!rmgmo->bplay) rmgmo->bpm=rmgmo->nStyle.bpm;
 CTempo->parent()->redraw();
 CTempo->value(rmgmo->bpm);
 pontempo();
@@ -1447,6 +1452,7 @@ void stygmorgan::cb_STST_i(Fl_Button* o, void*) {
 if (o->value())
 {
  ElSeq->deactivate();
+ Menu->redraw();
  N1->activate(); 
  rmgmo->ostart(); 
 } 
@@ -4352,6 +4358,7 @@ void stygmorgan::Actua_More() {
 
 void stygmorgan::pontempo() {
   RTempo->value(rmgmo->bpm);
+  if(jack)rmgmo->pontempoenjack();
   rmgmo->set_tempo();
 }
 
@@ -4629,6 +4636,7 @@ void stygmorgan::apaga() {
   N3->deactivate();
   N4->deactivate();
   ElSeq->activate();
+  Menu->redraw();
   FunciLeds(1);
   DMidi->value(0);
 }

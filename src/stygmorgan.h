@@ -230,7 +230,7 @@ public:
    void process_midi_controller_events(int parameter, int value);
    void jack_process_midievents (jack_midi_event_t *midievent);
    void PonNotesOffOrgan(int force, snd_seq_tick_time_t gtick); 
- 
+   void pontempoenjack(); 
    int ImportaMidi(char *filename);
    void PonPlay(int tipo, snd_seq_tick_time_t gtick, int gnota, int gcanal, int gvelocity, int glength);
    void PonGraba(int tipo, snd_seq_tick_time_t gtick, int gnota, int gcanal, int gvelocity);
