@@ -63,11 +63,13 @@ Function {type_cb(Fl_Widget* o,void* v)} {} {
   code {((rmgmedit*)(o->parent()->user_data()))->type_cb_i(o,v);} {}
 }
 
-class rmgmedit {open
-} {
-  Function {rmgmedit(RMGMO *rmgmo_)} {open C
+class rmgmedit {} {
+  Function {rmgmedit(RMGMO *rmgmo_)} {C
   } {
-    code {char temp[80];
+    code {Fl::visual(FL_DOUBLE|FL_INDEX);
+Fl::visual(FL_RGB);
+
+char temp[80];
 int x1,y1,w1,h1;
 int speaker;
 static const char *pepe [] ={"stygmorgan"};
@@ -121,7 +123,8 @@ memset(rmgmo->POEE, 0 ,sizeof rmgmo->POEE);
 rmgmeditwin->show(argc,argv);
 rmgmeditwin->resize(x1,y1,w1,h1);
 
-ReadPattern();} {}
+ReadPattern();} {selected
+    }
   }
   decl {RMGMO *rmgmo;} {private local
   }
@@ -225,7 +228,7 @@ ReadPattern();}
 wabout=1;
 rmgmo->ventana=1;
 //EditBro->redraw();
-ReadPattern();} selected
+ReadPattern();}
             xywh {0 0 100 20} labelcolor 7
           }
         }

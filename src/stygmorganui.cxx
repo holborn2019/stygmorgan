@@ -3982,7 +3982,6 @@ stygmorgan::stygmorgan(int argc, char **argv,RMGMO *rmgmo_) {
   Fl::visual(FL_RGB);
   
   rmgmo=rmgmo_;
-  
   make_window();
   
   N1->deactivate();

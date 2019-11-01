@@ -17,7 +17,11 @@ decl {\#include "stygmorgan.h"} {public local
 class rmgmstye {} {
   Function {rmgmstye(RMGMO *rmgmo_)} {C
   } {
-    code {char temp[128];
+    code {Fl::visual(FL_DOUBLE|FL_INDEX);
+Fl::visual(FL_RGB);
+
+
+char temp[128];
 static const char *pepe [] ={"stygmorgan"};
 
 int argc=1;
@@ -32,7 +36,8 @@ sprintf(temp, "%s - Style Parameters",rmgmo->nStyle.Name);
 rmgmstyewin->label(temp);
 
 rmgmstyewin->icon((char *)p);
-rmgmstyewin->show(argc,argv);} {}
+rmgmstyewin->show(argc,argv);} {selected
+    }
   }
   decl {RMGMO *rmgmo;} {private local
   }
@@ -46,7 +51,7 @@ delete rmgmstyewin;}
       xywh {1406 409 475 190} type Double color 44 hide
     } {
       Fl_Input EName {
-        label Name selected
+        label Name
         xywh {15 30 325 30} color 47 labelsize 11 labelcolor 7 align 5 textcolor 7
       }
       Fl_Button {} {

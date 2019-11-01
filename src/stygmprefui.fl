@@ -20,11 +20,14 @@ decl {\#include <Fl/Fl_File_Chooser.H>} {private local
 decl {\#include "stygmorgan.h"} {public local
 }
 
-class rmgmpref {open
-} {
-  Function {rmgmpref(RMGMO *rmgmo_)} {open C
+class rmgmpref {} {
+  Function {rmgmpref(RMGMO *rmgmo_)} {C
   } {
-    code {char temp[128];
+    code {Fl::visual(FL_DOUBLE|FL_INDEX);
+Fl::visual(FL_RGB);
+
+
+char temp[128];
 static const char *pepe [] ={"stygmorgan"};
 
 int argc=1;
@@ -43,8 +46,7 @@ rmgmprefwin->show(argc,argv);} {}
   }
   decl {RMGMO *rmgmo;} {private local
   }
-  Function {make_window()} {open
-  } {
+  Function {make_window()} {} {
     Fl_Window rmgmprefwin {
       callback {rmgmprefwin->hide();
 rmgmo->wpreferences=0;
@@ -66,7 +68,7 @@ rmgmprefwin->do_callback();}
       Fl_Check_Button ASF {
         label {Use asfxload to load soundfont at startup?}
         callback {if ((int) o->value() ) ASFGroup->activate(); else ASFGroup->deactivate();}
-        xywh {5 215 267 25} color 44 selection_color 3 labelsize 12 labelcolor 7
+        xywh {5 215 267 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
       }
       Fl_Group ASFGroup {
         xywh {5 230 530 50} color 44 selection_color 47 labelcolor 7
@@ -88,7 +90,7 @@ strcpy(rmgmo->ASFFilename,filename);}
       Fl_Check_Button AConnect {
         label {auto connect Midi devices at startup?}
         callback {if ((int) o->value()) MBros->activate(); else MBros->deactivate();}
-        xywh {5 10 270 25} color 44 selection_color 3 labelsize 12 labelcolor 7
+        xywh {5 10 270 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
       }
       Fl_Group MBros {
         xywh {5 35 525 175} box DOWN_BOX color 44 selection_color 47 labelcolor 7
@@ -117,7 +119,7 @@ strcpy(rmgmo->TempDir,filename);}
       }
       Fl_Check_Button DRespect {
         label {Maintain Mutes when pattern changes}
-        xywh {5 460 270 25} color 44 selection_color 3 labelsize 12 labelcolor 7
+        xywh {5 460 270 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
       }
       Fl_Check_Button DUseSysEx {
         label {Use SysEx messages for Start/AutoF}
@@ -131,7 +133,7 @@ strcpy(rmgmo->TempDir,filename);}
  DTextStart->deactivate();
  DTextAutoF->deactivate();
  }}
-        tooltip {Input form: F0 43 10 .... F7} xywh {5 345 270 25} color 44 selection_color 3 labelsize 12 labelcolor 7
+        tooltip {Input form: F0 43 10 .... F7} xywh {5 345 270 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
       }
       Fl_Input DTextStart {
         label {SysEx for Start button }
@@ -145,15 +147,15 @@ strcpy(rmgmo->TempDir,filename);}
       }
       Fl_Check_Button BANKLSB0 {
         label {BANK LSB 0}
-        xywh {5 476 90 25} color 44 selection_color 3 labelsize 12 labelcolor 7
+        xywh {5 476 90 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
       }
       Fl_Check_Button BANKTRUCO {
         label {BANK Truco}
-        xywh {100 476 100 25} color 44 selection_color 3 labelsize 12 labelcolor 7
+        xywh {100 476 100 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
       }
       Fl_Check_Button JTRANSPORT {
         label {Use Jack Transport Tempo}
-        xywh {4 493 100 25} color 44 selection_color 3 labelsize 12 labelcolor 7
+        xywh {4 493 100 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
       }
     }
     code {int i;
@@ -251,11 +253,9 @@ DUseSysEx->do_callback();
 stygmorgan.get("ButStart",rmgmo->TextSTART,"",126);
 DTextStart->value(rmgmo->TextSTART);
 stygmorgan.get("ButAutoF",rmgmo->TextAUTOF,"",126);
-DTextAutoF->value(rmgmo->TextAUTOF);} {selected
-    }
+DTextAutoF->value(rmgmo->TextAUTOF);} {}
   }
-  Function {GuardaPrefs()} {open
-  } {
+  Function {GuardaPrefs()} {} {
     code {Fl_Preferences stygmorgan (Fl_Preferences::USER, WEBSITE, PACKAGE);
 
 stygmorgan.set("AConnect",(int)AConnect->value());
@@ -303,7 +303,7 @@ if (rmgmo->usesysex)
  rmgmo->ConvierteHexString();
 }} {}
   }
-  Function {MiraClientes()} {open
+  Function {MiraClientes()} {selected
   } {
     code {FILE *fp;
 char temp[128];

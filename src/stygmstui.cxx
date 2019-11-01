@@ -42,6 +42,10 @@ void rmgmstye::cb_StTempo(Fl_Counter* o, void* v) {
 }
 
 rmgmstye::rmgmstye(RMGMO *rmgmo_) {
+  Fl::visual(FL_DOUBLE|FL_INDEX);
+  Fl::visual(FL_RGB);
+  
+  
   char temp[128];
   static const char *pepe [] ={"stygmorgan"};
   

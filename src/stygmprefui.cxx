@@ -99,6 +99,10 @@ void rmgmpref::cb_DTextAutoF(Fl_Input* o, void* v) {
 }
 
 rmgmpref::rmgmpref(RMGMO *rmgmo_) {
+  Fl::visual(FL_DOUBLE|FL_INDEX);
+  Fl::visual(FL_RGB);
+  
+  
   char temp[128];
   static const char *pepe [] ={"stygmorgan"};
   
@@ -135,6 +139,7 @@ Fl_Double_Window* rmgmpref::make_window() {
       o->callback((Fl_Callback*)cb_Ok);
     } // Fl_Button* o
     { ASF = new Fl_Check_Button(5, 215, 267, 25, gettext("Use asfxload to load soundfont at startup?"));
+      ASF->down_box(FL_DOWN_BOX);
       ASF->color((Fl_Color)44);
       ASF->selection_color((Fl_Color)3);
       ASF->labelsize(12);
@@ -162,6 +167,7 @@ Fl_Double_Window* rmgmpref::make_window() {
       ASFGroup->end();
     } // Fl_Group* ASFGroup
     { AConnect = new Fl_Check_Button(5, 10, 270, 25, gettext("auto connect Midi devices at startup?"));
+      AConnect->down_box(FL_DOWN_BOX);
       AConnect->color((Fl_Color)44);
       AConnect->selection_color((Fl_Color)3);
       AConnect->labelsize(12);
@@ -211,6 +217,7 @@ Fl_Double_Window* rmgmpref::make_window() {
       o->callback((Fl_Callback*)cb_Browse1);
     } // Fl_Button* o
     { DRespect = new Fl_Check_Button(5, 460, 270, 25, gettext("Maintain Mutes when pattern changes"));
+      DRespect->down_box(FL_DOWN_BOX);
       DRespect->color((Fl_Color)44);
       DRespect->selection_color((Fl_Color)3);
       DRespect->labelsize(12);
@@ -218,6 +225,7 @@ Fl_Double_Window* rmgmpref::make_window() {
     } // Fl_Check_Button* DRespect
     { DUseSysEx = new Fl_Check_Button(5, 345, 270, 25, gettext("Use SysEx messages for Start/AutoF"));
       DUseSysEx->tooltip(gettext("Input form: F0 43 10 .... F7"));
+      DUseSysEx->down_box(FL_DOWN_BOX);
       DUseSysEx->color((Fl_Color)44);
       DUseSysEx->selection_color((Fl_Color)3);
       DUseSysEx->labelsize(12);
@@ -245,18 +253,21 @@ Fl_Double_Window* rmgmpref::make_window() {
       DTextAutoF->align(Fl_Align(FL_ALIGN_TOP_LEFT));
     } // Fl_Input* DTextAutoF
     { BANKLSB0 = new Fl_Check_Button(5, 476, 90, 25, gettext("BANK LSB 0"));
+      BANKLSB0->down_box(FL_DOWN_BOX);
       BANKLSB0->color((Fl_Color)44);
       BANKLSB0->selection_color((Fl_Color)3);
       BANKLSB0->labelsize(12);
       BANKLSB0->labelcolor(FL_BACKGROUND2_COLOR);
     } // Fl_Check_Button* BANKLSB0
     { BANKTRUCO = new Fl_Check_Button(100, 476, 100, 25, gettext("BANK Truco"));
+      BANKTRUCO->down_box(FL_DOWN_BOX);
       BANKTRUCO->color((Fl_Color)44);
       BANKTRUCO->selection_color((Fl_Color)3);
       BANKTRUCO->labelsize(12);
       BANKTRUCO->labelcolor(FL_BACKGROUND2_COLOR);
     } // Fl_Check_Button* BANKTRUCO
     { JTRANSPORT = new Fl_Check_Button(4, 493, 100, 25, gettext("Use Jack Transport Tempo"));
+      JTRANSPORT->down_box(FL_DOWN_BOX);
       JTRANSPORT->color((Fl_Color)44);
       JTRANSPORT->selection_color((Fl_Color)3);
       JTRANSPORT->labelsize(12);

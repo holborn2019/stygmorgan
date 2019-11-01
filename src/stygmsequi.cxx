@@ -44,10 +44,11 @@ void sequencer::cb_stygmseqwin_i(Fl_Double_Window*, void*) {
 rmgmo->bcancel=2;
 pera=2;
 Fl::remove_timeout(tick);
-rmgmo->ctipo=2;
+rmgmo->ctipo=0;
 rmgmo->fundi=0;
 rmgmo->splay=0;
 rmgmo->bass=0;
+rmgmo->mt=1;
 rmgmo->wsequencer=0;
 stygmseqwin->clear();
 stygmseqwin->hide();

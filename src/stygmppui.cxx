@@ -84,6 +84,10 @@ void rmgmpp::cb_RTR(Fl_Counter* o, void* v) {
 }
 
 rmgmpp::rmgmpp(RMGMO *rmgmo_) {
+  Fl::visual(FL_DOUBLE|FL_INDEX);
+  Fl::visual(FL_RGB);
+  
+  
   char temp[128];
   static const char *pepe [] ={"stygmorgan"};
   

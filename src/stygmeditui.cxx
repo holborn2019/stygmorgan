@@ -450,6 +450,9 @@ void rmgmedit::cb_SlLength(Fl_Counter* o, void* v) {
 }
 
 rmgmedit::rmgmedit(RMGMO *rmgmo_) {
+  Fl::visual(FL_DOUBLE|FL_INDEX);
+  Fl::visual(FL_RGB);
+  
   char temp[80];
   int x1,y1,w1,h1;
   int speaker;

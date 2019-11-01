@@ -17,11 +17,14 @@ decl {\#include "stygmorgan.h"} {public local
 decl {\#include <Fl/Fl_Check_Button.H>} {private local
 }
 
-class rmgmpp {open
-} {
+class rmgmpp {} {
   Function {rmgmpp(RMGMO *rmgmo_)} {C
   } {
-    code {char temp[128];
+    code {Fl::visual(FL_DOUBLE|FL_INDEX);
+Fl::visual(FL_RGB);
+
+
+char temp[128];
 static const char *pepe [] ={"stygmorgan"};
 
 int argc=1;
@@ -35,12 +38,12 @@ bzero(temp,sizeof(temp));
 sprintf(temp, "%s %s - %s - %s - Pattern Parameters",PACKAGE,VERSION,rmgmo->nStyle.Name,rmgmo->nStyle.Pattern[rmgmo->Variacion].Name);
 rmgmppwin->label(temp);
 rmgmppwin->icon((char *)p);
-rmgmppwin->show(argc,argv);} {}
+rmgmppwin->show(argc,argv);} {selected
+    }
   }
   decl {RMGMO *rmgmo;} {private local
   }
-  Function {make_window()} {open
-  } {
+  Function {make_window()} {} {
     Fl_Window rmgmppwin {
       callback {pera=2;
 rmgmppwin->hide();
@@ -173,8 +176,7 @@ if ((j==4) && (i==1)) break;
 rmgmppwin->end();
 
 rmgmo->ulase=0;
-ASeCh(0);} {selected
-    }
+ASeCh(0);} {}
   }
   Function {ASeCh(int tr)} {} {
     code {int i,j;
