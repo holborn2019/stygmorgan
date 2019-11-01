@@ -68,8 +68,7 @@ for ( int t=0; t<children(); t++ )
   }
 }
 
-class sequencer {open
-} {
+class sequencer {} {
   Function {sequencer(RMGMO *rmgmo_)} {C
   } {
     code {Fl::visual(FL_DOUBLE|FL_INDEX);
@@ -115,15 +114,16 @@ Fl::repeat_timeout(.04,tick,v);} {}
 rmgmo->bcancel=2;
 pera=2;
 Fl::remove_timeout(tick);
-rmgmo->ctipo=2;
+rmgmo->ctipo=0;
 rmgmo->fundi=0;
 rmgmo->splay=0;
 rmgmo->bass=0;
+rmgmo->mt=1;
 rmgmo->wsequencer=0;
 stygmseqwin->clear();
 stygmseqwin->hide();
-delete stygmseqwin;} open
-      xywh {1312 141 800 600} type Double color 44 selection_color 47 labelcolor 7 hide resizable size_range {800 600 0 0}
+delete stygmseqwin;} open selected
+      xywh {1309 138 800 600} type Double color 44 selection_color 47 labelcolor 7 hide resizable size_range {800 600 0 0}
     } {
       Fl_Menu_Bar {} {
         xywh {0 0 800 25} box FLAT_BOX color 44 selection_color 47 labelcolor 7 textcolor 7
@@ -1248,8 +1248,7 @@ if(S[i].pattern != 0)
 rmgmo->PonPatron(vari);
 rmgmo->CNPattern=1;
 rmgmo->MiraAcorde(rmgmo->cas,1);
-rmgmo->BuscaRepes();} {selected
-    }
+rmgmo->BuscaRepes();} {}
   }
   Function {prepara_WTT()} {} {
     Fl_Window WTT {
