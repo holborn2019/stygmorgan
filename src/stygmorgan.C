@@ -135,7 +135,7 @@ RMGMO::RMGMO ()
   fundi = 0;
   mt=1;
   Variacion=1; 
-  ctipo=2;
+  ctipo=0;
   nStyle.ppq=96;
   nStyle.nominador=4;
   nStyle.Pattern[1].bars=1;
