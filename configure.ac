@@ -1,5 +1,5 @@
 AC_PREREQ(2.61)
-AC_INIT([stygmorgan],[0.30.0],[holborn@gmail.comt])
+AC_INIT([stygmorgan],[0.30.0],[holborn@gmail.com])
 AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([src/main.C])
 AC_CONFIG_HEADER([src/config.h])
