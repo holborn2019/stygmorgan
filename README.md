@@ -10,7 +10,7 @@ WARNING: Im sure this code just compile on 32bit, if u have 64bit machine and u 
 
 This program actually doesent produce any sound, just reveive/send MIDI events, to use on a live performance is needed a MIDI keyboard that can be any kind of controller with or without sound to play as you play on a real arranger keyboard. Off course to use the Sequencer u dont need that.
 
-They are many applications that u can use to produce the sound, personally I use Qsynth as frontend of Fluidsynth with the MuseScore_General_Full.sf2 with the Reverb patameters: Room=18 Damp=0 Width=2 Level=52 and the Chorus parameters: N=3 Level=100 Speed=30 Depth=68 with Fluidsynth version 1.1.11. And I think sounds pretty good.
+They are many applications that u can use to produce the sound, personally I use Qsynth as frontend of Fluidsynth with the MuseScore_General_Full.sf2 with the Reverb parameters: Room=18 Damp=0 Width=2 Level=52 and the Chorus parameters: N=3 Level=100 Speed=30 Depth=68 with Fluidsynth version 1.1.11. And I think sounds pretty good.
 
 To improve sound quality you can also use Multiple Jack Outputs on fluidsynth, if you dont increase the Audio Channels option on jack fluidsynth you just will have two extra stereo channels one for the Reverb and one for Chorus, that can be connected to external effects with more quality than the ones bring fluidsynth. 
 
