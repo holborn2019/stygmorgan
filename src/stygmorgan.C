@@ -148,6 +148,8 @@ RMGMO::RMGMO ()
   adatasize=0;
   usejacktransport=0;
   nunegra=1;
+  ultrack=0;
+  ulcontrol=0;
    
 memset(EG, 0, sizeof EG);
 memset(PEG,0, sizeof PEG);

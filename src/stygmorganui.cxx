@@ -1616,6 +1616,21 @@ void stygmorgan::cb_Copy(Fl_Button* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Copy_i(o,v);
 }
 
+void stygmorgan::cb_Varicounter_i(Fl_Counter* o, void*) {
+  o->parent()->redraw();
+AjustaValores((int)o->value());
+}
+void stygmorgan::cb_Varicounter(Fl_Counter* o, void* v) {
+  ((stygmorgan*)(o->parent()->parent()->parent()->user_data()))->cb_Varicounter_i(o,v);
+}
+
+void stygmorgan::cb_DInfoControl_i(Fl_Box* o, void*) {
+  o->parent()->redraw();
+}
+void stygmorgan::cb_DInfoControl(Fl_Box* o, void* v) {
+  ((stygmorgan*)(o->parent()->parent()->parent()->user_data()))->cb_DInfoControl_i(o,v);
+}
+
 void stygmorgan::cb_bMainA_i(Fl_Button*, void*) {
   rmgmo->nb=1;
 CVari(rmgmo->nb,0);
@@ -3730,13 +3745,6 @@ Fl_Double_Window* stygmorgan::make_window() {
         BroReg->callback((Fl_Callback*)cb_BroReg);
         BroReg->align(Fl_Align(FL_ALIGN_TOP));
       } // Fl_Browser* BroReg
-      { DInfoControl = new Fl_Box(640, 250, 168, 20);
-        DInfoControl->box(FL_BORDER_BOX);
-        DInfoControl->color(FL_DARK1);
-        DInfoControl->labelsize(13);
-        DInfoControl->labelcolor(FL_BACKGROUND2_COLOR);
-        DInfoControl->align(Fl_Align(68|FL_ALIGN_INSIDE));
-      } // Fl_Box* DInfoControl
       { Fl_Box* o = new Fl_Box(645, 185, 35, 17, gettext("label"));
         o->box(FL_GTK_UP_BOX);
         o->color((Fl_Color)110);
@@ -3749,6 +3757,30 @@ Fl_Double_Window* stygmorgan::make_window() {
         o->labelsize(12);
         o->callback((Fl_Callback*)cb_Copy);
       } // Fl_Button* o
+      { VariGroup = new Fl_Group(640, 207, 170, 61);
+        VariGroup->box(FL_BORDER_BOX);
+        VariGroup->color((Fl_Color)44);
+        { Varicounter = new Fl_Counter(675, 245, 95, 25);
+          Varicounter->type(1);
+          Varicounter->box(FL_NO_BOX);
+          Varicounter->color((Fl_Color)44);
+          Varicounter->labelcolor(FL_LIGHT2);
+          Varicounter->minimum(0);
+          Varicounter->maximum(127);
+          Varicounter->step(1);
+          Varicounter->textcolor(FL_BACKGROUND2_COLOR);
+          Varicounter->callback((Fl_Callback*)cb_Varicounter);
+        } // Fl_Counter* Varicounter
+        { DInfoControl = new Fl_Box(640, 225, 168, 19);
+          DInfoControl->box(FL_BORDER_BOX);
+          DInfoControl->color(FL_DARK1);
+          DInfoControl->labelsize(13);
+          DInfoControl->labelcolor(FL_LIGHT2);
+          DInfoControl->callback((Fl_Callback*)cb_DInfoControl);
+          DInfoControl->align(Fl_Align(FL_ALIGN_CLIP|FL_ALIGN_INSIDE));
+        } // Fl_Box* DInfoControl
+        VariGroup->end();
+      } // Fl_Group* VariGroup
       ElBueno->end();
     } // Fl_Group* ElBueno
     { Botones = new Fl_Group(355, 325, 160, 450);
@@ -4276,6 +4308,8 @@ void stygmorgan::ponmix() {
   ActuaOnOffP();
   ponmixsound();
   ActuaSolo();
+  
+  poninfo(0,2,rmgmo->CM[9].reverb);
 }
 
 void stygmorgan::PonSolo(int mcanal) {
@@ -5323,8 +5357,13 @@ void stygmorgan::put_icon(Fl_Window* window) {
 void stygmorgan::poninfo(int track, int control, int value) {
   char temp[256];
   bzero(temp,sizeof(temp));
-  sprintf(temp,"%s %s=%d",rmgmo->UTNames[track].Nom,rmgmo->UCNames[control].Nom,value);
+  sprintf(temp,"%s %s",rmgmo->UTNames[track].Nom,rmgmo->UCNames[control].Nom);
   DInfoControl->copy_label(temp);
+  VariGroup->redraw();
+  Varicounter->value(value);
+  VariGroup->redraw();
+  rmgmo->ultrack=track;
+  rmgmo->ulcontrol=control;
 }
 
 void stygmorgan::ActuaDP() {
@@ -5376,4 +5415,325 @@ void stygmorgan::ActuaDP() {
   else
   DP15->color((Fl_Color)230);
   DP15->redraw();
+}
+
+void stygmorgan::AjustaValores(int value) {
+  if (rmgmo->ultrack==0)
+    
+    {
+       if(rmgmo->ulcontrol==0)
+         {
+          Vol9->value(value); 
+          Vol9->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==1)
+         {
+          Chorus9->value(value); 
+          Chorus9->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==2)
+         {
+          Reverb9->value(value); 
+          Reverb9->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==3)
+         {
+          Pan9->value(value); 
+          Pan9->do_callback(); 
+         }
+        return;       
+     }
+  
+  if (rmgmo->ultrack==1)
+    
+    {
+       if(rmgmo->ulcontrol==0)
+         {
+          Vol10->value(value); 
+          Vol10->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==1)
+         {
+          Chorus10->value(value); 
+          Chorus10->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==2)
+         {
+          Reverb10->value(value); 
+          Reverb10->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==3)
+         {
+          Pan10->value(value); 
+          Pan10->do_callback(); 
+         }
+        return;       
+     }
+  
+  
+  if (rmgmo->ultrack==2)
+    
+    {
+       if(rmgmo->ulcontrol==0)
+         {
+          Vol11->value(value); 
+          Vol11->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==1)
+         {
+          Chorus11->value(value); 
+          Chorus11->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==2)
+         {
+          Reverb11->value(value); 
+          Reverb11->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==3)
+         {
+          Pan11->value(value); 
+          Pan11->do_callback(); 
+         }
+        return;       
+     }
+  
+  if (rmgmo->ultrack==3)
+    
+    {
+       if(rmgmo->ulcontrol==0)
+         {
+          Vol12->value(value); 
+          Vol12->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==1)
+         {
+          Chorus12->value(value); 
+          Chorus12->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==2)
+         {
+          Reverb12->value(value); 
+          Reverb12->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==3)
+         {
+          Pan12->value(value); 
+          Pan12->do_callback(); 
+         }
+        return;       
+     }
+  
+  
+  if (rmgmo->ultrack==4)
+    
+    {
+       if(rmgmo->ulcontrol==0)
+         {
+          Vol13->value(value); 
+          Vol13->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==1)
+         {
+          Chorus13->value(value); 
+          Chorus13->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==2)
+         {
+          Reverb13->value(value); 
+          Reverb13->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==3)
+         {
+          Pan13->value(value); 
+          Pan13->do_callback(); 
+         }
+        return;       
+     }
+  
+  
+  if (rmgmo->ultrack==5)
+    
+    {
+       if(rmgmo->ulcontrol==0)
+         {
+          Vol14->value(value); 
+          Vol14->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==1)
+         {
+          Chorus14->value(value); 
+          Chorus14->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==2)
+         {
+          Reverb14->value(value); 
+          Reverb14->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==3)
+         {
+          Pan14->value(value); 
+          Pan14->do_callback(); 
+         }
+        return;       
+     }
+  
+  if (rmgmo->ultrack==6)
+    
+    {
+       if(rmgmo->ulcontrol==0)
+         {
+          Vol15->value(value); 
+          Vol15->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==1)
+         {
+          Chorus15->value(value); 
+          Chorus15->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==2)
+         {
+          Reverb15->value(value); 
+          Reverb15->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==3)
+         {
+          Pan15->value(value); 
+          Pan15->do_callback(); 
+         }
+        return;       
+     }
+  
+  
+  if (rmgmo->ultrack==7)
+    
+    {
+       if(rmgmo->ulcontrol==0)
+         {
+          Vol0->value(value); 
+          Vol0->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==1)
+         {
+          Chorus0->value(value); 
+          Chorus0->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==2)
+         {
+          Reverb0->value(value); 
+          Reverb0->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==3)
+         {
+          Pan0->value(value); 
+          Pan0->do_callback(); 
+         }
+        return;       
+     }
+     
+     
+  
+  if (rmgmo->ultrack==8)
+    
+    {
+       if(rmgmo->ulcontrol==0)
+         {
+          Vol1->value(value); 
+          Vol1->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==1)
+         {
+          Chorus1->value(value); 
+          Chorus1->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==2)
+         {
+          Reverb1->value(value); 
+          Reverb1->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==3)
+         {
+          Pan1->value(value); 
+          Pan1->do_callback(); 
+         }
+        return;       
+     }
+     
+  
+  if (rmgmo->ultrack==9)
+    
+    {
+       if(rmgmo->ulcontrol==0)
+         {
+          Vol2->value(value); 
+          Vol2->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==1)
+         {
+          Chorus2->value(value); 
+          Chorus2->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==2)
+         {
+          Reverb2->value(value); 
+          Reverb2->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==3)
+         {
+          Pan2->value(value); 
+          Pan2->do_callback(); 
+         }
+        return;       
+     }
+     
+  
+  if (rmgmo->ultrack==10)
+    
+    {
+       if(rmgmo->ulcontrol==0)
+         {
+          Vol3->value(value); 
+          Vol3->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==1)
+         {
+          Chorus3->value(value); 
+          Chorus3->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==2)
+         {
+          Reverb3->value(value); 
+          Reverb3->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==3)
+         {
+          Pan3->value(value); 
+          Pan3->do_callback(); 
+         }
+        return;       
+     }
+   if (rmgmo->ultrack==11)
+    
+    {
+       if(rmgmo->ulcontrol==0)
+         {
+          Vol4->value(value); 
+          Vol4->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==1)
+         {
+          Chorus4->value(value); 
+          Chorus4->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==2)
+         {
+          Reverb4->value(value); 
+          Reverb4->do_callback(); 
+         }
+       if(rmgmo->ulcontrol==3)
+         {
+          Pan4->value(value); 
+          Pan4->do_callback(); 
+         }
+        return;       
+     }
 }

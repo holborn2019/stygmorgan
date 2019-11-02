@@ -350,6 +350,8 @@ public:
   int sbot[22];
   int tvb[22];
   int nb;
+  int ultrack;
+  int ulcontrol;
   char
   StylesFilename[256],SoundsFilename[256],PresetFilename[256],DrumSetFilename[256],ASFFilename[256],RegisFilename[256];
   char TempDir[128];

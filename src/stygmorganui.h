@@ -5,6 +5,7 @@
 #include <FL/Fl.H>
 #include <FL/x.H>
 #include <FL/Fl_File_Chooser.H>
+#include <FL/Fl_Dial.H>
 #include "stygmorgan.h"
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Group.H>
@@ -709,11 +710,19 @@ public:
 private:
   inline void cb_BroReg_i(Fl_Browser*, void*);
   static void cb_BroReg(Fl_Browser*, void*);
+  inline void cb_Copy_i(Fl_Button*, void*);
+  static void cb_Copy(Fl_Button*, void*);
+public:
+  Fl_Group *VariGroup;
+  Fl_Counter *Varicounter;
+private:
+  inline void cb_Varicounter_i(Fl_Counter*, void*);
+  static void cb_Varicounter(Fl_Counter*, void*);
 public:
   Fl_Box *DInfoControl;
 private:
-  inline void cb_Copy_i(Fl_Button*, void*);
-  static void cb_Copy(Fl_Button*, void*);
+  inline void cb_DInfoControl_i(Fl_Box*, void*);
+  static void cb_DInfoControl(Fl_Box*, void*);
 public:
   Fl_Group *Botones;
   Fl_Button *bMainA;
@@ -890,5 +899,6 @@ public:
   void put_icon(Fl_Window* window);
   void poninfo(int track, int control, int value);
   void ActuaDP();
+  void AjustaValores(int value);
 };
 #endif
