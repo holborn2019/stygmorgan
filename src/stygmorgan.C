@@ -416,6 +416,9 @@ if (val==0)
  bzero(orden,sizeof(orden));
  sprintf(orden, "cp %s/* %s",DATADIR,nomfile);  
  system(orden);
+ bzero(orden,sizeof(orden));
+ sprintf(orden, "7z x %s/MisStyles.STYR.xz",nomfile);
+ system(orden);
  stygmorgan.set("FirstTime",1);
  sprintf(StylesFilename,"%s/MisStyles.STYR",nomfile);
  sprintf(SoundsFilename,"%s/MisSounds.SNDR",nomfile);
