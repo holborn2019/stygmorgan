@@ -722,7 +722,7 @@ Fl_Double_Window* about::make_window() {
         } // Fl_Box* progname
         { new Fl_Box(20, 185, 565, 40, gettext("A Interactive Music Workstation Software"));
         } // Fl_Box* o
-        { new Fl_Box(155, 220, 305, 25, gettext("(c) 2006-2009, Josep Andreu"));
+        { new Fl_Box(155, 220, 305, 25, gettext("(c) 2006-2019, Josep Andreu"));
         } // Fl_Box* o
         { Fl_Box* o = new Fl_Box(65, 75, 505, 60);
           o->image( image_stygmicon128() );

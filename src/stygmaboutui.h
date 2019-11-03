@@ -3,7 +3,7 @@
 #ifndef stygmaboutui_h
 #define stygmaboutui_h
 #include <FL/Fl.H>
-#include <FL/Fl_Text_Buffer.h>
+#include <FL/Fl_Text_Buffer.H>
 #include "stygmorgan.h"
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Tabs.H>

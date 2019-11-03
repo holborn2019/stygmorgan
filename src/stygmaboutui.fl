@@ -11,7 +11,7 @@ decl {//Copyright(c) 2006 Josep Andreu (holborn)} {private local
 decl {//License GNU/GPL version 2} {private local
 }
 
-decl {\#include <FL/Fl_Text_Buffer.h>} {public local
+decl {\#include <FL/Fl_Text_Buffer.H>} {public local
 }
 
 decl {\#include "stygmorgan.h"} {public local
@@ -70,10 +70,10 @@ TDD->buffer(buf3);
 bzero(temp,sizeof(temp));
 sprintf(temp,"%s/TRANSLATE",HELPDIR);
 buf4->insertfile(temp,1);
-TDT->buffer(buf4);} {selected
-    }
+TDT->buffer(buf4);} {}
   }
-  Function {make_window()} {} {
+  Function {make_window()} {open
+  } {
     Fl_Window aboutwin {
       callback {aboutwin->clear();
 aboutwin->hide();
@@ -85,7 +85,7 @@ delete aboutwin;}
         xywh {0 0 615 330} color 44 selection_color 47 labelcolor 7
       } {
         Fl_Group Tab1 {
-          label About
+          label About open
           xywh {0 30 600 295} color 44 selection_color 47 labelcolor 7
         } {
           Fl_Box progname {
@@ -96,7 +96,7 @@ delete aboutwin;}
             xywh {20 185 565 40}
           }
           Fl_Box {} {
-            label {(c) 2006-2009, Josep Andreu}
+            label {(c) 2006-2019, Josep Andreu} selected
             xywh {155 220 305 25}
           }
           Fl_Box {} {
