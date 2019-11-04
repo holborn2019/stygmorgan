@@ -45,7 +45,7 @@ sprintf(dcompas,"%d",vcompas);
 }
 
 
-if ((tiene>0) && (vcompas == nStyle.Pattern[Variacion].bars))
+if ((tiene>0) && (vcompas == nStyle.Pattern[Variacion].bars) && (negra == 1) && (semi == 1))
 {
      if (nStyle.Pattern[siguiente].bars < nStyle.Pattern[Variacion].bars)
      {
@@ -114,7 +114,7 @@ snd_seq_ev_clear(&ev1);
 if (!CM[gcanal].OnOff) return;
 cocas[gcanal]=1;
 int len=3;
-lastvelo[gcanal]=(int)((double)gvelocity*((double)CM[gcanal].vol/127.0)*((double)(AccVol)/100.0));
+lastvelo[gcanal]=(int)((double)gvelocity*((double)CM[gcanal].vol/127.0)*((double)(AccVol)/96.0));
 gtick = gtick+(patrones*longi)+rema;
 
 switch(tipo)
@@ -326,31 +326,45 @@ RMGMO::ponmixpatternenmix(int patron)
 
    if (Respect==0) CM[i].OnOff = nStyle.Pattern[patron].CM[i].OnOff;
 
-   CM[i].program = nStyle.Pattern[patron].CM[i].program;
-   envioprograma(i,CM[i].program);
-
-   CM[i].vol = nStyle.Pattern[patron].CM[i].vol;
-   ActuVarVol(i,i);
-
-   CM[i].chorus = nStyle.Pattern[patron].CM[i].chorus;
-   enviocontrol(i,93,CM[i].chorus);
-
-   CM[i].reverb = nStyle.Pattern[patron].CM[i].reverb;
-   enviocontrol(i,91,CM[i].reverb);
-
-   CM[i].pan = nStyle.Pattern[patron].CM[i].pan;
-
-   enviocontrol(i,10,CM[i].pan);
-   enviobend(i,0);
-
    CM[i].bMSB = nStyle.Pattern[patron].CM[i].bMSB;
    CM[i].bLSB = nStyle.Pattern[patron].CM[i].bLSB;
+   if (CM[i].program != nStyle.Pattern[patron].CM[i].program)
+      {
+       CM[i].program = nStyle.Pattern[patron].CM[i].program;
+       envioprograma(i,CM[i].program);
+      }
+   
+   if(CM[i].vol != nStyle.Pattern[patron].CM[i].vol)
+      {
+       CM[i].vol = nStyle.Pattern[patron].CM[i].vol;
+       ActuVarVol(i,i);
+      }
+   
+   if(CM[i].chorus != nStyle.Pattern[patron].CM[i].chorus)
+      { 
+       CM[i].chorus = nStyle.Pattern[patron].CM[i].chorus;
+       enviocontrol(i,93,CM[i].chorus);
+      }
+   if(CM[i].reverb != nStyle.Pattern[patron].CM[i].reverb)
+      {
+       CM[i].reverb = nStyle.Pattern[patron].CM[i].reverb;
+       enviocontrol(i,91,CM[i].reverb);
+      }
+   if(CM[i].pan != nStyle.Pattern[patron].CM[i].pan)
+      {
+       CM[i].pan = nStyle.Pattern[patron].CM[i].pan;
+       enviocontrol(i,10,CM[i].pan);
+      }
+   
+   enviobend(i,0);
+
    CM[i].octave = nStyle.Pattern[patron].CM[i].octave;
    CM[i].transpose = nStyle.Pattern[patron].CM[i].transpose;
    if (Respect==0)   CM[i].solo = nStyle.Pattern[patron].CM[i].solo;
    CM[i].more = nStyle.Pattern[patron].CM[i].more;
 
   }
+
 }
 
 void
@@ -438,7 +452,6 @@ RMGMO::PonAjusta()
          case 4:
           ajusta =4;
      }
-
 };
 
 
