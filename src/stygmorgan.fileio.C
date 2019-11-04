@@ -25,7 +25,6 @@ void
 RMGMO::loadpreset(char *filename)
 
 {
-
 strcpy(PresetFilename,filename);
 
   int i = 0, j = 0;
@@ -52,14 +51,9 @@ strcpy(PresetFilename,filename);
 
             for (i = 0; i <=(int) strlen (temp); i++)
             PresetList[bb].PBanco[pp].ProgName[i] = nn[i];
-
         }
-       
        fclose(fp);
-    
     }
-    
-      
 
 };
 
@@ -83,9 +77,7 @@ FILE *fs;
         }
         fclose(fs);
        }
-
 PonAjusta();
-
 }
 
 
@@ -110,15 +102,11 @@ FILE *fs;
 
          fclose(fs);
         }
-
-
 }
-
 
 void
 RMGMO::readstyles(char *filename)
 {
-
 int i;
 long tam;
 FILE *fs;
@@ -133,15 +121,11 @@ FILE *fs;
             {
                 i = fread(&nStyle, sizeof(nStyle),1,fs);
                 if (feof(fs) == 0) procesaleido(); else break;
-
-
                 for(i=0; i<22; i++)
                 {
                  tam = (long)(sizeof(tempEG) * nStyle.Pattern[i].eventos);
                  fread(&PEG[i][0],tam,1,fs); 
                 }
-
-
              }
              fclose(fs);
       }
@@ -162,12 +146,7 @@ char *filename;
 
  bzero(filef, sizeof(filef));
  filename = filef;
-
  strcpy(filename,StylesFilename);
-
-
-
-
 
      if ((fs = fopen (filename, "ab")) != NULL)
         {
@@ -177,11 +156,8 @@ char *filename;
                  tam = (long)(sizeof(tempEG) * nStyle.Pattern[i].eventos);
                  fwrite(&PEG[i][0],tam,1,fs);
                 }
-
-
          fclose(fs);
         }
-
 
 };
 
@@ -201,14 +177,12 @@ for (i=0; i<=128;i++)  SongF.S[i] = S[i];
          fclose(fs);
         }
 
-
 };
 
 
 void
 RMGMO::readstyle(int estilo)
 {
-
 int i;
 long tam;
 int kk=0;
@@ -216,12 +190,9 @@ FILE *fs;
 char filef[80];
 char *filename;
 
-
  bzero(filef, sizeof(filef));
  filename = filef;
-
  strcpy(filename,StylesFilename);
-
 
   if ((fs = fopen (filename, "rb")) != NULL)
        {
@@ -233,16 +204,11 @@ char *filename;
                        tam =(long) ( sizeof(tempEG) * nStyle.Pattern[i].eventos);
                        fread(&PEG[i][0],tam,1,fs);
                      }
-
-
                   kk++;
                  }
-
        fclose(fs);
        }
-
 PonAjusta();
-
  };
 
 void
@@ -585,8 +551,6 @@ char nn[80];
           PD[i].DNN[i].Note  = j;
         }
     }
-
-
   bb = 0;
   pp = 0;
   bzero (nn, sizeof(nn));
@@ -607,12 +571,6 @@ char nn[80];
 
 };
 
-
-
-
-
-
-
 void
 RMGMO::readregistrations(char *filename)
 {
@@ -623,14 +581,12 @@ FILE *fs;
  numregis=0;
  strcpy(RegisFilename,filename); 
 
-
  if ((fs = fopen (filename, "rb")) != NULL)
      {
         while (!feof(fs))
             {
                 fread(&R, sizeof(R),1,fs);
                 if (feof(fs) == 0) procesaregleido(); else break;
-
             }
              fclose(fs);
       }
@@ -640,7 +596,6 @@ FILE *fs;
 
 void
 RMGMO::saveregistration()
-
 {
 
 FILE *fs;
@@ -659,15 +614,12 @@ char *filename;
 
          fclose(fs);
         }
-
-
 };
 
 
 void
 RMGMO::readregistration(int regis)
 {
-
 
 int kk=0;
 FILE *fs;
@@ -690,14 +642,12 @@ char *filename;
 
        fclose(fs);
        }
-
  };
 
 
 void
 RMGMO::writeregistration(int regis)
 {
-
 
 int kk=0;
 FILE *fs;
@@ -737,16 +687,11 @@ char filef[80];
 char *filename;
 
  bzero(tempfile,sizeof(tempfile));
-
  sprintf(tempfile,"%s/tempstyreg",TempDir);
-
  bzero(filef, sizeof(filef));
  filename = filef;
-
  strcpy(filename,RegisFilename);
-
-regis--;
-
+ regis--;
   if ((fn = fopen (tempfile, "ab")) != NULL)
     { 
   if ((fs = fopen (filename, "rb")) != NULL)
@@ -768,17 +713,15 @@ regis--;
                      kk++;
 
                  }
-
-
        fclose(fn);
        fclose(fs);
        char temp[3256];
        bzero(temp,sizeof(temp));
        sprintf(temp,"mv %s %s.bak ; mv %s %s",RegisFilename,RegisFilename,tempfile,RegisFilename);
        system(temp);
-
        }
      }
-
  };
+ 
+ 
 

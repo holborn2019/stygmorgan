@@ -648,7 +648,7 @@ struct Ch4
   int di1;
   int di2;
   int di3;
-  char Nom[10];
+  char Nom[16];
 } Chord4[62];
 
 struct Ch5
@@ -661,7 +661,7 @@ struct Ch5
   int di2;
   int di3;
   int di4;
-  char Nom[10];
+  char Nom[16];
 } Chord5[67];
 
 
