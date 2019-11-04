@@ -4,18 +4,31 @@
 #define stygmorganui_h
 #include <FL/Fl.H>
 #include <FL/x.H>
+#include <FL/Fl_Slider.H>
 #include <FL/Fl_File_Chooser.H>
 #include <FL/Fl_Dial.H>
 #include "stygmorgan.h"
+
+class MiSlider : public Fl_Slider {
+public:
+  MiSlider(int x,int y, int w, int h, const char *label=0);
+  int handle(int event);
+};
+
+class MiDial : public Fl_Dial {
+public:
+  MiDial(int x,int y, int w, int h, const char *label=0);
+  int handle(int event);
+};
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Group.H>
-#include <FL/Fl_Dial.H>
-#include <FL/Fl_Slider.H>
 #include <FL/Fl_Button.H>
 #include <FL/Fl_Box.H>
 #include <FL/Fl_Counter.H>
 #include <FL/Fl_Menu_Bar.H>
+#include <FL/Fl_Dial.H>
 #include <FL/Fl_Browser.H>
+#include <FL/Fl_Slider.H>
 #include <FL/Fl_Choice.H>
 #include <FL/Fl_Output.H>
 
@@ -28,25 +41,25 @@ private:
   inline void cb_rmgmorganwin_i(Fl_Double_Window*, void*);
   static void cb_rmgmorganwin(Fl_Double_Window*, void*);
 public:
-  Fl_Dial *Pan0;
+  MiDial *Pan0;
 private:
-  inline void cb_Pan0_i(Fl_Dial*, void*);
-  static void cb_Pan0(Fl_Dial*, void*);
+  inline void cb_Pan0_i(MiDial*, void*);
+  static void cb_Pan0(MiDial*, void*);
 public:
-  Fl_Dial *Reverb0;
+  MiDial *Reverb0;
 private:
-  inline void cb_Reverb0_i(Fl_Dial*, void*);
-  static void cb_Reverb0(Fl_Dial*, void*);
+  inline void cb_Reverb0_i(MiDial*, void*);
+  static void cb_Reverb0(MiDial*, void*);
 public:
-  Fl_Dial *Chorus0;
+  MiDial *Chorus0;
 private:
-  inline void cb_Chorus0_i(Fl_Dial*, void*);
-  static void cb_Chorus0(Fl_Dial*, void*);
+  inline void cb_Chorus0_i(MiDial*, void*);
+  static void cb_Chorus0(MiDial*, void*);
 public:
-  Fl_Slider *Vol0;
+  MiSlider *Vol0;
 private:
-  inline void cb_Vol0_i(Fl_Slider*, void*);
-  static void cb_Vol0(Fl_Slider*, void*);
+  inline void cb_Vol0_i(MiSlider*, void*);
+  static void cb_Vol0(MiSlider*, void*);
 public:
   Fl_Button *On0;
 private:
@@ -69,25 +82,25 @@ private:
   inline void cb_P0_i(Fl_Counter*, void*);
   static void cb_P0(Fl_Counter*, void*);
 public:
-  Fl_Dial *Pan1;
+  MiDial *Pan1;
 private:
-  inline void cb_Pan1_i(Fl_Dial*, void*);
-  static void cb_Pan1(Fl_Dial*, void*);
+  inline void cb_Pan1_i(MiDial*, void*);
+  static void cb_Pan1(MiDial*, void*);
 public:
-  Fl_Dial *Reverb1;
+  MiDial *Reverb1;
 private:
-  inline void cb_Reverb1_i(Fl_Dial*, void*);
-  static void cb_Reverb1(Fl_Dial*, void*);
+  inline void cb_Reverb1_i(MiDial*, void*);
+  static void cb_Reverb1(MiDial*, void*);
 public:
-  Fl_Dial *Chorus1;
+  MiDial *Chorus1;
 private:
-  inline void cb_Chorus1_i(Fl_Dial*, void*);
-  static void cb_Chorus1(Fl_Dial*, void*);
+  inline void cb_Chorus1_i(MiDial*, void*);
+  static void cb_Chorus1(MiDial*, void*);
 public:
-  Fl_Slider *Vol1;
+  MiSlider *Vol1;
 private:
-  inline void cb_Vol1_i(Fl_Slider*, void*);
-  static void cb_Vol1(Fl_Slider*, void*);
+  inline void cb_Vol1_i(MiSlider*, void*);
+  static void cb_Vol1(MiSlider*, void*);
 public:
   Fl_Button *On1;
 private:
@@ -110,25 +123,25 @@ private:
   inline void cb_P1_i(Fl_Counter*, void*);
   static void cb_P1(Fl_Counter*, void*);
 public:
-  Fl_Dial *Pan2;
+  MiDial *Pan2;
 private:
-  inline void cb_Pan2_i(Fl_Dial*, void*);
-  static void cb_Pan2(Fl_Dial*, void*);
+  inline void cb_Pan2_i(MiDial*, void*);
+  static void cb_Pan2(MiDial*, void*);
 public:
-  Fl_Dial *Reverb2;
+  MiDial *Reverb2;
 private:
-  inline void cb_Reverb2_i(Fl_Dial*, void*);
-  static void cb_Reverb2(Fl_Dial*, void*);
+  inline void cb_Reverb2_i(MiDial*, void*);
+  static void cb_Reverb2(MiDial*, void*);
 public:
-  Fl_Dial *Chorus2;
+  MiDial *Chorus2;
 private:
-  inline void cb_Chorus2_i(Fl_Dial*, void*);
-  static void cb_Chorus2(Fl_Dial*, void*);
+  inline void cb_Chorus2_i(MiDial*, void*);
+  static void cb_Chorus2(MiDial*, void*);
 public:
-  Fl_Slider *Vol2;
+  MiSlider *Vol2;
 private:
-  inline void cb_Vol2_i(Fl_Slider*, void*);
-  static void cb_Vol2(Fl_Slider*, void*);
+  inline void cb_Vol2_i(MiSlider*, void*);
+  static void cb_Vol2(MiSlider*, void*);
 public:
   Fl_Button *On2;
 private:
@@ -151,25 +164,25 @@ private:
   inline void cb_P2_i(Fl_Counter*, void*);
   static void cb_P2(Fl_Counter*, void*);
 public:
-  Fl_Dial *Pan3;
+  MiDial *Pan3;
 private:
-  inline void cb_Pan3_i(Fl_Dial*, void*);
-  static void cb_Pan3(Fl_Dial*, void*);
+  inline void cb_Pan3_i(MiDial*, void*);
+  static void cb_Pan3(MiDial*, void*);
 public:
-  Fl_Dial *Reverb3;
+  MiDial *Reverb3;
 private:
-  inline void cb_Reverb3_i(Fl_Dial*, void*);
-  static void cb_Reverb3(Fl_Dial*, void*);
+  inline void cb_Reverb3_i(MiDial*, void*);
+  static void cb_Reverb3(MiDial*, void*);
 public:
-  Fl_Dial *Chorus3;
+  MiDial *Chorus3;
 private:
-  inline void cb_Chorus3_i(Fl_Dial*, void*);
-  static void cb_Chorus3(Fl_Dial*, void*);
+  inline void cb_Chorus3_i(MiDial*, void*);
+  static void cb_Chorus3(MiDial*, void*);
 public:
-  Fl_Slider *Vol3;
+  MiSlider *Vol3;
 private:
-  inline void cb_Vol3_i(Fl_Slider*, void*);
-  static void cb_Vol3(Fl_Slider*, void*);
+  inline void cb_Vol3_i(MiSlider*, void*);
+  static void cb_Vol3(MiSlider*, void*);
 public:
   Fl_Button *On3;
 private:
@@ -192,25 +205,25 @@ private:
   inline void cb_P3_i(Fl_Counter*, void*);
   static void cb_P3(Fl_Counter*, void*);
 public:
-  Fl_Dial *Pan4;
+  MiDial *Pan4;
 private:
-  inline void cb_Pan4_i(Fl_Dial*, void*);
-  static void cb_Pan4(Fl_Dial*, void*);
+  inline void cb_Pan4_i(MiDial*, void*);
+  static void cb_Pan4(MiDial*, void*);
 public:
-  Fl_Dial *Reverb4;
+  MiDial *Reverb4;
 private:
-  inline void cb_Reverb4_i(Fl_Dial*, void*);
-  static void cb_Reverb4(Fl_Dial*, void*);
+  inline void cb_Reverb4_i(MiDial*, void*);
+  static void cb_Reverb4(MiDial*, void*);
 public:
-  Fl_Dial *Chorus4;
+  MiDial *Chorus4;
 private:
-  inline void cb_Chorus4_i(Fl_Dial*, void*);
-  static void cb_Chorus4(Fl_Dial*, void*);
+  inline void cb_Chorus4_i(MiDial*, void*);
+  static void cb_Chorus4(MiDial*, void*);
 public:
-  Fl_Slider *Vol4;
+  MiSlider *Vol4;
 private:
-  inline void cb_Vol4_i(Fl_Slider*, void*);
-  static void cb_Vol4(Fl_Slider*, void*);
+  inline void cb_Vol4_i(MiSlider*, void*);
+  static void cb_Vol4(MiSlider*, void*);
 public:
   Fl_Button *On4;
 private:
@@ -233,25 +246,25 @@ private:
   inline void cb_P4_i(Fl_Counter*, void*);
   static void cb_P4(Fl_Counter*, void*);
 public:
-  Fl_Dial *Pan9;
+  MiDial *Pan9;
 private:
-  inline void cb_Pan9_i(Fl_Dial*, void*);
-  static void cb_Pan9(Fl_Dial*, void*);
+  inline void cb_Pan9_i(MiDial*, void*);
+  static void cb_Pan9(MiDial*, void*);
 public:
-  Fl_Dial *Reverb9;
+  MiDial *Reverb9;
 private:
-  inline void cb_Reverb9_i(Fl_Dial*, void*);
-  static void cb_Reverb9(Fl_Dial*, void*);
+  inline void cb_Reverb9_i(MiDial*, void*);
+  static void cb_Reverb9(MiDial*, void*);
 public:
-  Fl_Dial *Chorus9;
+  MiDial *Chorus9;
 private:
-  inline void cb_Chorus9_i(Fl_Dial*, void*);
-  static void cb_Chorus9(Fl_Dial*, void*);
+  inline void cb_Chorus9_i(MiDial*, void*);
+  static void cb_Chorus9(MiDial*, void*);
 public:
-  Fl_Slider *Vol9;
+  MiSlider *Vol9;
 private:
-  inline void cb_Vol9_i(Fl_Slider*, void*);
-  static void cb_Vol9(Fl_Slider*, void*);
+  inline void cb_Vol9_i(MiSlider*, void*);
+  static void cb_Vol9(MiSlider*, void*);
 public:
   Fl_Button *On9;
 private:
@@ -275,25 +288,25 @@ private:
   inline void cb_P9_i(Fl_Counter*, void*);
   static void cb_P9(Fl_Counter*, void*);
 public:
-  Fl_Dial *Pan10;
+  MiDial *Pan10;
 private:
-  inline void cb_Pan10_i(Fl_Dial*, void*);
-  static void cb_Pan10(Fl_Dial*, void*);
+  inline void cb_Pan10_i(MiDial*, void*);
+  static void cb_Pan10(MiDial*, void*);
 public:
-  Fl_Dial *Reverb10;
+  MiDial *Reverb10;
 private:
-  inline void cb_Reverb10_i(Fl_Dial*, void*);
-  static void cb_Reverb10(Fl_Dial*, void*);
+  inline void cb_Reverb10_i(MiDial*, void*);
+  static void cb_Reverb10(MiDial*, void*);
 public:
-  Fl_Dial *Chorus10;
+  MiDial *Chorus10;
 private:
-  inline void cb_Chorus10_i(Fl_Dial*, void*);
-  static void cb_Chorus10(Fl_Dial*, void*);
+  inline void cb_Chorus10_i(MiDial*, void*);
+  static void cb_Chorus10(MiDial*, void*);
 public:
-  Fl_Slider *Vol10;
+  MiSlider *Vol10;
 private:
-  inline void cb_Vol10_i(Fl_Slider*, void*);
-  static void cb_Vol10(Fl_Slider*, void*);
+  inline void cb_Vol10_i(MiSlider*, void*);
+  static void cb_Vol10(MiSlider*, void*);
 public:
   Fl_Button *On10;
 private:
@@ -317,25 +330,25 @@ private:
   inline void cb_P10_i(Fl_Counter*, void*);
   static void cb_P10(Fl_Counter*, void*);
 public:
-  Fl_Dial *Pan11;
+  MiDial *Pan11;
 private:
-  inline void cb_Pan11_i(Fl_Dial*, void*);
-  static void cb_Pan11(Fl_Dial*, void*);
+  inline void cb_Pan11_i(MiDial*, void*);
+  static void cb_Pan11(MiDial*, void*);
 public:
-  Fl_Dial *Reverb11;
+  MiDial *Reverb11;
 private:
-  inline void cb_Reverb11_i(Fl_Dial*, void*);
-  static void cb_Reverb11(Fl_Dial*, void*);
+  inline void cb_Reverb11_i(MiDial*, void*);
+  static void cb_Reverb11(MiDial*, void*);
 public:
-  Fl_Dial *Chorus11;
+  MiDial *Chorus11;
 private:
-  inline void cb_Chorus11_i(Fl_Dial*, void*);
-  static void cb_Chorus11(Fl_Dial*, void*);
+  inline void cb_Chorus11_i(MiDial*, void*);
+  static void cb_Chorus11(MiDial*, void*);
 public:
-  Fl_Slider *Vol11;
+  MiSlider *Vol11;
 private:
-  inline void cb_Vol11_i(Fl_Slider*, void*);
-  static void cb_Vol11(Fl_Slider*, void*);
+  inline void cb_Vol11_i(MiSlider*, void*);
+  static void cb_Vol11(MiSlider*, void*);
 public:
   Fl_Button *On11;
 private:
@@ -359,25 +372,25 @@ private:
   inline void cb_P11_i(Fl_Counter*, void*);
   static void cb_P11(Fl_Counter*, void*);
 public:
-  Fl_Dial *Pan12;
+  MiDial *Pan12;
 private:
-  inline void cb_Pan12_i(Fl_Dial*, void*);
-  static void cb_Pan12(Fl_Dial*, void*);
+  inline void cb_Pan12_i(MiDial*, void*);
+  static void cb_Pan12(MiDial*, void*);
 public:
-  Fl_Dial *Reverb12;
+  MiDial *Reverb12;
 private:
-  inline void cb_Reverb12_i(Fl_Dial*, void*);
-  static void cb_Reverb12(Fl_Dial*, void*);
+  inline void cb_Reverb12_i(MiDial*, void*);
+  static void cb_Reverb12(MiDial*, void*);
 public:
-  Fl_Dial *Chorus12;
+  MiDial *Chorus12;
 private:
-  inline void cb_Chorus12_i(Fl_Dial*, void*);
-  static void cb_Chorus12(Fl_Dial*, void*);
+  inline void cb_Chorus12_i(MiDial*, void*);
+  static void cb_Chorus12(MiDial*, void*);
 public:
-  Fl_Slider *Vol12;
+  MiSlider *Vol12;
 private:
-  inline void cb_Vol12_i(Fl_Slider*, void*);
-  static void cb_Vol12(Fl_Slider*, void*);
+  inline void cb_Vol12_i(MiSlider*, void*);
+  static void cb_Vol12(MiSlider*, void*);
 public:
   Fl_Button *On12;
 private:
@@ -401,25 +414,25 @@ private:
   inline void cb_P12_i(Fl_Counter*, void*);
   static void cb_P12(Fl_Counter*, void*);
 public:
-  Fl_Dial *Pan13;
+  MiDial *Pan13;
 private:
-  inline void cb_Pan13_i(Fl_Dial*, void*);
-  static void cb_Pan13(Fl_Dial*, void*);
+  inline void cb_Pan13_i(MiDial*, void*);
+  static void cb_Pan13(MiDial*, void*);
 public:
-  Fl_Dial *Reverb13;
+  MiDial *Reverb13;
 private:
-  inline void cb_Reverb13_i(Fl_Dial*, void*);
-  static void cb_Reverb13(Fl_Dial*, void*);
+  inline void cb_Reverb13_i(MiDial*, void*);
+  static void cb_Reverb13(MiDial*, void*);
 public:
-  Fl_Dial *Chorus13;
+  MiDial *Chorus13;
 private:
-  inline void cb_Chorus13_i(Fl_Dial*, void*);
-  static void cb_Chorus13(Fl_Dial*, void*);
+  inline void cb_Chorus13_i(MiDial*, void*);
+  static void cb_Chorus13(MiDial*, void*);
 public:
-  Fl_Slider *Vol13;
+  MiSlider *Vol13;
 private:
-  inline void cb_Vol13_i(Fl_Slider*, void*);
-  static void cb_Vol13(Fl_Slider*, void*);
+  inline void cb_Vol13_i(MiSlider*, void*);
+  static void cb_Vol13(MiSlider*, void*);
 public:
   Fl_Button *On13;
 private:
@@ -443,25 +456,25 @@ private:
   inline void cb_P13_i(Fl_Counter*, void*);
   static void cb_P13(Fl_Counter*, void*);
 public:
-  Fl_Dial *Pan14;
+  MiDial *Pan14;
 private:
-  inline void cb_Pan14_i(Fl_Dial*, void*);
-  static void cb_Pan14(Fl_Dial*, void*);
+  inline void cb_Pan14_i(MiDial*, void*);
+  static void cb_Pan14(MiDial*, void*);
 public:
-  Fl_Dial *Reverb14;
+  MiDial *Reverb14;
 private:
-  inline void cb_Reverb14_i(Fl_Dial*, void*);
-  static void cb_Reverb14(Fl_Dial*, void*);
+  inline void cb_Reverb14_i(MiDial*, void*);
+  static void cb_Reverb14(MiDial*, void*);
 public:
-  Fl_Dial *Chorus14;
+  MiDial *Chorus14;
 private:
-  inline void cb_Chorus14_i(Fl_Dial*, void*);
-  static void cb_Chorus14(Fl_Dial*, void*);
+  inline void cb_Chorus14_i(MiDial*, void*);
+  static void cb_Chorus14(MiDial*, void*);
 public:
-  Fl_Slider *Vol14;
+  MiSlider *Vol14;
 private:
-  inline void cb_Vol14_i(Fl_Slider*, void*);
-  static void cb_Vol14(Fl_Slider*, void*);
+  inline void cb_Vol14_i(MiSlider*, void*);
+  static void cb_Vol14(MiSlider*, void*);
 public:
   Fl_Button *On14;
 private:
@@ -485,25 +498,25 @@ private:
   inline void cb_P14_i(Fl_Counter*, void*);
   static void cb_P14(Fl_Counter*, void*);
 public:
-  Fl_Dial *Pan15;
+  MiDial *Pan15;
 private:
-  inline void cb_Pan15_i(Fl_Dial*, void*);
-  static void cb_Pan15(Fl_Dial*, void*);
+  inline void cb_Pan15_i(MiDial*, void*);
+  static void cb_Pan15(MiDial*, void*);
 public:
-  Fl_Dial *Reverb15;
+  MiDial *Reverb15;
 private:
-  inline void cb_Reverb15_i(Fl_Dial*, void*);
-  static void cb_Reverb15(Fl_Dial*, void*);
+  inline void cb_Reverb15_i(MiDial*, void*);
+  static void cb_Reverb15(MiDial*, void*);
 public:
-  Fl_Dial *Chorus15;
+  MiDial *Chorus15;
 private:
-  inline void cb_Chorus15_i(Fl_Dial*, void*);
-  static void cb_Chorus15(Fl_Dial*, void*);
+  inline void cb_Chorus15_i(MiDial*, void*);
+  static void cb_Chorus15(MiDial*, void*);
 public:
-  Fl_Slider *Vol15;
+  MiSlider *Vol15;
 private:
-  inline void cb_Vol15_i(Fl_Slider*, void*);
-  static void cb_Vol15(Fl_Slider*, void*);
+  inline void cb_Vol15_i(MiSlider*, void*);
+  static void cb_Vol15(MiSlider*, void*);
 public:
   Fl_Button *On15;
 private:

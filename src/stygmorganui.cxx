@@ -6,6 +6,84 @@
 //License GNU/GPL version 2
 #include <stygmicon128.xpm>
 
+MiSlider::MiSlider(int x,int y, int w, int h, const char *label):Fl_Slider(x,y,w,h,label) {
+}
+
+int MiSlider::handle(int event) {
+  int i=0;
+  
+  if (event == FL_PUSH && Fl::visible_focus()) {
+      Fl::focus(this);
+      redraw();
+  } 
+  
+  
+  
+  switch (event) 
+  	{
+      	              		
+      		 case FL_MOUSEWHEEL :
+                        {
+                        if (Fl::e_dy==0) return 0;
+                        handle_push();
+                        handle_drag(clamp(increment(value(),Fl::e_dy)));
+                        handle_release();
+                        return 1;	
+                        }
+           
+                  case FL_FOCUS :
+                  case FL_UNFOCUS :
+                        if (Fl::visible_focus()) {
+                        redraw();
+                        return 1;
+                        } else return 0;
+          }
+  
+  
+   i = Fl_Slider::handle(event);
+  
+  return i;
+}
+
+MiDial::MiDial(int x,int y, int w, int h, const char *label):Fl_Dial(x,y,w,h,label) {
+}
+
+int MiDial::handle(int event) {
+  int i=0;
+  
+  if (event == FL_PUSH && Fl::visible_focus()) {
+      Fl::focus(this);
+      redraw();
+  } 
+  
+  
+  
+  switch (event) 
+  	{
+      	              		
+      		 case FL_MOUSEWHEEL :
+                        {
+                        if (Fl::e_dy==0) return 0;
+                        handle_push();
+                        handle_drag(clamp(increment(value(),Fl::e_dy)));
+                        handle_release();
+                        return 1;	
+                        }
+           
+                  case FL_FOCUS :
+                  case FL_UNFOCUS :
+                        if (Fl::visible_focus()) {
+                        redraw();
+                        return 1;
+                        } else return 0;
+          }
+  
+  
+   i = Fl_Dial::handle(event);
+  
+  return i;
+}
+
 void stygmorgan::cb_rmgmorganwin_i(Fl_Double_Window* o, void*) {
   GuardaPref();
 Pexitprogram=1;
@@ -15,43 +93,43 @@ void stygmorgan::cb_rmgmorganwin(Fl_Double_Window* o, void* v) {
   ((stygmorgan*)(o->user_data()))->cb_rmgmorganwin_i(o,v);
 }
 
-void stygmorgan::cb_Pan0_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Pan0_i(MiDial* o, void*) {
   int nc=0;
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(7,3,(int)o->value());
 }
-void stygmorgan::cb_Pan0(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Pan0(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Pan0_i(o,v);
 }
 
-void stygmorgan::cb_Reverb0_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Reverb0_i(MiDial* o, void*) {
   int nc=0;
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(7,2,(int)o->value());
 }
-void stygmorgan::cb_Reverb0(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Reverb0(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Reverb0_i(o,v);
 }
 
-void stygmorgan::cb_Chorus0_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Chorus0_i(MiDial* o, void*) {
   int nc=0;
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(7,1,(int)o->value());
 }
-void stygmorgan::cb_Chorus0(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Chorus0(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Chorus0_i(o,v);
 }
 
-void stygmorgan::cb_Vol0_i(Fl_Slider* o, void*) {
+void stygmorgan::cb_Vol0_i(MiSlider* o, void*) {
   int nc=0;
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(7,0,(int)o->value());
 }
-void stygmorgan::cb_Vol0(Fl_Slider* o, void* v) {
+void stygmorgan::cb_Vol0(MiSlider* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Vol0_i(o,v);
 }
 
@@ -96,43 +174,43 @@ void stygmorgan::cb_P0(Fl_Counter* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_P0_i(o,v);
 }
 
-void stygmorgan::cb_Pan1_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Pan1_i(MiDial* o, void*) {
   int nc=1;
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(8,3,(int)o->value());
 }
-void stygmorgan::cb_Pan1(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Pan1(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Pan1_i(o,v);
 }
 
-void stygmorgan::cb_Reverb1_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Reverb1_i(MiDial* o, void*) {
   int nc=1;
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(8,2,(int)o->value());
 }
-void stygmorgan::cb_Reverb1(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Reverb1(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Reverb1_i(o,v);
 }
 
-void stygmorgan::cb_Chorus1_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Chorus1_i(MiDial* o, void*) {
   int nc=1;
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(8,1,(int)o->value());
 }
-void stygmorgan::cb_Chorus1(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Chorus1(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Chorus1_i(o,v);
 }
 
-void stygmorgan::cb_Vol1_i(Fl_Slider* o, void*) {
+void stygmorgan::cb_Vol1_i(MiSlider* o, void*) {
   int nc=1;
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(8,0,(int)o->value());
 }
-void stygmorgan::cb_Vol1(Fl_Slider* o, void* v) {
+void stygmorgan::cb_Vol1(MiSlider* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Vol1_i(o,v);
 }
 
@@ -177,43 +255,43 @@ void stygmorgan::cb_P1(Fl_Counter* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_P1_i(o,v);
 }
 
-void stygmorgan::cb_Pan2_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Pan2_i(MiDial* o, void*) {
   int nc=2;
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(9,3,(int)o->value());
 }
-void stygmorgan::cb_Pan2(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Pan2(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Pan2_i(o,v);
 }
 
-void stygmorgan::cb_Reverb2_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Reverb2_i(MiDial* o, void*) {
   int nc=2;
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(9,2,(int)o->value());
 }
-void stygmorgan::cb_Reverb2(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Reverb2(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Reverb2_i(o,v);
 }
 
-void stygmorgan::cb_Chorus2_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Chorus2_i(MiDial* o, void*) {
   int nc=2;
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(9,1,(int)o->value());
 }
-void stygmorgan::cb_Chorus2(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Chorus2(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Chorus2_i(o,v);
 }
 
-void stygmorgan::cb_Vol2_i(Fl_Slider* o, void*) {
+void stygmorgan::cb_Vol2_i(MiSlider* o, void*) {
   int nc=2;
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(9,0,(int)o->value());
 }
-void stygmorgan::cb_Vol2(Fl_Slider* o, void* v) {
+void stygmorgan::cb_Vol2(MiSlider* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Vol2_i(o,v);
 }
 
@@ -258,43 +336,43 @@ void stygmorgan::cb_P2(Fl_Counter* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_P2_i(o,v);
 }
 
-void stygmorgan::cb_Pan3_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Pan3_i(MiDial* o, void*) {
   int nc=3;
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(10,3,(int)o->value());
 }
-void stygmorgan::cb_Pan3(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Pan3(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Pan3_i(o,v);
 }
 
-void stygmorgan::cb_Reverb3_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Reverb3_i(MiDial* o, void*) {
   int nc=3;
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(10,2,(int)o->value());
 }
-void stygmorgan::cb_Reverb3(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Reverb3(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Reverb3_i(o,v);
 }
 
-void stygmorgan::cb_Chorus3_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Chorus3_i(MiDial* o, void*) {
   int nc=3;
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(10,1,(int)o->value());
 }
-void stygmorgan::cb_Chorus3(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Chorus3(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Chorus3_i(o,v);
 }
 
-void stygmorgan::cb_Vol3_i(Fl_Slider* o, void*) {
+void stygmorgan::cb_Vol3_i(MiSlider* o, void*) {
   int nc=3;
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(10,0,(int)o->value());
 }
-void stygmorgan::cb_Vol3(Fl_Slider* o, void* v) {
+void stygmorgan::cb_Vol3(MiSlider* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Vol3_i(o,v);
 }
 
@@ -339,43 +417,43 @@ void stygmorgan::cb_P3(Fl_Counter* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_P3_i(o,v);
 }
 
-void stygmorgan::cb_Pan4_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Pan4_i(MiDial* o, void*) {
   int nc=4;
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(11,3,(int)o->value());
 }
-void stygmorgan::cb_Pan4(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Pan4(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Pan4_i(o,v);
 }
 
-void stygmorgan::cb_Reverb4_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Reverb4_i(MiDial* o, void*) {
   int nc=4;
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(11,2,(int)o->value());
 }
-void stygmorgan::cb_Reverb4(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Reverb4(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Reverb4_i(o,v);
 }
 
-void stygmorgan::cb_Chorus4_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Chorus4_i(MiDial* o, void*) {
   int nc=4;
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(11,1,(int)o->value());
 }
-void stygmorgan::cb_Chorus4(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Chorus4(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Chorus4_i(o,v);
 }
 
-void stygmorgan::cb_Vol4_i(Fl_Slider* o, void*) {
+void stygmorgan::cb_Vol4_i(MiSlider* o, void*) {
   int nc=4;
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(11,0,(int)o->value());
 }
-void stygmorgan::cb_Vol4(Fl_Slider* o, void* v) {
+void stygmorgan::cb_Vol4(MiSlider* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Vol4_i(o,v);
 }
 
@@ -420,43 +498,43 @@ void stygmorgan::cb_P4(Fl_Counter* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_P4_i(o,v);
 }
 
-void stygmorgan::cb_Pan9_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Pan9_i(MiDial* o, void*) {
   int nc=9;
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(0,3,(int)o->value());
 }
-void stygmorgan::cb_Pan9(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Pan9(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Pan9_i(o,v);
 }
 
-void stygmorgan::cb_Reverb9_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Reverb9_i(MiDial* o, void*) {
   int nc=9;
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(0,2,(int)o->value());
 }
-void stygmorgan::cb_Reverb9(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Reverb9(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Reverb9_i(o,v);
 }
 
-void stygmorgan::cb_Chorus9_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Chorus9_i(MiDial* o, void*) {
   int nc=9;
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(0,1,(int)o->value());
 }
-void stygmorgan::cb_Chorus9(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Chorus9(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Chorus9_i(o,v);
 }
 
-void stygmorgan::cb_Vol9_i(Fl_Slider* o, void*) {
+void stygmorgan::cb_Vol9_i(MiSlider* o, void*) {
   int nc=9;
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(0,0,(int)o->value());
 }
-void stygmorgan::cb_Vol9(Fl_Slider* o, void* v) {
+void stygmorgan::cb_Vol9(MiSlider* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Vol9_i(o,v);
 }
 
@@ -501,43 +579,43 @@ void stygmorgan::cb_P9(Fl_Counter* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_P9_i(o,v);
 }
 
-void stygmorgan::cb_Pan10_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Pan10_i(MiDial* o, void*) {
   int nc=10;
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(1,3,(int)o->value());
 }
-void stygmorgan::cb_Pan10(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Pan10(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Pan10_i(o,v);
 }
 
-void stygmorgan::cb_Reverb10_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Reverb10_i(MiDial* o, void*) {
   int nc=10;
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(1,2,(int)o->value());
 }
-void stygmorgan::cb_Reverb10(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Reverb10(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Reverb10_i(o,v);
 }
 
-void stygmorgan::cb_Chorus10_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Chorus10_i(MiDial* o, void*) {
   int nc=10;
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(1,1,(int)o->value());
 }
-void stygmorgan::cb_Chorus10(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Chorus10(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Chorus10_i(o,v);
 }
 
-void stygmorgan::cb_Vol10_i(Fl_Slider* o, void*) {
+void stygmorgan::cb_Vol10_i(MiSlider* o, void*) {
   int nc=10;
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(1,0,(int)o->value());
 }
-void stygmorgan::cb_Vol10(Fl_Slider* o, void* v) {
+void stygmorgan::cb_Vol10(MiSlider* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Vol10_i(o,v);
 }
 
@@ -582,43 +660,43 @@ void stygmorgan::cb_P10(Fl_Counter* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_P10_i(o,v);
 }
 
-void stygmorgan::cb_Pan11_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Pan11_i(MiDial* o, void*) {
   int nc=11;
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(2,3,(int)o->value());
 }
-void stygmorgan::cb_Pan11(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Pan11(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Pan11_i(o,v);
 }
 
-void stygmorgan::cb_Reverb11_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Reverb11_i(MiDial* o, void*) {
   int nc=11;
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(2,2,(int)o->value());
 }
-void stygmorgan::cb_Reverb11(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Reverb11(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Reverb11_i(o,v);
 }
 
-void stygmorgan::cb_Chorus11_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Chorus11_i(MiDial* o, void*) {
   int nc=11;
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(2,1,(int)o->value());
 }
-void stygmorgan::cb_Chorus11(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Chorus11(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Chorus11_i(o,v);
 }
 
-void stygmorgan::cb_Vol11_i(Fl_Slider* o, void*) {
+void stygmorgan::cb_Vol11_i(MiSlider* o, void*) {
   int nc=11;
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(2,0,(int)o->value());
 }
-void stygmorgan::cb_Vol11(Fl_Slider* o, void* v) {
+void stygmorgan::cb_Vol11(MiSlider* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Vol11_i(o,v);
 }
 
@@ -663,43 +741,43 @@ void stygmorgan::cb_P11(Fl_Counter* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_P11_i(o,v);
 }
 
-void stygmorgan::cb_Pan12_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Pan12_i(MiDial* o, void*) {
   int nc=12;
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(3,3,(int)o->value());
 }
-void stygmorgan::cb_Pan12(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Pan12(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Pan12_i(o,v);
 }
 
-void stygmorgan::cb_Reverb12_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Reverb12_i(MiDial* o, void*) {
   int nc=12;
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(3,2,(int)o->value());
 }
-void stygmorgan::cb_Reverb12(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Reverb12(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Reverb12_i(o,v);
 }
 
-void stygmorgan::cb_Chorus12_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Chorus12_i(MiDial* o, void*) {
   int nc=12;
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(3,1,(int)o->value());
 }
-void stygmorgan::cb_Chorus12(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Chorus12(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Chorus12_i(o,v);
 }
 
-void stygmorgan::cb_Vol12_i(Fl_Slider* o, void*) {
+void stygmorgan::cb_Vol12_i(MiSlider* o, void*) {
   int nc=12;
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(3,0,(int)o->value());
 }
-void stygmorgan::cb_Vol12(Fl_Slider* o, void* v) {
+void stygmorgan::cb_Vol12(MiSlider* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Vol12_i(o,v);
 }
 
@@ -744,43 +822,43 @@ void stygmorgan::cb_P12(Fl_Counter* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_P12_i(o,v);
 }
 
-void stygmorgan::cb_Pan13_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Pan13_i(MiDial* o, void*) {
   int nc=13;
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(4,3,(int)o->value());
 }
-void stygmorgan::cb_Pan13(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Pan13(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Pan13_i(o,v);
 }
 
-void stygmorgan::cb_Reverb13_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Reverb13_i(MiDial* o, void*) {
   int nc=13;
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(4,2,(int)o->value());
 }
-void stygmorgan::cb_Reverb13(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Reverb13(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Reverb13_i(o,v);
 }
 
-void stygmorgan::cb_Chorus13_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Chorus13_i(MiDial* o, void*) {
   int nc=13;
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(4,1,(int)o->value());
 }
-void stygmorgan::cb_Chorus13(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Chorus13(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Chorus13_i(o,v);
 }
 
-void stygmorgan::cb_Vol13_i(Fl_Slider* o, void*) {
+void stygmorgan::cb_Vol13_i(MiSlider* o, void*) {
   int nc=13;
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(4,0,(int)o->value());
 }
-void stygmorgan::cb_Vol13(Fl_Slider* o, void* v) {
+void stygmorgan::cb_Vol13(MiSlider* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Vol13_i(o,v);
 }
 
@@ -825,43 +903,43 @@ void stygmorgan::cb_P13(Fl_Counter* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_P13_i(o,v);
 }
 
-void stygmorgan::cb_Pan14_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Pan14_i(MiDial* o, void*) {
   int nc=14;
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(5,3,(int)o->value());
 }
-void stygmorgan::cb_Pan14(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Pan14(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Pan14_i(o,v);
 }
 
-void stygmorgan::cb_Reverb14_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Reverb14_i(MiDial* o, void*) {
   int nc=14;
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(5,2,(int)o->value());
 }
-void stygmorgan::cb_Reverb14(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Reverb14(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Reverb14_i(o,v);
 }
 
-void stygmorgan::cb_Chorus14_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Chorus14_i(MiDial* o, void*) {
   int nc=14;
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(5,1,(int)o->value());
 }
-void stygmorgan::cb_Chorus14(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Chorus14(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Chorus14_i(o,v);
 }
 
-void stygmorgan::cb_Vol14_i(Fl_Slider* o, void*) {
+void stygmorgan::cb_Vol14_i(MiSlider* o, void*) {
   int nc=14;
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(5,0,(int)o->value());
 }
-void stygmorgan::cb_Vol14(Fl_Slider* o, void* v) {
+void stygmorgan::cb_Vol14(MiSlider* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Vol14_i(o,v);
 }
 
@@ -906,43 +984,43 @@ void stygmorgan::cb_P14(Fl_Counter* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_P14_i(o,v);
 }
 
-void stygmorgan::cb_Pan15_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Pan15_i(MiDial* o, void*) {
   int nc=15;
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(6,3,(int)o->value());
 }
-void stygmorgan::cb_Pan15(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Pan15(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Pan15_i(o,v);
 }
 
-void stygmorgan::cb_Reverb15_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Reverb15_i(MiDial* o, void*) {
   int nc=15;
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(6,2,(int)o->value());
 }
-void stygmorgan::cb_Reverb15(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Reverb15(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Reverb15_i(o,v);
 }
 
-void stygmorgan::cb_Chorus15_i(Fl_Dial* o, void*) {
+void stygmorgan::cb_Chorus15_i(MiDial* o, void*) {
   int nc=15;
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(6,1,(int)o->value());
 }
-void stygmorgan::cb_Chorus15(Fl_Dial* o, void* v) {
+void stygmorgan::cb_Chorus15(MiDial* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Chorus15_i(o,v);
 }
 
-void stygmorgan::cb_Vol15_i(Fl_Slider* o, void*) {
+void stygmorgan::cb_Vol15_i(MiSlider* o, void*) {
   int nc=15;
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(6,0,(int)o->value());
 }
-void stygmorgan::cb_Vol15(Fl_Slider* o, void* v) {
+void stygmorgan::cb_Vol15(MiSlider* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Vol15_i(o,v);
 }
 
@@ -1405,14 +1483,12 @@ pontempo();
 rmgmo->AsignaTabla();
 EnAp();
 int lavuelta=0;
-
 if (rmgmo->vuelve !=0 ) 
 {
 lavuelta=rmgmo->vuelve; 
 rmgmo->vuelve=0;
 }
 else lavuelta=1;
-
 if (rmgmo->bplay ) PCVari(0,lavuelta); else 
     CVari(0,lavuelta);
 }
@@ -1475,6 +1551,8 @@ void stygmorgan::cb_DCompas_i(Fl_Box*, void*) {
 
 rmgmo->miramidi();
 sema();
+
+
 
 if(rmgmo->splay) 
 {
@@ -1992,49 +2070,65 @@ Fl_Double_Window* stygmorgan::make_window() {
       o->color((Fl_Color)44);
       o->selection_color(FL_BACKGROUND2_COLOR);
       o->labelfont(1);
-      { Pan0 = new Fl_Dial(20, 415, 35, 35, gettext("Pan"));
+      { Pan0 = new MiDial(20, 415, 35, 35, gettext("Pan"));
         Pan0->box(FL_GTK_ROUND_UP_BOX);
         Pan0->color(FL_DARK1);
         Pan0->selection_color((Fl_Color)1);
+        Pan0->labeltype(FL_NORMAL_LABEL);
+        Pan0->labelfont(0);
         Pan0->labelsize(9);
         Pan0->labelcolor(FL_LIGHT2);
         Pan0->maximum(127);
         Pan0->step(1);
         Pan0->value(64);
-        Pan0->callback((Fl_Callback*)cb_Pan0);
+        Pan0->callback((Fl_Callback*)cb_Pan0, (void*)(73));
         Pan0->align(Fl_Align(98));
-      } // Fl_Dial* Pan0
-      { Reverb0 = new Fl_Dial(20, 465, 35, 35, gettext("Reverb"));
+        Pan0->when(FL_WHEN_CHANGED);
+      } // MiDial* Pan0
+      { Reverb0 = new MiDial(20, 465, 35, 35, gettext("Reverb"));
         Reverb0->box(FL_GTK_ROUND_UP_BOX);
         Reverb0->color(FL_DARK1);
         Reverb0->selection_color((Fl_Color)4);
+        Reverb0->labeltype(FL_NORMAL_LABEL);
+        Reverb0->labelfont(0);
         Reverb0->labelsize(9);
         Reverb0->labelcolor(FL_LIGHT2);
         Reverb0->maximum(127);
         Reverb0->step(1);
-        Reverb0->callback((Fl_Callback*)cb_Reverb0);
-      } // Fl_Dial* Reverb0
-      { Chorus0 = new Fl_Dial(20, 515, 35, 35, gettext("Chorus"));
+        Reverb0->callback((Fl_Callback*)cb_Reverb0, (void*)(72));
+        Reverb0->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Reverb0->when(FL_WHEN_CHANGED);
+      } // MiDial* Reverb0
+      { Chorus0 = new MiDial(20, 515, 35, 35, gettext("Chorus"));
         Chorus0->box(FL_GTK_ROUND_UP_BOX);
         Chorus0->color(FL_DARK1);
         Chorus0->selection_color((Fl_Color)4);
+        Chorus0->labeltype(FL_NORMAL_LABEL);
+        Chorus0->labelfont(0);
         Chorus0->labelsize(9);
         Chorus0->labelcolor(FL_LIGHT2);
         Chorus0->maximum(127);
         Chorus0->step(1);
-        Chorus0->callback((Fl_Callback*)cb_Chorus0);
-      } // Fl_Dial* Chorus0
-      { Vol0 = new Fl_Slider(20, 565, 35, 140);
+        Chorus0->callback((Fl_Callback*)cb_Chorus0, (void*)(71));
+        Chorus0->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Chorus0->when(FL_WHEN_CHANGED);
+      } // MiDial* Chorus0
+      { Vol0 = new MiSlider(20, 565, 35, 140);
         Vol0->type(4);
         Vol0->box(FL_GTK_DOWN_BOX);
         Vol0->color((Fl_Color)43);
         Vol0->selection_color((Fl_Color)12);
+        Vol0->labeltype(FL_NORMAL_LABEL);
+        Vol0->labelfont(0);
+        Vol0->labelsize(14);
         Vol0->labelcolor((Fl_Color)1);
         Vol0->minimum(127);
         Vol0->maximum(0);
         Vol0->step(1);
-        Vol0->callback((Fl_Callback*)cb_Vol0);
-      } // Fl_Slider* Vol0
+        Vol0->callback((Fl_Callback*)cb_Vol0, (void*)(70));
+        Vol0->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Vol0->when(FL_WHEN_CHANGED);
+      } // MiSlider* Vol0
       { On0 = new Fl_Button(20, 365, 40, 25, gettext("On"));
         On0->type(1);
         On0->box(FL_PLASTIC_THIN_UP_BOX);
@@ -2096,49 +2190,65 @@ Fl_Double_Window* stygmorgan::make_window() {
       o->labelfont(1);
       o->labelsize(17);
       o->labelcolor((Fl_Color)1);
-      { Pan1 = new Fl_Dial(90, 415, 35, 35, gettext("Pan"));
+      { Pan1 = new MiDial(90, 415, 35, 35, gettext("Pan"));
         Pan1->box(FL_GTK_ROUND_UP_BOX);
         Pan1->color(FL_DARK1);
         Pan1->selection_color((Fl_Color)1);
+        Pan1->labeltype(FL_NORMAL_LABEL);
+        Pan1->labelfont(0);
         Pan1->labelsize(9);
         Pan1->labelcolor(FL_LIGHT2);
         Pan1->maximum(127);
         Pan1->step(1);
         Pan1->value(64);
-        Pan1->callback((Fl_Callback*)cb_Pan1);
+        Pan1->callback((Fl_Callback*)cb_Pan1, (void*)(83));
         Pan1->align(Fl_Align(66));
-      } // Fl_Dial* Pan1
-      { Reverb1 = new Fl_Dial(90, 465, 35, 35, gettext("Reverb"));
+        Pan1->when(FL_WHEN_CHANGED);
+      } // MiDial* Pan1
+      { Reverb1 = new MiDial(90, 465, 35, 35, gettext("Reverb"));
         Reverb1->box(FL_GTK_ROUND_UP_BOX);
         Reverb1->color(FL_DARK1);
         Reverb1->selection_color((Fl_Color)4);
+        Reverb1->labeltype(FL_NORMAL_LABEL);
+        Reverb1->labelfont(0);
         Reverb1->labelsize(9);
         Reverb1->labelcolor(FL_LIGHT2);
         Reverb1->maximum(127);
         Reverb1->step(1);
-        Reverb1->callback((Fl_Callback*)cb_Reverb1);
-      } // Fl_Dial* Reverb1
-      { Chorus1 = new Fl_Dial(90, 515, 35, 35, gettext("Chorus"));
+        Reverb1->callback((Fl_Callback*)cb_Reverb1, (void*)(82));
+        Reverb1->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Reverb1->when(FL_WHEN_CHANGED);
+      } // MiDial* Reverb1
+      { Chorus1 = new MiDial(90, 515, 35, 35, gettext("Chorus"));
         Chorus1->box(FL_GTK_ROUND_UP_BOX);
         Chorus1->color(FL_DARK1);
         Chorus1->selection_color((Fl_Color)4);
+        Chorus1->labeltype(FL_NORMAL_LABEL);
+        Chorus1->labelfont(0);
         Chorus1->labelsize(9);
         Chorus1->labelcolor(FL_LIGHT2);
         Chorus1->maximum(127);
         Chorus1->step(1);
-        Chorus1->callback((Fl_Callback*)cb_Chorus1);
-      } // Fl_Dial* Chorus1
-      { Vol1 = new Fl_Slider(90, 565, 35, 140);
+        Chorus1->callback((Fl_Callback*)cb_Chorus1, (void*)(81));
+        Chorus1->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Chorus1->when(FL_WHEN_CHANGED);
+      } // MiDial* Chorus1
+      { Vol1 = new MiSlider(90, 565, 35, 140);
         Vol1->type(4);
         Vol1->box(FL_GTK_DOWN_BOX);
         Vol1->color((Fl_Color)43);
         Vol1->selection_color((Fl_Color)12);
+        Vol1->labeltype(FL_NORMAL_LABEL);
+        Vol1->labelfont(0);
+        Vol1->labelsize(14);
         Vol1->labelcolor((Fl_Color)1);
         Vol1->minimum(127);
         Vol1->maximum(0);
         Vol1->step(1);
-        Vol1->callback((Fl_Callback*)cb_Vol1);
-      } // Fl_Slider* Vol1
+        Vol1->callback((Fl_Callback*)cb_Vol1, (void*)(80));
+        Vol1->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Vol1->when(FL_WHEN_CHANGED);
+      } // MiSlider* Vol1
       { On1 = new Fl_Button(90, 365, 40, 25, gettext("On"));
         On1->type(1);
         On1->box(FL_PLASTIC_THIN_UP_BOX);
@@ -2196,49 +2306,65 @@ Fl_Double_Window* stygmorgan::make_window() {
     { Fl_Group* o = new Fl_Group(141, 325, 72, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
-      { Pan2 = new Fl_Dial(160, 415, 35, 35, gettext("Pan"));
+      { Pan2 = new MiDial(160, 415, 35, 35, gettext("Pan"));
         Pan2->box(FL_GTK_ROUND_UP_BOX);
         Pan2->color(FL_DARK1);
         Pan2->selection_color((Fl_Color)1);
+        Pan2->labeltype(FL_NORMAL_LABEL);
+        Pan2->labelfont(0);
         Pan2->labelsize(9);
         Pan2->labelcolor(FL_LIGHT2);
         Pan2->maximum(127);
         Pan2->step(1);
         Pan2->value(64);
-        Pan2->callback((Fl_Callback*)cb_Pan2);
+        Pan2->callback((Fl_Callback*)cb_Pan2, (void*)(93));
         Pan2->align(Fl_Align(66));
-      } // Fl_Dial* Pan2
-      { Reverb2 = new Fl_Dial(160, 465, 35, 35, gettext("Reverb"));
+        Pan2->when(FL_WHEN_CHANGED);
+      } // MiDial* Pan2
+      { Reverb2 = new MiDial(160, 465, 35, 35, gettext("Reverb"));
         Reverb2->box(FL_GTK_ROUND_UP_BOX);
         Reverb2->color(FL_DARK1);
         Reverb2->selection_color((Fl_Color)4);
+        Reverb2->labeltype(FL_NORMAL_LABEL);
+        Reverb2->labelfont(0);
         Reverb2->labelsize(9);
         Reverb2->labelcolor(FL_LIGHT2);
         Reverb2->maximum(127);
         Reverb2->step(1);
-        Reverb2->callback((Fl_Callback*)cb_Reverb2);
-      } // Fl_Dial* Reverb2
-      { Chorus2 = new Fl_Dial(160, 515, 35, 35, gettext("Chorus"));
+        Reverb2->callback((Fl_Callback*)cb_Reverb2, (void*)(92));
+        Reverb2->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Reverb2->when(FL_WHEN_CHANGED);
+      } // MiDial* Reverb2
+      { Chorus2 = new MiDial(160, 515, 35, 35, gettext("Chorus"));
         Chorus2->box(FL_GTK_ROUND_UP_BOX);
         Chorus2->color(FL_DARK1);
         Chorus2->selection_color((Fl_Color)4);
+        Chorus2->labeltype(FL_NORMAL_LABEL);
+        Chorus2->labelfont(0);
         Chorus2->labelsize(9);
         Chorus2->labelcolor(FL_LIGHT2);
         Chorus2->maximum(127);
         Chorus2->step(1);
-        Chorus2->callback((Fl_Callback*)cb_Chorus2);
-      } // Fl_Dial* Chorus2
-      { Vol2 = new Fl_Slider(160, 565, 35, 140);
+        Chorus2->callback((Fl_Callback*)cb_Chorus2, (void*)(91));
+        Chorus2->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Chorus2->when(FL_WHEN_CHANGED);
+      } // MiDial* Chorus2
+      { Vol2 = new MiSlider(160, 565, 35, 140);
         Vol2->type(4);
         Vol2->box(FL_GTK_DOWN_BOX);
         Vol2->color((Fl_Color)43);
         Vol2->selection_color((Fl_Color)12);
+        Vol2->labeltype(FL_NORMAL_LABEL);
+        Vol2->labelfont(0);
+        Vol2->labelsize(14);
         Vol2->labelcolor((Fl_Color)1);
         Vol2->minimum(127);
         Vol2->maximum(0);
         Vol2->step(1);
-        Vol2->callback((Fl_Callback*)cb_Vol2);
-      } // Fl_Slider* Vol2
+        Vol2->callback((Fl_Callback*)cb_Vol2, (void*)(90));
+        Vol2->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Vol2->when(FL_WHEN_CHANGED);
+      } // MiSlider* Vol2
       { On2 = new Fl_Button(160, 365, 40, 25, gettext("On"));
         On2->type(1);
         On2->box(FL_PLASTIC_THIN_UP_BOX);
@@ -2297,48 +2423,65 @@ Fl_Double_Window* stygmorgan::make_window() {
     { Fl_Group* o = new Fl_Group(211, 325, 73, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
-      { Pan3 = new Fl_Dial(230, 415, 35, 35, gettext("Pan"));
+      { Pan3 = new MiDial(230, 415, 35, 35, gettext("Pan"));
         Pan3->box(FL_GTK_ROUND_UP_BOX);
         Pan3->color(FL_DARK1);
         Pan3->selection_color((Fl_Color)1);
+        Pan3->labeltype(FL_NORMAL_LABEL);
+        Pan3->labelfont(0);
         Pan3->labelsize(9);
         Pan3->labelcolor(FL_LIGHT2);
         Pan3->maximum(127);
         Pan3->step(1);
         Pan3->value(64);
-        Pan3->callback((Fl_Callback*)cb_Pan3);
+        Pan3->callback((Fl_Callback*)cb_Pan3, (void*)(103));
         Pan3->align(Fl_Align(66));
-      } // Fl_Dial* Pan3
-      { Reverb3 = new Fl_Dial(230, 465, 35, 35, gettext("Reverb"));
+        Pan3->when(FL_WHEN_CHANGED);
+      } // MiDial* Pan3
+      { Reverb3 = new MiDial(230, 465, 35, 35, gettext("Reverb"));
         Reverb3->box(FL_GTK_ROUND_UP_BOX);
         Reverb3->color(FL_DARK1);
         Reverb3->selection_color((Fl_Color)4);
+        Reverb3->labeltype(FL_NORMAL_LABEL);
+        Reverb3->labelfont(0);
         Reverb3->labelsize(9);
         Reverb3->labelcolor(FL_LIGHT2);
         Reverb3->maximum(127);
         Reverb3->step(1);
-        Reverb3->callback((Fl_Callback*)cb_Reverb3);
-      } // Fl_Dial* Reverb3
-      { Chorus3 = new Fl_Dial(230, 515, 35, 35, gettext("Chorus"));
+        Reverb3->callback((Fl_Callback*)cb_Reverb3, (void*)(102));
+        Reverb3->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Reverb3->when(FL_WHEN_CHANGED);
+      } // MiDial* Reverb3
+      { Chorus3 = new MiDial(230, 515, 35, 35, gettext("Chorus"));
         Chorus3->box(FL_GTK_ROUND_UP_BOX);
         Chorus3->color(FL_DARK1);
         Chorus3->selection_color((Fl_Color)4);
+        Chorus3->labeltype(FL_NORMAL_LABEL);
+        Chorus3->labelfont(0);
         Chorus3->labelsize(9);
         Chorus3->labelcolor(FL_LIGHT2);
         Chorus3->maximum(127);
         Chorus3->step(1);
-        Chorus3->callback((Fl_Callback*)cb_Chorus3);
-      } // Fl_Dial* Chorus3
-      { Vol3 = new Fl_Slider(230, 565, 35, 140);
+        Chorus3->callback((Fl_Callback*)cb_Chorus3, (void*)(101));
+        Chorus3->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Chorus3->when(FL_WHEN_CHANGED);
+      } // MiDial* Chorus3
+      { Vol3 = new MiSlider(230, 565, 35, 140);
         Vol3->type(4);
         Vol3->box(FL_GTK_DOWN_BOX);
         Vol3->color((Fl_Color)43);
         Vol3->selection_color((Fl_Color)12);
+        Vol3->labeltype(FL_NORMAL_LABEL);
+        Vol3->labelfont(0);
+        Vol3->labelsize(14);
+        Vol3->labelcolor((Fl_Color)1);
         Vol3->minimum(127);
         Vol3->maximum(0);
         Vol3->step(1);
-        Vol3->callback((Fl_Callback*)cb_Vol3);
-      } // Fl_Slider* Vol3
+        Vol3->callback((Fl_Callback*)cb_Vol3, (void*)(100));
+        Vol3->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Vol3->when(FL_WHEN_CHANGED);
+      } // MiSlider* Vol3
       { On3 = new Fl_Button(230, 365, 40, 25, gettext("On"));
         On3->type(1);
         On3->box(FL_PLASTIC_THIN_UP_BOX);
@@ -2396,48 +2539,65 @@ Fl_Double_Window* stygmorgan::make_window() {
     { Fl_Group* o = new Fl_Group(280, 325, 75, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
-      { Pan4 = new Fl_Dial(300, 415, 35, 35, gettext("Pan"));
+      { Pan4 = new MiDial(300, 415, 35, 35, gettext("Pan"));
         Pan4->box(FL_GTK_ROUND_UP_BOX);
         Pan4->color(FL_DARK1);
         Pan4->selection_color((Fl_Color)1);
+        Pan4->labeltype(FL_NORMAL_LABEL);
+        Pan4->labelfont(0);
         Pan4->labelsize(9);
         Pan4->labelcolor(FL_LIGHT2);
         Pan4->maximum(127);
         Pan4->step(1);
         Pan4->value(64);
-        Pan4->callback((Fl_Callback*)cb_Pan4);
+        Pan4->callback((Fl_Callback*)cb_Pan4, (void*)(113));
         Pan4->align(Fl_Align(66));
-      } // Fl_Dial* Pan4
-      { Reverb4 = new Fl_Dial(300, 465, 35, 35, gettext("Reverb"));
+        Pan4->when(FL_WHEN_CHANGED);
+      } // MiDial* Pan4
+      { Reverb4 = new MiDial(300, 465, 35, 35, gettext("Reverb"));
         Reverb4->box(FL_GTK_ROUND_UP_BOX);
         Reverb4->color(FL_DARK1);
         Reverb4->selection_color((Fl_Color)4);
+        Reverb4->labeltype(FL_NORMAL_LABEL);
+        Reverb4->labelfont(0);
         Reverb4->labelsize(9);
         Reverb4->labelcolor(FL_LIGHT2);
         Reverb4->maximum(127);
         Reverb4->step(1);
-        Reverb4->callback((Fl_Callback*)cb_Reverb4);
-      } // Fl_Dial* Reverb4
-      { Chorus4 = new Fl_Dial(300, 515, 35, 35, gettext("Chorus"));
+        Reverb4->callback((Fl_Callback*)cb_Reverb4, (void*)(112));
+        Reverb4->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Reverb4->when(FL_WHEN_CHANGED);
+      } // MiDial* Reverb4
+      { Chorus4 = new MiDial(300, 515, 35, 35, gettext("Chorus"));
         Chorus4->box(FL_GTK_ROUND_UP_BOX);
         Chorus4->color(FL_DARK1);
         Chorus4->selection_color((Fl_Color)4);
+        Chorus4->labeltype(FL_NORMAL_LABEL);
+        Chorus4->labelfont(0);
         Chorus4->labelsize(9);
         Chorus4->labelcolor(FL_LIGHT2);
         Chorus4->maximum(127);
         Chorus4->step(1);
-        Chorus4->callback((Fl_Callback*)cb_Chorus4);
-      } // Fl_Dial* Chorus4
-      { Vol4 = new Fl_Slider(300, 565, 35, 140);
+        Chorus4->callback((Fl_Callback*)cb_Chorus4, (void*)(111));
+        Chorus4->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Chorus4->when(FL_WHEN_CHANGED);
+      } // MiDial* Chorus4
+      { Vol4 = new MiSlider(300, 565, 35, 140);
         Vol4->type(4);
         Vol4->box(FL_GTK_DOWN_BOX);
         Vol4->color((Fl_Color)43);
         Vol4->selection_color((Fl_Color)12);
+        Vol4->labeltype(FL_NORMAL_LABEL);
+        Vol4->labelfont(0);
+        Vol4->labelsize(14);
+        Vol4->labelcolor((Fl_Color)1);
         Vol4->minimum(127);
         Vol4->maximum(0);
         Vol4->step(1);
-        Vol4->callback((Fl_Callback*)cb_Vol4);
-      } // Fl_Slider* Vol4
+        Vol4->callback((Fl_Callback*)cb_Vol4, (void*)(110));
+        Vol4->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Vol4->when(FL_WHEN_CHANGED);
+      } // MiSlider* Vol4
       { On4 = new Fl_Button(300, 365, 40, 25, gettext("On"));
         On4->type(1);
         On4->box(FL_PLASTIC_THIN_UP_BOX);
@@ -2496,48 +2656,65 @@ Fl_Double_Window* stygmorgan::make_window() {
     { Fl_Group* o = new Fl_Group(515, 325, 75, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
-      { Pan9 = new Fl_Dial(531, 415, 35, 35, gettext("Pan"));
+      { Pan9 = new MiDial(531, 415, 35, 35, gettext("Pan"));
         Pan9->box(FL_GTK_ROUND_UP_BOX);
         Pan9->color(FL_DARK1);
         Pan9->selection_color((Fl_Color)1);
+        Pan9->labeltype(FL_NORMAL_LABEL);
+        Pan9->labelfont(0);
         Pan9->labelsize(9);
         Pan9->labelcolor(FL_LIGHT2);
         Pan9->maximum(127);
         Pan9->step(1);
         Pan9->value(64);
-        Pan9->callback((Fl_Callback*)cb_Pan9);
+        Pan9->callback((Fl_Callback*)cb_Pan9, (void*)(3));
         Pan9->align(Fl_Align(66));
-      } // Fl_Dial* Pan9
-      { Reverb9 = new Fl_Dial(531, 465, 35, 35, gettext("Reverb"));
+        Pan9->when(FL_WHEN_CHANGED);
+      } // MiDial* Pan9
+      { Reverb9 = new MiDial(531, 465, 35, 35, gettext("Reverb"));
         Reverb9->box(FL_GTK_ROUND_UP_BOX);
         Reverb9->color(FL_DARK1);
         Reverb9->selection_color((Fl_Color)4);
+        Reverb9->labeltype(FL_NORMAL_LABEL);
+        Reverb9->labelfont(0);
         Reverb9->labelsize(9);
         Reverb9->labelcolor(FL_LIGHT2);
         Reverb9->maximum(127);
         Reverb9->step(1);
-        Reverb9->callback((Fl_Callback*)cb_Reverb9);
-      } // Fl_Dial* Reverb9
-      { Chorus9 = new Fl_Dial(531, 515, 35, 35, gettext("Chorus"));
+        Reverb9->callback((Fl_Callback*)cb_Reverb9, (void*)(2));
+        Reverb9->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Reverb9->when(FL_WHEN_CHANGED);
+      } // MiDial* Reverb9
+      { Chorus9 = new MiDial(531, 515, 35, 35, gettext("Chorus"));
         Chorus9->box(FL_GTK_ROUND_UP_BOX);
         Chorus9->color(FL_DARK1);
         Chorus9->selection_color((Fl_Color)4);
+        Chorus9->labeltype(FL_NORMAL_LABEL);
+        Chorus9->labelfont(0);
         Chorus9->labelsize(9);
         Chorus9->labelcolor(FL_LIGHT2);
         Chorus9->maximum(127);
         Chorus9->step(1);
-        Chorus9->callback((Fl_Callback*)cb_Chorus9);
-      } // Fl_Dial* Chorus9
-      { Vol9 = new Fl_Slider(531, 565, 35, 140);
+        Chorus9->callback((Fl_Callback*)cb_Chorus9, (void*)(1));
+        Chorus9->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Chorus9->when(FL_WHEN_CHANGED);
+      } // MiDial* Chorus9
+      { Vol9 = new MiSlider(531, 565, 35, 140);
         Vol9->type(4);
         Vol9->box(FL_GTK_DOWN_BOX);
         Vol9->color((Fl_Color)43);
         Vol9->selection_color((Fl_Color)12);
+        Vol9->labeltype(FL_NORMAL_LABEL);
+        Vol9->labelfont(0);
+        Vol9->labelsize(14);
+        Vol9->labelcolor((Fl_Color)1);
         Vol9->minimum(127);
         Vol9->maximum(0);
         Vol9->step(1);
-        Vol9->callback((Fl_Callback*)cb_Vol9);
-      } // Fl_Slider* Vol9
+        Vol9->callback((Fl_Callback*)cb_Vol9, (void*)(0));
+        Vol9->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Vol9->when(FL_WHEN_CHANGED);
+      } // MiSlider* Vol9
       { On9 = new Fl_Button(531, 365, 40, 25, gettext("On"));
         On9->type(1);
         On9->box(FL_PLASTIC_THIN_UP_BOX);
@@ -2634,48 +2811,65 @@ Fl_Double_Window* stygmorgan::make_window() {
     { Fl_Group* o = new Fl_Group(586, 325, 74, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
-      { Pan10 = new Fl_Dial(604, 415, 35, 35, gettext("Pan"));
+      { Pan10 = new MiDial(604, 415, 35, 35, gettext("Pan"));
         Pan10->box(FL_GTK_ROUND_UP_BOX);
         Pan10->color(FL_DARK1);
         Pan10->selection_color((Fl_Color)1);
+        Pan10->labeltype(FL_NORMAL_LABEL);
+        Pan10->labelfont(0);
         Pan10->labelsize(9);
         Pan10->labelcolor(FL_LIGHT2);
         Pan10->maximum(127);
         Pan10->step(1);
         Pan10->value(64);
-        Pan10->callback((Fl_Callback*)cb_Pan10);
+        Pan10->callback((Fl_Callback*)cb_Pan10, (void*)(13));
         Pan10->align(Fl_Align(66));
-      } // Fl_Dial* Pan10
-      { Reverb10 = new Fl_Dial(604, 465, 35, 35, gettext("Reverb"));
+        Pan10->when(FL_WHEN_CHANGED);
+      } // MiDial* Pan10
+      { Reverb10 = new MiDial(604, 465, 35, 35, gettext("Reverb"));
         Reverb10->box(FL_GTK_ROUND_UP_BOX);
         Reverb10->color(FL_DARK1);
         Reverb10->selection_color((Fl_Color)4);
+        Reverb10->labeltype(FL_NORMAL_LABEL);
+        Reverb10->labelfont(0);
         Reverb10->labelsize(9);
         Reverb10->labelcolor(FL_LIGHT2);
         Reverb10->maximum(127);
         Reverb10->step(1);
-        Reverb10->callback((Fl_Callback*)cb_Reverb10);
-      } // Fl_Dial* Reverb10
-      { Chorus10 = new Fl_Dial(604, 515, 35, 35, gettext("Chorus"));
+        Reverb10->callback((Fl_Callback*)cb_Reverb10, (void*)(12));
+        Reverb10->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Reverb10->when(FL_WHEN_CHANGED);
+      } // MiDial* Reverb10
+      { Chorus10 = new MiDial(604, 515, 35, 35, gettext("Chorus"));
         Chorus10->box(FL_GTK_ROUND_UP_BOX);
         Chorus10->color(FL_DARK1);
         Chorus10->selection_color((Fl_Color)4);
+        Chorus10->labeltype(FL_NORMAL_LABEL);
+        Chorus10->labelfont(0);
         Chorus10->labelsize(9);
         Chorus10->labelcolor(FL_LIGHT2);
         Chorus10->maximum(127);
         Chorus10->step(1);
-        Chorus10->callback((Fl_Callback*)cb_Chorus10);
-      } // Fl_Dial* Chorus10
-      { Vol10 = new Fl_Slider(602, 565, 35, 140);
+        Chorus10->callback((Fl_Callback*)cb_Chorus10, (void*)(11));
+        Chorus10->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Chorus10->when(FL_WHEN_CHANGED);
+      } // MiDial* Chorus10
+      { Vol10 = new MiSlider(602, 565, 35, 140);
         Vol10->type(4);
         Vol10->box(FL_GTK_DOWN_BOX);
         Vol10->color((Fl_Color)43);
         Vol10->selection_color((Fl_Color)12);
+        Vol10->labeltype(FL_NORMAL_LABEL);
+        Vol10->labelfont(0);
+        Vol10->labelsize(14);
+        Vol10->labelcolor((Fl_Color)1);
         Vol10->minimum(127);
         Vol10->maximum(0);
         Vol10->step(1);
-        Vol10->callback((Fl_Callback*)cb_Vol10);
-      } // Fl_Slider* Vol10
+        Vol10->callback((Fl_Callback*)cb_Vol10, (void*)(10));
+        Vol10->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Vol10->when(FL_WHEN_CHANGED);
+      } // MiSlider* Vol10
       { On10 = new Fl_Button(604, 365, 40, 25, gettext("On"));
         On10->type(1);
         On10->box(FL_PLASTIC_THIN_UP_BOX);
@@ -2771,48 +2965,65 @@ Fl_Double_Window* stygmorgan::make_window() {
     { Fl_Group* o = new Fl_Group(657, 325, 73, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
-      { Pan11 = new Fl_Dial(674, 415, 35, 35, gettext("Pan"));
+      { Pan11 = new MiDial(674, 415, 35, 35, gettext("Pan"));
         Pan11->box(FL_GTK_ROUND_UP_BOX);
         Pan11->color(FL_DARK1);
         Pan11->selection_color((Fl_Color)1);
+        Pan11->labeltype(FL_NORMAL_LABEL);
+        Pan11->labelfont(0);
         Pan11->labelsize(9);
         Pan11->labelcolor(FL_LIGHT2);
         Pan11->maximum(127);
         Pan11->step(1);
         Pan11->value(64);
-        Pan11->callback((Fl_Callback*)cb_Pan11);
+        Pan11->callback((Fl_Callback*)cb_Pan11, (void*)(23));
         Pan11->align(Fl_Align(66));
-      } // Fl_Dial* Pan11
-      { Reverb11 = new Fl_Dial(674, 465, 35, 35, gettext("Reverb"));
+        Pan11->when(FL_WHEN_CHANGED);
+      } // MiDial* Pan11
+      { Reverb11 = new MiDial(674, 465, 35, 35, gettext("Reverb"));
         Reverb11->box(FL_GTK_ROUND_UP_BOX);
         Reverb11->color(FL_DARK1);
         Reverb11->selection_color((Fl_Color)4);
+        Reverb11->labeltype(FL_NORMAL_LABEL);
+        Reverb11->labelfont(0);
         Reverb11->labelsize(9);
         Reverb11->labelcolor(FL_LIGHT2);
         Reverb11->maximum(127);
         Reverb11->step(1);
-        Reverb11->callback((Fl_Callback*)cb_Reverb11);
-      } // Fl_Dial* Reverb11
-      { Chorus11 = new Fl_Dial(674, 515, 35, 35, gettext("Chorus"));
+        Reverb11->callback((Fl_Callback*)cb_Reverb11, (void*)(22));
+        Reverb11->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Reverb11->when(FL_WHEN_CHANGED);
+      } // MiDial* Reverb11
+      { Chorus11 = new MiDial(674, 515, 35, 35, gettext("Chorus"));
         Chorus11->box(FL_GTK_ROUND_UP_BOX);
         Chorus11->color(FL_DARK1);
         Chorus11->selection_color((Fl_Color)4);
+        Chorus11->labeltype(FL_NORMAL_LABEL);
+        Chorus11->labelfont(0);
         Chorus11->labelsize(9);
         Chorus11->labelcolor(FL_LIGHT2);
         Chorus11->maximum(127);
         Chorus11->step(1);
-        Chorus11->callback((Fl_Callback*)cb_Chorus11);
-      } // Fl_Dial* Chorus11
-      { Vol11 = new Fl_Slider(674, 565, 35, 140);
+        Chorus11->callback((Fl_Callback*)cb_Chorus11, (void*)(21));
+        Chorus11->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Chorus11->when(FL_WHEN_CHANGED);
+      } // MiDial* Chorus11
+      { Vol11 = new MiSlider(674, 565, 35, 140);
         Vol11->type(4);
         Vol11->box(FL_GTK_DOWN_BOX);
         Vol11->color((Fl_Color)43);
         Vol11->selection_color((Fl_Color)12);
+        Vol11->labeltype(FL_NORMAL_LABEL);
+        Vol11->labelfont(0);
+        Vol11->labelsize(14);
+        Vol11->labelcolor((Fl_Color)1);
         Vol11->minimum(127);
         Vol11->maximum(0);
         Vol11->step(1);
-        Vol11->callback((Fl_Callback*)cb_Vol11);
-      } // Fl_Slider* Vol11
+        Vol11->callback((Fl_Callback*)cb_Vol11, (void*)(20));
+        Vol11->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Vol11->when(FL_WHEN_CHANGED);
+      } // MiSlider* Vol11
       { On11 = new Fl_Button(674, 365, 40, 25, gettext("On"));
         On11->type(1);
         On11->box(FL_PLASTIC_THIN_UP_BOX);
@@ -2908,48 +3119,65 @@ Fl_Double_Window* stygmorgan::make_window() {
     { Fl_Group* o = new Fl_Group(728, 325, 72, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
-      { Pan12 = new Fl_Dial(745, 415, 35, 35, gettext("Pan"));
+      { Pan12 = new MiDial(745, 415, 35, 35, gettext("Pan"));
         Pan12->box(FL_GTK_ROUND_UP_BOX);
         Pan12->color(FL_DARK1);
         Pan12->selection_color((Fl_Color)1);
+        Pan12->labeltype(FL_NORMAL_LABEL);
+        Pan12->labelfont(0);
         Pan12->labelsize(9);
         Pan12->labelcolor(FL_LIGHT2);
         Pan12->maximum(127);
         Pan12->step(1);
         Pan12->value(64);
-        Pan12->callback((Fl_Callback*)cb_Pan12);
+        Pan12->callback((Fl_Callback*)cb_Pan12, (void*)(33));
         Pan12->align(Fl_Align(66));
-      } // Fl_Dial* Pan12
-      { Reverb12 = new Fl_Dial(745, 465, 35, 35, gettext("Reverb"));
+        Pan12->when(FL_WHEN_CHANGED);
+      } // MiDial* Pan12
+      { Reverb12 = new MiDial(745, 465, 35, 35, gettext("Reverb"));
         Reverb12->box(FL_GTK_ROUND_UP_BOX);
         Reverb12->color(FL_DARK1);
         Reverb12->selection_color((Fl_Color)4);
+        Reverb12->labeltype(FL_NORMAL_LABEL);
+        Reverb12->labelfont(0);
         Reverb12->labelsize(9);
         Reverb12->labelcolor(FL_LIGHT2);
         Reverb12->maximum(127);
         Reverb12->step(1);
-        Reverb12->callback((Fl_Callback*)cb_Reverb12);
-      } // Fl_Dial* Reverb12
-      { Chorus12 = new Fl_Dial(745, 515, 35, 35, gettext("Chorus"));
+        Reverb12->callback((Fl_Callback*)cb_Reverb12, (void*)(32));
+        Reverb12->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Reverb12->when(FL_WHEN_CHANGED);
+      } // MiDial* Reverb12
+      { Chorus12 = new MiDial(745, 515, 35, 35, gettext("Chorus"));
         Chorus12->box(FL_GTK_ROUND_UP_BOX);
         Chorus12->color(FL_DARK1);
         Chorus12->selection_color((Fl_Color)4);
+        Chorus12->labeltype(FL_NORMAL_LABEL);
+        Chorus12->labelfont(0);
         Chorus12->labelsize(9);
         Chorus12->labelcolor(FL_LIGHT2);
         Chorus12->maximum(127);
         Chorus12->step(1);
-        Chorus12->callback((Fl_Callback*)cb_Chorus12);
-      } // Fl_Dial* Chorus12
-      { Vol12 = new Fl_Slider(745, 565, 35, 140);
+        Chorus12->callback((Fl_Callback*)cb_Chorus12, (void*)(31));
+        Chorus12->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Chorus12->when(FL_WHEN_CHANGED);
+      } // MiDial* Chorus12
+      { Vol12 = new MiSlider(745, 565, 35, 140);
         Vol12->type(4);
         Vol12->box(FL_GTK_DOWN_BOX);
         Vol12->color((Fl_Color)43);
         Vol12->selection_color((Fl_Color)12);
+        Vol12->labeltype(FL_NORMAL_LABEL);
+        Vol12->labelfont(0);
+        Vol12->labelsize(14);
+        Vol12->labelcolor((Fl_Color)1);
         Vol12->minimum(127);
         Vol12->maximum(0);
         Vol12->step(1);
-        Vol12->callback((Fl_Callback*)cb_Vol12);
-      } // Fl_Slider* Vol12
+        Vol12->callback((Fl_Callback*)cb_Vol12, (void*)(30));
+        Vol12->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Vol12->when(FL_WHEN_CHANGED);
+      } // MiSlider* Vol12
       { On12 = new Fl_Button(745, 365, 40, 25, gettext("On"));
         On12->type(1);
         On12->box(FL_PLASTIC_THIN_UP_BOX);
@@ -3045,48 +3273,65 @@ Fl_Double_Window* stygmorgan::make_window() {
     { Fl_Group* o = new Fl_Group(799, 325, 71, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
-      { Pan13 = new Fl_Dial(815, 415, 35, 35, gettext("Pan"));
+      { Pan13 = new MiDial(815, 415, 35, 35, gettext("Pan"));
         Pan13->box(FL_GTK_ROUND_UP_BOX);
         Pan13->color(FL_DARK1);
         Pan13->selection_color((Fl_Color)1);
+        Pan13->labeltype(FL_NORMAL_LABEL);
+        Pan13->labelfont(0);
         Pan13->labelsize(9);
         Pan13->labelcolor(FL_LIGHT2);
         Pan13->maximum(127);
         Pan13->step(1);
         Pan13->value(64);
-        Pan13->callback((Fl_Callback*)cb_Pan13);
+        Pan13->callback((Fl_Callback*)cb_Pan13, (void*)(43));
         Pan13->align(Fl_Align(66));
-      } // Fl_Dial* Pan13
-      { Reverb13 = new Fl_Dial(815, 465, 35, 35, gettext("Reverb"));
+        Pan13->when(FL_WHEN_CHANGED);
+      } // MiDial* Pan13
+      { Reverb13 = new MiDial(815, 465, 35, 35, gettext("Reverb"));
         Reverb13->box(FL_GTK_ROUND_UP_BOX);
         Reverb13->color(FL_DARK1);
         Reverb13->selection_color((Fl_Color)4);
+        Reverb13->labeltype(FL_NORMAL_LABEL);
+        Reverb13->labelfont(0);
         Reverb13->labelsize(9);
         Reverb13->labelcolor(FL_LIGHT2);
         Reverb13->maximum(127);
         Reverb13->step(1);
-        Reverb13->callback((Fl_Callback*)cb_Reverb13);
-      } // Fl_Dial* Reverb13
-      { Chorus13 = new Fl_Dial(815, 515, 35, 35, gettext("Chorus"));
+        Reverb13->callback((Fl_Callback*)cb_Reverb13, (void*)(42));
+        Reverb13->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Reverb13->when(FL_WHEN_CHANGED);
+      } // MiDial* Reverb13
+      { Chorus13 = new MiDial(815, 515, 35, 35, gettext("Chorus"));
         Chorus13->box(FL_GTK_ROUND_UP_BOX);
         Chorus13->color(FL_DARK1);
         Chorus13->selection_color((Fl_Color)4);
+        Chorus13->labeltype(FL_NORMAL_LABEL);
+        Chorus13->labelfont(0);
         Chorus13->labelsize(9);
         Chorus13->labelcolor(FL_LIGHT2);
         Chorus13->maximum(127);
         Chorus13->step(1);
-        Chorus13->callback((Fl_Callback*)cb_Chorus13);
-      } // Fl_Dial* Chorus13
-      { Vol13 = new Fl_Slider(815, 565, 35, 140);
+        Chorus13->callback((Fl_Callback*)cb_Chorus13, (void*)(41));
+        Chorus13->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Chorus13->when(FL_WHEN_CHANGED);
+      } // MiDial* Chorus13
+      { Vol13 = new MiSlider(815, 565, 35, 140);
         Vol13->type(4);
         Vol13->box(FL_GTK_DOWN_BOX);
         Vol13->color((Fl_Color)43);
         Vol13->selection_color((Fl_Color)12);
+        Vol13->labeltype(FL_NORMAL_LABEL);
+        Vol13->labelfont(0);
+        Vol13->labelsize(14);
+        Vol13->labelcolor((Fl_Color)1);
         Vol13->minimum(127);
         Vol13->maximum(0);
         Vol13->step(1);
-        Vol13->callback((Fl_Callback*)cb_Vol13);
-      } // Fl_Slider* Vol13
+        Vol13->callback((Fl_Callback*)cb_Vol13, (void*)(40));
+        Vol13->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Vol13->when(FL_WHEN_CHANGED);
+      } // MiSlider* Vol13
       { On13 = new Fl_Button(815, 365, 40, 25, gettext("On"));
         On13->type(1);
         On13->box(FL_PLASTIC_THIN_UP_BOX);
@@ -3182,48 +3427,65 @@ Fl_Double_Window* stygmorgan::make_window() {
     { Fl_Group* o = new Fl_Group(870, 325, 70, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
-      { Pan14 = new Fl_Dial(885, 415, 35, 35, gettext("Pan"));
+      { Pan14 = new MiDial(885, 415, 35, 35, gettext("Pan"));
         Pan14->box(FL_GTK_ROUND_UP_BOX);
         Pan14->color(FL_DARK1);
         Pan14->selection_color((Fl_Color)1);
+        Pan14->labeltype(FL_NORMAL_LABEL);
+        Pan14->labelfont(0);
         Pan14->labelsize(9);
         Pan14->labelcolor(FL_LIGHT2);
         Pan14->maximum(127);
         Pan14->step(1);
         Pan14->value(64);
-        Pan14->callback((Fl_Callback*)cb_Pan14);
+        Pan14->callback((Fl_Callback*)cb_Pan14, (void*)(53));
         Pan14->align(Fl_Align(66));
-      } // Fl_Dial* Pan14
-      { Reverb14 = new Fl_Dial(885, 465, 35, 35, gettext("Reverb"));
+        Pan14->when(FL_WHEN_CHANGED);
+      } // MiDial* Pan14
+      { Reverb14 = new MiDial(885, 465, 35, 35, gettext("Reverb"));
         Reverb14->box(FL_GTK_ROUND_UP_BOX);
         Reverb14->color(FL_DARK1);
         Reverb14->selection_color((Fl_Color)4);
+        Reverb14->labeltype(FL_NORMAL_LABEL);
+        Reverb14->labelfont(0);
         Reverb14->labelsize(9);
         Reverb14->labelcolor(FL_LIGHT2);
         Reverb14->maximum(127);
         Reverb14->step(1);
-        Reverb14->callback((Fl_Callback*)cb_Reverb14);
-      } // Fl_Dial* Reverb14
-      { Chorus14 = new Fl_Dial(885, 515, 35, 35, gettext("Chorus"));
+        Reverb14->callback((Fl_Callback*)cb_Reverb14, (void*)(52));
+        Reverb14->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Reverb14->when(FL_WHEN_CHANGED);
+      } // MiDial* Reverb14
+      { Chorus14 = new MiDial(885, 515, 35, 35, gettext("Chorus"));
         Chorus14->box(FL_GTK_ROUND_UP_BOX);
         Chorus14->color(FL_DARK1);
         Chorus14->selection_color((Fl_Color)4);
+        Chorus14->labeltype(FL_NORMAL_LABEL);
+        Chorus14->labelfont(0);
         Chorus14->labelsize(9);
         Chorus14->labelcolor(FL_LIGHT2);
         Chorus14->maximum(127);
         Chorus14->step(1);
-        Chorus14->callback((Fl_Callback*)cb_Chorus14);
-      } // Fl_Dial* Chorus14
-      { Vol14 = new Fl_Slider(885, 565, 35, 140);
+        Chorus14->callback((Fl_Callback*)cb_Chorus14, (void*)(51));
+        Chorus14->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Chorus14->when(FL_WHEN_CHANGED);
+      } // MiDial* Chorus14
+      { Vol14 = new MiSlider(885, 565, 35, 140);
         Vol14->type(4);
         Vol14->box(FL_GTK_DOWN_BOX);
         Vol14->color((Fl_Color)43);
         Vol14->selection_color((Fl_Color)12);
+        Vol14->labeltype(FL_NORMAL_LABEL);
+        Vol14->labelfont(0);
+        Vol14->labelsize(14);
+        Vol14->labelcolor((Fl_Color)1);
         Vol14->minimum(127);
         Vol14->maximum(0);
         Vol14->step(1);
-        Vol14->callback((Fl_Callback*)cb_Vol14);
-      } // Fl_Slider* Vol14
+        Vol14->callback((Fl_Callback*)cb_Vol14, (void*)(50));
+        Vol14->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Vol14->when(FL_WHEN_CHANGED);
+      } // MiSlider* Vol14
       { On14 = new Fl_Button(885, 365, 40, 25, gettext("On"));
         On14->type(1);
         On14->box(FL_PLASTIC_THIN_UP_BOX);
@@ -3320,48 +3582,65 @@ Fl_Double_Window* stygmorgan::make_window() {
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
       o->labeltype(FL_ENGRAVED_LABEL);
-      { Pan15 = new Fl_Dial(955, 415, 35, 35, gettext("Pan"));
+      { Pan15 = new MiDial(955, 415, 35, 35, gettext("Pan"));
         Pan15->box(FL_GTK_ROUND_UP_BOX);
         Pan15->color(FL_DARK1);
         Pan15->selection_color((Fl_Color)1);
+        Pan15->labeltype(FL_NORMAL_LABEL);
+        Pan15->labelfont(0);
         Pan15->labelsize(9);
         Pan15->labelcolor(FL_LIGHT2);
         Pan15->maximum(127);
         Pan15->step(1);
         Pan15->value(64);
-        Pan15->callback((Fl_Callback*)cb_Pan15);
+        Pan15->callback((Fl_Callback*)cb_Pan15, (void*)(63));
         Pan15->align(Fl_Align(66));
-      } // Fl_Dial* Pan15
-      { Reverb15 = new Fl_Dial(955, 465, 35, 35, gettext("Reverb"));
+        Pan15->when(FL_WHEN_CHANGED);
+      } // MiDial* Pan15
+      { Reverb15 = new MiDial(955, 465, 35, 35, gettext("Reverb"));
         Reverb15->box(FL_GTK_ROUND_UP_BOX);
         Reverb15->color(FL_DARK1);
         Reverb15->selection_color((Fl_Color)4);
+        Reverb15->labeltype(FL_NORMAL_LABEL);
+        Reverb15->labelfont(0);
         Reverb15->labelsize(9);
         Reverb15->labelcolor(FL_LIGHT2);
         Reverb15->maximum(127);
         Reverb15->step(1);
-        Reverb15->callback((Fl_Callback*)cb_Reverb15);
-      } // Fl_Dial* Reverb15
-      { Chorus15 = new Fl_Dial(955, 515, 35, 35, gettext("Chorus"));
+        Reverb15->callback((Fl_Callback*)cb_Reverb15, (void*)(62));
+        Reverb15->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Reverb15->when(FL_WHEN_CHANGED);
+      } // MiDial* Reverb15
+      { Chorus15 = new MiDial(955, 515, 35, 35, gettext("Chorus"));
         Chorus15->box(FL_GTK_ROUND_UP_BOX);
         Chorus15->color(FL_DARK1);
         Chorus15->selection_color((Fl_Color)4);
+        Chorus15->labeltype(FL_NORMAL_LABEL);
+        Chorus15->labelfont(0);
         Chorus15->labelsize(9);
         Chorus15->labelcolor(FL_LIGHT2);
         Chorus15->maximum(127);
         Chorus15->step(1);
-        Chorus15->callback((Fl_Callback*)cb_Chorus15);
-      } // Fl_Dial* Chorus15
-      { Vol15 = new Fl_Slider(955, 565, 35, 140);
+        Chorus15->callback((Fl_Callback*)cb_Chorus15, (void*)(61));
+        Chorus15->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Chorus15->when(FL_WHEN_CHANGED);
+      } // MiDial* Chorus15
+      { Vol15 = new MiSlider(955, 565, 35, 140);
         Vol15->type(4);
         Vol15->box(FL_GTK_DOWN_BOX);
         Vol15->color((Fl_Color)43);
         Vol15->selection_color((Fl_Color)12);
+        Vol15->labeltype(FL_NORMAL_LABEL);
+        Vol15->labelfont(0);
+        Vol15->labelsize(14);
+        Vol15->labelcolor((Fl_Color)1);
         Vol15->minimum(127);
         Vol15->maximum(0);
         Vol15->step(1);
-        Vol15->callback((Fl_Callback*)cb_Vol15);
-      } // Fl_Slider* Vol15
+        Vol15->callback((Fl_Callback*)cb_Vol15, (void*)(60));
+        Vol15->align(Fl_Align(FL_ALIGN_BOTTOM));
+        Vol15->when(FL_WHEN_CHANGED);
+      } // MiSlider* Vol15
       { On15 = new Fl_Button(955, 365, 40, 25, gettext("On"));
         On15->type(1);
         On15->box(FL_PLASTIC_THIN_UP_BOX);
@@ -3757,7 +4036,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         o->labelsize(12);
         o->callback((Fl_Callback*)cb_Copy);
       } // Fl_Button* o
-      { VariGroup = new Fl_Group(640, 207, 170, 61);
+      { VariGroup = new Fl_Group(640, 218, 170, 52);
         VariGroup->box(FL_BORDER_BOX);
         VariGroup->color((Fl_Color)44);
         { Varicounter = new Fl_Counter(675, 245, 95, 25);
@@ -3771,7 +4050,7 @@ Fl_Double_Window* stygmorgan::make_window() {
           Varicounter->textcolor(FL_BACKGROUND2_COLOR);
           Varicounter->callback((Fl_Callback*)cb_Varicounter);
         } // Fl_Counter* Varicounter
-        { DInfoControl = new Fl_Box(640, 225, 168, 19);
+        { DInfoControl = new Fl_Box(655, 225, 140, 19);
           DInfoControl->box(FL_BORDER_BOX);
           DInfoControl->color(FL_DARK1);
           DInfoControl->labelsize(13);
@@ -4001,6 +4280,13 @@ Fl_Double_Window* stygmorgan::make_window() {
   P13->clear_visible_focus();
   P14->clear_visible_focus();
   P15->clear_visible_focus();
+  
+  Pan9->set_visible_focus();
+  Chorus9->set_visible_focus();
+  Pan10->set_visible_focus();
+  Chorus10->set_visible_focus();
+  Pan11->set_visible_focus();
+  Chorus11->set_visible_focus();
   return rmgmorganwin;
 }
 
