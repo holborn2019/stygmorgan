@@ -209,7 +209,7 @@ DP0->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].progr
           xywh {1 750 64 15} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
-      Fl_Group {} {open
+      Fl_Group {} {
         xywh {72 325 70 450} box BORDER_BOX color 44 labelfont 1 labelsize 17 labelcolor 1
       } {
         Fl_Dial Pan1 {
@@ -293,7 +293,7 @@ DP1->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].progr
           xywh {72 750 64 14} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
-      Fl_Group {} {open
+      Fl_Group {} {
         xywh {141 325 72 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan2 {
@@ -377,7 +377,7 @@ DP2->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].progr
           xywh {141 750 64 14} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
-      Fl_Group {} {open
+      Fl_Group {} {
         xywh {211 325 73 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan3 {
@@ -461,7 +461,7 @@ DP3->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].progr
           xywh {211 750 64 15} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
-      Fl_Group {} {open
+      Fl_Group {} {
         xywh {280 325 75 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan4 {
@@ -545,7 +545,7 @@ DP4->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].progr
           xywh {286 750 64 20} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
-      Fl_Group {} {open
+      Fl_Group {} {
         xywh {515 325 75 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan9 {
@@ -654,7 +654,7 @@ DP9->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].progr
           xywh {520 750 64 19} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
-      Fl_Group {} {open
+      Fl_Group {} {
         xywh {586 325 74 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan10 {
@@ -763,7 +763,7 @@ DP10->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].prog
           xywh {590 750 62 15} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
-      Fl_Group {} {open
+      Fl_Group {} {
         xywh {657 325 73 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan11 {
@@ -872,7 +872,7 @@ DP11->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].prog
           xywh {660 750 62 20} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
-      Fl_Group {} {open
+      Fl_Group {} {
         xywh {728 325 72 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan12 {
@@ -981,7 +981,7 @@ DP12->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].prog
           xywh {730 750 62 21} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
-      Fl_Group {} {open
+      Fl_Group {} {
         xywh {799 325 71 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan13 {
@@ -1090,7 +1090,7 @@ DP13->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].prog
           xywh {800 750 62 20} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
-      Fl_Group {} {open
+      Fl_Group {} {
         xywh {870 325 70 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan14 {
@@ -1199,7 +1199,7 @@ DP14->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].prog
           xywh {870 750 62 21} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
-      Fl_Group {} {open
+      Fl_Group {} {
         xywh {940 325 71 450} box BORDER_BOX color 44 labeltype ENGRAVED_LABEL
       } {
         Fl_Dial Pan15 {

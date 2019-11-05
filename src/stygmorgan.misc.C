@@ -153,27 +153,41 @@ RMGMO::ponsoundenmix()
    enviocontrol(i,11,127);
 
    CM[i].OnOff = nSound.CM[i].OnOff;
-
-   CM[i].program = nSound.CM[i].program;
-   envioprograma(i,CM[i].program);
-
-   CM[i].vol = nSound.CM[i].vol;
-
-   ActuVarVol(i,i); 
-
-   CM[i].chorus = nSound.CM[i].chorus;
-   enviocontrol(i,93,CM[i].chorus);
-
-   CM[i].reverb = nSound.CM[i].reverb;
-   enviocontrol(i,91,CM[i].reverb);
-
-   CM[i].pan = nSound.CM[i].pan;
-   enviocontrol(i,10,CM[i].pan);
-
-   enviobend(i,0);
-
    CM[i].bMSB = nSound.CM[i].bMSB;
    CM[i].bLSB = nSound.CM[i].bLSB;
+
+if ( CM[i].program != nSound.CM[i].program)
+   {   
+    CM[i].program = nSound.CM[i].program;
+    envioprograma(i,CM[i].program);
+   }
+   
+if ( CM[i].vol != nSound.CM[i].vol)
+   {
+   CM[i].vol = nSound.CM[i].vol;
+   ActuVarVol(i,i); 
+   }
+
+if ( CM[i].chorus != nSound.CM[i].chorus)   
+   {
+   CM[i].chorus = nSound.CM[i].chorus;
+   enviocontrol(i,93,CM[i].chorus);
+   }
+   
+if ( CM[i].reverb != nSound.CM[i].reverb)
+   {   
+   CM[i].reverb = nSound.CM[i].reverb;
+   enviocontrol(i,91,CM[i].reverb);
+   }
+
+if ( CM[i].pan != nSound.CM[i].pan)  
+   {
+   CM[i].pan = nSound.CM[i].pan;
+   enviocontrol(i,10,CM[i].pan);
+   }
+   
+   enviobend(i,0);
+
    CM[i].octave = nSound.CM[i].octave;
    CM[i].transpose = nSound.CM[i].transpose;
    CM[i].solo = nSound.CM[i].solo;
@@ -193,25 +207,17 @@ RMGMO::ponmixensound()
   {
 
    nSound.CM[i].OnOff=CM[i].OnOff;
-
    nSound.CM[i].program=CM[i].program;
-
    nSound.CM[i].vol=CM[i].vol;
-
    nSound.CM[i].chorus=CM[i].chorus;
-
    nSound.CM[i].reverb=CM[i].reverb;
-
    nSound.CM[i].pan=CM[i].pan;
-
-
    nSound.CM[i].bMSB=CM[i].bMSB;
    nSound.CM[i].bLSB=CM[i].bLSB;
    nSound.CM[i].octave=CM[i].octave;
    nSound.CM[i].transpose=CM[i].transpose;
    nSound.CM[i].solo=CM[i].solo;
    nSound.CM[i].more=CM[i].more;
-
 
   }
 };

@@ -79,6 +79,8 @@ if (endi==1)
 } 
 }
 
+  
+
         while (PEG[Variacion][cs].tipo==0)
         {
          cs++;

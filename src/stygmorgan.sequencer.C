@@ -77,10 +77,10 @@ if (jack) PonNotesOffOrgan(0,ttick);
 while (PEG[Variacion][cs].tipo==0) cs++;
 
 
+
         while ((PEG[Variacion][cs].tick <= ptick) && (cs < nStyle.Pattern[Variacion].eventos))
          {
           if ((anti !=0 ) && (PEG[Variacion][cs].tick >= posanti)) CheckAnti();
-
 
 
             if (pc[PEG[Variacion][cs].canal])
