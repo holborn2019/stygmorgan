@@ -29,6 +29,9 @@ decl {\#include <FL/Fl_Dial.H>} {public local
 decl {\#include "stygmorgan.h"} {public local
 }
 
+decl {Fl_Widget *old;} {private local
+}
+
 class MiSlider {: {public Fl_Slider}
 } {
   Function {MiSlider(int x,int y, int w, int h, const char *label=0):Fl_Slider(x,y,w,h,label)} {} {
@@ -122,7 +125,7 @@ class stygmorgan {} {
     Fl_Window rmgmorganwin {
       callback {GuardaPref();
 Pexitprogram=1;
-o->hide();} selected
+o->hide();}
       xywh {1380 119 1010 780} type Double box GTK_UP_BOX color 44 selection_color 47 hide resizable size_range {800 600 0 0}
     } {
       Fl_Group {} {
@@ -135,7 +138,7 @@ o->hide();} selected
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(7,3,(int)o->value());}
-          xywh {20 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 98 maximum 127 step 1 value 64
+          xywh {20 415 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 1 labelsize 9 labelcolor 52 align 98 maximum 127 step 1 value 64
           class MiDial
         }
         Fl_Dial Reverb0 {
@@ -145,7 +148,7 @@ poninfo(7,3,(int)o->value());}
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(7,2,(int)o->value());}
-          xywh {20 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {20 465 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Dial Chorus0 {
@@ -155,7 +158,7 @@ poninfo(7,2,(int)o->value());}
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(7,1,(int)o->value());}
-          xywh {20 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {20 515 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Slider Vol0 {
@@ -164,7 +167,7 @@ poninfo(7,1,(int)o->value());}
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(7,0,(int)o->value());}
-          xywh {20 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
+          xywh {20 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 44 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
           class MiSlider
         }
         Fl_Button On0 {
@@ -219,7 +222,7 @@ DP0->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].progr
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(8,3,(int)o->value());}
-          xywh {90 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+          xywh {90 415 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
           class MiDial
         }
         Fl_Dial Reverb1 {
@@ -229,7 +232,7 @@ poninfo(8,3,(int)o->value());}
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(8,2,(int)o->value());}
-          xywh {90 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {90 465 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Dial Chorus1 {
@@ -239,7 +242,7 @@ poninfo(8,2,(int)o->value());}
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(8,1,(int)o->value());}
-          xywh {90 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {90 515 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Slider Vol1 {
@@ -248,7 +251,7 @@ poninfo(8,1,(int)o->value());}
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(8,0,(int)o->value());}
-          xywh {90 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
+          xywh {90 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 44 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
           class MiSlider
         }
         Fl_Button On1 {
@@ -303,7 +306,7 @@ DP1->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].progr
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(9,3,(int)o->value());}
-          xywh {160 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+          xywh {160 415 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
           class MiDial
         }
         Fl_Dial Reverb2 {
@@ -313,7 +316,7 @@ poninfo(9,3,(int)o->value());}
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(9,2,(int)o->value());}
-          xywh {160 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {160 465 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Dial Chorus2 {
@@ -323,7 +326,7 @@ poninfo(9,2,(int)o->value());}
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(9,1,(int)o->value());}
-          xywh {160 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {160 515 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Slider Vol2 {
@@ -332,7 +335,7 @@ poninfo(9,1,(int)o->value());}
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(9,0,(int)o->value());}
-          xywh {160 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
+          xywh {160 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 44 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
           class MiSlider
         }
         Fl_Button On2 {
@@ -387,7 +390,7 @@ DP2->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].progr
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(10,3,(int)o->value());}
-          xywh {230 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+          xywh {230 415 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
           class MiDial
         }
         Fl_Dial Reverb3 {
@@ -397,7 +400,7 @@ poninfo(10,3,(int)o->value());}
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(10,2,(int)o->value());}
-          xywh {230 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {230 465 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Dial Chorus3 {
@@ -407,7 +410,7 @@ poninfo(10,2,(int)o->value());}
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(10,1,(int)o->value());}
-          xywh {230 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {230 515 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Slider Vol3 {
@@ -416,7 +419,7 @@ poninfo(10,1,(int)o->value());}
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(10,0,(int)o->value());}
-          xywh {230 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
+          xywh {230 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 44 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
           class MiSlider
         }
         Fl_Button On3 {
@@ -471,7 +474,7 @@ DP3->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].progr
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(11,3,(int)o->value());}
-          xywh {300 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+          xywh {300 415 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
           class MiDial
         }
         Fl_Dial Reverb4 {
@@ -481,7 +484,7 @@ poninfo(11,3,(int)o->value());}
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(11,2,(int)o->value());}
-          xywh {300 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {300 465 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Dial Chorus4 {
@@ -491,7 +494,7 @@ poninfo(11,2,(int)o->value());}
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(11,1,(int)o->value());}
-          xywh {300 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {300 515 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Slider Vol4 {
@@ -500,7 +503,7 @@ poninfo(11,1,(int)o->value());}
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(11,0,(int)o->value());}
-          xywh {300 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
+          xywh {300 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 44 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
           class MiSlider
         }
         Fl_Button On4 {
@@ -555,7 +558,7 @@ DP4->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].progr
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(0,3,(int)o->value());}
-          xywh {531 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+          xywh {531 415 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
           class MiDial
         }
         Fl_Dial Reverb9 {
@@ -565,7 +568,7 @@ poninfo(0,3,(int)o->value());}
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(0,2,(int)o->value());}
-          xywh {531 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {531 465 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Dial Chorus9 {
@@ -575,7 +578,7 @@ poninfo(0,2,(int)o->value());}
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(0,1,(int)o->value());}
-          xywh {531 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {531 515 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Slider Vol9 {
@@ -584,7 +587,7 @@ poninfo(0,1,(int)o->value());}
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(0,0,(int)o->value());}
-          xywh {531 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
+          xywh {531 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 44 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
           class MiSlider
         }
         Fl_Button On9 {
@@ -664,7 +667,7 @@ DP9->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].progr
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(1,3,(int)o->value());}
-          xywh {604 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+          xywh {604 415 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
           class MiDial
         }
         Fl_Dial Reverb10 {
@@ -674,7 +677,7 @@ poninfo(1,3,(int)o->value());}
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(1,2,(int)o->value());}
-          xywh {604 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {604 465 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Dial Chorus10 {
@@ -684,7 +687,7 @@ poninfo(1,2,(int)o->value());}
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(1,1,(int)o->value());}
-          xywh {604 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {604 515 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Slider Vol10 {
@@ -693,7 +696,7 @@ poninfo(1,1,(int)o->value());}
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(1,0,(int)o->value());}
-          xywh {602 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
+          xywh {602 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 44 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
           class MiSlider
         }
         Fl_Button On10 {
@@ -773,7 +776,7 @@ DP10->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].prog
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(2,3,(int)o->value());}
-          xywh {674 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+          xywh {674 415 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
           class MiDial
         }
         Fl_Dial Reverb11 {
@@ -783,7 +786,7 @@ poninfo(2,3,(int)o->value());}
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(2,2,(int)o->value());}
-          xywh {674 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {674 465 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Dial Chorus11 {
@@ -793,7 +796,7 @@ poninfo(2,2,(int)o->value());}
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(2,1,(int)o->value());}
-          xywh {674 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {674 515 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Slider Vol11 {
@@ -802,7 +805,7 @@ poninfo(2,1,(int)o->value());}
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(2,0,(int)o->value());}
-          xywh {674 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
+          xywh {674 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 44 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
           class MiSlider
         }
         Fl_Button On11 {
@@ -882,7 +885,7 @@ DP11->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].prog
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(3,3,(int)o->value());}
-          xywh {745 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+          xywh {745 415 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
           class MiDial
         }
         Fl_Dial Reverb12 {
@@ -892,7 +895,7 @@ poninfo(3,3,(int)o->value());}
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(3,2,(int)o->value());}
-          xywh {745 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {745 465 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Dial Chorus12 {
@@ -902,7 +905,7 @@ poninfo(3,2,(int)o->value());}
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(3,1,(int)o->value());}
-          xywh {745 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {745 515 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Slider Vol12 {
@@ -911,7 +914,7 @@ poninfo(3,1,(int)o->value());}
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(3,0,(int)o->value());}
-          xywh {745 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
+          xywh {745 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 44 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
           class MiSlider
         }
         Fl_Button On12 {
@@ -991,7 +994,7 @@ DP12->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].prog
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(4,3,(int)o->value());}
-          xywh {815 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+          xywh {815 415 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
           class MiDial
         }
         Fl_Dial Reverb13 {
@@ -1001,7 +1004,7 @@ poninfo(4,3,(int)o->value());}
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(4,2,(int)o->value());}
-          xywh {815 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {815 465 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Dial Chorus13 {
@@ -1011,7 +1014,7 @@ poninfo(4,2,(int)o->value());}
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(4,1,(int)o->value());}
-          xywh {815 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {815 515 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Slider Vol13 {
@@ -1020,7 +1023,7 @@ poninfo(4,1,(int)o->value());}
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(4,0,(int)o->value());}
-          xywh {815 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
+          xywh {815 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 44 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
           class MiSlider
         }
         Fl_Button On13 {
@@ -1100,7 +1103,7 @@ DP13->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].prog
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(5,3,(int)o->value());}
-          xywh {885 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+          xywh {885 415 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
           class MiDial
         }
         Fl_Dial Reverb14 {
@@ -1110,7 +1113,7 @@ poninfo(5,3,(int)o->value());}
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(5,2,(int)o->value());}
-          xywh {885 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {885 465 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Dial Chorus14 {
@@ -1120,7 +1123,7 @@ poninfo(5,2,(int)o->value());}
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(5,1,(int)o->value());}
-          xywh {885 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {885 515 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Slider Vol14 {
@@ -1129,7 +1132,7 @@ poninfo(5,1,(int)o->value());}
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(5,0,(int)o->value());}
-          xywh {885 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
+          xywh {885 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 44 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
           class MiSlider
         }
         Fl_Button On14 {
@@ -1209,7 +1212,7 @@ DP14->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].prog
 rmgmo->CM[nc].pan=(int)o->value();
 rmgmo->enviocontrol(nc,10,(int)o->value());
 poninfo(6,3,(int)o->value());}
-          xywh {955 415 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
+          xywh {955 415 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 1 labelsize 9 labelcolor 52 align 66 maximum 127 step 1 value 64
           class MiDial
         }
         Fl_Dial Reverb15 {
@@ -1219,7 +1222,7 @@ poninfo(6,3,(int)o->value());}
 rmgmo->CM[nc].reverb=(int)o->value();
 rmgmo->enviocontrol(nc,91,(int)o->value());
 poninfo(6,2,(int)o->value());}
-          xywh {955 465 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {955 465 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Dial Chorus15 {
@@ -1229,7 +1232,7 @@ poninfo(6,2,(int)o->value());}
 rmgmo->CM[nc].chorus=(int)o->value();
 rmgmo->enviocontrol(nc,93,(int)o->value());
 poninfo(6,1,(int)o->value());}
-          xywh {955 515 35 35} box GTK_ROUND_UP_BOX color 47 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
+          xywh {955 515 35 35} box GTK_ROUND_UP_BOX color 44 selection_color 4 labelsize 9 labelcolor 52 maximum 127 step 1
           class MiDial
         }
         Fl_Slider Vol15 {
@@ -1238,7 +1241,7 @@ poninfo(6,1,(int)o->value());}
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
 poninfo(6,0,(int)o->value());}
-          xywh {955 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
+          xywh {955 565 35 140} type {Vert Knob} box GTK_DOWN_BOX color 44 selection_color 12 labelcolor 1 minimum 127 maximum 0 step 1
           class MiSlider
         }
         Fl_Button On15 {
@@ -1712,7 +1715,7 @@ apaga();
 
 rmgmo->miramidi();
 sema();
-
+highlight();
 
 
 if(rmgmo->splay) 
@@ -1776,7 +1779,8 @@ ActuaDsel();}
           label Keyb
           callback {rmgmo->KeybVol=(int) o->value();
 rmgmo->ActuKeybVol();}
-          xywh {175 115 35 155} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 1 labelsize 11 labelcolor 52 align 1 minimum 127 maximum 0 step 1 value 100
+          xywh {175 115 35 155} type {Vert Knob} box GTK_DOWN_BOX color 44 selection_color 1 labelsize 11 labelcolor 52 align 1 minimum 127 maximum 0 step 1 value 100
+          class MiSlider
         }
         Fl_Counter CTranspose {
           label Transpose
@@ -1797,8 +1801,9 @@ DSplit->copy_label(temp);}
         Fl_Slider VolAcc {
           label Acc
           callback {rmgmo->AccVol=(int)o->value();
-rmgmo->ActuAccVol();}
-          xywh {220 115 35 155} type {Vert Knob} box GTK_DOWN_BOX color 43 selection_color 1 labelsize 11 labelcolor 52 align 1 minimum 127 maximum 0 step 1 value 100
+rmgmo->ActuAccVol();} selected
+          xywh {220 115 35 155} type {Vert Knob} box GTK_DOWN_BOX color 44 selection_color 1 labelsize 11 labelcolor 52 align 1 minimum 127 maximum 0 step 1 value 100
+          class MiSlider
         }
         Fl_Box DSplit {
           label C
@@ -2158,6 +2163,8 @@ Fl::scheme("none");
 fl_open_display();
 Fl::visual(FL_DOUBLE|FL_INDEX);
 Fl::visual(FL_RGB);
+
+old = NULL;
 
 rmgmo=rmgmo_;
 make_window();
@@ -3834,5 +3841,41 @@ if (rmgmo->ultrack==10)
        }
       return;       
    }} {}
+  }
+  Function {highlight()} {} {
+    code {Fl_Widget *w;
+long long k;
+
+w = Fl::belowmouse();
+if (w == NULL) return;
+if(w == old) return;
+
+k = (long long) w->user_data();
+
+if ((k == 0) && (w->type() ==4))
+{
+ if(old != NULL) 
+ {
+ old->color(44);
+ old->redraw();
+ }
+ w->color(45);
+ w->redraw();
+
+ old = w;
+ return;
+}
+
+if (k == 0) return;
+
+if (old != NULL)
+{
+ old->color(44);
+ old->redraw();
+} 
+
+w->color(45);
+w->redraw();
+old = w;} {}
   }
 }

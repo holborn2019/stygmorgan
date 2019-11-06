@@ -5,6 +5,7 @@
 //Copyright(c) 2006 Josep Andreu (holborn)
 //License GNU/GPL version 2
 #include <stygmicon128.xpm>
+static Fl_Widget *old; 
 
 MiSlider::MiSlider(int x,int y, int w, int h, const char *label):Fl_Slider(x,y,w,h,label) {
 }
@@ -1551,7 +1552,7 @@ void stygmorgan::cb_DCompas_i(Fl_Box*, void*) {
 
 rmgmo->miramidi();
 sema();
-
+highlight();
 
 
 if(rmgmo->splay) 
@@ -1591,11 +1592,11 @@ void stygmorgan::cb_Sst(Fl_Button* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->parent()->user_data()))->cb_Sst_i(o,v);
 }
 
-void stygmorgan::cb_VolKeyb_i(Fl_Slider* o, void*) {
+void stygmorgan::cb_VolKeyb_i(MiSlider* o, void*) {
   rmgmo->KeybVol=(int) o->value();
 rmgmo->ActuKeybVol();
 }
-void stygmorgan::cb_VolKeyb(Fl_Slider* o, void* v) {
+void stygmorgan::cb_VolKeyb(MiSlider* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_VolKeyb_i(o,v);
 }
 
@@ -1619,11 +1620,11 @@ void stygmorgan::cb_CSplit(Fl_Counter* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_CSplit_i(o,v);
 }
 
-void stygmorgan::cb_VolAcc_i(Fl_Slider* o, void*) {
+void stygmorgan::cb_VolAcc_i(MiSlider* o, void*) {
   rmgmo->AccVol=(int)o->value();
 rmgmo->ActuAccVol();
 }
-void stygmorgan::cb_VolAcc(Fl_Slider* o, void* v) {
+void stygmorgan::cb_VolAcc(MiSlider* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_VolAcc_i(o,v);
 }
 
@@ -2072,7 +2073,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       o->labelfont(1);
       { Pan0 = new MiDial(20, 415, 35, 35, gettext("Pan"));
         Pan0->box(FL_GTK_ROUND_UP_BOX);
-        Pan0->color(FL_DARK1);
+        Pan0->color((Fl_Color)44);
         Pan0->selection_color((Fl_Color)1);
         Pan0->labeltype(FL_NORMAL_LABEL);
         Pan0->labelfont(0);
@@ -2087,7 +2088,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Pan0
       { Reverb0 = new MiDial(20, 465, 35, 35, gettext("Reverb"));
         Reverb0->box(FL_GTK_ROUND_UP_BOX);
-        Reverb0->color(FL_DARK1);
+        Reverb0->color((Fl_Color)44);
         Reverb0->selection_color((Fl_Color)4);
         Reverb0->labeltype(FL_NORMAL_LABEL);
         Reverb0->labelfont(0);
@@ -2101,7 +2102,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Reverb0
       { Chorus0 = new MiDial(20, 515, 35, 35, gettext("Chorus"));
         Chorus0->box(FL_GTK_ROUND_UP_BOX);
-        Chorus0->color(FL_DARK1);
+        Chorus0->color((Fl_Color)44);
         Chorus0->selection_color((Fl_Color)4);
         Chorus0->labeltype(FL_NORMAL_LABEL);
         Chorus0->labelfont(0);
@@ -2116,7 +2117,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       { Vol0 = new MiSlider(20, 565, 35, 140);
         Vol0->type(4);
         Vol0->box(FL_GTK_DOWN_BOX);
-        Vol0->color((Fl_Color)43);
+        Vol0->color((Fl_Color)44);
         Vol0->selection_color((Fl_Color)12);
         Vol0->labeltype(FL_NORMAL_LABEL);
         Vol0->labelfont(0);
@@ -2192,7 +2193,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       o->labelcolor((Fl_Color)1);
       { Pan1 = new MiDial(90, 415, 35, 35, gettext("Pan"));
         Pan1->box(FL_GTK_ROUND_UP_BOX);
-        Pan1->color(FL_DARK1);
+        Pan1->color((Fl_Color)44);
         Pan1->selection_color((Fl_Color)1);
         Pan1->labeltype(FL_NORMAL_LABEL);
         Pan1->labelfont(0);
@@ -2207,7 +2208,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Pan1
       { Reverb1 = new MiDial(90, 465, 35, 35, gettext("Reverb"));
         Reverb1->box(FL_GTK_ROUND_UP_BOX);
-        Reverb1->color(FL_DARK1);
+        Reverb1->color((Fl_Color)44);
         Reverb1->selection_color((Fl_Color)4);
         Reverb1->labeltype(FL_NORMAL_LABEL);
         Reverb1->labelfont(0);
@@ -2221,7 +2222,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Reverb1
       { Chorus1 = new MiDial(90, 515, 35, 35, gettext("Chorus"));
         Chorus1->box(FL_GTK_ROUND_UP_BOX);
-        Chorus1->color(FL_DARK1);
+        Chorus1->color((Fl_Color)44);
         Chorus1->selection_color((Fl_Color)4);
         Chorus1->labeltype(FL_NORMAL_LABEL);
         Chorus1->labelfont(0);
@@ -2236,7 +2237,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       { Vol1 = new MiSlider(90, 565, 35, 140);
         Vol1->type(4);
         Vol1->box(FL_GTK_DOWN_BOX);
-        Vol1->color((Fl_Color)43);
+        Vol1->color((Fl_Color)44);
         Vol1->selection_color((Fl_Color)12);
         Vol1->labeltype(FL_NORMAL_LABEL);
         Vol1->labelfont(0);
@@ -2308,7 +2309,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       o->color((Fl_Color)44);
       { Pan2 = new MiDial(160, 415, 35, 35, gettext("Pan"));
         Pan2->box(FL_GTK_ROUND_UP_BOX);
-        Pan2->color(FL_DARK1);
+        Pan2->color((Fl_Color)44);
         Pan2->selection_color((Fl_Color)1);
         Pan2->labeltype(FL_NORMAL_LABEL);
         Pan2->labelfont(0);
@@ -2323,7 +2324,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Pan2
       { Reverb2 = new MiDial(160, 465, 35, 35, gettext("Reverb"));
         Reverb2->box(FL_GTK_ROUND_UP_BOX);
-        Reverb2->color(FL_DARK1);
+        Reverb2->color((Fl_Color)44);
         Reverb2->selection_color((Fl_Color)4);
         Reverb2->labeltype(FL_NORMAL_LABEL);
         Reverb2->labelfont(0);
@@ -2337,7 +2338,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Reverb2
       { Chorus2 = new MiDial(160, 515, 35, 35, gettext("Chorus"));
         Chorus2->box(FL_GTK_ROUND_UP_BOX);
-        Chorus2->color(FL_DARK1);
+        Chorus2->color((Fl_Color)44);
         Chorus2->selection_color((Fl_Color)4);
         Chorus2->labeltype(FL_NORMAL_LABEL);
         Chorus2->labelfont(0);
@@ -2352,7 +2353,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       { Vol2 = new MiSlider(160, 565, 35, 140);
         Vol2->type(4);
         Vol2->box(FL_GTK_DOWN_BOX);
-        Vol2->color((Fl_Color)43);
+        Vol2->color((Fl_Color)44);
         Vol2->selection_color((Fl_Color)12);
         Vol2->labeltype(FL_NORMAL_LABEL);
         Vol2->labelfont(0);
@@ -2425,7 +2426,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       o->color((Fl_Color)44);
       { Pan3 = new MiDial(230, 415, 35, 35, gettext("Pan"));
         Pan3->box(FL_GTK_ROUND_UP_BOX);
-        Pan3->color(FL_DARK1);
+        Pan3->color((Fl_Color)44);
         Pan3->selection_color((Fl_Color)1);
         Pan3->labeltype(FL_NORMAL_LABEL);
         Pan3->labelfont(0);
@@ -2440,7 +2441,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Pan3
       { Reverb3 = new MiDial(230, 465, 35, 35, gettext("Reverb"));
         Reverb3->box(FL_GTK_ROUND_UP_BOX);
-        Reverb3->color(FL_DARK1);
+        Reverb3->color((Fl_Color)44);
         Reverb3->selection_color((Fl_Color)4);
         Reverb3->labeltype(FL_NORMAL_LABEL);
         Reverb3->labelfont(0);
@@ -2454,7 +2455,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Reverb3
       { Chorus3 = new MiDial(230, 515, 35, 35, gettext("Chorus"));
         Chorus3->box(FL_GTK_ROUND_UP_BOX);
-        Chorus3->color(FL_DARK1);
+        Chorus3->color((Fl_Color)44);
         Chorus3->selection_color((Fl_Color)4);
         Chorus3->labeltype(FL_NORMAL_LABEL);
         Chorus3->labelfont(0);
@@ -2469,7 +2470,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       { Vol3 = new MiSlider(230, 565, 35, 140);
         Vol3->type(4);
         Vol3->box(FL_GTK_DOWN_BOX);
-        Vol3->color((Fl_Color)43);
+        Vol3->color((Fl_Color)44);
         Vol3->selection_color((Fl_Color)12);
         Vol3->labeltype(FL_NORMAL_LABEL);
         Vol3->labelfont(0);
@@ -2541,7 +2542,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       o->color((Fl_Color)44);
       { Pan4 = new MiDial(300, 415, 35, 35, gettext("Pan"));
         Pan4->box(FL_GTK_ROUND_UP_BOX);
-        Pan4->color(FL_DARK1);
+        Pan4->color((Fl_Color)44);
         Pan4->selection_color((Fl_Color)1);
         Pan4->labeltype(FL_NORMAL_LABEL);
         Pan4->labelfont(0);
@@ -2556,7 +2557,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Pan4
       { Reverb4 = new MiDial(300, 465, 35, 35, gettext("Reverb"));
         Reverb4->box(FL_GTK_ROUND_UP_BOX);
-        Reverb4->color(FL_DARK1);
+        Reverb4->color((Fl_Color)44);
         Reverb4->selection_color((Fl_Color)4);
         Reverb4->labeltype(FL_NORMAL_LABEL);
         Reverb4->labelfont(0);
@@ -2570,7 +2571,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Reverb4
       { Chorus4 = new MiDial(300, 515, 35, 35, gettext("Chorus"));
         Chorus4->box(FL_GTK_ROUND_UP_BOX);
-        Chorus4->color(FL_DARK1);
+        Chorus4->color((Fl_Color)44);
         Chorus4->selection_color((Fl_Color)4);
         Chorus4->labeltype(FL_NORMAL_LABEL);
         Chorus4->labelfont(0);
@@ -2585,7 +2586,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       { Vol4 = new MiSlider(300, 565, 35, 140);
         Vol4->type(4);
         Vol4->box(FL_GTK_DOWN_BOX);
-        Vol4->color((Fl_Color)43);
+        Vol4->color((Fl_Color)44);
         Vol4->selection_color((Fl_Color)12);
         Vol4->labeltype(FL_NORMAL_LABEL);
         Vol4->labelfont(0);
@@ -2658,7 +2659,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       o->color((Fl_Color)44);
       { Pan9 = new MiDial(531, 415, 35, 35, gettext("Pan"));
         Pan9->box(FL_GTK_ROUND_UP_BOX);
-        Pan9->color(FL_DARK1);
+        Pan9->color((Fl_Color)44);
         Pan9->selection_color((Fl_Color)1);
         Pan9->labeltype(FL_NORMAL_LABEL);
         Pan9->labelfont(0);
@@ -2673,7 +2674,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Pan9
       { Reverb9 = new MiDial(531, 465, 35, 35, gettext("Reverb"));
         Reverb9->box(FL_GTK_ROUND_UP_BOX);
-        Reverb9->color(FL_DARK1);
+        Reverb9->color((Fl_Color)44);
         Reverb9->selection_color((Fl_Color)4);
         Reverb9->labeltype(FL_NORMAL_LABEL);
         Reverb9->labelfont(0);
@@ -2687,7 +2688,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Reverb9
       { Chorus9 = new MiDial(531, 515, 35, 35, gettext("Chorus"));
         Chorus9->box(FL_GTK_ROUND_UP_BOX);
-        Chorus9->color(FL_DARK1);
+        Chorus9->color((Fl_Color)44);
         Chorus9->selection_color((Fl_Color)4);
         Chorus9->labeltype(FL_NORMAL_LABEL);
         Chorus9->labelfont(0);
@@ -2702,7 +2703,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       { Vol9 = new MiSlider(531, 565, 35, 140);
         Vol9->type(4);
         Vol9->box(FL_GTK_DOWN_BOX);
-        Vol9->color((Fl_Color)43);
+        Vol9->color((Fl_Color)44);
         Vol9->selection_color((Fl_Color)12);
         Vol9->labeltype(FL_NORMAL_LABEL);
         Vol9->labelfont(0);
@@ -2813,7 +2814,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       o->color((Fl_Color)44);
       { Pan10 = new MiDial(604, 415, 35, 35, gettext("Pan"));
         Pan10->box(FL_GTK_ROUND_UP_BOX);
-        Pan10->color(FL_DARK1);
+        Pan10->color((Fl_Color)44);
         Pan10->selection_color((Fl_Color)1);
         Pan10->labeltype(FL_NORMAL_LABEL);
         Pan10->labelfont(0);
@@ -2828,7 +2829,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Pan10
       { Reverb10 = new MiDial(604, 465, 35, 35, gettext("Reverb"));
         Reverb10->box(FL_GTK_ROUND_UP_BOX);
-        Reverb10->color(FL_DARK1);
+        Reverb10->color((Fl_Color)44);
         Reverb10->selection_color((Fl_Color)4);
         Reverb10->labeltype(FL_NORMAL_LABEL);
         Reverb10->labelfont(0);
@@ -2842,7 +2843,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Reverb10
       { Chorus10 = new MiDial(604, 515, 35, 35, gettext("Chorus"));
         Chorus10->box(FL_GTK_ROUND_UP_BOX);
-        Chorus10->color(FL_DARK1);
+        Chorus10->color((Fl_Color)44);
         Chorus10->selection_color((Fl_Color)4);
         Chorus10->labeltype(FL_NORMAL_LABEL);
         Chorus10->labelfont(0);
@@ -2857,7 +2858,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       { Vol10 = new MiSlider(602, 565, 35, 140);
         Vol10->type(4);
         Vol10->box(FL_GTK_DOWN_BOX);
-        Vol10->color((Fl_Color)43);
+        Vol10->color((Fl_Color)44);
         Vol10->selection_color((Fl_Color)12);
         Vol10->labeltype(FL_NORMAL_LABEL);
         Vol10->labelfont(0);
@@ -2967,7 +2968,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       o->color((Fl_Color)44);
       { Pan11 = new MiDial(674, 415, 35, 35, gettext("Pan"));
         Pan11->box(FL_GTK_ROUND_UP_BOX);
-        Pan11->color(FL_DARK1);
+        Pan11->color((Fl_Color)44);
         Pan11->selection_color((Fl_Color)1);
         Pan11->labeltype(FL_NORMAL_LABEL);
         Pan11->labelfont(0);
@@ -2982,7 +2983,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Pan11
       { Reverb11 = new MiDial(674, 465, 35, 35, gettext("Reverb"));
         Reverb11->box(FL_GTK_ROUND_UP_BOX);
-        Reverb11->color(FL_DARK1);
+        Reverb11->color((Fl_Color)44);
         Reverb11->selection_color((Fl_Color)4);
         Reverb11->labeltype(FL_NORMAL_LABEL);
         Reverb11->labelfont(0);
@@ -2996,7 +2997,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Reverb11
       { Chorus11 = new MiDial(674, 515, 35, 35, gettext("Chorus"));
         Chorus11->box(FL_GTK_ROUND_UP_BOX);
-        Chorus11->color(FL_DARK1);
+        Chorus11->color((Fl_Color)44);
         Chorus11->selection_color((Fl_Color)4);
         Chorus11->labeltype(FL_NORMAL_LABEL);
         Chorus11->labelfont(0);
@@ -3011,7 +3012,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       { Vol11 = new MiSlider(674, 565, 35, 140);
         Vol11->type(4);
         Vol11->box(FL_GTK_DOWN_BOX);
-        Vol11->color((Fl_Color)43);
+        Vol11->color((Fl_Color)44);
         Vol11->selection_color((Fl_Color)12);
         Vol11->labeltype(FL_NORMAL_LABEL);
         Vol11->labelfont(0);
@@ -3121,7 +3122,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       o->color((Fl_Color)44);
       { Pan12 = new MiDial(745, 415, 35, 35, gettext("Pan"));
         Pan12->box(FL_GTK_ROUND_UP_BOX);
-        Pan12->color(FL_DARK1);
+        Pan12->color((Fl_Color)44);
         Pan12->selection_color((Fl_Color)1);
         Pan12->labeltype(FL_NORMAL_LABEL);
         Pan12->labelfont(0);
@@ -3136,7 +3137,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Pan12
       { Reverb12 = new MiDial(745, 465, 35, 35, gettext("Reverb"));
         Reverb12->box(FL_GTK_ROUND_UP_BOX);
-        Reverb12->color(FL_DARK1);
+        Reverb12->color((Fl_Color)44);
         Reverb12->selection_color((Fl_Color)4);
         Reverb12->labeltype(FL_NORMAL_LABEL);
         Reverb12->labelfont(0);
@@ -3150,7 +3151,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Reverb12
       { Chorus12 = new MiDial(745, 515, 35, 35, gettext("Chorus"));
         Chorus12->box(FL_GTK_ROUND_UP_BOX);
-        Chorus12->color(FL_DARK1);
+        Chorus12->color((Fl_Color)44);
         Chorus12->selection_color((Fl_Color)4);
         Chorus12->labeltype(FL_NORMAL_LABEL);
         Chorus12->labelfont(0);
@@ -3165,7 +3166,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       { Vol12 = new MiSlider(745, 565, 35, 140);
         Vol12->type(4);
         Vol12->box(FL_GTK_DOWN_BOX);
-        Vol12->color((Fl_Color)43);
+        Vol12->color((Fl_Color)44);
         Vol12->selection_color((Fl_Color)12);
         Vol12->labeltype(FL_NORMAL_LABEL);
         Vol12->labelfont(0);
@@ -3275,7 +3276,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       o->color((Fl_Color)44);
       { Pan13 = new MiDial(815, 415, 35, 35, gettext("Pan"));
         Pan13->box(FL_GTK_ROUND_UP_BOX);
-        Pan13->color(FL_DARK1);
+        Pan13->color((Fl_Color)44);
         Pan13->selection_color((Fl_Color)1);
         Pan13->labeltype(FL_NORMAL_LABEL);
         Pan13->labelfont(0);
@@ -3290,7 +3291,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Pan13
       { Reverb13 = new MiDial(815, 465, 35, 35, gettext("Reverb"));
         Reverb13->box(FL_GTK_ROUND_UP_BOX);
-        Reverb13->color(FL_DARK1);
+        Reverb13->color((Fl_Color)44);
         Reverb13->selection_color((Fl_Color)4);
         Reverb13->labeltype(FL_NORMAL_LABEL);
         Reverb13->labelfont(0);
@@ -3304,7 +3305,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Reverb13
       { Chorus13 = new MiDial(815, 515, 35, 35, gettext("Chorus"));
         Chorus13->box(FL_GTK_ROUND_UP_BOX);
-        Chorus13->color(FL_DARK1);
+        Chorus13->color((Fl_Color)44);
         Chorus13->selection_color((Fl_Color)4);
         Chorus13->labeltype(FL_NORMAL_LABEL);
         Chorus13->labelfont(0);
@@ -3319,7 +3320,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       { Vol13 = new MiSlider(815, 565, 35, 140);
         Vol13->type(4);
         Vol13->box(FL_GTK_DOWN_BOX);
-        Vol13->color((Fl_Color)43);
+        Vol13->color((Fl_Color)44);
         Vol13->selection_color((Fl_Color)12);
         Vol13->labeltype(FL_NORMAL_LABEL);
         Vol13->labelfont(0);
@@ -3429,7 +3430,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       o->color((Fl_Color)44);
       { Pan14 = new MiDial(885, 415, 35, 35, gettext("Pan"));
         Pan14->box(FL_GTK_ROUND_UP_BOX);
-        Pan14->color(FL_DARK1);
+        Pan14->color((Fl_Color)44);
         Pan14->selection_color((Fl_Color)1);
         Pan14->labeltype(FL_NORMAL_LABEL);
         Pan14->labelfont(0);
@@ -3444,7 +3445,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Pan14
       { Reverb14 = new MiDial(885, 465, 35, 35, gettext("Reverb"));
         Reverb14->box(FL_GTK_ROUND_UP_BOX);
-        Reverb14->color(FL_DARK1);
+        Reverb14->color((Fl_Color)44);
         Reverb14->selection_color((Fl_Color)4);
         Reverb14->labeltype(FL_NORMAL_LABEL);
         Reverb14->labelfont(0);
@@ -3458,7 +3459,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Reverb14
       { Chorus14 = new MiDial(885, 515, 35, 35, gettext("Chorus"));
         Chorus14->box(FL_GTK_ROUND_UP_BOX);
-        Chorus14->color(FL_DARK1);
+        Chorus14->color((Fl_Color)44);
         Chorus14->selection_color((Fl_Color)4);
         Chorus14->labeltype(FL_NORMAL_LABEL);
         Chorus14->labelfont(0);
@@ -3473,7 +3474,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       { Vol14 = new MiSlider(885, 565, 35, 140);
         Vol14->type(4);
         Vol14->box(FL_GTK_DOWN_BOX);
-        Vol14->color((Fl_Color)43);
+        Vol14->color((Fl_Color)44);
         Vol14->selection_color((Fl_Color)12);
         Vol14->labeltype(FL_NORMAL_LABEL);
         Vol14->labelfont(0);
@@ -3584,7 +3585,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       o->labeltype(FL_ENGRAVED_LABEL);
       { Pan15 = new MiDial(955, 415, 35, 35, gettext("Pan"));
         Pan15->box(FL_GTK_ROUND_UP_BOX);
-        Pan15->color(FL_DARK1);
+        Pan15->color((Fl_Color)44);
         Pan15->selection_color((Fl_Color)1);
         Pan15->labeltype(FL_NORMAL_LABEL);
         Pan15->labelfont(0);
@@ -3599,7 +3600,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Pan15
       { Reverb15 = new MiDial(955, 465, 35, 35, gettext("Reverb"));
         Reverb15->box(FL_GTK_ROUND_UP_BOX);
-        Reverb15->color(FL_DARK1);
+        Reverb15->color((Fl_Color)44);
         Reverb15->selection_color((Fl_Color)4);
         Reverb15->labeltype(FL_NORMAL_LABEL);
         Reverb15->labelfont(0);
@@ -3613,7 +3614,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // MiDial* Reverb15
       { Chorus15 = new MiDial(955, 515, 35, 35, gettext("Chorus"));
         Chorus15->box(FL_GTK_ROUND_UP_BOX);
-        Chorus15->color(FL_DARK1);
+        Chorus15->color((Fl_Color)44);
         Chorus15->selection_color((Fl_Color)4);
         Chorus15->labeltype(FL_NORMAL_LABEL);
         Chorus15->labelfont(0);
@@ -3628,7 +3629,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       { Vol15 = new MiSlider(955, 565, 35, 140);
         Vol15->type(4);
         Vol15->box(FL_GTK_DOWN_BOX);
-        Vol15->color((Fl_Color)43);
+        Vol15->color((Fl_Color)44);
         Vol15->selection_color((Fl_Color)12);
         Vol15->labeltype(FL_NORMAL_LABEL);
         Vol15->labelfont(0);
@@ -3890,11 +3891,13 @@ Fl_Double_Window* stygmorgan::make_window() {
         Dsel->labelcolor((Fl_Color)1);
         Dsel->align(Fl_Align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE));
       } // Fl_Box* Dsel
-      { VolKeyb = new Fl_Slider(175, 115, 35, 155, gettext("Keyb"));
+      { VolKeyb = new MiSlider(175, 115, 35, 155, gettext("Keyb"));
         VolKeyb->type(4);
         VolKeyb->box(FL_GTK_DOWN_BOX);
-        VolKeyb->color((Fl_Color)43);
+        VolKeyb->color((Fl_Color)44);
         VolKeyb->selection_color((Fl_Color)1);
+        VolKeyb->labeltype(FL_NORMAL_LABEL);
+        VolKeyb->labelfont(0);
         VolKeyb->labelsize(11);
         VolKeyb->labelcolor(FL_LIGHT2);
         VolKeyb->minimum(127);
@@ -3903,7 +3906,8 @@ Fl_Double_Window* stygmorgan::make_window() {
         VolKeyb->value(100);
         VolKeyb->callback((Fl_Callback*)cb_VolKeyb);
         VolKeyb->align(Fl_Align(FL_ALIGN_TOP));
-      } // Fl_Slider* VolKeyb
+        VolKeyb->when(FL_WHEN_CHANGED);
+      } // MiSlider* VolKeyb
       { CTranspose = new Fl_Counter(915, 49, 64, 21, gettext("Transpose"));
         CTranspose->type(1);
         CTranspose->box(FL_NO_BOX);
@@ -3931,11 +3935,13 @@ Fl_Double_Window* stygmorgan::make_window() {
         CSplit->callback((Fl_Callback*)cb_CSplit);
         CSplit->align(Fl_Align(FL_ALIGN_TOP));
       } // Fl_Counter* CSplit
-      { VolAcc = new Fl_Slider(220, 115, 35, 155, gettext("Acc"));
+      { VolAcc = new MiSlider(220, 115, 35, 155, gettext("Acc"));
         VolAcc->type(4);
         VolAcc->box(FL_GTK_DOWN_BOX);
-        VolAcc->color((Fl_Color)43);
+        VolAcc->color((Fl_Color)44);
         VolAcc->selection_color((Fl_Color)1);
+        VolAcc->labeltype(FL_NORMAL_LABEL);
+        VolAcc->labelfont(0);
         VolAcc->labelsize(11);
         VolAcc->labelcolor(FL_LIGHT2);
         VolAcc->minimum(127);
@@ -3944,7 +3950,8 @@ Fl_Double_Window* stygmorgan::make_window() {
         VolAcc->value(100);
         VolAcc->callback((Fl_Callback*)cb_VolAcc);
         VolAcc->align(Fl_Align(FL_ALIGN_TOP));
-      } // Fl_Slider* VolAcc
+        VolAcc->when(FL_WHEN_CHANGED);
+      } // MiSlider* VolAcc
       { DSplit = new Fl_Box(920, 110, 55, 25, gettext("C"));
         DSplit->box(FL_BORDER_BOX);
         DSplit->color((Fl_Color)44);
@@ -4298,6 +4305,8 @@ stygmorgan::stygmorgan(int argc, char **argv,RMGMO *rmgmo_) {
   fl_open_display();
   Fl::visual(FL_DOUBLE|FL_INDEX);
   Fl::visual(FL_RGB);
+  
+  old = NULL;
   
   rmgmo=rmgmo_;
   make_window();
@@ -6022,4 +6031,41 @@ void stygmorgan::AjustaValores(int value) {
          }
         return;       
      }
+}
+
+void stygmorgan::highlight() {
+  Fl_Widget *w;
+  long long k;
+  
+  w = Fl::belowmouse();
+  if (w == NULL) return;
+  if(w == old) return;
+  
+  k = (long long) w->user_data();
+  
+  if ((k == 0) && (w->type() ==4))
+  {
+   if(old != NULL) 
+   {
+   old->color(44);
+   old->redraw();
+   }
+   w->color(45);
+   w->redraw();
+  
+   old = w;
+   return;
+  }
+  
+  if (k == 0) return;
+  
+  if (old != NULL)
+  {
+   old->color(44);
+   old->redraw();
+  } 
+  
+  w->color(45);
+  w->redraw();
+  old = w;
 }

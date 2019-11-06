@@ -676,10 +676,10 @@ private:
 public:
   Fl_Slider *DMidi;
   Fl_Box *Dsel;
-  Fl_Slider *VolKeyb;
+  MiSlider *VolKeyb;
 private:
-  inline void cb_VolKeyb_i(Fl_Slider*, void*);
-  static void cb_VolKeyb(Fl_Slider*, void*);
+  inline void cb_VolKeyb_i(MiSlider*, void*);
+  static void cb_VolKeyb(MiSlider*, void*);
 public:
   Fl_Counter *CTranspose;
 private:
@@ -691,10 +691,10 @@ private:
   inline void cb_CSplit_i(Fl_Counter*, void*);
   static void cb_CSplit(Fl_Counter*, void*);
 public:
-  Fl_Slider *VolAcc;
+  MiSlider *VolAcc;
 private:
-  inline void cb_VolAcc_i(Fl_Slider*, void*);
-  static void cb_VolAcc(Fl_Slider*, void*);
+  inline void cb_VolAcc_i(MiSlider*, void*);
+  static void cb_VolAcc(MiSlider*, void*);
 public:
   Fl_Box *DSplit;
   Fl_Choice *SelectType;
@@ -913,5 +913,6 @@ public:
   void poninfo(int track, int control, int value);
   void ActuaDP();
   void AjustaValores(int value);
+  void highlight();
 };
 #endif
