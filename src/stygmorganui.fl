@@ -122,7 +122,8 @@ class stygmorgan {open
 } {
   decl {RMGMO *rmgmo;} {private local
   }
-  Function {make_window()} {} {
+  Function {make_window()} {open
+  } {
     Fl_Window rmgmorganwin {
       callback {GuardaPref();
 Pexitprogram=1;
@@ -1583,13 +1584,12 @@ rmgmo->wsequencer=1;}
           xywh {0 0 100 20}
         }
         Submenu {} {
-          label {&Help} open
+          label {&Help}
           xywh {0 0 100 20}
         } {
           MenuItem {} {
             label Help
             callback {coord();
-whelp = 1;
 rmgmo->ventana=7;}
             xywh {0 0 100 20} shortcut 0xffbe divider
           }
@@ -3855,7 +3855,7 @@ if(rmgmo->wmixereditor)return;
 if(rmgmo->wpreferences) return;
 if (rmgmo->wmore) return;
 if (wabout)return;
-if(whelp)return;
+
 Fl_Widget *w;
 long long k;
 w = Fl::belowmouse();
