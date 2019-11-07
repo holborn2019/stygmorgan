@@ -28,7 +28,7 @@
 
 
 int
-Pexitprogram,programa,espera,pera,chsel,x,y,sponmix,wabout,exitwithhelp,jack,alsa;
+Pexitprogram,programa,espera,pera,chsel,x,y,sponmix,wabout,whelp,exitwithhelp,jack,alsa;
 Pixmap p,mask;
 XWMHints *hints;
 int nojack;
@@ -55,6 +55,7 @@ RMGMO::RMGMO ()
   ajusta=1;
   wpreferences=0;
   wabout=0;
+  whelp=0;
   wsequencer=0;
   weventeditor=0;
   wmixereditor=0;

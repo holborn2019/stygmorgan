@@ -2712,7 +2712,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         Vol9->minimum(127);
         Vol9->maximum(0);
         Vol9->step(1);
-        Vol9->callback((Fl_Callback*)cb_Vol9, (void*)(0));
+        Vol9->callback((Fl_Callback*)cb_Vol9, (void*)(3000));
         Vol9->align(Fl_Align(FL_ALIGN_BOTTOM));
         Vol9->when(FL_WHEN_CHANGED);
       } // MiSlider* Vol9
@@ -6034,17 +6034,24 @@ void stygmorgan::AjustaValores(int value) {
 }
 
 void stygmorgan::highlight() {
+  if(rmgmo->wsequencer) return;
+  if(rmgmo->weventeditor) return;
+  if(rmgmo->wpatterneditor) return;
+  if(rmgmo->wstyleeditor)return;
+  if(rmgmo->wstyleeditor)return;
+  if(rmgmo->wmixereditor)return;
+  if(rmgmo->wpreferences) return;
+  if (rmgmo->wmore) return;
+  if (wabout)return;
+  
   Fl_Widget *w;
   long long k;
-  
   w = Fl::belowmouse();
   if (w == NULL) return;
   if(w == old) return;
-  
   k = (long long) w->user_data();
+  if (k == 0) return;
   
-  if ((k == 0) && (w->type() ==4))
-  {
    if(old != NULL) 
    {
    old->color(44);
@@ -6052,20 +6059,5 @@ void stygmorgan::highlight() {
    }
    w->color(45);
    w->redraw();
-  
    old = w;
-   return;
-  }
-  
-  if (k == 0) return;
-  
-  if (old != NULL)
-  {
-   old->color(44);
-   old->redraw();
-  } 
-  
-  w->color(45);
-  w->redraw();
-  old = w;
 }

@@ -46,7 +46,7 @@
 #define Cntt 0x436e7474
 #define POLY 6
 
-extern int Pexitprogram,programa,espera,pera,chsel,x,y,sponmix,wabout;
+extern int Pexitprogram,programa,espera,pera,chsel,x,y,sponmix,wabout,whelp;
 extern Pixmap p,mask;
 extern XWMHints *hints;
 extern int jack,alsa,exitwithhelp;
@@ -112,7 +112,7 @@ public:
    void PonNotesOffChannel(int canal, snd_seq_tick_time_t gtick);
    void deleteregistration(int regis);
    void deletesound(int sound);
-    int ChecaExporta();
+   int ChecaExporta();
    void seqbuscacs(int siguiente,unsigned int ktick);
    void ponPendientes(int gnota,int gcanal,snd_seq_tick_time_t gtick);
    void ponPendientesEE(int gnota,int gcanal,long time);

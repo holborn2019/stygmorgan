@@ -118,14 +118,15 @@ return i;} {}
   }
 }
 
-class stygmorgan {} {
+class stygmorgan {open
+} {
   decl {RMGMO *rmgmo;} {private local
   }
   Function {make_window()} {} {
     Fl_Window rmgmorganwin {
       callback {GuardaPref();
 Pexitprogram=1;
-o->hide();}
+o->hide();} open
       xywh {1380 119 1010 780} type Double box GTK_UP_BOX color 44 selection_color 47 hide resizable size_range {800 600 0 0}
     } {
       Fl_Group {} {
@@ -582,7 +583,7 @@ poninfo(0,1,(int)o->value());}
           class MiDial
         }
         Fl_Slider Vol9 {
-          user_data 0
+          user_data 3000
           callback {int nc=9;
 rmgmo->CM[nc].vol=(int)o->value();
 rmgmo->ActuVarVol(nc,nc);
@@ -1588,6 +1589,7 @@ rmgmo->wsequencer=1;}
           MenuItem {} {
             label Help
             callback {coord();
+whelp = 1;
 rmgmo->ventana=7;}
             xywh {0 0 100 20} shortcut 0xffbe divider
           }
@@ -1801,7 +1803,7 @@ DSplit->copy_label(temp);}
         Fl_Slider VolAcc {
           label Acc
           callback {rmgmo->AccVol=(int)o->value();
-rmgmo->ActuAccVol();} selected
+rmgmo->ActuAccVol();}
           xywh {220 115 35 155} type {Vert Knob} box GTK_DOWN_BOX color 44 selection_color 1 labelsize 11 labelcolor 52 align 1 minimum 127 maximum 0 step 1 value 100
           class MiSlider
         }
@@ -3842,18 +3844,26 @@ if (rmgmo->ultrack==10)
       return;       
    }} {}
   }
-  Function {highlight()} {} {
-    code {Fl_Widget *w;
+  Function {highlight()} {open
+  } {
+    code {if(rmgmo->wsequencer) return;
+if(rmgmo->weventeditor) return;
+if(rmgmo->wpatterneditor) return;
+if(rmgmo->wstyleeditor)return;
+if(rmgmo->wstyleeditor)return;
+if(rmgmo->wmixereditor)return;
+if(rmgmo->wpreferences) return;
+if (rmgmo->wmore) return;
+if (wabout)return;
+if(whelp)return;
+Fl_Widget *w;
 long long k;
-
 w = Fl::belowmouse();
 if (w == NULL) return;
 if(w == old) return;
-
 k = (long long) w->user_data();
+if (k == 0) return;
 
-if ((k == 0) && (w->type() ==4))
-{
  if(old != NULL) 
  {
  old->color(44);
@@ -3861,21 +3871,7 @@ if ((k == 0) && (w->type() ==4))
  }
  w->color(45);
  w->redraw();
-
- old = w;
- return;
-}
-
-if (k == 0) return;
-
-if (old != NULL)
-{
- old->color(44);
- old->redraw();
-} 
-
-w->color(45);
-w->redraw();
-old = w;} {}
+ old = w;} {selected
+    }
   }
 }

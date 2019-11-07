@@ -17,7 +17,7 @@ decl {\#include "stygmorgan.h"} {public local
 decl {\#include <FL/Fl_Help_Dialog.H>} {public local
 }
 
-class stygmhelp {open
+class stygmhelp {open selected
 } {
   Function {stygmhelp()} {open C
   } {
@@ -29,14 +29,11 @@ char temp[128];
 int argc=1;
 char **argv= (char **) pepe;
 
-
 Fl_Help_Dialog *visor = new Fl_Help_Dialog;
-
 bzero(temp,sizeof(temp));
 sprintf(temp,"%s/html/stygmorgan.html",HELPDIR);
 visor->load(temp);
 visor->position(x+100,y+160);
-visor->show(argc,argv);} {selected
-    }
+visor->show(argc,argv);} {}
   }
 }

@@ -68,7 +68,8 @@ for ( int t=0; t<children(); t++ )
   }
 }
 
-class sequencer {} {
+class sequencer {open
+} {
   Function {sequencer(RMGMO *rmgmo_)} {C
   } {
     code {Fl::visual(FL_DOUBLE|FL_INDEX);
@@ -107,7 +108,8 @@ Fl::add_timeout(.5,tick,v);} {}
 o->do_callback();
 Fl::repeat_timeout(.04,tick,v);} {}
   }
-  Function {make_window()} {} {
+  Function {make_window()} {open
+  } {
     Fl_Window stygmseqwin {
       callback {GuardaPrefs();
 
@@ -122,7 +124,7 @@ rmgmo->mt=1;
 rmgmo->wsequencer=0;
 stygmseqwin->clear();
 stygmseqwin->hide();
-delete stygmseqwin;} open selected
+delete stygmseqwin;}
       xywh {1309 138 800 600} type Double color 44 selection_color 47 labelcolor 7 hide resizable size_range {800 600 0 0}
     } {
       Fl_Menu_Bar {} {
@@ -188,7 +190,7 @@ rmgmo->cas=1;}
           }
         }
         Submenu {} {
-          label {&Edit}
+          label {&Edit} selected
           xywh {0 0 100 20}
         } {
           MenuItem {} {
@@ -215,12 +217,9 @@ WTT->position(x+30,y+30);
 prepara_WTT();
 
 static const char *pepe [] ={"stygmorgan"};
-
 int argc=1;
 char **argv= (char **) pepe;
-
 WTT->icon((char *)p);
-
 WTT->show(argc,argv);}
           xywh {0 0 100 20}
         }
@@ -230,7 +229,8 @@ WTT->show(argc,argv);}
         } {
           MenuItem {} {
             label Help
-            callback {rmgmo->ventana=7;}
+            callback {whelp=1;
+rmgmo->ventana=7;}
             xywh {0 0 100 20} shortcut 0xffbe divider
           }
           MenuItem {} {

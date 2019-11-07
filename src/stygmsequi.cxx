@@ -150,12 +150,9 @@ WTT->position(x+30,y+30);
 prepara_WTT();
 
 static const char *pepe [] ={"stygmorgan"};
-
 int argc=1;
 char **argv= (char **) pepe;
-
 WTT->icon((char *)p);
-
 WTT->show(argc,argv);
 }
 void sequencer::cb_Tempo(Fl_Menu_* o, void* v) {
@@ -163,7 +160,8 @@ void sequencer::cb_Tempo(Fl_Menu_* o, void* v) {
 }
 
 void sequencer::cb_Help_i(Fl_Menu_*, void*) {
-  rmgmo->ventana=7;
+  whelp=1;
+rmgmo->ventana=7;
 }
 void sequencer::cb_Help(Fl_Menu_* o, void* v) {
   ((sequencer*)(o->parent()->user_data()))->cb_Help_i(o,v);
