@@ -55,8 +55,12 @@ void
 RMGMO::envioprograma(int canal, int programa)
 
 {
+
+    int truco = 0;
+    truco = (int)CM[canal].bLSB;
+    if ((BankTruco) && (canal == 9)) truco = 0;
     enviocontrol(canal,0,(int)CM[canal].bMSB);
-    enviocontrol(canal,32,(int)CM[canal].bLSB);
+    enviocontrol(canal,32,truco);
     snd_seq_event_t midievent;
     snd_seq_ev_clear (&midievent);
     snd_seq_ev_set_pgmchange (&midievent, canal, programa);
