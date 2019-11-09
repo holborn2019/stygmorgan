@@ -117,6 +117,20 @@ if (!CM[gcanal].OnOff) return;
 cocas[gcanal]=1;
 int len=3;
 lastvelo[gcanal]=(int)((double)gvelocity*((double)CM[gcanal].vol/127.0)*((double)(AccVol)/96.0));
+
+if ((wdrummixer) && (gcanal == 9)) 
+{
+NotaVel[gnota]=lastvelo[gcanal];
+if(VelPorce[gnota] != 0) 
+{
+gvelocity += (gvelocity * VelPorce[gnota] / 100);
+if (gvelocity<0)gvelocity = 0;
+if (gvelocity>127)gvelocity=127;
+}
+}
+
+
+
 gtick = gtick+(patrones*longi)+rema;
 
 switch(tipo)
@@ -321,6 +335,9 @@ RMGMO::ponmixpatternenmix(int patron)
 {
    int i;
 
+if ((bplay) || (splay))
+{
+
   for(i=9; i<=15; i++)
   {
    enviocontrol(i,121,0);
@@ -365,6 +382,40 @@ RMGMO::ponmixpatternenmix(int patron)
    if (Respect==0)   CM[i].solo = nStyle.Pattern[patron].CM[i].solo;
    CM[i].more = nStyle.Pattern[patron].CM[i].more;
 
+   }
+ return;
+
+}
+
+  for(i=9; i<=15; i++)
+  {
+   enviocontrol(i,121,0);
+   enviocontrol(i,11,127);
+
+   if (Respect==0) CM[i].OnOff = nStyle.Pattern[patron].CM[i].OnOff;
+
+   CM[i].bMSB = nStyle.Pattern[patron].CM[i].bMSB;
+   CM[i].bLSB = nStyle.Pattern[patron].CM[i].bLSB;
+   CM[i].program = nStyle.Pattern[patron].CM[i].program;
+   envioprograma(i,CM[i].program);
+   
+   CM[i].vol = nStyle.Pattern[patron].CM[i].vol;
+   ActuVarVol(i,i);
+   
+   CM[i].chorus = nStyle.Pattern[patron].CM[i].chorus;
+   enviocontrol(i,93,CM[i].chorus);
+   CM[i].reverb = nStyle.Pattern[patron].CM[i].reverb;
+   enviocontrol(i,91,CM[i].reverb);
+   CM[i].pan = nStyle.Pattern[patron].CM[i].pan;
+   enviocontrol(i,10,CM[i].pan);
+   
+   enviobend(i,0);
+
+   CM[i].octave = nStyle.Pattern[patron].CM[i].octave;
+   CM[i].transpose = nStyle.Pattern[patron].CM[i].transpose;
+   if (Respect==0)   CM[i].solo = nStyle.Pattern[patron].CM[i].solo;
+   CM[i].more = nStyle.Pattern[patron].CM[i].more;
+
   }
 
 }
@@ -396,6 +447,7 @@ RMGMO::MiraSiNext()
 
 {
  if (weventeditor) return;
+ if (wdrummixer) return;
  if (siguiente == Variacion) return;
  if (siguiente == 0)
  {
@@ -470,6 +522,7 @@ if (Pendientes==0) return;
          {
            if (((PO[i].delta <= gtick) && (PO[i].estado==1)) || (force==1))    
             {
+              if ((wdrummixer) && (PO[i].canal == 9)) NotaVel[PO[i].nota]=0;
               actu=1;
               PO[i].estado = 0;
               snd_seq_ev_clear(&ev);

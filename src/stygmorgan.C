@@ -56,6 +56,7 @@ RMGMO::RMGMO ()
   wpreferences=0;
   wabout=0;
   whelp=0;
+  wdrummixer=0;
   wsequencer=0;
   weventeditor=0;
   wmixereditor=0;
@@ -161,8 +162,9 @@ memset(PO, 0, sizeof PO);
 memset(POEE, 0, sizeof POEE); 
 memset(adata,0,sizeof adata);
 memset(Midi_event,0,sizeof Midi_event);
-
-
+memset(NotaVel,0,sizeof NotaVel);
+memset(losquehayqueponer,0,sizeof losquehayqueponer);
+memset(VelPorce,0,sizeof VelPorce);
 
 
 //Inicio Mixer

@@ -68,8 +68,9 @@ for ( int t=0; t<children(); t++ )
   }
 }
 
-class sequencer {open
-} {
+class sequencer {} {
+  decl {RMGMO *rmgmo;} {private local
+  }
   Function {sequencer(RMGMO *rmgmo_)} {C
   } {
     code {Fl::visual(FL_DOUBLE|FL_INDEX);
@@ -100,16 +101,13 @@ stygmseqwin->show(argc,argv);
 void * v=Casi;
 Fl::add_timeout(.5,tick,v);} {}
   }
-  decl {RMGMO *rmgmo;} {private local
-  }
   Function {tick(void* v)} {return_type {static void}
   } {
     code {Fl_Box *o = (Fl_Box*)v;
 o->do_callback();
 Fl::repeat_timeout(.04,tick,v);} {}
   }
-  Function {make_window()} {open
-  } {
+  Function {make_window()} {} {
     Fl_Window stygmseqwin {
       callback {GuardaPrefs();
 
@@ -124,8 +122,8 @@ rmgmo->mt=1;
 rmgmo->wsequencer=0;
 stygmseqwin->clear();
 stygmseqwin->hide();
-delete stygmseqwin;}
-      xywh {1309 138 800 600} type Double color 44 selection_color 47 labelcolor 7 hide resizable size_range {800 600 0 0}
+delete stygmseqwin;} selected
+      xywh {1306 135 800 600} type Double color 44 selection_color 47 labelcolor 7 resizable size_range {800 600 0 0} visible
     } {
       Fl_Menu_Bar {} {
         xywh {0 0 800 25} box FLAT_BOX color 44 selection_color 47 labelcolor 7 textcolor 7
@@ -190,7 +188,7 @@ rmgmo->cas=1;}
           }
         }
         Submenu {} {
-          label {&Edit} selected
+          label {&Edit}
           xywh {0 0 100 20}
         } {
           MenuItem {} {
@@ -1551,7 +1549,8 @@ return(1);} {}
     code {BroSty->value(S[rmgmo->cas].style);
 BroPat->value(S[rmgmo->cas].pattern);} {}
   }
-  Function {UpdateInputs(int lacas,int lanegra)} {} {
+  Function {UpdateInputs(int lacas,int lanegra)} {open
+  } {
     code {Fl_Group *h = Scr->child(rmgmo->ultimalacas)->as_group();
 
 h->child(rmgmo->ultimalanegra)->color(46);

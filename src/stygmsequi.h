@@ -26,11 +26,9 @@ public:
 #include <FL/Fl_Box.H>
 
 class sequencer {
-public:
-  sequencer(RMGMO *rmgmo_);
-private:
   RMGMO *rmgmo; 
 public:
+  sequencer(RMGMO *rmgmo_);
   static void tick(void* v);
   Fl_Double_Window* make_window();
   Fl_Double_Window *stygmseqwin;

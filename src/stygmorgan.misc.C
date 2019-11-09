@@ -244,7 +244,7 @@ void
 RMGMO::convtickcompas(char *var, int i)
 {
 
- sprintf(var,"%2d/%d/%04d", (PEG[Variacion][i].tick / longic) + 1, 
+  sprintf(var,"%02d/%d/%04d", (PEG[Variacion][i].tick / longic) + 1, 
  ((PEG[Variacion][i].tick % longic) / nStyle.ppq) +1 , PEG[Variacion][i].tick % nStyle.ppq);
 
 };
@@ -254,8 +254,10 @@ void
 RMGMO::convtickcompasval(char *var, int i)
 {
 
- sprintf(var,"%2d/%d/%04d", (i / longic) + 1, 
+ sprintf(var," %03d/%d/%04d", (i / longic) + 1, 
  ((i % longic) / nStyle.ppq) +1 , i % nStyle.ppq);
+
+
 
 };
 
@@ -691,6 +693,24 @@ bzero(POEE,sizeof(POEE));
 for (i=0; i<PendientesEE; i++) POEE[i]=POACEE[i];
 
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

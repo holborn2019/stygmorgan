@@ -279,6 +279,7 @@ public:
   int ajusta;
   int anegra;
   int wpreferences;
+  int wdrummixer;
   int wsequencer;
   int weventeditor;
   int wmixereditor;
@@ -349,6 +350,9 @@ public:
   int tbotvar[22];
   int sbot[22];
   int tvb[22];
+  int losquehayqueponer[130];
+  int NotaVel[130];
+  int VelPorce[130];
   int nb;
   int ultrack;
   int ulcontrol;
