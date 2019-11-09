@@ -59,6 +59,7 @@ fi
 AC_PROG_CXX
 AC_PROG_CC
 AC_PROG_MAKE_SET
+
 AC_CHECK_PROG([FLTKCONFIG], [fltk-config], [fltk-config])
 if test -z "$FLTKCONFIG"; then
   AC_MSG_ERROR([fltk not installed!])
@@ -67,6 +68,14 @@ AC_CHECK_PROG([ACONNECT],[aconnect],[aconnect])
 if test -z "$ACONNECT"; then
   AC_MSG_ERROR([aconnect not installed!])
 fi
+
+AC_CHECK_PROG([Z7],[7z],[7z])
+if test -z "$Z7"; then
+  AC_MSG_ERROR([7z not installed!])
+fi
+
+
+
 
 # Checks gcc version
 
@@ -303,8 +312,10 @@ fi
 
 LIBS="`$FLTKCONFIG --use-images --ldflags` $LIBS"
 CXXFLAGS="-O2 -Wall -pipe $ADDS $IS64 $SSE $ALTIVEC -ffast-math $VECTOR `$FLTKCONFIG --use-images --cxxflags` $CXXFLAGS"
+
 AC_CHECK_HEADERS([unistd.h])
 AC_CHECK_HEADER(alsa/asoundlib.h, true, AC_MSG_ERROR([Alsa is required]))
+
 AC_PATH_PROG(FLTK_CONFIG, fltk-config, no)
 if test "$FLTK_CONFIG" = "no"; then
   AC_MSG_ERROR(fltk-config not found)
