@@ -62,6 +62,10 @@ public:
 private:
   inline void cb_Brush_i(Fl_Menu_*, void*);
   static void cb_Brush(Fl_Menu_*, void*);
+  inline void cb_D2_i(Fl_Menu_*, void*);
+  static void cb_D2(Fl_Menu_*, void*);
+  inline void cb_High_i(Fl_Menu_*, void*);
+  static void cb_High(Fl_Menu_*, void*);
   inline void cb_Help_i(Fl_Menu_*, void*);
   static void cb_Help(Fl_Menu_*, void*);
   inline void cb_About_i(Fl_Menu_*, void*);

@@ -483,6 +483,57 @@ EventoCambia=1;
 };
 
 
+void
+RMGMO::D2Db2toRide()
+{
+
+  int i;
+  
+         
+       for (i=0;i<nStyle.Pattern[Variacion].eventos;i++)    
+         {
+             if (pcp[PEG[Variacion][i].canal]==9)
+           {
+             switch (PEG[Variacion][i].nota)
+               {
+                   case 25:
+                    PEG[Variacion][i].nota=51;
+                    break;
+  
+                   case 26:
+                    PEG[Variacion][i].nota=51;
+                    break;
+                }  
+            }
+          }
+
+};
+
+
+void
+RMGMO::HighQtoLowFloorTom()
+{
+
+  int i;
+  
+         
+       for (i=0;i<nStyle.Pattern[Variacion].eventos;i++)    
+         {
+             if (pcp[PEG[Variacion][i].canal]==9)
+           {
+             switch (PEG[Variacion][i].nota)
+               {
+                   case 27:
+                    PEG[Variacion][i].nota=41;
+                    break;
+                }  
+            }
+          }
+};
+
+
+
+
 
 void
 RMGMO::XGGM()

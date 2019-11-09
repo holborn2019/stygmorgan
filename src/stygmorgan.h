@@ -163,6 +163,8 @@ public:
    int plus(int nota);
    void Conecta();
    void XGGM();
+   void HighQtoLowFloorTom();
+   void D2Db2toRide();
    void ActuVarVol(int a, int b);
    void ActuAccVol();
    void ActuKeybVol();

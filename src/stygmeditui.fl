@@ -27,8 +27,9 @@ Function {type_cb(Fl_Widget* o,void* v)} {} {
   code {((rmgmedit*)(o->parent()->user_data()))->type_cb_i(o,v);} {}
 }
 
-class rmgmedit {} {
-  Function {rmgmedit(RMGMO *rmgmo_)} {C
+class rmgmedit {open
+} {
+  Function {rmgmedit(RMGMO *rmgmo_)} {open C
   } {
     code {Fl::visual(FL_DOUBLE|FL_INDEX);
 Fl::visual(FL_RGB);
@@ -91,14 +92,15 @@ ReadPattern();} {}
   }
   decl {RMGMO *rmgmo;} {private local
   }
-  Function {make_window()} {} {
+  Function {make_window()} {open
+  } {
     Fl_Window rmgmeditwin {
       callback {pera=2;
 GuardaPrefs();
 o->hide();
 rmgmo->weventeditor=0;
 o->clear();
-delete rmgmeditwin;}
+delete rmgmeditwin;} open
       xywh {1389 290 755 545} type Double color 44 labelsize 11 labelcolor 7 hide resizable size_range {800 600 0 0}
     } {
       Fl_Browser EditBro {
@@ -159,18 +161,30 @@ if (sAllE->value())
         }
       }
       Fl_Menu_Bar {} {
-        callback {//EditBro->redraw();} open
+        callback {//EditBro->redraw();}
         xywh {0 0 755 20} color 44 selection_color 47 labelcolor 7
       } {
         Submenu sFunctions {
-          label {&Functions} open
+          label {&Functions}
           xywh {0 0 100 20} labelcolor 7
         } {
           MenuItem {} {
             label {Brush Drums XG->GM}
             callback {rmgmo->XGGM();
-ReadPattern();} selected
+ReadPattern();}
             xywh {0 0 100 20} labelcolor 7
+          }
+          MenuItem {} {
+            label {D2 & Db2 to Ride}
+            callback {rmgmo->D2Db2toRide();
+ReadPattern();}
+            xywh {0 0 36 21} labelcolor 7
+          }
+          MenuItem {} {
+            label {High Q to Low Floor Tom()}
+            callback {rmgmo->HighQtoLowFloorTom();
+ReadPattern();} selected
+            xywh {0 0 36 21} labelcolor 7
           }
         }
         Submenu {} {

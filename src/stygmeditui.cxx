@@ -101,6 +101,22 @@ void rmgmedit::cb_Brush(Fl_Menu_* o, void* v) {
   ((rmgmedit*)(o->parent()->user_data()))->cb_Brush_i(o,v);
 }
 
+void rmgmedit::cb_D2_i(Fl_Menu_*, void*) {
+  rmgmo->D2Db2toRide();
+ReadPattern();
+}
+void rmgmedit::cb_D2(Fl_Menu_* o, void* v) {
+  ((rmgmedit*)(o->parent()->user_data()))->cb_D2_i(o,v);
+}
+
+void rmgmedit::cb_High_i(Fl_Menu_*, void*) {
+  rmgmo->HighQtoLowFloorTom();
+ReadPattern();
+}
+void rmgmedit::cb_High(Fl_Menu_* o, void* v) {
+  ((rmgmedit*)(o->parent()->user_data()))->cb_High_i(o,v);
+}
+
 void rmgmedit::cb_Help_i(Fl_Menu_*, void*) {
   rmgmo->ventana=7;
 //EditBro->redraw();
@@ -125,6 +141,8 @@ unsigned char rmgmedit::menu__i18n_done = 0;
 Fl_Menu_Item rmgmedit::menu_[] = {
  {"&Functions", 0,  0, 0, 64, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
  {"Brush Drums XG->GM", 0,  (Fl_Callback*)rmgmedit::cb_Brush, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
+ {"D2 & Db2 to Ride", 0,  (Fl_Callback*)rmgmedit::cb_D2, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
+ {"High Q to Low Floor Tom()", 0,  (Fl_Callback*)rmgmedit::cb_High, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
  {0,0,0,0,0,0,0,0,0},
  {"&Help", 0,  0, 0, 64, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
  {"Help", 0xffbe,  (Fl_Callback*)rmgmedit::cb_Help, 0, 128, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
@@ -543,7 +561,7 @@ Fl_Double_Window* rmgmedit::make_window() {
       o->callback((Fl_Callback*)cb_);
       if (!menu__i18n_done) {
         int i=0;
-        for ( ; i<6; i++)
+        for ( ; i<8; i++)
           if (menu_[i].label())
             menu_[i].label(gettext(menu_[i].label()));
         menu__i18n_done = 1;
