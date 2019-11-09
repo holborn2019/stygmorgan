@@ -23,42 +23,6 @@ decl {\#include <Fl/Fl_Preferences.H>} {public local
 decl {\#include <FL/Fl_Browser.H>} {public local
 }
 
-class ElBro {: {public Fl_Browser}
-} {
-  Function {ElBro(int X, int Y, int W, int H) : Fl_Browser(X,Y,W,H)} {} {
-    code {} {}
-  }
-  Function {resize(int X, int Y,int W, int H)} {} {
-    code {int i;
-int sizes[512];
-static const int colsizes[]= {60,100,32,110,160,160,0};
-
-
-memset(sizes, 0 , sizeof sizes); 
-
-for (i=0; i<=5;i++)
-{
- sizes[i]=colsizes[i]* ( W-20) / 725;
- } 
-
-sizes[6]=0;  
-   
-   
-
-  
-//init_sizes();  
-
-Fl_Browser::column_widths((const int*) sizes);
-
-Fl_Browser::resize(X,Y,W,H);} {}
-  }
-  Function {redraw()} {open
-  } {
-    code {resize(x(),y(),w(),h());
-// Fl_Browser::redraw();} {}
-  }
-}
-
 Function {type_cb(Fl_Widget* o,void* v)} {} {
   code {((rmgmedit*)(o->parent()->user_data()))->type_cb_i(o,v);} {}
 }
@@ -123,13 +87,11 @@ memset(rmgmo->POEE, 0 ,sizeof rmgmo->POEE);
 rmgmeditwin->show(argc,argv);
 rmgmeditwin->resize(x1,y1,w1,h1);
 
-ReadPattern();} {selected
-    }
+ReadPattern();} {}
   }
   decl {RMGMO *rmgmo;} {private local
   }
-  Function {make_window()} {open
-  } {
+  Function {make_window()} {} {
     Fl_Window rmgmeditwin {
       callback {pera=2;
 GuardaPrefs();
@@ -137,7 +99,7 @@ o->hide();
 rmgmo->weventeditor=0;
 o->clear();
 delete rmgmeditwin;}
-      xywh {1401 302 755 545} type Double color 44 labelsize 11 labelcolor 7 hide size_range {800 600 0 0}
+      xywh {1389 290 755 545} type Double color 44 labelsize 11 labelcolor 7 hide resizable size_range {800 600 0 0}
     } {
       Fl_Browser EditBro {
         callback {int i,j,k;
@@ -170,7 +132,7 @@ if (sAllE->value())
       && (rmgmo->PEG[rmgmo->Variacion][k].canal == rmgmo->PEG[rmgmo->Variacion][i].canal)) o->select(j,1);
     }
  }}
-        tooltip {Left Click Select - Rigth Click Edit} xywh {5 135 745 405} type Multi color 44 selection_color 52 labelcolor 7 textcolor 7
+        tooltip {Left Click Select - Rigth Click Edit} xywh {5 135 745 405} type Multi color 44 selection_color 52 labelcolor 7 textcolor 7 resizable
       }
       Fl_Group {} {
         xywh {5 60 90 70} box THIN_DOWN_BOX color 44 selection_color 47 labelcolor 7
@@ -197,7 +159,7 @@ if (sAllE->value())
         }
       }
       Fl_Menu_Bar {} {
-        callback {//EditBro->redraw();}
+        callback {//EditBro->redraw();} open
         xywh {0 0 755 20} color 44 selection_color 47 labelcolor 7
       } {
         Submenu sFunctions {
@@ -207,7 +169,7 @@ if (sAllE->value())
           MenuItem {} {
             label {Brush Drums XG->GM}
             callback {rmgmo->XGGM();
-ReadPattern();}
+ReadPattern();} selected
             xywh {0 0 100 20} labelcolor 7
           }
         }
@@ -323,7 +285,7 @@ ReadPattern();}
         Fl_Check_Button IsPitchBend {
           label {Pitch Bend}
           callback {ReadPattern();}
-          xywh {410 110 80 15} type Radio down_box DOWN_BOX color 44 selection_color 3 labelsize 11 labelcolor 7 when 1
+          xywh {410 110 80 15} type Radio down_box DOWN_BOX color 44 selection_color 3 labelsize 11 labelcolor 7 when 1 resizable
         }
       }
       Fl_Group {} {open
@@ -529,9 +491,9 @@ switch (rmgmo->PEG[rmgmo->Variacion][i].tipo)
 
 bzero(temp,sizeof(temp));
 if (i % 2 == 0)
-sprintf(temp, "@r@B44  %5d\\t@r@B45%s\\t@r@B44  %2d\\t@c@B45  %s\\t@c@B44  %s\\t@c@B45  %s\\t@c@B44   %s", i,pos, rmgmo->PEG[rmgmo->Variacion][i].canal+1,evento,nota,velo,length);
+sprintf(temp, "@r@B44  %5d\\t@r@B45  %s\\t@r@B44  %2d\\t@c@B45  %s\\t@c@B44  %s\\t@c@B45  %s\\t@c@B44   %s", i,pos, rmgmo->PEG[rmgmo->Variacion][i].canal+1,evento,nota,velo,length);
 else
-sprintf(temp, "@r@B46  %5d\\t@r@B47%s\\t@r@B46  %2d\\t@c@B47  %s\\t@c@B46  %s\\t@c@B47  %s\\t@c@B46   %s", i,pos, rmgmo->PEG[rmgmo->Variacion][i].canal+1,evento,nota,velo,length);
+sprintf(temp, "@r@B46  %5d\\t@r@B47  %s\\t@r@B46  %2d\\t@c@B47  %s\\t@c@B46  %s\\t@c@B47  %s\\t@c@B46   %s", i,pos, rmgmo->PEG[rmgmo->Variacion][i].canal+1,evento,nota,velo,length);
 
 
 EditBro->add(temp);

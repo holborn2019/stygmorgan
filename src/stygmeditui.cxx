@@ -6,39 +6,6 @@
 //License GNU/GPL version 2
 #include "choice.h"
 
-ElBro::ElBro(int X, int Y, int W, int H) : Fl_Browser(X,Y,W,H) {
-}
-
-void ElBro::resize(int X, int Y,int W, int H) {
-  int i;
-  int sizes[512];
-  static const int colsizes[]= {60,100,32,110,160,160,0};
-  
-  
-  memset(sizes, 0 , sizeof sizes); 
-  
-  for (i=0; i<=5;i++)
-  {
-   sizes[i]=colsizes[i]* ( W-20) / 725;
-   } 
-  
-  sizes[6]=0;  
-     
-     
-  
-    
-  //init_sizes();  
-  
-  Fl_Browser::column_widths((const int*) sizes);
-  
-  Fl_Browser::resize(X,Y,W,H);
-}
-
-void ElBro::redraw() {
-  resize(x(),y(),w(),h());
-  // Fl_Browser::redraw();
-}
-
 void type_cb(Fl_Widget* o,void* v) {
   ((rmgmedit*)(o->parent()->user_data()))->type_cb_i(o,v);
 }
@@ -524,6 +491,7 @@ Fl_Double_Window* rmgmedit::make_window() {
       EditBro->labelcolor(FL_BACKGROUND2_COLOR);
       EditBro->textcolor(FL_BACKGROUND2_COLOR);
       EditBro->callback((Fl_Callback*)cb_EditBro);
+      Fl_Group::current()->resizable(EditBro);
     } // Fl_Browser* EditBro
     { Fl_Group* o = new Fl_Group(5, 60, 90, 70);
       o->box(FL_THIN_DOWN_BOX);
@@ -711,6 +679,7 @@ Fl_Double_Window* rmgmedit::make_window() {
         IsPitchBend->labelcolor(FL_BACKGROUND2_COLOR);
         IsPitchBend->callback((Fl_Callback*)cb_IsPitchBend);
         IsPitchBend->when(FL_WHEN_CHANGED);
+        Fl_Group::current()->resizable(IsPitchBend);
       } // Fl_Check_Button* IsPitchBend
       o->end();
     } // Fl_Group* o
@@ -927,9 +896,9 @@ void rmgmedit::ReadPattern() {
   
   bzero(temp,sizeof(temp));
   if (i % 2 == 0)
-  sprintf(temp, "@r@B44  %5d\t@r@B45%s\t@r@B44  %2d\t@c@B45  %s\t@c@B44  %s\t@c@B45  %s\t@c@B44   %s", i,pos, rmgmo->PEG[rmgmo->Variacion][i].canal+1,evento,nota,velo,length);
+  sprintf(temp, "@r@B44  %5d\t@r@B45  %s\t@r@B44  %2d\t@c@B45  %s\t@c@B44  %s\t@c@B45  %s\t@c@B44   %s", i,pos, rmgmo->PEG[rmgmo->Variacion][i].canal+1,evento,nota,velo,length);
   else
-  sprintf(temp, "@r@B46  %5d\t@r@B47%s\t@r@B46  %2d\t@c@B47  %s\t@c@B46  %s\t@c@B47  %s\t@c@B46   %s", i,pos, rmgmo->PEG[rmgmo->Variacion][i].canal+1,evento,nota,velo,length);
+  sprintf(temp, "@r@B46  %5d\t@r@B47  %s\t@r@B46  %2d\t@c@B47  %s\t@c@B46  %s\t@c@B47  %s\t@c@B46   %s", i,pos, rmgmo->PEG[rmgmo->Variacion][i].canal+1,evento,nota,velo,length);
   
   
   EditBro->add(temp);

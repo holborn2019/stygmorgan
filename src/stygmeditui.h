@@ -6,13 +6,6 @@
 #include "stygmorgan.h"
 #include <Fl/Fl_Preferences.H>
 #include <FL/Fl_Browser.H>
-
-class ElBro : public Fl_Browser {
-public:
-  ElBro(int X, int Y, int W, int H) ;
-  void resize(int X, int Y,int W, int H);
-  void redraw();
-};
 void type_cb(Fl_Widget* o,void* v);
 #include <FL/Fl_Double_Window.H>
 #include <FL/Fl_Browser.H>
