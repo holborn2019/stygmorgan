@@ -47,6 +47,7 @@ int DSlider::handle(int event) {
 void Drummixer::cb_drummixerwin_i(Fl_Window*, void*) {
   GuardaPrefs();
 rmgmo->wdrummixer=0;
+ResetSliders();
 pera=2;
 Fl::remove_timeout(tick);
 drummixerwin->clear();
@@ -142,9 +143,22 @@ Fl_Window* Drummixer::make_window() {
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
       o->selection_color(FL_DARK1);
-      { Caso = new Fl_Box(25, 25, 35, 17);
+      { Caso = new Fl_Box(130, 13, 240, 26);
+        Caso->box(FL_BORDER_BOX);
+        Caso->color((Fl_Color)44);
+        Caso->selection_color(FL_DARK1);
+        Caso->labelfont(1);
+        Caso->labelcolor((Fl_Color)1);
         Caso->callback((Fl_Callback*)cb_Caso);
+        Caso->align(Fl_Align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE));
       } // Fl_Box* Caso
+      { CasoV = new Fl_Box(130, 43, 241, 26);
+        CasoV->box(FL_BORDER_BOX);
+        CasoV->color((Fl_Color)44);
+        CasoV->selection_color(FL_DARK1);
+        CasoV->labelfont(1);
+        CasoV->labelcolor((Fl_Color)1);
+      } // Fl_Box* CasoV
       { Fl_Button* o = new Fl_Button(11, 13, 110, 25, gettext("Apply Changes"));
         o->box(FL_PLASTIC_THIN_UP_BOX);
         o->color((Fl_Color)11);
@@ -184,6 +198,8 @@ Fl_Window* Drummixer::make_window() {
     } // Fl_Scroll* Scr
     drummixerwin->end();
   } // Fl_Window* drummixerwin
+  Caso->copy_label(rmgmo->nStyle.Name);
+  CasoV->copy_label(rmgmo->nStyle.Pattern[rmgmo->Variacion].Name);
   return drummixerwin;
 }
 

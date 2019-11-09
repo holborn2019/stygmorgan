@@ -36,6 +36,9 @@ public:
 private:
   inline void cb_Caso_i(Fl_Box*, void*);
   static void cb_Caso(Fl_Box*, void*);
+public:
+  Fl_Box *CasoV;
+private:
   inline void cb_Apply_i(Fl_Button*, void*);
   static void cb_Apply(Fl_Button*, void*);
   inline void cb_Cancel_i(Fl_Button*, void*);

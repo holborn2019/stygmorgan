@@ -73,8 +73,7 @@ return i;} {}
   }
 }
 
-class Drummixer {open
-} {
+class Drummixer {} {
   decl {RMGMO *rmgmo;} {private local
   }
   Function {Drummixer(RMGMO *rmgmo_)} {} {
@@ -118,19 +117,23 @@ Fl::repeat_timeout(.008,tick,v);} {}
     Fl_Window drummixerwin {
       callback {GuardaPrefs();
 rmgmo->wdrummixer=0;
+ResetSliders();
 pera=2;
 Fl::remove_timeout(tick);
 drummixerwin->clear();
 drummixerwin->hide();
 delete drummixerwin;}
-      xywh {1406 222 500 600} type Single color 44 hide
+      xywh {1523 115 500 600} type Single color 44 hide
     } {
       Fl_Group {} {open
         xywh {0 0 500 73} box BORDER_BOX color 44 selection_color 47
       } {
         Fl_Box Caso {
           callback {if(rmgmo->bplay) MiraLucecitas();}
-          xywh {25 25 35 17}
+          xywh {130 13 240 26} box BORDER_BOX color 44 selection_color 47 labelfont 1 labelcolor 1 align 16
+        }
+        Fl_Box CasoV {selected
+          xywh {130 43 241 26} box BORDER_BOX color 44 selection_color 47 labelfont 1 labelcolor 1
         }
         Fl_Button {} {
           label {Apply Changes}
@@ -153,7 +156,7 @@ drummixerwin->do_callback();}
         }
         Fl_Button {} {
           label {Reset Sliders}
-          callback {ResetSliders();} selected
+          callback {ResetSliders();}
           xywh {11 45 110 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 11
         }
       }
@@ -161,7 +164,8 @@ drummixerwin->do_callback();}
         xywh {0 76 500 524} type VERTICAL color 44 selection_color 47 labelcolor 7
       } {}
     }
-    code {} {}
+    code {Caso->copy_label(rmgmo->nStyle.Name);
+CasoV->copy_label(rmgmo->nStyle.Pattern[rmgmo->Variacion].Name);} {}
   }
   Function {labelwin()} {} {
     code {char temp[256];
