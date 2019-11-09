@@ -1283,32 +1283,24 @@ void stygmorgan::cb_Exit(Fl_Menu_* o, void* v) {
 }
 
 void stygmorgan::cb_EPattern_i(Fl_Menu_*, void*) {
-  if(rmgmo->weventeditor) return;
-pera=1;
-Botones->deactivate();
-ListaStyles->deactivate();
-SelectType->deactivate();
-ImportSty->deactivate();
-coord();
-rmgmo->vuelve=rmgmo->Variacion;
-rmgmo->ventana=2;
-rmgmo->weventeditor=1;
+  EditPattern->do_callback();
 }
 void stygmorgan::cb_EPattern(Fl_Menu_* o, void* v) {
   ((stygmorgan*)(o->parent()->user_data()))->cb_EPattern_i(o,v);
 }
 
 void stygmorgan::cb_MixerE_i(Fl_Menu_*, void*) {
-  if(rmgmo->wmixereditor) return;
-rmgmo->wmixereditor=1;
-Botones->deactivate();
-ListaStyles->deactivate();
-ImportSty->deactivate();
-SelectType->deactivate();
-CreaCMixer();
+  CopyMixer->do_callback();
 }
 void stygmorgan::cb_MixerE(Fl_Menu_* o, void* v) {
   ((stygmorgan*)(o->parent()->user_data()))->cb_MixerE_i(o,v);
+}
+
+void stygmorgan::cb_Drum_i(Fl_Menu_*, void*) {
+  DrumMixer->do_callback();
+}
+void stygmorgan::cb_Drum(Fl_Menu_* o, void* v) {
+  ((stygmorgan*)(o->parent()->user_data()))->cb_Drum_i(o,v);
 }
 
 void stygmorgan::cb_Pattern_i(Fl_Menu_*, void*) {
@@ -1318,6 +1310,7 @@ Botones->deactivate();
 ListaStyles->deactivate();
 SelectType->deactivate();
 ImportSty->deactivate();
+BroReg->deactivate();
 coord();
 rmgmo->vuelve=rmgmo->Variacion;
 rmgmo->wpatterneditor=1;
@@ -1332,6 +1325,7 @@ void stygmorgan::cb_Style_i(Fl_Menu_*, void*) {
 ImportSty->deactivate();
 ListaStyles->deactivate();
 SelectType->deactivate();
+BroReg->deactivate();
 coord();
 rmgmo->wstyleeditor=1;
 rmgmo->ventana=4;
@@ -1411,6 +1405,7 @@ Fl_Menu_Item stygmorgan::menu_Menu[] = {
  {"&Edit", 0,  0, 0, 64, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {"Pattern Events ", 0,  (Fl_Callback*)stygmorgan::cb_EPattern, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {"Copy pattern mixer to...", 0,  (Fl_Callback*)stygmorgan::cb_MixerE, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
+ {"Drum Mixer", 0,  (Fl_Callback*)stygmorgan::cb_Drum, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {"Pattern Params", 0,  (Fl_Callback*)stygmorgan::cb_Pattern, 0, 128, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {"Style Params", 0,  (Fl_Callback*)stygmorgan::cb_Style, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 0},
  {0,0,0,0,0,0,0,0,0},
@@ -1434,7 +1429,7 @@ Fl_Menu_Item* stygmorgan::Exit = stygmorgan::menu_Menu + 17;
 Fl_Menu_Item* stygmorgan::sEdit = stygmorgan::menu_Menu + 19;
 Fl_Menu_Item* stygmorgan::EPattern = stygmorgan::menu_Menu + 20;
 Fl_Menu_Item* stygmorgan::MixerE = stygmorgan::menu_Menu + 21;
-Fl_Menu_Item* stygmorgan::ElSeq = stygmorgan::menu_Menu + 26;
+Fl_Menu_Item* stygmorgan::ElSeq = stygmorgan::menu_Menu + 27;
 
 void stygmorgan::cb_RTempo_i(Fl_Dial* o, void*) {
   if (rmgmo->splay) return;
@@ -1682,17 +1677,50 @@ void stygmorgan::cb_BroReg(Fl_Browser* o, void* v) {
   ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_BroReg_i(o,v);
 }
 
-void stygmorgan::cb_Copy_i(Fl_Button*, void*) {
+void stygmorgan::cb_CopyMixer_i(Fl_Button*, void*) {
   if(rmgmo->wmixereditor) return;
 rmgmo->wmixereditor=1;
 Botones->deactivate();
 ListaStyles->deactivate();
 ImportSty->deactivate();
 SelectType->deactivate();
+BroReg->deactivate();
 CreaCMixer();
 }
-void stygmorgan::cb_Copy(Fl_Button* o, void* v) {
-  ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_Copy_i(o,v);
+void stygmorgan::cb_CopyMixer(Fl_Button* o, void* v) {
+  ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_CopyMixer_i(o,v);
+}
+
+void stygmorgan::cb_DrumMixer_i(Fl_Button*, void*) {
+  if(rmgmo->wdrummixer) return;
+BroReg->deactivate();
+ImportSty->deactivate();
+ListaStyles->deactivate();
+SelectType->deactivate();
+Botones->deactivate();
+coord();
+rmgmo->wdrummixer=1;
+rmgmo->ventana=8;
+}
+void stygmorgan::cb_DrumMixer(Fl_Button* o, void* v) {
+  ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_DrumMixer_i(o,v);
+}
+
+void stygmorgan::cb_EditPattern_i(Fl_Button*, void*) {
+  if(rmgmo->weventeditor) return;
+pera=1;
+Botones->deactivate();
+ListaStyles->deactivate();
+SelectType->deactivate();
+ImportSty->deactivate();
+BroReg->deactivate();
+coord();
+rmgmo->vuelve=rmgmo->Variacion;
+rmgmo->ventana=2;
+rmgmo->weventeditor=1;
+}
+void stygmorgan::cb_EditPattern(Fl_Button* o, void* v) {
+  ((stygmorgan*)(o->parent()->parent()->user_data()))->cb_EditPattern_i(o,v);
 }
 
 void stygmorgan::cb_Varicounter_i(Fl_Counter* o, void*) {
@@ -3742,7 +3770,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       Menu->textcolor(FL_BACKGROUND2_COLOR);
       if (!menu_Menu_i18n_done) {
         int i=0;
-        for ( ; i<30; i++)
+        for ( ; i<31; i++)
           if (menu_Menu[i].label())
             menu_Menu[i].label(gettext(menu_Menu[i].label()));
         menu_Menu_i18n_done = 1;
@@ -3807,7 +3835,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         ListaSounds->callback((Fl_Callback*)cb_ListaSounds);
         ListaSounds->align(Fl_Align(FL_ALIGN_TOP));
       } // Fl_Browser* ListaSounds
-      { STST = new Fl_Button(904, 215, 100, 55, gettext("Start/Stop"));
+      { STST = new Fl_Button(904, 215, 100, 56, gettext("Start/Stop"));
         STST->type(1);
         STST->box(FL_PLASTIC_THIN_UP_BOX);
         STST->shortcut(0x20);
@@ -4036,13 +4064,27 @@ Fl_Double_Window* stygmorgan::make_window() {
         o->color((Fl_Color)110);
         o->hide();
       } // Fl_Box* o
-      { Fl_Button* o = new Fl_Button(810, 109, 90, 22, gettext("Copy Mixer"));
-        o->box(FL_PLASTIC_THIN_UP_BOX);
-        o->color((Fl_Color)11);
-        o->selection_color((Fl_Color)3);
-        o->labelsize(12);
-        o->callback((Fl_Callback*)cb_Copy);
-      } // Fl_Button* o
+      { CopyMixer = new Fl_Button(640, 170, 78, 20, gettext("Copy Mixer"));
+        CopyMixer->box(FL_PLASTIC_THIN_UP_BOX);
+        CopyMixer->color((Fl_Color)11);
+        CopyMixer->selection_color((Fl_Color)3);
+        CopyMixer->labelsize(12);
+        CopyMixer->callback((Fl_Callback*)cb_CopyMixer);
+      } // Fl_Button* CopyMixer
+      { DrumMixer = new Fl_Button(725, 170, 78, 20, gettext("Drum Mix"));
+        DrumMixer->box(FL_PLASTIC_THIN_UP_BOX);
+        DrumMixer->color((Fl_Color)11);
+        DrumMixer->selection_color((Fl_Color)3);
+        DrumMixer->labelsize(12);
+        DrumMixer->callback((Fl_Callback*)cb_DrumMixer);
+      } // Fl_Button* DrumMixer
+      { EditPattern = new Fl_Button(640, 192, 78, 20, gettext("Edit Pattern"));
+        EditPattern->box(FL_PLASTIC_THIN_UP_BOX);
+        EditPattern->color((Fl_Color)11);
+        EditPattern->selection_color((Fl_Color)3);
+        EditPattern->labelsize(12);
+        EditPattern->callback((Fl_Callback*)cb_EditPattern);
+      } // Fl_Button* EditPattern
       { VariGroup = new Fl_Group(640, 218, 170, 52);
         VariGroup->box(FL_BORDER_BOX);
         VariGroup->color((Fl_Color)44);
@@ -6041,8 +6083,10 @@ void stygmorgan::highlight() {
   if(rmgmo->wstyleeditor)return;
   if(rmgmo->wmixereditor)return;
   if(rmgmo->wpreferences) return;
-  if (rmgmo->wmore) return;
+  if(rmgmo->wdrummixer) return;
+  if(rmgmo->wmore) return;
   if (wabout)return;
+  
   
   Fl_Widget *w;
   long long k;

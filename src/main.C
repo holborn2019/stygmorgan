@@ -33,6 +33,7 @@
   #include "stygmppui.h"
   #include "stygmsequi.h"
   #include "stygmhelpui.h"
+  #include "stygmdmui.h"
   #include "jack.h"
 
 
@@ -217,6 +218,10 @@
                        new stygmhelp;
                        break;
                        
+                       case 8:
+                       new Drummixer(&rmgmo);
+                       break; 
+                        
                      } 
 
                    rmgmo.ventana=0;

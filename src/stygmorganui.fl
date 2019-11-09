@@ -128,7 +128,7 @@ class stygmorgan {open
       callback {GuardaPref();
 Pexitprogram=1;
 o->hide();} open
-      xywh {1380 119 1010 780} type Double box GTK_UP_BOX color 44 selection_color 47 hide resizable size_range {800 600 0 0}
+      xywh {1374 113 1010 780} type Double box GTK_UP_BOX color 44 selection_color 47 hide resizable size_range {800 600 0 0}
     } {
       Fl_Group {} {
         xywh {1 325 71 450} box BORDER_BOX color 44 selection_color 7 labelfont 1
@@ -1509,28 +1509,18 @@ rmgmo->loaddrumset(filename);}
         } {
           MenuItem EPattern {
             label {Pattern Events }
-            callback {if(rmgmo->weventeditor) return;
-pera=1;
-Botones->deactivate();
-ListaStyles->deactivate();
-SelectType->deactivate();
-ImportSty->deactivate();
-coord();
-rmgmo->vuelve=rmgmo->Variacion;
-rmgmo->ventana=2;
-rmgmo->weventeditor=1;}
+            callback {EditPattern->do_callback();} selected
             xywh {0 0 100 20}
           }
           MenuItem MixerE {
             label {Copy pattern mixer to...}
-            callback {if(rmgmo->wmixereditor) return;
-rmgmo->wmixereditor=1;
-Botones->deactivate();
-ListaStyles->deactivate();
-ImportSty->deactivate();
-SelectType->deactivate();
-CreaCMixer();}
+            callback {CopyMixer->do_callback();}
             xywh {0 0 100 20}
+          }
+          MenuItem {} {
+            label {Drum Mixer}
+            callback {DrumMixer->do_callback();}
+            xywh {0 0 36 21}
           }
           MenuItem {} {
             label {Pattern Params}
@@ -1540,6 +1530,7 @@ Botones->deactivate();
 ListaStyles->deactivate();
 SelectType->deactivate();
 ImportSty->deactivate();
+BroReg->deactivate();
 coord();
 rmgmo->vuelve=rmgmo->Variacion;
 rmgmo->wpatterneditor=1;
@@ -1552,6 +1543,7 @@ rmgmo->ventana=3;}
 ImportSty->deactivate();
 ListaStyles->deactivate();
 SelectType->deactivate();
+BroReg->deactivate();
 coord();
 rmgmo->wstyleeditor=1;
 rmgmo->ventana=4;}
@@ -1705,7 +1697,7 @@ if (o->value())
 rmgmo->ostop();
 apaga();
 }}
-          xywh {904 215 100 55} type Toggle box PLASTIC_THIN_UP_BOX down_box PLASTIC_THIN_DOWN_BOX shortcut 0x20 color 11 selection_color 3 labelsize 11 when 1
+          xywh {904 215 100 56} type Toggle box PLASTIC_THIN_UP_BOX down_box PLASTIC_THIN_DOWN_BOX shortcut 0x20 color 11 selection_color 3 labelsize 11 when 1
         }
         Fl_Box DCompas {
           label 1
@@ -1871,7 +1863,7 @@ labelwin(4);
           label label
           xywh {645 185 35 17} box GTK_UP_BOX color 110 hide
         }
-        Fl_Button {} {
+        Fl_Button CopyMixer {
           label {Copy Mixer}
           callback {if(rmgmo->wmixereditor) return;
 rmgmo->wmixereditor=1;
@@ -1879,8 +1871,37 @@ Botones->deactivate();
 ListaStyles->deactivate();
 ImportSty->deactivate();
 SelectType->deactivate();
+BroReg->deactivate();
 CreaCMixer();}
-          xywh {810 109 90 22} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 12
+          xywh {640 170 78 20} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 12
+        }
+        Fl_Button DrumMixer {
+          label {Drum Mix}
+          callback {if(rmgmo->wdrummixer) return;
+BroReg->deactivate();
+ImportSty->deactivate();
+ListaStyles->deactivate();
+SelectType->deactivate();
+Botones->deactivate();
+coord();
+rmgmo->wdrummixer=1;
+rmgmo->ventana=8;}
+          xywh {725 170 78 20} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 12
+        }
+        Fl_Button EditPattern {
+          label {Edit Pattern}
+          callback {if(rmgmo->weventeditor) return;
+pera=1;
+Botones->deactivate();
+ListaStyles->deactivate();
+SelectType->deactivate();
+ImportSty->deactivate();
+BroReg->deactivate();
+coord();
+rmgmo->vuelve=rmgmo->Variacion;
+rmgmo->ventana=2;
+rmgmo->weventeditor=1;}
+          xywh {640 192 78 20} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 12
         }
         Fl_Group VariGroup {
           xywh {640 218 170 52} box BORDER_BOX color 44
@@ -3844,8 +3865,7 @@ if (rmgmo->ultrack==10)
       return;       
    }} {}
   }
-  Function {highlight()} {open
-  } {
+  Function {highlight()} {} {
     code {if(rmgmo->wsequencer) return;
 if(rmgmo->weventeditor) return;
 if(rmgmo->wpatterneditor) return;
@@ -3853,8 +3873,10 @@ if(rmgmo->wstyleeditor)return;
 if(rmgmo->wstyleeditor)return;
 if(rmgmo->wmixereditor)return;
 if(rmgmo->wpreferences) return;
-if (rmgmo->wmore) return;
+if(rmgmo->wdrummixer) return;
+if(rmgmo->wmore) return;
 if (wabout)return;
+
 
 Fl_Widget *w;
 long long k;
@@ -3871,7 +3893,6 @@ if (k == 0) return;
  }
  w->color(45);
  w->redraw();
- old = w;} {selected
-    }
+ old = w;} {}
   }
 }

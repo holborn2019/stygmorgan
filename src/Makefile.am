@@ -21,6 +21,8 @@ stygmorgan_SOURCES = main.C \
         stygmppui.cxx \
         stygmprefui.cxx \
         stygmprefui.h \
+        stygmdmui.h \
+        stygmdmui.cxx \
         stygmaboutui.cxx \
         stygmaboutui.h \
         stygmhelpui.cxx \

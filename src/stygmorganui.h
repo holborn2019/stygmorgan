@@ -612,6 +612,8 @@ public:
 private:
   inline void cb_MixerE_i(Fl_Menu_*, void*);
   static void cb_MixerE(Fl_Menu_*, void*);
+  inline void cb_Drum_i(Fl_Menu_*, void*);
+  static void cb_Drum(Fl_Menu_*, void*);
   inline void cb_Pattern_i(Fl_Menu_*, void*);
   static void cb_Pattern(Fl_Menu_*, void*);
   inline void cb_Style_i(Fl_Menu_*, void*);
@@ -723,8 +725,21 @@ public:
 private:
   inline void cb_BroReg_i(Fl_Browser*, void*);
   static void cb_BroReg(Fl_Browser*, void*);
-  inline void cb_Copy_i(Fl_Button*, void*);
-  static void cb_Copy(Fl_Button*, void*);
+public:
+  Fl_Button *CopyMixer;
+private:
+  inline void cb_CopyMixer_i(Fl_Button*, void*);
+  static void cb_CopyMixer(Fl_Button*, void*);
+public:
+  Fl_Button *DrumMixer;
+private:
+  inline void cb_DrumMixer_i(Fl_Button*, void*);
+  static void cb_DrumMixer(Fl_Button*, void*);
+public:
+  Fl_Button *EditPattern;
+private:
+  inline void cb_EditPattern_i(Fl_Button*, void*);
+  static void cb_EditPattern(Fl_Button*, void*);
 public:
   Fl_Group *VariGroup;
   Fl_Counter *Varicounter;
