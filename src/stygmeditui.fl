@@ -29,7 +29,7 @@ Function {type_cb(Fl_Widget* o,void* v)} {} {
 
 class rmgmedit {open
 } {
-  Function {rmgmedit(RMGMO *rmgmo_)} {open C
+  Function {rmgmedit(RMGMO *rmgmo_)} {C
   } {
     code {Fl::visual(FL_DOUBLE|FL_INDEX);
 Fl::visual(FL_RGB);
@@ -92,16 +92,15 @@ ReadPattern();} {}
   }
   decl {RMGMO *rmgmo;} {private local
   }
-  Function {make_window()} {open
-  } {
+  Function {make_window()} {} {
     Fl_Window rmgmeditwin {
       callback {pera=2;
 GuardaPrefs();
 o->hide();
 rmgmo->weventeditor=0;
 o->clear();
-delete rmgmeditwin;} open
-      xywh {1389 290 755 545} type Double color 44 labelsize 11 labelcolor 7 hide resizable size_range {800 600 0 0}
+delete rmgmeditwin;}
+      xywh {1386 287 755 545} type Double color 44 labelsize 11 labelcolor 7 hide resizable size_range {800 600 0 0}
     } {
       Fl_Browser EditBro {
         callback {int i,j,k;
@@ -183,7 +182,7 @@ ReadPattern();}
           MenuItem {} {
             label {High Q to Low Floor Tom()}
             callback {rmgmo->HighQtoLowFloorTom();
-ReadPattern();} selected
+ReadPattern();}
             xywh {0 0 36 21} labelcolor 7
           }
         }
@@ -805,13 +804,15 @@ Eventwin->position(x,y);
 Eventwin->label(tmp);
 Eventwin->show(argc,argv);} {}
   }
-  Function {GuardaPrefs()} {} {
+  Function {GuardaPrefs()} {open
+  } {
     code {Fl_Preferences stygmorgan (Fl_Preferences::USER, WEBSITE , PACKAGE);
 
-stygmorgan.set("rmgmeditwinX",rmgmeditwin->x());
-stygmorgan.set("rmgmeditwinY",rmgmeditwin->y());
+stygmorgan.set("rmgmeditwinX",rmgmeditwin->x()+3);
+stygmorgan.set("rmgmeditwinY",rmgmeditwin->y()+3);
 stygmorgan.set("rmgmeditwinW",rmgmeditwin->w());
 stygmorgan.set("rmgmeditwinH",rmgmeditwin->h());
-stygmorgan.set("SpeakerOnOff",(int)Hear->value());} {}
+stygmorgan.set("SpeakerOnOff",(int)Hear->value());} {selected
+    }
   }
 }

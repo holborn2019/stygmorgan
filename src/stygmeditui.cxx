@@ -1243,8 +1243,8 @@ void rmgmedit::editaevento(int evento) {
 void rmgmedit::GuardaPrefs() {
   Fl_Preferences stygmorgan (Fl_Preferences::USER, WEBSITE , PACKAGE);
   
-  stygmorgan.set("rmgmeditwinX",rmgmeditwin->x());
-  stygmorgan.set("rmgmeditwinY",rmgmeditwin->y());
+  stygmorgan.set("rmgmeditwinX",rmgmeditwin->x()+3);
+  stygmorgan.set("rmgmeditwinY",rmgmeditwin->y()+3);
   stygmorgan.set("rmgmeditwinW",rmgmeditwin->w());
   stygmorgan.set("rmgmeditwinH",rmgmeditwin->h());
   stygmorgan.set("SpeakerOnOff",(int)Hear->value());
