@@ -286,7 +286,7 @@ void Drummixer::GeneraScroll() {
   
          bzero(tmp,sizeof tmp);
          sprintf(tmp,"%s",rmgmo->PD[rmgmo->CM[9].program].DNN[i].Nom);
-         if (strlen(tmp) < 3) sprintf(tmp,"%s%d",rmgmo->NCE[i%12].Nom,i/12);    
+         if (strlen(tmp) < 3) sprintf(tmp,"%s%d",rmgmo->NCE[i%12].Nom,(i/12)-1);    
           
       
          Fl_Box* Instru = new Fl_Box(x+22,y+4,170,30); 

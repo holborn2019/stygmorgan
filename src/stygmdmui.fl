@@ -73,7 +73,8 @@ return i;} {}
   }
 }
 
-class Drummixer {} {
+class Drummixer {open
+} {
   decl {RMGMO *rmgmo;} {private local
   }
   Function {Drummixer(RMGMO *rmgmo_)} {} {
@@ -132,7 +133,7 @@ delete drummixerwin;}
           callback {if(rmgmo->bplay) MiraLucecitas();}
           xywh {130 13 240 26} box BORDER_BOX color 44 selection_color 47 labelfont 1 labelcolor 1 align 16
         }
-        Fl_Box CasoV {selected
+        Fl_Box CasoV {
           xywh {130 43 241 26} box BORDER_BOX color 44 selection_color 47 labelfont 1 labelcolor 1
         }
         Fl_Button {} {
@@ -247,7 +248,7 @@ y=76;
 
        bzero(tmp,sizeof tmp);
        sprintf(tmp,"%s",rmgmo->PD[rmgmo->CM[9].program].DNN[i].Nom);
-       if (strlen(tmp) < 3) sprintf(tmp,"%s%d",rmgmo->NCE[i%12].Nom,i/12);    
+       if (strlen(tmp) < 3) sprintf(tmp,"%s%d",rmgmo->NCE[i%12].Nom,(i/12)-1);    
         
     
        Fl_Box* Instru = new Fl_Box(x+22,y+4,170,30); 
@@ -287,7 +288,8 @@ y=76;
 }
 
 Scr->redraw();    
-Fl::flush();} {}
+Fl::flush();} {selected
+    }
   }
   Function {MiraLucecitas()} {} {
     code {for(int i=0;i<128;i++)
