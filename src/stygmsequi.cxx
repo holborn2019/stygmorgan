@@ -468,7 +468,6 @@ sequencer::sequencer(RMGMO *rmgmo_) {
   stygmseqwin->icon((char *)p);
   stygmseqwin->show(argc,argv);
   
-  
   void * v=Casi;
   Fl::add_timeout(.5,tick,v);
 }
@@ -649,7 +648,7 @@ Fl_Double_Window* sequencer::make_window() {
       Displays->end();
     } // Fl_Group* Displays
     { Scr = new ElScroll(0, 65, 800, 400);
-      Scr->type(7);
+      Scr->type(6);
       Scr->box(FL_NO_BOX);
       Scr->color((Fl_Color)44);
       Scr->selection_color(FL_DARK1);
@@ -682,6 +681,7 @@ Fl_Double_Window* sequencer::make_window() {
   Slider->do_callback();
   Titulo->value(SongF.title);
   
+  Scr->scroll_to(0,0);
   GeneraScroll();
   return stygmseqwin;
 }
@@ -1086,7 +1086,7 @@ void sequencer::GeneraScroll() {
   char tmp[64];
   int num=0;
   Scr->clear();
-  
+  Scr->begin();
    
    for(i=1; i<=128; i++)
    
@@ -1094,7 +1094,7 @@ void sequencer::GeneraScroll() {
    
     x = (((i-1) % 4) * 200)+ 1;  
     
-   if (i < 5 ) y = 1; else  y = (((i-1)/ 4)  * 124) + 1; 
+   if (i < 5 ) y = 1; else  y = (((i-1)/ 4)  * 124) +1; 
     
     
     num++;
@@ -1384,6 +1384,10 @@ void sequencer::GeneraScroll() {
                   
   }
   
+  Scr->end();
+  Scr->scroll_to(0,0);
+  
+  
   int t1=1;
   
   
@@ -1435,6 +1439,7 @@ void sequencer::GeneraScroll() {
              
         t1++;  
        }   
+  
   
   Scr->redraw();    
   Fl::flush();

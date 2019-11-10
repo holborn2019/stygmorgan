@@ -37,8 +37,7 @@ class ElScroll {: {public Fl_Scroll}
   Function {ElScroll(int X, int Y, int W, int H, const char* L=0) : Fl_Scroll(X,Y,W,H,L)} {} {
     code {} {}
   }
-  Function {resize(int X, int Y,int W, int H)} {open
-  } {
+  Function {resize(int X, int Y,int W, int H)} {} {
     code {int kx,ky;
 int p=0;
 int q=0;
@@ -68,7 +67,8 @@ for ( int t=0; t<children(); t++ )
   }
 }
 
-class sequencer {} {
+class sequencer {open
+} {
   decl {RMGMO *rmgmo;} {private local
   }
   Function {sequencer(RMGMO *rmgmo_)} {C
@@ -97,7 +97,6 @@ stygmseqwin->resize(x,y,w,h);
 stygmseqwin->icon((char *)p);
 stygmseqwin->show(argc,argv);
 
-
 void * v=Casi;
 Fl::add_timeout(.5,tick,v);} {}
   }
@@ -107,7 +106,8 @@ Fl::add_timeout(.5,tick,v);} {}
 o->do_callback();
 Fl::repeat_timeout(.04,tick,v);} {}
   }
-  Function {make_window()} {} {
+  Function {make_window()} {open
+  } {
     Fl_Window stygmseqwin {
       callback {GuardaPrefs();
 
@@ -122,8 +122,8 @@ rmgmo->mt=1;
 rmgmo->wsequencer=0;
 stygmseqwin->clear();
 stygmseqwin->hide();
-delete stygmseqwin;} selected
-      xywh {1306 135 800 600} type Double color 44 selection_color 47 labelcolor 7 resizable size_range {800 600 0 0} visible
+delete stygmseqwin;} open
+      xywh {1297 126 800 600} type Double color 44 selection_color 47 labelcolor 7 hide resizable size_range {800 600 0 0}
     } {
       Fl_Menu_Bar {} {
         xywh {0 0 800 25} box FLAT_BOX color 44 selection_color 47 labelcolor 7 textcolor 7
@@ -398,7 +398,7 @@ if (rmgmo->CNPattern)
           xywh {450 520 105 40} box BORDER_BOX color 44 selection_color 47 labelsize 20 labelcolor 1 align 16
         }
       }
-      Fl_Scroll Scr {
+      Fl_Scroll Scr {selected
         xywh {0 65 800 400} type BOTH_ALWAYS color 44 selection_color 47 labelcolor 7 resizable
         class ElScroll
       } {}
@@ -420,6 +420,7 @@ Slider->value(rmgmo->cas);
 Slider->do_callback();
 Titulo->value(SongF.title);
 
+Scr->scroll_to(0,0);
 GeneraScroll();} {}
   }
   Function {song_call(Fl_Input* o, void* v)} {return_type {static void}
@@ -822,7 +823,7 @@ else S[kd-3300].ar16a = (int) o->value();
 char tmp[64];
 int num=0;
 Scr->clear();
-
+Scr->begin();
  
  for(i=1; i<=128; i++)
  
@@ -830,7 +831,7 @@ Scr->clear();
  
   x = (((i-1) % 4) * 200)+ 1;  
   
- if (i < 5 ) y = 1; else  y = (((i-1)/ 4)  * 124) + 1; 
+ if (i < 5 ) y = 1; else  y = (((i-1)/ 4)  * 124) +1; 
   
   
   num++;
@@ -1120,6 +1121,10 @@ Scr->clear();
                 
 }
 
+Scr->end();
+Scr->scroll_to(0,0);
+
+
 int t1=1;
 
 
@@ -1171,6 +1176,7 @@ while ((t1)<=128)
            
       t1++;  
      }   
+
 
 Scr->redraw();    
 Fl::flush();} {}
@@ -1549,8 +1555,7 @@ return(1);} {}
     code {BroSty->value(S[rmgmo->cas].style);
 BroPat->value(S[rmgmo->cas].pattern);} {}
   }
-  Function {UpdateInputs(int lacas,int lanegra)} {open
-  } {
+  Function {UpdateInputs(int lacas,int lanegra)} {} {
     code {Fl_Group *h = Scr->child(rmgmo->ultimalacas)->as_group();
 
 h->child(rmgmo->ultimalanegra)->color(46);
