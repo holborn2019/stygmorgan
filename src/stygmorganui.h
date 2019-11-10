@@ -929,5 +929,14 @@ public:
   void ActuaDP();
   void AjustaValores(int value);
   void highlight();
+  Fl_Double_Window* My_message(const char *text);
+  Fl_Double_Window *Message_Win;
+private:
+  inline void cb_Message_Win_i(Fl_Double_Window*, void*);
+  static void cb_Message_Win(Fl_Double_Window*, void*);
+  inline void cb_Close_i(Fl_Button*, void*);
+  static void cb_Close(Fl_Button*, void*);
+public:
+  Fl_Box *Caja_Message;
 };
 #endif

@@ -1693,6 +1693,12 @@ void stygmorgan::cb_CopyMixer(Fl_Button* o, void* v) {
 
 void stygmorgan::cb_DrumMixer_i(Fl_Button*, void*) {
   if(rmgmo->wdrummixer) return;
+const char *tmp = DP9->label();
+if(strlen(tmp)==0) 
+{
+My_message("  Invalid Drums program, please change to a existing one.");
+return;
+}
 BroReg->deactivate();
 ImportSty->deactivate();
 ListaStyles->deactivate();
@@ -2088,11 +2094,28 @@ void stygmorgan::cb_Select(Fl_Button* o, void* v) {
   ((stygmorgan*)(o->parent()->user_data()))->cb_Select_i(o,v);
 }
 
+void stygmorgan::cb_Message_Win_i(Fl_Double_Window*, void*) {
+  Message_Win->clear();
+Message_Win->hide();
+delete Message_Win;
+}
+void stygmorgan::cb_Message_Win(Fl_Double_Window* o, void* v) {
+  ((stygmorgan*)(o->user_data()))->cb_Message_Win_i(o,v);
+}
+
+void stygmorgan::cb_Close_i(Fl_Button*, void*) {
+  Message_Win->do_callback();
+}
+void stygmorgan::cb_Close(Fl_Button* o, void* v) {
+  ((stygmorgan*)(o->parent()->user_data()))->cb_Close_i(o,v);
+}
+
 Fl_Double_Window* stygmorgan::make_window() {
   { rmgmorganwin = new Fl_Double_Window(1010, 780);
     rmgmorganwin->box(FL_GTK_UP_BOX);
     rmgmorganwin->color((Fl_Color)44);
     rmgmorganwin->selection_color(FL_DARK1);
+    rmgmorganwin->labelcolor(FL_BACKGROUND2_COLOR);
     rmgmorganwin->callback((Fl_Callback*)cb_rmgmorganwin, (void*)(this));
     { Fl_Group* o = new Fl_Group(1, 325, 71, 450);
       o->box(FL_BORDER_BOX);
@@ -5355,14 +5378,9 @@ void stygmorgan::sema() {
                  BroReg->activate();
   		if (rmgmo->bcancel==2)
                  		{ 
-                  		if(rmgmo->bplay)
-                  			{
-                  			STST->value(0);
-                  			STST->do_callback();
-                  			}
-                  		ListaStyles->do_callback();
-                  			
+                  	   rmgmo->revertfromcopy();	   			
                  		}               
+  
                  	if (rmgmo->bcancel==0) 
                  		{
                   		if(rmgmo->bplay)
@@ -6104,4 +6122,37 @@ void stygmorgan::highlight() {
    w->color(45);
    w->redraw();
    old = w;
+}
+
+Fl_Double_Window* stygmorgan::My_message(const char *text) {
+  { Message_Win = new Fl_Double_Window(600, 75, gettext("stygmorgan message"));
+    Message_Win->color((Fl_Color)44);
+    Message_Win->callback((Fl_Callback*)cb_Message_Win, (void*)(this));
+    { Fl_Button* o = new Fl_Button(523, 50, 70, 20, gettext("Close"));
+      o->box(FL_PLASTIC_THIN_UP_BOX);
+      o->color((Fl_Color)11);
+      o->selection_color((Fl_Color)3);
+      o->callback((Fl_Callback*)cb_Close);
+    } // Fl_Button* o
+    { Caja_Message = new Fl_Box(2, 0, 512, 71);
+      Caja_Message->color((Fl_Color)44);
+      Caja_Message->labelcolor((Fl_Color)23);
+      Caja_Message->align(Fl_Align(192|FL_ALIGN_INSIDE));
+    } // Fl_Box* Caja_Message
+    Message_Win->end();
+  } // Fl_Double_Window* Message_Win
+  int x,y;
+  static const char *pepe [] ={"stygmorgan"};
+  int argc=1;
+  char **argv= (char **) pepe;
+  
+  
+  Caja_Message->copy_label(text);
+  Caja_Message->redraw();
+  
+  Fl::get_mouse(x,y);
+  Message_Win->position(x-500,y);
+  Message_Win->icon((char*)p);
+  Message_Win->show(argc, argv);
+  return Message_Win;
 }

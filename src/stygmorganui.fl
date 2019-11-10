@@ -128,7 +128,7 @@ class stygmorgan {open
       callback {GuardaPref();
 Pexitprogram=1;
 o->hide();} open
-      xywh {1374 113 1010 780} type Double box GTK_UP_BOX color 44 selection_color 47 hide resizable size_range {800 600 0 0}
+      xywh {1371 110 1010 780} type Double box GTK_UP_BOX color 44 selection_color 47 labelcolor 7 hide resizable size_range {800 600 0 0}
     } {
       Fl_Group {} {
         xywh {1 325 71 450} box BORDER_BOX color 44 selection_color 7 labelfont 1
@@ -1509,7 +1509,7 @@ rmgmo->loaddrumset(filename);}
         } {
           MenuItem EPattern {
             label {Pattern Events }
-            callback {EditPattern->do_callback();} selected
+            callback {EditPattern->do_callback();}
             xywh {0 0 100 20}
           }
           MenuItem MixerE {
@@ -1595,7 +1595,7 @@ rmgmo->ventana=1;}
           }
         }
       }
-      Fl_Group ElBueno {
+      Fl_Group ElBueno {open
         xywh {0 25 1010 250} box BORDER_BOX color 44 selection_color 7 align 21
       } {
         Fl_Group {} {
@@ -1878,6 +1878,12 @@ CreaCMixer();}
         Fl_Button DrumMixer {
           label {Drum Mix}
           callback {if(rmgmo->wdrummixer) return;
+const char *tmp = DP9->label();
+if(strlen(tmp)==0) 
+{
+My_message("  Invalid Drums program, please change to a existing one.");
+return;
+}
 BroReg->deactivate();
 ImportSty->deactivate();
 ListaStyles->deactivate();
@@ -1885,7 +1891,7 @@ SelectType->deactivate();
 Botones->deactivate();
 coord();
 rmgmo->wdrummixer=1;
-rmgmo->ventana=8;}
+rmgmo->ventana=8;} selected
           xywh {725 170 78 20} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 12
         }
         Fl_Button EditPattern {
@@ -2857,7 +2863,7 @@ CMixer->hide();
 rmgmo->wmixereditor=0;
 CMixer->clear();
 delete CMixer;} open
-      xywh {1565 204 260 335} type Double color 44 hide
+      xywh {1559 198 260 335} type Double color 44 hide
     } {
       Fl_Button {} {
         label Ok
@@ -3156,14 +3162,9 @@ if (rmgmo->CambiaTempo)
                BroReg->activate();
 		if (rmgmo->bcancel==2)
                		{ 
-                		if(rmgmo->bplay)
-                			{
-                			STST->value(0);
-                			STST->do_callback();
-                			}
-                		ListaStyles->do_callback();
-                			
+                	   rmgmo->revertfromcopy();	   			
                		}               
+
                	if (rmgmo->bcancel==0) 
                		{
                 		if(rmgmo->bplay)
@@ -3894,5 +3895,36 @@ if (k == 0) return;
  w->color(45);
  w->redraw();
  old = w;} {}
+  }
+  Function {My_message(const char *text)} {} {
+    Fl_Window Message_Win {
+      label {stygmorgan message}
+      callback {Message_Win->clear();
+Message_Win->hide();
+delete Message_Win;}
+      xywh {60 437 600 75} type Double color 44 hide
+    } {
+      Fl_Button {} {
+        label Close
+        callback {Message_Win->do_callback();}
+        xywh {523 50 70 20} box PLASTIC_THIN_UP_BOX color 11 selection_color 3
+      }
+      Fl_Box Caja_Message {
+        xywh {2 0 512 71} color 44 labelcolor 23 align 208
+      }
+    }
+    code {int x,y;
+static const char *pepe [] ={"stygmorgan"};
+int argc=1;
+char **argv= (char **) pepe;
+
+
+Caja_Message->copy_label(text);
+Caja_Message->redraw();
+
+Fl::get_mouse(x,y);
+Message_Win->position(x-500,y);
+Message_Win->icon((char*)p);
+Message_Win->show(argc, argv);} {}
   }
 }
