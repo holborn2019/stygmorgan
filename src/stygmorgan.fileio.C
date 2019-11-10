@@ -209,7 +209,12 @@ char *filename;
        fclose(fs);
        }
 PonAjusta();
- };
+
+memcpy(&eStyle,&nStyle,sizeof(StyleStr));
+
+memcpy(&ePEG,&PEG,sizeof(PEG));
+
+};
 
 void
 RMGMO::writestyle(int estilo)

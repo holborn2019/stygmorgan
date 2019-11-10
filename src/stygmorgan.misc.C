@@ -746,7 +746,16 @@ for (i=0; i<PendientesEE; i++) POEE[i]=POACEE[i];
 };
 
 
+void
+RMGMO::revertfromcopy()
+{
 
+  memcpy(&nStyle,&eStyle,sizeof(StyleStr));
+  memcpy(&PEG,&ePEG,sizeof(PEG));
+  
+}
+
+  
 
 
 

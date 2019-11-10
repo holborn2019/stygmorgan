@@ -188,6 +188,7 @@ public:
    void AsignaTabla();
    void silent(int data,int c1, int c2);
    void allio();
+   void revertfromcopy();
    void writestyle(int estilo);
    void writestylec(int estilo,int funcion );
    void writesound(int sound);
@@ -531,7 +532,7 @@ int nota;
 int canal;
 int velocity;
 int length;
-} PEG[22][6000],EG[64000],tempEG;
+} PEG[22][6000],EG[64000],tempEG,ePEG[22][6000];
 
 
 
@@ -575,7 +576,6 @@ CanalMixer CM[16];
 
 
 struct StyleStr
-
 { 
 char Name[32];
 int tipo;
@@ -589,7 +589,7 @@ int bpm;
 int numpat;
 StylePattern Pattern[22];
 
-} nStyle,tStyle;
+} nStyle,tStyle,eStyle;
 
 
 

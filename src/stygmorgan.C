@@ -155,7 +155,9 @@ RMGMO::RMGMO ()
    
 memset(EG, 0, sizeof EG);
 memset(PEG,0, sizeof PEG);
+memset(ePEG,0, sizeof ePEG);
 memset(&nStyle, 0, sizeof nStyle);
+memset(&tStyle, 0, sizeof tStyle);
 memset(CCn, 0, sizeof CCn);
 memset(CStyle,0, sizeof CStyle);
 memset(PO, 0, sizeof PO);
