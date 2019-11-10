@@ -46,7 +46,7 @@
 #define Cntt 0x436e7474
 #define POLY 6
 
-extern int Pexitprogram,programa,espera,pera,chsel,x,y,sponmix,wabout,whelp;
+extern int Pexitprogram,x,y,programa,espera,pera,chsel,sponmix,wabout,whelp;
 extern Pixmap p,mask;
 extern XWMHints *hints;
 extern int jack,alsa,exitwithhelp;
@@ -164,7 +164,8 @@ public:
    void Conecta();
    void XGGM();
    void HighQtoLowFloorTom();
-   void D2Db2toRide();
+   void D1Db1toRide();
+   void G0toCastanets();
    void ActuVarVol(int a, int b);
    void ActuAccVol();
    void ActuKeybVol();

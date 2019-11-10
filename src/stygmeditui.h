@@ -59,13 +59,25 @@ private:
   static Fl_Menu_Item menu_[];
 public:
   static Fl_Menu_Item *sFunctions;
+  static Fl_Menu_Item *MenuXGGM;
 private:
-  inline void cb_Brush_i(Fl_Menu_*, void*);
-  static void cb_Brush(Fl_Menu_*, void*);
-  inline void cb_D2_i(Fl_Menu_*, void*);
-  static void cb_D2(Fl_Menu_*, void*);
-  inline void cb_High_i(Fl_Menu_*, void*);
-  static void cb_High(Fl_Menu_*, void*);
+  inline void cb_MenuXGGM_i(Fl_Menu_*, void*);
+  static void cb_MenuXGGM(Fl_Menu_*, void*);
+public:
+  static Fl_Menu_Item *MenuD1Db1;
+private:
+  inline void cb_MenuD1Db1_i(Fl_Menu_*, void*);
+  static void cb_MenuD1Db1(Fl_Menu_*, void*);
+public:
+  static Fl_Menu_Item *MenuHighQ;
+private:
+  inline void cb_MenuHighQ_i(Fl_Menu_*, void*);
+  static void cb_MenuHighQ(Fl_Menu_*, void*);
+public:
+  static Fl_Menu_Item *MenuG0;
+private:
+  inline void cb_MenuG0_i(Fl_Menu_*, void*);
+  static void cb_MenuG0(Fl_Menu_*, void*);
   inline void cb_Help_i(Fl_Menu_*, void*);
   static void cb_Help(Fl_Menu_*, void*);
   inline void cb_About_i(Fl_Menu_*, void*);

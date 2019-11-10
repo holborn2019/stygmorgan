@@ -271,16 +271,9 @@ if (pcp[PEG[Variacion][i].canal]==9)
       { 
          if (CM[9].program < 60)
          sprintf(var,"%s",PD[CM[9].program].DNN[PEG[Variacion][i].nota].Nom); 
-         if (strlen(var) < 3) sprintf(var,"%s%d",NCE[PEG[Variacion][i].nota % 12].Nom,PEG[Variacion][i].nota /12);
+         if (strlen(var) < 3) sprintf(var,"%s%d",NCE[PEG[Variacion][i].nota % 12].Nom,(PEG[Variacion][i].nota /12)-1);
       } 
-      else
-
-       sprintf(var,"%s%d",NCE[PEG[Variacion][i].nota % 12].Nom,PEG[Variacion][i].nota /12);
-
-
-
-
-
+      else  sprintf(var,"%s%d",NCE[PEG[Variacion][i].nota % 12].Nom,(PEG[Variacion][i].nota / 12) -1);
 };
 
 
@@ -297,11 +290,11 @@ if (selcanal==9)
       {
          if (CM[9].program < 60)
          sprintf(var,"%s",PD[CM[9].program].DNN[i].Nom);
-         if (strlen(var) < 3) sprintf(var,"%s%d",NCE[i%12].Nom, i/12);
+         if (strlen(var) < 3) sprintf(var,"%s%d",NCE[i%12].Nom, (i/12)-1);
       }
       else
 
-       sprintf(var,"%s%d",NCE[i % 12].Nom, i/12);
+       sprintf(var,"%s%d",NCE[i % 12].Nom, (i/12)-1);
 
       break;
       case 3:
@@ -484,7 +477,7 @@ EventoCambia=1;
 
 
 void
-RMGMO::D2Db2toRide()
+RMGMO::D1Db1toRide()
 {
 
   int i;
@@ -525,6 +518,27 @@ RMGMO::HighQtoLowFloorTom()
                {
                    case 27:
                     PEG[Variacion][i].nota=41;
+                    break;
+                }  
+            }
+          }
+};
+
+void
+RMGMO::G0toCastanets()
+{
+
+  int i;
+  
+         
+       for (i=0;i<nStyle.Pattern[Variacion].eventos;i++)    
+         {
+             if (pcp[PEG[Variacion][i].canal]==9)
+           {
+             switch (PEG[Variacion][i].nota)
+               {
+                   case 19:
+                    PEG[Variacion][i].nota=85;
                     break;
                 }  
             }

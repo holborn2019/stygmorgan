@@ -29,7 +29,7 @@ Function {type_cb(Fl_Widget* o,void* v)} {} {
 
 class rmgmedit {open
 } {
-  Function {rmgmedit(RMGMO *rmgmo_)} {C
+  Function {rmgmedit(RMGMO *rmgmo_)} {open C
   } {
     code {Fl::visual(FL_DOUBLE|FL_INDEX);
 Fl::visual(FL_RGB);
@@ -92,7 +92,8 @@ ReadPattern();} {}
   }
   decl {RMGMO *rmgmo;} {private local
   }
-  Function {make_window()} {} {
+  Function {make_window()} {open
+  } {
     Fl_Window rmgmeditwin {
       callback {pera=2;
 GuardaPrefs();
@@ -100,7 +101,7 @@ o->hide();
 rmgmo->weventeditor=0;
 o->clear();
 delete rmgmeditwin;}
-      xywh {1386 287 755 545} type Double color 44 labelsize 11 labelcolor 7 hide resizable size_range {800 600 0 0}
+      xywh {1383 284 755 545} type Double color 44 labelsize 11 labelcolor 7 hide resizable size_range {800 600 0 0}
     } {
       Fl_Browser EditBro {
         callback {int i,j,k;
@@ -160,28 +161,34 @@ if (sAllE->value())
         }
       }
       Fl_Menu_Bar {} {
-        callback {//EditBro->redraw();}
+        callback {//EditBro->redraw();} open
         xywh {0 0 755 20} color 44 selection_color 47 labelcolor 7
       } {
         Submenu sFunctions {
-          label {&Functions}
+          label {&Functions} open
           xywh {0 0 100 20} labelcolor 7
         } {
-          MenuItem {} {
+          MenuItem MenuXGGM {
             label {Brush Drums XG->GM}
             callback {rmgmo->XGGM();
 ReadPattern();}
             xywh {0 0 100 20} labelcolor 7
           }
-          MenuItem {} {
-            label {D2 & Db2 to Ride}
-            callback {rmgmo->D2Db2toRide();
+          MenuItem MenuD1Db1 {
+            label {D1 & Db1 to Ride}
+            callback {rmgmo->D1Db1toRide();
 ReadPattern();}
             xywh {0 0 36 21} labelcolor 7
           }
-          MenuItem {} {
+          MenuItem MenuHighQ {
             label {High Q to Low Floor Tom()}
             callback {rmgmo->HighQtoLowFloorTom();
+ReadPattern();}
+            xywh {0 0 36 21} labelcolor 7
+          }
+          MenuItem MenuG0 {
+            label {G0 to Castanets}
+            callback {rmgmo->G0toCastanets();
 ReadPattern();}
             xywh {0 0 36 21} labelcolor 7
           }
@@ -216,7 +223,7 @@ ReadPattern();}
         xywh {100 60 90 70} box THIN_DOWN_BOX color 44 selection_color 47 labelcolor 7
       }
       Fl_Choice SelCh {
-        label {Midi Channel}
+        label {Midi Channel} open
         xywh {105 75 80 20} down_box BORDER_BOX color 44 selection_color 47 labelsize 11 labelcolor 7 align 5 textsize 11 textcolor 7
       } {}
       Fl_Box DNomCh {
@@ -230,7 +237,7 @@ ReadPattern();}
         label Select
         xywh {210 35 185 20} box THIN_DOWN_BOX color 44 selection_color 47 labelfont 1 labelcolor 1 align 16
       }
-      Fl_Group {} {open
+      Fl_Group {} {
         xywh {210 60 185 60} box THIN_DOWN_BOX color 44 selection_color 47 labelcolor 7
       } {
         Fl_Check_Button sAllE {
@@ -277,7 +284,7 @@ ReadPattern();}
         label Insert
         xywh {405 35 185 20} box THIN_DOWN_BOX color 44 selection_color 47 labelfont 1 labelcolor 1 align 16
       }
-      Fl_Group {} {open
+      Fl_Group {} {
         xywh {405 60 90 70} box THIN_DOWN_BOX color 44 selection_color 47 labelcolor 7
       } {
         Fl_Check_Button IsNote {
@@ -301,7 +308,7 @@ ReadPattern();}
           xywh {410 110 80 15} type Radio down_box DOWN_BOX color 44 selection_color 3 labelsize 11 labelcolor 7 when 1 resizable
         }
       }
-      Fl_Group {} {open
+      Fl_Group {} {
         xywh {500 60 90 70} box THIN_DOWN_BOX color 44 selection_color 47 labelcolor 7
       } {
         Fl_Button {} {
@@ -356,7 +363,12 @@ rmgmeditwin->do_callback();}
         xywh {600 85 145 15} box THIN_DOWN_BOX color 44 selection_color 47 labelfont 1 labelsize 12 labelcolor 1 align 16
       }
     }
-    code {sNote->down_box(FL_NO_BOX);
+    code {MenuXGGM->deactivate();
+MenuD1Db1->deactivate();
+MenuHighQ->deactivate();
+MenuG0->deactivate();
+ 
+ sNote->down_box(FL_NO_BOX);
  sNote->selection_color((Fl_Color)3);
  sNote->clear_visible_focus();    
  
@@ -390,7 +402,8 @@ rmgmeditwin->do_callback();}
  
  IsPitchBend->down_box(FL_NO_BOX);
  IsPitchBend->selection_color((Fl_Color)3);
- IsPitchBend->clear_visible_focus();} {}
+ IsPitchBend->clear_visible_focus();} {selected
+    }
   }
   Function {ReadPattern()} {} {
     code {int i;
@@ -517,10 +530,17 @@ EditBro->add(temp);
 
 // EditBro->redraw();} {}
   }
-  Function {type_cb_i(Fl_Widget* o,void* v)} {} {
+  Function {type_cb_i(Fl_Widget* o,void* v)} {open
+  } {
     code {int i=0;
 char temp[28];
 long long cast_v=(long long)v;
+
+MenuXGGM->deactivate();
+MenuD1Db1->deactivate();
+MenuHighQ->deactivate();
+MenuG0->deactivate();
+
 
 
 chsel=(int)cast_v;
@@ -536,6 +556,10 @@ case 17:
 DNomCh->copy_label("Drums");
 BaseChord->copy_label("---");
 SChMidi->value(10);
+MenuXGGM->activate();
+MenuD1Db1->activate();
+MenuHighQ->activate();
+MenuG0->activate();
 break;
 default:
 while ( (chsel -1) != rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].track)
@@ -804,15 +828,13 @@ Eventwin->position(x,y);
 Eventwin->label(tmp);
 Eventwin->show(argc,argv);} {}
   }
-  Function {GuardaPrefs()} {open
-  } {
+  Function {GuardaPrefs()} {} {
     code {Fl_Preferences stygmorgan (Fl_Preferences::USER, WEBSITE , PACKAGE);
 
 stygmorgan.set("rmgmeditwinX",rmgmeditwin->x()+3);
 stygmorgan.set("rmgmeditwinY",rmgmeditwin->y()+3);
 stygmorgan.set("rmgmeditwinW",rmgmeditwin->w());
 stygmorgan.set("rmgmeditwinH",rmgmeditwin->h());
-stygmorgan.set("SpeakerOnOff",(int)Hear->value());} {selected
-    }
+stygmorgan.set("SpeakerOnOff",(int)Hear->value());} {}
   }
 }

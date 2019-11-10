@@ -93,28 +93,36 @@ void rmgmedit::cb_(Fl_Menu_Bar* o, void* v) {
   ((rmgmedit*)(o->parent()->user_data()))->cb__i(o,v);
 }
 
-void rmgmedit::cb_Brush_i(Fl_Menu_*, void*) {
+void rmgmedit::cb_MenuXGGM_i(Fl_Menu_*, void*) {
   rmgmo->XGGM();
 ReadPattern();
 }
-void rmgmedit::cb_Brush(Fl_Menu_* o, void* v) {
-  ((rmgmedit*)(o->parent()->user_data()))->cb_Brush_i(o,v);
+void rmgmedit::cb_MenuXGGM(Fl_Menu_* o, void* v) {
+  ((rmgmedit*)(o->parent()->user_data()))->cb_MenuXGGM_i(o,v);
 }
 
-void rmgmedit::cb_D2_i(Fl_Menu_*, void*) {
-  rmgmo->D2Db2toRide();
+void rmgmedit::cb_MenuD1Db1_i(Fl_Menu_*, void*) {
+  rmgmo->D1Db1toRide();
 ReadPattern();
 }
-void rmgmedit::cb_D2(Fl_Menu_* o, void* v) {
-  ((rmgmedit*)(o->parent()->user_data()))->cb_D2_i(o,v);
+void rmgmedit::cb_MenuD1Db1(Fl_Menu_* o, void* v) {
+  ((rmgmedit*)(o->parent()->user_data()))->cb_MenuD1Db1_i(o,v);
 }
 
-void rmgmedit::cb_High_i(Fl_Menu_*, void*) {
+void rmgmedit::cb_MenuHighQ_i(Fl_Menu_*, void*) {
   rmgmo->HighQtoLowFloorTom();
 ReadPattern();
 }
-void rmgmedit::cb_High(Fl_Menu_* o, void* v) {
-  ((rmgmedit*)(o->parent()->user_data()))->cb_High_i(o,v);
+void rmgmedit::cb_MenuHighQ(Fl_Menu_* o, void* v) {
+  ((rmgmedit*)(o->parent()->user_data()))->cb_MenuHighQ_i(o,v);
+}
+
+void rmgmedit::cb_MenuG0_i(Fl_Menu_*, void*) {
+  rmgmo->G0toCastanets();
+ReadPattern();
+}
+void rmgmedit::cb_MenuG0(Fl_Menu_* o, void* v) {
+  ((rmgmedit*)(o->parent()->user_data()))->cb_MenuG0_i(o,v);
 }
 
 void rmgmedit::cb_Help_i(Fl_Menu_*, void*) {
@@ -140,9 +148,10 @@ void rmgmedit::cb_About(Fl_Menu_* o, void* v) {
 unsigned char rmgmedit::menu__i18n_done = 0;
 Fl_Menu_Item rmgmedit::menu_[] = {
  {"&Functions", 0,  0, 0, 64, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
- {"Brush Drums XG->GM", 0,  (Fl_Callback*)rmgmedit::cb_Brush, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
- {"D2 & Db2 to Ride", 0,  (Fl_Callback*)rmgmedit::cb_D2, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
- {"High Q to Low Floor Tom()", 0,  (Fl_Callback*)rmgmedit::cb_High, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
+ {"Brush Drums XG->GM", 0,  (Fl_Callback*)rmgmedit::cb_MenuXGGM, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
+ {"D1 & Db1 to Ride", 0,  (Fl_Callback*)rmgmedit::cb_MenuD1Db1, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
+ {"High Q to Low Floor Tom()", 0,  (Fl_Callback*)rmgmedit::cb_MenuHighQ, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
+ {"G0 to Castanets", 0,  (Fl_Callback*)rmgmedit::cb_MenuG0, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
  {0,0,0,0,0,0,0,0,0},
  {"&Help", 0,  0, 0, 64, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
  {"Help", 0xffbe,  (Fl_Callback*)rmgmedit::cb_Help, 0, 128, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
@@ -151,6 +160,10 @@ Fl_Menu_Item rmgmedit::menu_[] = {
  {0,0,0,0,0,0,0,0,0}
 };
 Fl_Menu_Item* rmgmedit::sFunctions = rmgmedit::menu_ + 0;
+Fl_Menu_Item* rmgmedit::MenuXGGM = rmgmedit::menu_ + 1;
+Fl_Menu_Item* rmgmedit::MenuD1Db1 = rmgmedit::menu_ + 2;
+Fl_Menu_Item* rmgmedit::MenuHighQ = rmgmedit::menu_ + 3;
+Fl_Menu_Item* rmgmedit::MenuG0 = rmgmedit::menu_ + 4;
 
 void rmgmedit::cb_Hear_i(Fl_Button* o, void*) {
   if (o->value() == 0) rmgmo->panico(1,0,15);
@@ -561,7 +574,7 @@ Fl_Double_Window* rmgmedit::make_window() {
       o->callback((Fl_Callback*)cb_);
       if (!menu__i18n_done) {
         int i=0;
-        for ( ; i<8; i++)
+        for ( ; i<9; i++)
           if (menu_[i].label())
             menu_[i].label(gettext(menu_[i].label()));
         menu__i18n_done = 1;
@@ -764,7 +777,12 @@ Fl_Double_Window* rmgmedit::make_window() {
     rmgmeditwin->size_range(800, 600);
     rmgmeditwin->end();
   } // Fl_Double_Window* rmgmeditwin
-  sNote->down_box(FL_NO_BOX);
+  MenuXGGM->deactivate();
+  MenuD1Db1->deactivate();
+  MenuHighQ->deactivate();
+  MenuG0->deactivate();
+   
+   sNote->down_box(FL_NO_BOX);
    sNote->selection_color((Fl_Color)3);
    sNote->clear_visible_focus();    
    
@@ -933,6 +951,12 @@ void rmgmedit::type_cb_i(Fl_Widget* o,void* v) {
   char temp[28];
   long long cast_v=(long long)v;
   
+  MenuXGGM->deactivate();
+  MenuD1Db1->deactivate();
+  MenuHighQ->deactivate();
+  MenuG0->deactivate();
+  
+  
   
   chsel=(int)cast_v;
   
@@ -947,6 +971,10 @@ void rmgmedit::type_cb_i(Fl_Widget* o,void* v) {
   DNomCh->copy_label("Drums");
   BaseChord->copy_label("---");
   SChMidi->value(10);
+  MenuXGGM->activate();
+  MenuD1Db1->activate();
+  MenuHighQ->activate();
+  MenuG0->activate();
   break;
   default:
   while ( (chsel -1) != rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].track)
