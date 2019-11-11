@@ -243,7 +243,7 @@ void Drummixer::ReadPattern() {
    if (rmgmo->pcp[rmgmo->PEG[rmgmo->Variacion][i].canal]==9)
     {   
   
-     if ((rmgmo->PEG[rmgmo->Variacion][i].tipo ==2) || (rmgmo->PEG[rmgmo->Variacion][i].velocity >0))
+     if ((rmgmo->PEG[rmgmo->Variacion][i].tipo ==2) && (rmgmo->PEG[rmgmo->Variacion][i].velocity >0))
       {
         rmgmo->losquehayqueponer[rmgmo->PEG[rmgmo->Variacion][i].nota] = 1;
         

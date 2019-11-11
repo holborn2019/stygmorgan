@@ -191,7 +191,8 @@ stygmorgan.set("drummixerwinH",drummixerwin->h());} {}
 int nota= int(kd)-1800;
 rmgmo->VelPorce[nota]=(int)o->value();} {}
   }
-  Function {ReadPattern()} {} {
+  Function {ReadPattern()} {open
+  } {
     code {int i;
 for (i=0;i<128;i++)
 {
@@ -206,13 +207,14 @@ for (i=0; i<rmgmo->nStyle.Pattern[rmgmo->Variacion].eventos;i++)
  if (rmgmo->pcp[rmgmo->PEG[rmgmo->Variacion][i].canal]==9)
   {   
 
-   if ((rmgmo->PEG[rmgmo->Variacion][i].tipo ==2) || (rmgmo->PEG[rmgmo->Variacion][i].velocity >0))
+   if ((rmgmo->PEG[rmgmo->Variacion][i].tipo ==2) && (rmgmo->PEG[rmgmo->Variacion][i].velocity >0))
     {
       rmgmo->losquehayqueponer[rmgmo->PEG[rmgmo->Variacion][i].nota] = 1;
       
     }
    } 
-   }} {}
+   }} {selected
+    }
   }
   Function {GeneraScroll()} {} {
     code {int i,x,y;
@@ -288,8 +290,7 @@ y=76;
 }
 
 Scr->redraw();    
-Fl::flush();} {selected
-    }
+Fl::flush();} {}
   }
   Function {MiraLucecitas()} {} {
     code {for(int i=0;i<128;i++)
