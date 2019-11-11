@@ -192,6 +192,12 @@ ReadPattern();}
 ReadPattern();}
             xywh {0 0 36 21} labelcolor 7
           }
+          MenuItem MenuMetronome {
+            label {B0 C1 to Metronome Low High}
+            callback {rmgmo->B0C1toMetronomeHL();
+ReadPattern();}
+            xywh {10 10 36 21} labelcolor 7
+          }
         }
         Submenu {} {
           label {&Help} open
@@ -367,6 +373,8 @@ rmgmeditwin->do_callback();}
 MenuD1Db1->deactivate();
 MenuHighQ->deactivate();
 MenuG0->deactivate();
+MenuMetronome->deactivate();
+
  
  sNote->down_box(FL_NO_BOX);
  sNote->selection_color((Fl_Color)3);
@@ -402,8 +410,7 @@ MenuG0->deactivate();
  
  IsPitchBend->down_box(FL_NO_BOX);
  IsPitchBend->selection_color((Fl_Color)3);
- IsPitchBend->clear_visible_focus();} {selected
-    }
+ IsPitchBend->clear_visible_focus();} {}
   }
   Function {ReadPattern()} {} {
     code {int i;
@@ -540,6 +547,7 @@ MenuXGGM->deactivate();
 MenuD1Db1->deactivate();
 MenuHighQ->deactivate();
 MenuG0->deactivate();
+MenuMetronome->deactivate();
 
 
 
@@ -560,6 +568,7 @@ MenuXGGM->activate();
 MenuD1Db1->activate();
 MenuHighQ->activate();
 MenuG0->activate();
+MenuMetronome->activate();
 break;
 default:
 while ( (chsel -1) != rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].track)
@@ -582,7 +591,8 @@ SChMidi->value(chsel);
 
 
 
-ReadPattern();} {}
+ReadPattern();} {selected
+    }
   }
   Function {make_eventwindow()} {} {
     Fl_Window Eventwin {

@@ -125,6 +125,14 @@ void rmgmedit::cb_MenuG0(Fl_Menu_* o, void* v) {
   ((rmgmedit*)(o->parent()->user_data()))->cb_MenuG0_i(o,v);
 }
 
+void rmgmedit::cb_MenuMetronome_i(Fl_Menu_*, void*) {
+  rmgmo->B0C1toMetronomeHL();
+ReadPattern();
+}
+void rmgmedit::cb_MenuMetronome(Fl_Menu_* o, void* v) {
+  ((rmgmedit*)(o->parent()->user_data()))->cb_MenuMetronome_i(o,v);
+}
+
 void rmgmedit::cb_Help_i(Fl_Menu_*, void*) {
   rmgmo->ventana=7;
 //EditBro->redraw();
@@ -152,6 +160,7 @@ Fl_Menu_Item rmgmedit::menu_[] = {
  {"D1 & Db1 to Ride", 0,  (Fl_Callback*)rmgmedit::cb_MenuD1Db1, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
  {"High Q to Low Floor Tom()", 0,  (Fl_Callback*)rmgmedit::cb_MenuHighQ, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
  {"G0 to Castanets", 0,  (Fl_Callback*)rmgmedit::cb_MenuG0, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
+ {"B0 C1 to Metronome Low High", 0,  (Fl_Callback*)rmgmedit::cb_MenuMetronome, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
  {0,0,0,0,0,0,0,0,0},
  {"&Help", 0,  0, 0, 64, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
  {"Help", 0xffbe,  (Fl_Callback*)rmgmedit::cb_Help, 0, 128, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
@@ -164,6 +173,7 @@ Fl_Menu_Item* rmgmedit::MenuXGGM = rmgmedit::menu_ + 1;
 Fl_Menu_Item* rmgmedit::MenuD1Db1 = rmgmedit::menu_ + 2;
 Fl_Menu_Item* rmgmedit::MenuHighQ = rmgmedit::menu_ + 3;
 Fl_Menu_Item* rmgmedit::MenuG0 = rmgmedit::menu_ + 4;
+Fl_Menu_Item* rmgmedit::MenuMetronome = rmgmedit::menu_ + 5;
 
 void rmgmedit::cb_Hear_i(Fl_Button* o, void*) {
   if (o->value() == 0) rmgmo->panico(1,0,15);
@@ -574,7 +584,7 @@ Fl_Double_Window* rmgmedit::make_window() {
       o->callback((Fl_Callback*)cb_);
       if (!menu__i18n_done) {
         int i=0;
-        for ( ; i<9; i++)
+        for ( ; i<10; i++)
           if (menu_[i].label())
             menu_[i].label(gettext(menu_[i].label()));
         menu__i18n_done = 1;
@@ -781,6 +791,8 @@ Fl_Double_Window* rmgmedit::make_window() {
   MenuD1Db1->deactivate();
   MenuHighQ->deactivate();
   MenuG0->deactivate();
+  MenuMetronome->deactivate();
+  
    
    sNote->down_box(FL_NO_BOX);
    sNote->selection_color((Fl_Color)3);
@@ -955,6 +967,7 @@ void rmgmedit::type_cb_i(Fl_Widget* o,void* v) {
   MenuD1Db1->deactivate();
   MenuHighQ->deactivate();
   MenuG0->deactivate();
+  MenuMetronome->deactivate();
   
   
   
@@ -975,6 +988,7 @@ void rmgmedit::type_cb_i(Fl_Widget* o,void* v) {
   MenuD1Db1->activate();
   MenuHighQ->activate();
   MenuG0->activate();
+  MenuMetronome->activate();
   break;
   default:
   while ( (chsel -1) != rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].track)

@@ -545,6 +545,34 @@ RMGMO::G0toCastanets()
           }
 };
 
+void
+RMGMO::B0C1toMetronomeHL()
+{
+
+  int i;
+  
+         
+       for (i=0;i<nStyle.Pattern[Variacion].eventos;i++)    
+         {
+             if (pcp[PEG[Variacion][i].canal]==9)
+           {
+             switch (PEG[Variacion][i].nota)
+               {
+                   case 23:
+                    PEG[Variacion][i].nota=32;
+                    break;
+                   case 24:
+                    PEG[Variacion][i].nota=33;
+                    break;
+                
+                
+                
+                
+                }  
+            }
+          }
+};
+
 
 
 
