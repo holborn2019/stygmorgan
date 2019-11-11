@@ -4089,6 +4089,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // Fl_Box* o
       { CopyMixer = new Fl_Button(640, 170, 78, 20, gettext("Copy Mixer"));
         CopyMixer->box(FL_PLASTIC_THIN_UP_BOX);
+        CopyMixer->shortcut(0x63);
         CopyMixer->color((Fl_Color)11);
         CopyMixer->selection_color((Fl_Color)3);
         CopyMixer->labelsize(12);
@@ -4096,6 +4097,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // Fl_Button* CopyMixer
       { DrumMixer = new Fl_Button(725, 170, 78, 20, gettext("Drum Mix"));
         DrumMixer->box(FL_PLASTIC_THIN_UP_BOX);
+        DrumMixer->shortcut(0x64);
         DrumMixer->color((Fl_Color)11);
         DrumMixer->selection_color((Fl_Color)3);
         DrumMixer->labelsize(12);
@@ -4103,6 +4105,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // Fl_Button* DrumMixer
       { EditPattern = new Fl_Button(640, 192, 78, 20, gettext("Edit Pattern"));
         EditPattern->box(FL_PLASTIC_THIN_UP_BOX);
+        EditPattern->shortcut(0x65);
         EditPattern->color((Fl_Color)11);
         EditPattern->selection_color((Fl_Color)3);
         EditPattern->labelsize(12);

@@ -1873,7 +1873,7 @@ ImportSty->deactivate();
 SelectType->deactivate();
 BroReg->deactivate();
 CreaCMixer();}
-          xywh {640 170 78 20} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 12
+          xywh {640 170 78 20} box PLASTIC_THIN_UP_BOX shortcut 0x63 color 11 selection_color 3 labelsize 12
         }
         Fl_Button DrumMixer {
           label {Drum Mix}
@@ -1891,8 +1891,8 @@ SelectType->deactivate();
 Botones->deactivate();
 coord();
 rmgmo->wdrummixer=1;
-rmgmo->ventana=8;} selected
-          xywh {725 170 78 20} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 12
+rmgmo->ventana=8;}
+          xywh {725 170 78 20} box PLASTIC_THIN_UP_BOX shortcut 0x64 color 11 selection_color 3 labelsize 12
         }
         Fl_Button EditPattern {
           label {Edit Pattern}
@@ -1906,8 +1906,8 @@ BroReg->deactivate();
 coord();
 rmgmo->vuelve=rmgmo->Variacion;
 rmgmo->ventana=2;
-rmgmo->weventeditor=1;}
-          xywh {640 192 78 20} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 12
+rmgmo->weventeditor=1;} selected
+          xywh {640 192 78 20} box PLASTIC_THIN_UP_BOX shortcut 0x65 color 11 selection_color 3 labelsize 12
         }
         Fl_Group VariGroup {
           xywh {640 218 170 52} box BORDER_BOX color 44
