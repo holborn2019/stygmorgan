@@ -31,7 +31,7 @@ stygmorgan is a hardcoded program, runs on ALSA and JACK at the same time and I 
 Just Enjoy :-)
 
 
-Note: The Data Styles file is now compressed, if you pull often this repository is needed decompress the file MisStyles.STYR.xz on your default directory '~./stygmorgan', this is because the file is so big and is just decompress in the first run of the program when creates the user directory and copy the data files.
-The default configuration file is managed by fltk and is located on '~./fltk/stygmorgan.prefs', if you delete this file, stygmorgan will do a first installation again.
+Note: The Data Styles file is now compressed, if you pull often this repository is needed decompress the file MisStyles.STYR.xz on your default directory "\~./stygmorgan", this is because the file is so big and is just decompress in the first run of the program when creates the user directory and copy the data files.
+The default configuration file is managed by fltk and is located on "\~./fltk/stygmorgan.prefs", if you delete this file, stygmorgan will do a first installation again.
 
 
