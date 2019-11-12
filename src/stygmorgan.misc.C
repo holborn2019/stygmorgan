@@ -546,6 +546,29 @@ RMGMO::G0toCastanets()
 };
 
 void
+RMGMO::D0toLowFloorTom()
+{
+
+  int i;
+  
+         
+       for (i=0;i<nStyle.Pattern[Variacion].eventos;i++)    
+         {
+             if (pcp[PEG[Variacion][i].canal]==9)
+           {
+             switch (PEG[Variacion][i].nota)
+               {
+                   case 14:
+                    PEG[Variacion][i].nota=41;
+                    break;
+                }  
+            }
+          }
+};
+
+
+
+void
 RMGMO::B0C1toMetronomeHL()
 {
 
@@ -563,6 +586,34 @@ RMGMO::B0C1toMetronomeHL()
                     break;
                    case 24:
                     PEG[Variacion][i].nota=33;
+                    break;
+                
+                
+                
+                
+                }  
+            }
+          }
+};
+
+void
+RMGMO::F0Gb01toScratch()
+{
+
+  int i;
+  
+         
+       for (i=0;i<nStyle.Pattern[Variacion].eventos;i++)    
+         {
+             if (pcp[PEG[Variacion][i].canal]==9)
+           {
+             switch (PEG[Variacion][i].nota)
+               {
+                   case 17:
+                    PEG[Variacion][i].nota=29;
+                    break;
+                   case 18:
+                    PEG[Variacion][i].nota=30;
                     break;
                 
                 

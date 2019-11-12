@@ -83,6 +83,16 @@ public:
 private:
   inline void cb_MenuMetronome_i(Fl_Menu_*, void*);
   static void cb_MenuMetronome(Fl_Menu_*, void*);
+public:
+  static Fl_Menu_Item *MenuF0Gb0;
+private:
+  inline void cb_MenuF0Gb0_i(Fl_Menu_*, void*);
+  static void cb_MenuF0Gb0(Fl_Menu_*, void*);
+public:
+  static Fl_Menu_Item *MenuD0;
+private:
+  inline void cb_MenuD0_i(Fl_Menu_*, void*);
+  static void cb_MenuD0(Fl_Menu_*, void*);
   inline void cb_Help_i(Fl_Menu_*, void*);
   static void cb_Help(Fl_Menu_*, void*);
   inline void cb_About_i(Fl_Menu_*, void*);

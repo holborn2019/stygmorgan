@@ -100,7 +100,7 @@ GuardaPrefs();
 o->hide();
 rmgmo->weventeditor=0;
 o->clear();
-delete rmgmeditwin;}
+delete rmgmeditwin;} open
       xywh {1383 284 755 545} type Double color 44 labelsize 11 labelcolor 7 hide resizable size_range {800 600 0 0}
     } {
       Fl_Browser EditBro {
@@ -181,7 +181,7 @@ ReadPattern();}
             xywh {0 0 36 21} labelcolor 7
           }
           MenuItem MenuHighQ {
-            label {High Q to Low Floor Tom()}
+            label {High Q to Low Floor Tom}
             callback {rmgmo->HighQtoLowFloorTom();
 ReadPattern();}
             xywh {0 0 36 21} labelcolor 7
@@ -195,6 +195,18 @@ ReadPattern();}
           MenuItem MenuMetronome {
             label {B0 C1 to Metronome Low High}
             callback {rmgmo->B0C1toMetronomeHL();
+ReadPattern();}
+            xywh {10 10 36 21} labelcolor 7
+          }
+          MenuItem MenuF0Gb0 {
+            label {F0 & Gb0 to Scratch}
+            callback {rmgmo->F0Gb01toScratch();
+ReadPattern();}
+            xywh {10 10 36 21} labelcolor 7
+          }
+          MenuItem MenuD0 {
+            label {D0 to Low Floor Tom}
+            callback {rmgmo->D0toLowFloorTom();
 ReadPattern();}
             xywh {10 10 36 21} labelcolor 7
           }
@@ -374,7 +386,8 @@ MenuD1Db1->deactivate();
 MenuHighQ->deactivate();
 MenuG0->deactivate();
 MenuMetronome->deactivate();
-
+MenuF0Gb0->deactivate();
+MenuD0->deactivate();
  
  sNote->down_box(FL_NO_BOX);
  sNote->selection_color((Fl_Color)3);
@@ -548,7 +561,8 @@ MenuD1Db1->deactivate();
 MenuHighQ->deactivate();
 MenuG0->deactivate();
 MenuMetronome->deactivate();
-
+MenuF0Gb0->deactivate();
+MenuD0->deactivate();
 
 
 chsel=(int)cast_v;
@@ -569,6 +583,8 @@ MenuD1Db1->activate();
 MenuHighQ->activate();
 MenuG0->activate();
 MenuMetronome->activate();
+MenuF0Gb0->activate();
+MenuD0->activate();
 break;
 default:
 while ( (chsel -1) != rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].track)

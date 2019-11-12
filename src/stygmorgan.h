@@ -165,6 +165,8 @@ public:
    void XGGM();
    void HighQtoLowFloorTom();
    void D1Db1toRide();
+   void D0toLowFloorTom();
+   void F0Gb01toScratch();
    void G0toCastanets();
    void B0C1toMetronomeHL();
    void ActuVarVol(int a, int b);
