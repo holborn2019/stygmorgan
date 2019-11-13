@@ -2117,7 +2117,7 @@ Fl_Double_Window* stygmorgan::make_window() {
     rmgmorganwin->selection_color(FL_DARK1);
     rmgmorganwin->labelcolor(FL_BACKGROUND2_COLOR);
     rmgmorganwin->callback((Fl_Callback*)cb_rmgmorganwin, (void*)(this));
-    { Fl_Group* o = new Fl_Group(1, 325, 71, 450);
+    { Fl_Group* o = new Fl_Group(1, 325, 70, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
       o->selection_color(FL_BACKGROUND2_COLOR);
@@ -2221,7 +2221,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         o->labelcolor(FL_LIGHT2);
         o->align(Fl_Align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { P0 = new Fl_Counter(1, 750, 64, 15, gettext("Program"));
+      { P0 = new Fl_Counter(5, 750, 64, 15, gettext("Program"));
         P0->type(1);
         P0->box(FL_NO_BOX);
         P0->color((Fl_Color)44);
@@ -2340,7 +2340,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         o->labelsize(15);
         o->labelcolor(FL_LIGHT2);
       } // Fl_Box* o
-      { P1 = new Fl_Counter(72, 750, 64, 14, gettext("Program"));
+      { P1 = new Fl_Counter(76, 750, 64, 14, gettext("Program"));
         P1->type(1);
         P1->box(FL_NO_BOX);
         P1->color((Fl_Color)44);
@@ -2355,7 +2355,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // Fl_Counter* P1
       o->end();
     } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(141, 325, 72, 450);
+    { Fl_Group* o = new Fl_Group(143, 325, 70, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
       { Pan2 = new MiDial(160, 415, 35, 35, gettext("Pan"));
@@ -2457,7 +2457,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         o->labelcolor(FL_LIGHT2);
         o->align(Fl_Align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { P2 = new Fl_Counter(141, 750, 64, 14, gettext("Program"));
+      { P2 = new Fl_Counter(146, 750, 64, 14, gettext("Program"));
         P2->type(1);
         P2->box(FL_NO_BOX);
         P2->color((Fl_Color)44);
@@ -2472,7 +2472,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // Fl_Counter* P2
       o->end();
     } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(211, 325, 73, 450);
+    { Fl_Group* o = new Fl_Group(214, 325, 70, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
       { Pan3 = new MiDial(230, 415, 35, 35, gettext("Pan"));
@@ -2573,7 +2573,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         o->labelsize(15);
         o->labelcolor(FL_LIGHT2);
       } // Fl_Box* o
-      { P3 = new Fl_Counter(211, 750, 64, 15, gettext("Program"));
+      { P3 = new Fl_Counter(217, 750, 64, 15, gettext("Program"));
         P3->type(1);
         P3->box(FL_NO_BOX);
         P3->color((Fl_Color)44);
@@ -2588,7 +2588,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // Fl_Counter* P3
       o->end();
     } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(280, 325, 75, 450);
+    { Fl_Group* o = new Fl_Group(285, 325, 70, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
       { Pan4 = new MiDial(300, 415, 35, 35, gettext("Pan"));
@@ -2690,7 +2690,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         o->labelcolor(FL_LIGHT2);
         o->align(Fl_Align(FL_ALIGN_CENTER|FL_ALIGN_INSIDE));
       } // Fl_Box* o
-      { P4 = new Fl_Counter(286, 750, 64, 20, gettext("Program"));
+      { P4 = new Fl_Counter(288, 750, 64, 20, gettext("Program"));
         P4->type(1);
         P4->box(FL_NO_BOX);
         P4->color((Fl_Color)44);
@@ -2705,7 +2705,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // Fl_Counter* P4
       o->end();
     } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(515, 325, 75, 450);
+    { Fl_Group* o = new Fl_Group(515, 325, 70, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
       { Pan9 = new MiDial(531, 415, 35, 35, gettext("Pan"));
@@ -2860,7 +2860,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // Fl_Counter* P9
       o->end();
     } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(586, 325, 74, 450);
+    { Fl_Group* o = new Fl_Group(586, 325, 70, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
       { Pan10 = new MiDial(604, 415, 35, 35, gettext("Pan"));
@@ -2999,7 +2999,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         } // Fl_Box* o
         VumCanal10->end();
       } // Fl_Group* VumCanal10
-      { P10 = new Fl_Counter(590, 750, 62, 15, gettext("Program"));
+      { P10 = new Fl_Counter(591, 750, 62, 15, gettext("Program"));
         P10->type(1);
         P10->box(FL_NO_BOX);
         P10->color((Fl_Color)44);
@@ -3014,7 +3014,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // Fl_Counter* P10
       o->end();
     } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(657, 325, 73, 450);
+    { Fl_Group* o = new Fl_Group(657, 325, 70, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
       { Pan11 = new MiDial(674, 415, 35, 35, gettext("Pan"));
@@ -3153,7 +3153,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         } // Fl_Box* o
         VumCanal11->end();
       } // Fl_Group* VumCanal11
-      { P11 = new Fl_Counter(660, 750, 62, 20, gettext("Program"));
+      { P11 = new Fl_Counter(661, 750, 62, 20, gettext("Program"));
         P11->type(1);
         P11->box(FL_NO_BOX);
         P11->color((Fl_Color)44);
@@ -3168,7 +3168,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // Fl_Counter* P11
       o->end();
     } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(728, 325, 72, 450);
+    { Fl_Group* o = new Fl_Group(728, 325, 70, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
       { Pan12 = new MiDial(745, 415, 35, 35, gettext("Pan"));
@@ -3307,7 +3307,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         } // Fl_Box* o
         VumCanal12->end();
       } // Fl_Group* VumCanal12
-      { P12 = new Fl_Counter(730, 750, 62, 21, gettext("Program"));
+      { P12 = new Fl_Counter(732, 750, 62, 21, gettext("Program"));
         P12->type(1);
         P12->box(FL_NO_BOX);
         P12->color((Fl_Color)44);
@@ -3322,7 +3322,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // Fl_Counter* P12
       o->end();
     } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(799, 325, 71, 450);
+    { Fl_Group* o = new Fl_Group(799, 325, 70, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
       { Pan13 = new MiDial(815, 415, 35, 35, gettext("Pan"));
@@ -3461,7 +3461,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         } // Fl_Box* o
         VumCanal13->end();
       } // Fl_Group* VumCanal13
-      { P13 = new Fl_Counter(800, 750, 62, 20, gettext("Program"));
+      { P13 = new Fl_Counter(803, 750, 62, 20, gettext("Program"));
         P13->type(1);
         P13->box(FL_NO_BOX);
         P13->color((Fl_Color)44);
@@ -3476,7 +3476,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // Fl_Counter* P13
       o->end();
     } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(870, 325, 70, 450);
+    { Fl_Group* o = new Fl_Group(870, 325, 69, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
       { Pan14 = new MiDial(885, 415, 35, 35, gettext("Pan"));
@@ -3615,7 +3615,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         } // Fl_Box* o
         VumCanal14->end();
       } // Fl_Group* VumCanal14
-      { P14 = new Fl_Counter(870, 750, 62, 21, gettext("Program"));
+      { P14 = new Fl_Counter(874, 750, 62, 21, gettext("Program"));
         P14->type(1);
         P14->box(FL_NO_BOX);
         P14->color((Fl_Color)44);
@@ -3630,7 +3630,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // Fl_Counter* P14
       o->end();
     } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(940, 325, 71, 450);
+    { Fl_Group* o = new Fl_Group(940, 325, 70, 450);
       o->box(FL_BORDER_BOX);
       o->color((Fl_Color)44);
       o->labeltype(FL_ENGRAVED_LABEL);
@@ -3770,7 +3770,7 @@ Fl_Double_Window* stygmorgan::make_window() {
         } // Fl_Box* o
         VumCanal15->end();
       } // Fl_Group* VumCanal15
-      { P15 = new Fl_Counter(940, 750, 64, 21, gettext("Program"));
+      { P15 = new Fl_Counter(944, 750, 64, 21, gettext("Program"));
         P15->type(1);
         P15->box(FL_NO_BOX);
         P15->color((Fl_Color)44);

@@ -128,10 +128,10 @@ class stygmorgan {open
       callback {GuardaPref();
 Pexitprogram=1;
 o->hide();} open
-      xywh {1371 110 1010 780} type Double box GTK_UP_BOX color 44 selection_color 47 labelcolor 7 hide resizable size_range {800 600 0 0}
+      xywh {1365 104 1010 780} type Double box GTK_UP_BOX color 44 selection_color 47 labelcolor 7 resizable size_range {800 600 0 0} visible
     } {
       Fl_Group {} {
-        xywh {1 325 71 450} box BORDER_BOX color 44 selection_color 7 labelfont 1
+        xywh {1 325 70 450} box BORDER_BOX color 44 selection_color 7 labelfont 1
       } {
         Fl_Dial Pan0 {
           label Pan
@@ -211,7 +211,7 @@ int nc=0;
 rmgmo->CM[nc].program=(int)o->value();
 rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
 DP0->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
-          xywh {1 750 64 15} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+          xywh {5 750 64 15} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
       Fl_Group {} {
@@ -295,11 +295,11 @@ int nc=1;
 rmgmo->CM[nc].program=(int)o->value();
 rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
 DP1->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
-          xywh {72 750 64 14} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+          xywh {76 750 64 14} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
       Fl_Group {} {
-        xywh {141 325 72 450} box BORDER_BOX color 44
+        xywh {143 325 70 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan2 {
           label Pan
@@ -379,11 +379,11 @@ int nc=2;
 rmgmo->CM[nc].program=(int)o->value();
 rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
 DP2->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
-          xywh {141 750 64 14} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+          xywh {146 750 64 14} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
       Fl_Group {} {
-        xywh {211 325 73 450} box BORDER_BOX color 44
+        xywh {214 325 70 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan3 {
           label Pan
@@ -463,11 +463,11 @@ int nc=3;
 rmgmo->CM[nc].program=(int)o->value();
 rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
 DP3->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
-          xywh {211 750 64 15} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+          xywh {217 750 64 15} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
       Fl_Group {} {
-        xywh {280 325 75 450} box BORDER_BOX color 44
+        xywh {285 325 70 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan4 {
           label Pan
@@ -547,11 +547,11 @@ int nc=4;
 rmgmo->CM[nc].program=(int)o->value();
 rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
 DP4->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
-          xywh {286 750 64 20} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+          xywh {288 750 64 20} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
       Fl_Group {} {
-        xywh {515 325 75 450} box BORDER_BOX color 44
+        xywh {515 325 70 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan9 {
           label Pan
@@ -660,7 +660,7 @@ DP9->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].progr
         }
       }
       Fl_Group {} {
-        xywh {586 325 74 450} box BORDER_BOX color 44
+        xywh {586 325 70 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan10 {
           label Pan
@@ -765,11 +765,11 @@ int nc=10;
 rmgmo->CM[nc].program=(int)o->value();
 rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
 DP10->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
-          xywh {590 750 62 15} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+          xywh {591 750 62 15} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
       Fl_Group {} {
-        xywh {657 325 73 450} box BORDER_BOX color 44
+        xywh {657 325 70 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan11 {
           label Pan
@@ -874,11 +874,11 @@ int nc=11;
 rmgmo->CM[nc].program=(int)o->value();
 rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
 DP11->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
-          xywh {660 750 62 20} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+          xywh {661 750 62 20} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
       Fl_Group {} {
-        xywh {728 325 72 450} box BORDER_BOX color 44
+        xywh {728 325 70 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan12 {
           label Pan
@@ -983,11 +983,11 @@ int nc=12;
 rmgmo->CM[nc].program=(int)o->value();
 rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
 DP12->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
-          xywh {730 750 62 21} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+          xywh {732 750 62 21} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
       Fl_Group {} {
-        xywh {799 325 71 450} box BORDER_BOX color 44
+        xywh {799 325 70 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan13 {
           label Pan
@@ -1092,11 +1092,11 @@ int nc=13;
 rmgmo->CM[nc].program=(int)o->value();
 rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
 DP13->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
-          xywh {800 750 62 20} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+          xywh {803 750 62 20} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
       Fl_Group {} {
-        xywh {870 325 70 450} box BORDER_BOX color 44
+        xywh {870 325 69 450} box BORDER_BOX color 44
       } {
         Fl_Dial Pan14 {
           label Pan
@@ -1201,11 +1201,11 @@ int nc=14;
 rmgmo->CM[nc].program=(int)o->value();
 rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
 DP14->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
-          xywh {870 750 62 21} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+          xywh {874 750 62 21} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
       Fl_Group {} {
-        xywh {940 325 71 450} box BORDER_BOX color 44 labeltype ENGRAVED_LABEL
+        xywh {940 325 70 450} box BORDER_BOX color 44 labeltype ENGRAVED_LABEL
       } {
         Fl_Dial Pan15 {
           label Pan
@@ -1310,7 +1310,7 @@ int nc=15;
 rmgmo->CM[nc].program=(int)o->value();
 rmgmo->envioprograma(nc,rmgmo->CM[nc].program);
 DP15->label(rmgmo->PresetList[rmgmo->CalculaBanco(nc)].PBanco[rmgmo->CM[nc].program].ProgName);}
-          xywh {940 750 64 21} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
+          xywh {944 750 64 21} type Simple box NO_BOX color 44 labelsize 9 labelcolor 52 align 1 minimum 0 maximum 127 step 1 textcolor 7
         }
       }
       Fl_Menu_Bar Menu {
@@ -1595,7 +1595,7 @@ rmgmo->ventana=1;}
           }
         }
       }
-      Fl_Group ElBueno {open
+      Fl_Group ElBueno {
         xywh {0 25 1010 250} box BORDER_BOX color 44 selection_color 7 align 21
       } {
         Fl_Group {} {
@@ -1906,7 +1906,7 @@ BroReg->deactivate();
 coord();
 rmgmo->vuelve=rmgmo->Variacion;
 rmgmo->ventana=2;
-rmgmo->weventeditor=1;} selected
+rmgmo->weventeditor=1;}
           xywh {640 192 78 20} box PLASTIC_THIN_UP_BOX shortcut 0x65 color 11 selection_color 3 labelsize 12
         }
         Fl_Group VariGroup {
@@ -2140,7 +2140,7 @@ buscala();
           xywh {360 735 151 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x6f color 9 selection_color 1 labelsize 11
         }
       }
-      Fl_Box VName {
+      Fl_Box VName {selected
         xywh {610 275 175 50} box BORDER_BOX color 44 labelfont 1 labelsize 22 labelcolor 1 align 80
       }
       Fl_Box VChord {
