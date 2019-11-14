@@ -79,15 +79,13 @@ if (endi==1)
 } 
 }
 
-  
-
         while (PEG[Variacion][cs].tipo==0)
         {
          cs++;
-         if (cs >=  nStyle.Pattern[Variacion].eventos) break;
-         }
+         if (cs >=nStyle.Pattern[Variacion].eventos) break;
+        }
 
-        while ((PEG[Variacion][cs].tick <= ptick) && (cs < nStyle.Pattern[Variacion].eventos) )
+        while ((PEG[Variacion][cs].tick <= ptick) && (cs<nStyle.Pattern[Variacion].eventos) )
          {
             if (pc[PEG[Variacion][cs].canal])
                {

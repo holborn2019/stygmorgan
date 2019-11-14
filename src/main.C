@@ -184,6 +184,7 @@
   
     while (Pexitprogram == 0)
       {
+             
              Fl::wait();
 
              if (rmgmo.ventana !=0)
