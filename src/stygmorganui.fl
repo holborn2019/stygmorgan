@@ -118,17 +118,15 @@ return i;} {}
   }
 }
 
-class stygmorgan {open
-} {
+class stygmorgan {} {
   decl {RMGMO *rmgmo;} {private local
   }
-  Function {make_window()} {open
-  } {
+  Function {make_window()} {} {
     Fl_Window rmgmorganwin {
       callback {GuardaPref();
 Pexitprogram=1;
 o->hide();} open
-      xywh {1365 104 1010 780} type Double box GTK_UP_BOX color 44 selection_color 47 labelcolor 7 resizable size_range {800 600 0 0} visible
+      xywh {1362 101 1010 780} type Double box GTK_UP_BOX color 44 selection_color 47 labelcolor 7 hide resizable size_range {800 600 0 0}
     } {
       Fl_Group {} {
         xywh {1 325 70 450} box BORDER_BOX color 44 selection_color 7 labelfont 1
@@ -1709,7 +1707,7 @@ apaga();
 
 rmgmo->miramidi();
 sema();
-highlight();
+
 
 
 if(rmgmo->splay) 
@@ -1727,7 +1725,7 @@ if(rmgmo->splay)
 			rmgmo->osemi=rmgmo->semi;
 			FunciLeds(0);
 		}
-}}
+}} selected
           xywh {904 140 45 40} box BORDER_BOX color 44 selection_color 47 labelsize 20 labelcolor 1 align 80
         }
         Fl_Group marker {
@@ -2140,7 +2138,7 @@ buscala();
           xywh {360 735 151 30} type Toggle box PLASTIC_THIN_UP_BOX shortcut 0x6f color 9 selection_color 1 labelsize 11
         }
       }
-      Fl_Box VName {selected
+      Fl_Box VName {
         xywh {610 275 175 50} box BORDER_BOX color 44 labelfont 1 labelsize 22 labelcolor 1 align 80
       }
       Fl_Box VChord {
@@ -3865,36 +3863,6 @@ if (rmgmo->ultrack==10)
        }
       return;       
    }} {}
-  }
-  Function {highlight()} {} {
-    code {if(rmgmo->wsequencer) return;
-if(rmgmo->weventeditor) return;
-if(rmgmo->wpatterneditor) return;
-if(rmgmo->wstyleeditor)return;
-if(rmgmo->wstyleeditor)return;
-if(rmgmo->wmixereditor)return;
-if(rmgmo->wpreferences) return;
-if(rmgmo->wdrummixer) return;
-if(rmgmo->wmore) return;
-if (wabout)return;
-
-
-Fl_Widget *w;
-long long k;
-w = Fl::belowmouse();
-if (w == NULL) return;
-if(w == old) return;
-k = (long long) w->user_data();
-if (k == 0) return;
-
- if(old != NULL) 
- {
- old->color(44);
- old->redraw();
- }
- w->color(45);
- w->redraw();
- old = w;} {}
   }
   Function {My_message(const char *text)} {} {
     Fl_Window Message_Win {

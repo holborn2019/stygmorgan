@@ -928,7 +928,6 @@ public:
   void poninfo(int track, int control, int value);
   void ActuaDP();
   void AjustaValores(int value);
-  void highlight();
   Fl_Double_Window* My_message(const char *text);
   Fl_Double_Window *Message_Win;
 private:

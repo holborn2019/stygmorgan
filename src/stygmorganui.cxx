@@ -1547,7 +1547,7 @@ void stygmorgan::cb_DCompas_i(Fl_Box*, void*) {
 
 rmgmo->miramidi();
 sema();
-highlight();
+
 
 
 if(rmgmo->splay) 
@@ -6094,37 +6094,6 @@ void stygmorgan::AjustaValores(int value) {
          }
         return;       
      }
-}
-
-void stygmorgan::highlight() {
-  if(rmgmo->wsequencer) return;
-  if(rmgmo->weventeditor) return;
-  if(rmgmo->wpatterneditor) return;
-  if(rmgmo->wstyleeditor)return;
-  if(rmgmo->wstyleeditor)return;
-  if(rmgmo->wmixereditor)return;
-  if(rmgmo->wpreferences) return;
-  if(rmgmo->wdrummixer) return;
-  if(rmgmo->wmore) return;
-  if (wabout)return;
-  
-  
-  Fl_Widget *w;
-  long long k;
-  w = Fl::belowmouse();
-  if (w == NULL) return;
-  if(w == old) return;
-  k = (long long) w->user_data();
-  if (k == 0) return;
-  
-   if(old != NULL) 
-   {
-   old->color(44);
-   old->redraw();
-   }
-   w->color(45);
-   w->redraw();
-   old = w;
 }
 
 Fl_Double_Window* stygmorgan::My_message(const char *text) {
