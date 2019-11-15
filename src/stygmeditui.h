@@ -93,6 +93,26 @@ public:
 private:
   inline void cb_MenuD0_i(Fl_Menu_*, void*);
   static void cb_MenuD0(Fl_Menu_*, void*);
+public:
+  static Fl_Menu_Item *MenuVelocityUp;
+private:
+  inline void cb_MenuVelocityUp_i(Fl_Menu_*, void*);
+  static void cb_MenuVelocityUp(Fl_Menu_*, void*);
+public:
+  static Fl_Menu_Item *MenuVelocityDown;
+private:
+  inline void cb_MenuVelocityDown_i(Fl_Menu_*, void*);
+  static void cb_MenuVelocityDown(Fl_Menu_*, void*);
+public:
+  static Fl_Menu_Item *MenuVelocityUp50;
+private:
+  inline void cb_MenuVelocityUp50_i(Fl_Menu_*, void*);
+  static void cb_MenuVelocityUp50(Fl_Menu_*, void*);
+public:
+  static Fl_Menu_Item *MenuVelocityDown50;
+private:
+  inline void cb_MenuVelocityDown50_i(Fl_Menu_*, void*);
+  static void cb_MenuVelocityDown50(Fl_Menu_*, void*);
   inline void cb_Help_i(Fl_Menu_*, void*);
   static void cb_Help(Fl_Menu_*, void*);
   inline void cb_About_i(Fl_Menu_*, void*);

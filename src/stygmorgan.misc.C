@@ -566,6 +566,69 @@ RMGMO::D0toLowFloorTom()
           }
 };
 
+void
+RMGMO::VelocityUp(int canalv)
+{
+
+  int i;
+       for (i=0;i<nStyle.Pattern[Variacion].eventos;i++)    
+         {
+             if ((PEG[Variacion][i].canal==canalv) &&(PEG[Variacion][i].tipo==2))
+           {
+            
+            PEG[Variacion][i].velocity=(int)((float)PEG[Variacion][i].velocity * 1.1f);
+            if(PEG[Variacion][i].velocity > 127) PEG[Variacion][i].velocity= 127;   
+            }
+          }
+};
+
+void
+RMGMO::VelocityDown(int canalv)
+{
+
+  int i;
+      for (i=0;i<nStyle.Pattern[Variacion].eventos;i++)    
+         {
+             if ((PEG[Variacion][i].canal==canalv)&&(PEG[Variacion][i].tipo==2))
+           {
+              PEG[Variacion][i].velocity=(int)((float)PEG[Variacion][i].velocity*.9f);
+              if(PEG[Variacion][i].velocity < 0)  PEG[Variacion][i].velocity=0;
+            }
+          }
+};
+
+void
+RMGMO::VelocityUp50(int canalv)
+{
+
+  int i;
+       for (i=0;i<nStyle.Pattern[Variacion].eventos;i++)    
+         {
+             if ((PEG[Variacion][i].canal==canalv) &&(PEG[Variacion][i].tipo==2))
+           {
+            
+            PEG[Variacion][i].velocity=(int)((float)PEG[Variacion][i].velocity * 1.5f);
+            if(PEG[Variacion][i].velocity > 127) PEG[Variacion][i].velocity= 127;   
+            }
+          }
+};
+
+void
+RMGMO::VelocityDown50(int canalv)
+{
+
+  int i;
+      for (i=0;i<nStyle.Pattern[Variacion].eventos;i++)    
+         {
+             if ((PEG[Variacion][i].canal==canalv)&&(PEG[Variacion][i].tipo==2))
+           {
+              PEG[Variacion][i].velocity=(int)((float)PEG[Variacion][i].velocity*.5f);
+              if(PEG[Variacion][i].velocity < 0)  PEG[Variacion][i].velocity=0;
+            }
+          }
+};
+
+
 
 
 void

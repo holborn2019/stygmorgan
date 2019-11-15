@@ -149,6 +149,38 @@ void rmgmedit::cb_MenuD0(Fl_Menu_* o, void* v) {
   ((rmgmedit*)(o->parent()->user_data()))->cb_MenuD0_i(o,v);
 }
 
+void rmgmedit::cb_MenuVelocityUp_i(Fl_Menu_*, void*) {
+  rmgmo->VelocityUp(chsel-1);
+ReadPattern();
+}
+void rmgmedit::cb_MenuVelocityUp(Fl_Menu_* o, void* v) {
+  ((rmgmedit*)(o->parent()->user_data()))->cb_MenuVelocityUp_i(o,v);
+}
+
+void rmgmedit::cb_MenuVelocityDown_i(Fl_Menu_*, void*) {
+  rmgmo->VelocityDown(chsel-1);
+ReadPattern();
+}
+void rmgmedit::cb_MenuVelocityDown(Fl_Menu_* o, void* v) {
+  ((rmgmedit*)(o->parent()->user_data()))->cb_MenuVelocityDown_i(o,v);
+}
+
+void rmgmedit::cb_MenuVelocityUp50_i(Fl_Menu_*, void*) {
+  rmgmo->VelocityUp50(chsel-1);
+ReadPattern();
+}
+void rmgmedit::cb_MenuVelocityUp50(Fl_Menu_* o, void* v) {
+  ((rmgmedit*)(o->parent()->user_data()))->cb_MenuVelocityUp50_i(o,v);
+}
+
+void rmgmedit::cb_MenuVelocityDown50_i(Fl_Menu_*, void*) {
+  rmgmo->VelocityDown50(chsel-1);
+ReadPattern();
+}
+void rmgmedit::cb_MenuVelocityDown50(Fl_Menu_* o, void* v) {
+  ((rmgmedit*)(o->parent()->user_data()))->cb_MenuVelocityDown50_i(o,v);
+}
+
 void rmgmedit::cb_Help_i(Fl_Menu_*, void*) {
   rmgmo->ventana=7;
 //EditBro->redraw();
@@ -179,6 +211,10 @@ Fl_Menu_Item rmgmedit::menu_[] = {
  {"B0 C1 to Metronome Low High", 0,  (Fl_Callback*)rmgmedit::cb_MenuMetronome, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
  {"F0 & Gb0 to Scratch", 0,  (Fl_Callback*)rmgmedit::cb_MenuF0Gb0, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
  {"D0 to Low Floor Tom", 0,  (Fl_Callback*)rmgmedit::cb_MenuD0, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
+ {"All Notes 20% +Velocity", 0,  (Fl_Callback*)rmgmedit::cb_MenuVelocityUp, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
+ {"All Notes 20% -Velocity", 0,  (Fl_Callback*)rmgmedit::cb_MenuVelocityDown, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
+ {"All Notes 50% +Velocity", 0,  (Fl_Callback*)rmgmedit::cb_MenuVelocityUp50, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
+ {"All Notes 50% -Velocity", 0,  (Fl_Callback*)rmgmedit::cb_MenuVelocityDown50, 0, 0, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
  {0,0,0,0,0,0,0,0,0},
  {"&Help", 0,  0, 0, 64, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
  {"Help", 0xffbe,  (Fl_Callback*)rmgmedit::cb_Help, 0, 128, (uchar)FL_NORMAL_LABEL, 0, 14, 7},
@@ -194,6 +230,10 @@ Fl_Menu_Item* rmgmedit::MenuG0 = rmgmedit::menu_ + 4;
 Fl_Menu_Item* rmgmedit::MenuMetronome = rmgmedit::menu_ + 5;
 Fl_Menu_Item* rmgmedit::MenuF0Gb0 = rmgmedit::menu_ + 6;
 Fl_Menu_Item* rmgmedit::MenuD0 = rmgmedit::menu_ + 7;
+Fl_Menu_Item* rmgmedit::MenuVelocityUp = rmgmedit::menu_ + 8;
+Fl_Menu_Item* rmgmedit::MenuVelocityDown = rmgmedit::menu_ + 9;
+Fl_Menu_Item* rmgmedit::MenuVelocityUp50 = rmgmedit::menu_ + 10;
+Fl_Menu_Item* rmgmedit::MenuVelocityDown50 = rmgmedit::menu_ + 11;
 
 void rmgmedit::cb_Hear_i(Fl_Button* o, void*) {
   if (o->value() == 0) rmgmo->panico(1,0,15);
@@ -604,7 +644,7 @@ Fl_Double_Window* rmgmedit::make_window() {
       o->callback((Fl_Callback*)cb_);
       if (!menu__i18n_done) {
         int i=0;
-        for ( ; i<12; i++)
+        for ( ; i<16; i++)
           if (menu_[i].label())
             menu_[i].label(gettext(menu_[i].label()));
         menu__i18n_done = 1;
@@ -814,6 +854,11 @@ Fl_Double_Window* rmgmedit::make_window() {
   MenuMetronome->deactivate();
   MenuF0Gb0->deactivate();
   MenuD0->deactivate();
+  MenuVelocityUp->deactivate();
+  MenuVelocityDown->deactivate();
+  MenuVelocityUp50->deactivate();
+  MenuVelocityDown50->deactivate();
+  
    
    sNote->down_box(FL_NO_BOX);
    sNote->selection_color((Fl_Color)3);
@@ -991,6 +1036,11 @@ void rmgmedit::type_cb_i(Fl_Widget* o,void* v) {
   MenuMetronome->deactivate();
   MenuF0Gb0->deactivate();
   MenuD0->deactivate();
+  MenuVelocityUp->deactivate();
+  MenuVelocityDown->deactivate();
+  MenuVelocityUp50->deactivate();
+  MenuVelocityDown50->deactivate();
+  
   
   
   chsel=(int)cast_v;
@@ -1001,6 +1051,11 @@ void rmgmedit::type_cb_i(Fl_Widget* o,void* v) {
   DNomCh->copy_label("All");
   BaseChord->copy_label("---");
   SChMidi->value(1);
+  MenuVelocityUp->deactivate();
+  MenuVelocityDown->deactivate();
+  MenuVelocityUp50->deactivate();
+  MenuVelocityDown50->deactivate();
+  
   break;
   case 17:
   DNomCh->copy_label("Drums");
@@ -1013,6 +1068,11 @@ void rmgmedit::type_cb_i(Fl_Widget* o,void* v) {
   MenuMetronome->activate();
   MenuF0Gb0->activate();
   MenuD0->activate();
+  MenuVelocityUp->deactivate();
+  MenuVelocityDown->deactivate();
+  MenuVelocityUp50->deactivate();
+  MenuVelocityDown50->deactivate();
+  
   break;
   default:
   while ( (chsel -1) != rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].track)
@@ -1026,11 +1086,14 @@ void rmgmedit::type_cb_i(Fl_Widget* o,void* v) {
   if((rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].ChRoot <0) || (rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].ChRoot >23)) return;
   if((rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].ChType <0) || (rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].ChType >33)) return;
   
-  
   sprintf(temp,"%s%s",rmgmo->NCE[rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].ChRoot].Nom,rmgmo->ChN[rmgmo->nStyle.Pattern[rmgmo->Variacion].casm[i].ChType].Nom);
   BaseChord->copy_label(temp);
-  
   SChMidi->value(chsel);
+  MenuVelocityUp->activate();
+  MenuVelocityDown->activate();
+  MenuVelocityUp50->activate();
+  MenuVelocityDown50->activate();
+  
   }
   
   

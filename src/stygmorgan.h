@@ -164,6 +164,10 @@ public:
    void Conecta();
    void XGGM();
    void HighQtoLowFloorTom();
+   void VelocityUp(int canal);
+   void VelocityDown(int canal);
+   void VelocityUp50(int canal);
+   void VelocityDown50(int canal);
    void D1Db1toRide();
    void D0toLowFloorTom();
    void F0Gb01toScratch();
