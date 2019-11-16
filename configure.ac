@@ -311,7 +311,8 @@ fi
 
 
 LIBS="`$FLTKCONFIG --use-images --ldflags` $LIBS"
-CXXFLAGS="-O2 -Wall -pipe $ADDS $IS64 $SSE $ALTIVEC -ffast-math $VECTOR `$FLTKCONFIG --use-images --cxxflags` $CXXFLAGS"
+CFLAGS ="-Wall -O2 -pipe $ADDS $IS64 $SSE $ALTIVEC -ffast-math $VECTO -Wunused -Wno-format-y2k -fvisibility=hidden -fPIC -fno-exceptions -fno-strict-aliasing -ffunction-sections -fdata-sections `$FLTKCONFIG --use-images --cflags` $CFLAGS" 
+CXXFLAGS="-Wall -O2 -pipe $ADDS $IS64 $SSE $ALTIVEC -ffast-math $VECTOR -Wunused -Wno-format-y2k -fvisibility=hidden -fPIC -fno-exceptions -fno-strict-aliasing -ffunction-sections -fdata-sections `$FLTKCONFIG --use-images --cxxflags` $CXXFLAGS"
 
 AC_CHECK_HEADERS([unistd.h])
 AC_CHECK_HEADER(alsa/asoundlib.h, true, AC_MSG_ERROR([Alsa is required]))
