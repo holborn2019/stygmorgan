@@ -83,6 +83,7 @@ if (endi==1)
         {
          cs++;
          if (cs >=nStyle.Pattern[Variacion].eventos) break;
+
         }
 
         while ((PEG[Variacion][cs].tick <= ptick) && (cs<nStyle.Pattern[Variacion].eventos) )
