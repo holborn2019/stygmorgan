@@ -110,7 +110,7 @@ main(int argc, char *argv[])
 {
  int option_index = 0, opt;
  int exitwithhelp = 0;
- int i,all_ok,have_output;
+ int i,j,all_ok,have_output;
  long tam;
  FILE *fn;
  FILE *fs;
@@ -213,11 +213,25 @@ main(int argc, char *argv[])
    memset (wbuf, 0, sizeof (wbuf));
    sprintf(wbuf,"ppq: %d cpq: %d bpm: %d Nominator: %d Denominator: %d har %d\n",nStyle.ppq,nStyle.cpq,nStyle.bpm,nStyle.nominador,nStyle.denominator,nStyle.har);    
    fputs (wbuf, fn);
- 
+   
+                  for (i=1; i<nStyle.numpat;i++)
+                      {
+                         for (j=0; j<nStyle.Pattern[i].eventos;j++)
+                         {  
+                            if (PEG[i][j].tipo == 10)
+                                  {
+                                     memset (wbuf, 0, sizeof (wbuf));
+                                     sprintf(wbuf,"WARNING: Estilo:%s Variacion:%s evento %d\n",nStyle.Name,nStyle.Pattern[i].Name,j);    
+                                     fputs (wbuf, fn);
+                                  }
+                          }    
+                       }   
    memset (wbuf, 0, sizeof (wbuf));
    sprintf(wbuf,"\n\n");    
    fputs (wbuf, fn);
- 
+
+
+
               }
 
 
