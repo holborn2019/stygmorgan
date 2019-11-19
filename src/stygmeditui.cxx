@@ -389,7 +389,8 @@ void rmgmedit::cb_SChMidi(Fl_Counter* o, void* v) {
 }
 
 void rmgmedit::cb_Ok_i(Fl_Button*, void*) {
-  rmgmeditwin->do_callback();
+  rmgmo->bcancel=0;
+rmgmeditwin->do_callback();
 }
 void rmgmedit::cb_Ok(Fl_Button* o, void* v) {
   ((rmgmedit*)(o->parent()->user_data()))->cb_Ok_i(o,v);

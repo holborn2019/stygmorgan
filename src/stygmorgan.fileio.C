@@ -113,7 +113,6 @@ FILE *fs;
 
  numstyles=0;
  strcpy(StylesFilename,filename);
-// gg=0;
 
  if ((fs = fopen (filename, "rb")) != NULL)
      {
@@ -208,10 +207,9 @@ char *filename;
                  }
        fclose(fs);
        }
+
 PonAjusta();
-
 memcpy(&eStyle,&nStyle,sizeof(StyleStr));
-
 memcpy(&ePEG,&PEG,sizeof(PEG));
 
 };

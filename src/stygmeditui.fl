@@ -98,8 +98,8 @@ GuardaPrefs();
 o->hide();
 rmgmo->weventeditor=0;
 o->clear();
-delete rmgmeditwin;}
-      xywh {1383 284 755 545} type Double color 44 labelsize 11 labelcolor 7 hide resizable size_range {800 600 0 0}
+delete rmgmeditwin;} selected
+      xywh {1380 281 755 545} type Double color 44 labelsize 11 labelcolor 7 resizable size_range {800 600 0 0} visible
     } {
       Fl_Browser EditBro {
         callback {int i,j,k;
@@ -159,11 +159,11 @@ if (sAllE->value())
         }
       }
       Fl_Menu_Bar {} {
-        callback {//EditBro->redraw();} open
+        callback {//EditBro->redraw();}
         xywh {0 0 755 20} color 44 selection_color 47 labelcolor 7
       } {
         Submenu sFunctions {
-          label {&Functions} open
+          label {&Functions}
           xywh {0 0 100 20} labelcolor 7
         } {
           MenuItem MenuXGGM {
@@ -386,7 +386,8 @@ editaevento(index);}
       }
       Fl_Button {} {
         label Ok
-        callback {rmgmeditwin->do_callback();}
+        callback {rmgmo->bcancel=0;
+rmgmeditwin->do_callback();}
         xywh {660 55 85 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 11
       }
       Fl_Button {} {
@@ -452,8 +453,7 @@ MenuVelocityDown50->deactivate();
  IsPitchBend->selection_color((Fl_Color)3);
  IsPitchBend->clear_visible_focus();} {}
   }
-  Function {ReadPattern()} {open
-  } {
+  Function {ReadPattern()} {} {
     code {int i;
 int fcana,feve; 
 char temp[256], evento[24],nota[64],pos[32],length[16],velo[16];
@@ -578,8 +578,7 @@ EditBro->add(temp);
 
 // EditBro->redraw();} {}
   }
-  Function {type_cb_i(Fl_Widget* o,void* v)} {open
-  } {
+  Function {type_cb_i(Fl_Widget* o,void* v)} {} {
     code {int i=0;
 char temp[28];
 long long cast_v=(long long)v;
@@ -653,8 +652,7 @@ MenuVelocityDown50->activate();
 
 
 
-ReadPattern();} {selected
-    }
+ReadPattern();} {}
   }
   Function {make_eventwindow()} {} {
     Fl_Window Eventwin {
