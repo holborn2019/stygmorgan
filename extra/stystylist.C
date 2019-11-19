@@ -89,6 +89,10 @@ int velocity;
 int length;
 } PEG[22][6000],tempEG;
 
+struct NomControl
+{
+char Nom[24];
+} CCn[128];
 
 
 void
@@ -177,6 +181,84 @@ main(int argc, char *argv[])
  memset(&C ,0 , sizeof (C));
  memset(&PEG ,0 ,sizeof (PEG));
  memset(&nStyle, 0, sizeof (nStyle)); 
+ memset(CCn, 0, sizeof CCn);
+
+
+strcpy(CCn[0].Nom,"BANK");
+strcpy(CCn[1].Nom,"MODWHEEL");
+strcpy(CCn[2].Nom,"BREATH");
+strcpy(CCn[4].Nom,"FOOT");
+strcpy(CCn[5].Nom,"PORTAMENTO_TIME");
+strcpy(CCn[6].Nom,"DATA_ENTRY");
+strcpy(CCn[7].Nom,"MAIN_VOLUME");
+strcpy(CCn[8].Nom,"BALANCE");
+strcpy(CCn[10].Nom,"PAN");
+strcpy(CCn[11].Nom,"EXPRESSION");
+strcpy(CCn[12].Nom,"EFFECT1");
+strcpy(CCn[13].Nom,"EFFECT2");
+strcpy(CCn[16].Nom,"GENERAL_PURPOSE1");
+strcpy(CCn[17].Nom,"GENERAL_PURPOSE2");
+strcpy(CCn[18].Nom,"GENERAL_PURPOSE3");
+strcpy(CCn[19].Nom,"GENERAL_PURPOSE4");
+strcpy(CCn[32].Nom,"BANK");
+strcpy(CCn[33].Nom,"MODWHEEL");
+strcpy(CCn[34].Nom,"BREATH");
+strcpy(CCn[35].Nom,"FOOT");
+strcpy(CCn[37].Nom,"PORTAMENTO_TIME");
+strcpy(CCn[38].Nom,"DATA_ENTRY");
+strcpy(CCn[39].Nom,"MAIN_VOLUME");
+strcpy(CCn[40].Nom,"BALANCE");
+strcpy(CCn[42].Nom,"PAN");
+strcpy(CCn[43].Nom,"EXPRESSION");
+strcpy(CCn[44].Nom,"EFFECT1");
+strcpy(CCn[45].Nom,"EFFECT2");
+strcpy(CCn[48].Nom,"GENERAL_PURPOSE1");
+strcpy(CCn[49].Nom,"GENERAL_PURPOSE2");
+strcpy(CCn[50].Nom,"GENERAL_PURPOSE3");
+strcpy(CCn[51].Nom,"GENERAL_PURPOSE4");
+strcpy(CCn[64].Nom,"SUSTAIN");
+strcpy(CCn[65].Nom,"PORTAMENTO");
+strcpy(CCn[66].Nom,"SOSTENUTO");
+strcpy(CCn[67].Nom,"SOFT_PEDAL");
+strcpy(CCn[68].Nom,"LEGATO_FOOTSWITCH");
+strcpy(CCn[69].Nom,"HOLD2");
+strcpy(CCn[70].Nom,"SC1_SOUND_VARIATION");
+strcpy(CCn[71].Nom,"SC2_TIMBRE");
+strcpy(CCn[72].Nom,"SC3_RELEASE_TIME");
+strcpy(CCn[73].Nom,"SC4_ATTACK_TIME");
+strcpy(CCn[74].Nom,"SC5_BRIGHTNESS");
+strcpy(CCn[75].Nom,"SC6");
+strcpy(CCn[76].Nom,"SC7");
+strcpy(CCn[77].Nom,"SC8");
+strcpy(CCn[79].Nom,"SC9");
+strcpy(CCn[79].Nom,"SC10");
+strcpy(CCn[80].Nom,"GENERAL_PURPOSE5");
+strcpy(CCn[81].Nom,"GENERAL_PURPOSE6");
+strcpy(CCn[82].Nom,"GENERAL_PURPOSE7");
+strcpy(CCn[83].Nom,"GENERAL_PURPOSE8");
+strcpy(CCn[84].Nom,"PORTAMENTO_CONTROL");
+strcpy(CCn[91].Nom,"REVERB_DEPTH");
+strcpy(CCn[92].Nom,"TREMOLO_DEPTH");
+strcpy(CCn[93].Nom,"CHORUS_DEPTH");
+strcpy(CCn[94].Nom,"DETUNE_DEPTH");
+strcpy(CCn[95].Nom,"PHASER_DEPTH");
+strcpy(CCn[96].Nom,"DATA_INCREMENT");
+strcpy(CCn[97].Nom,"DATA_DECREMENT");
+strcpy(CCn[98].Nom,"NONREG_PARM_NUM_LSB");
+strcpy(CCn[99].Nom,"NONREG_PARM_NUM_MSB");
+strcpy(CCn[100].Nom,"REGIST_PARM_NUM_LSB");
+strcpy(CCn[101].Nom,"REGIST_PARM_NUM_MSB");
+strcpy(CCn[120].Nom,"ALL_SOUNDS_OFF");
+strcpy(CCn[121].Nom,"RESET_CONTROLLERS");
+strcpy(CCn[122].Nom,"LOCAL_CONTROL_SWITCH");
+strcpy(CCn[123].Nom,"ALL_NOTES_OFF");
+strcpy(CCn[124].Nom,"OMNI_OFF");
+strcpy(CCn[125].Nom,"OMNI_ON");
+strcpy(CCn[126].Nom,"MONO1");
+strcpy(CCn[127].Nom,"MONO2");
+
+
+
 
 
   if ((fn = fopen (Outputfile, "w")) == NULL)  return(0);
@@ -224,8 +306,84 @@ main(int argc, char *argv[])
                                      sprintf(wbuf,"WARNING: Estilo:%s Variacion:%s evento %d\n",nStyle.Name,nStyle.Pattern[i].Name,j);    
                                      fputs (wbuf, fn);
                                   }
+                            
+                            if (PEG[i][j].tipo == 3)
+                                  {
+                                
+                                 switch(PEG[i][j].nota)
+                                      {
+                                      
+                                        case 0:
+                                        break;
+                                        case 1:
+                                        break;                                        
+                                        case 2:
+                                        break;
+                                        case 3:
+                                        break;
+                                        case 5:
+                                        break; 
+                                        case 6:
+                                        break;
+                                        case 7:
+                                        break;
+                                        case 8:
+                                        break;
+                                        case 10:
+                                        break;
+                                        case 11:
+                                        break;
+                                        case 32:
+                                        break;
+                                        case 64:
+                                        break;
+                                        case 65:
+                                        break;
+                                        case 66:
+                                        break;
+                                        case 68:
+                                        break; 
+                                        case 84:
+                                        break;
+                                        case 91:
+                                        break;
+                                        case 93:
+                                        break;
+                                        case 98:
+                                        break;
+                                        case 99:
+                                        break;
+                                        case 100:
+                                        break;
+                                        case 101:
+                                        break;
+                                        case 120:
+                                        break;
+                                        case 121:
+                                        break;
+                                        case123:
+                                        break;
+                                        case 124:
+                                        break;
+                                        case 125:
+                                        break;
+                                        case126:
+                                        break;
+                                        case 127:
+                                        break;
+                                        default:
+                                        memset (wbuf, 0, sizeof (wbuf));
+                                        sprintf(wbuf,"WARNING: Variacion:%s evento %d Control:%d %s\n",nStyle.Pattern[i].Name,j,PEG[i][j].nota,CCn[PEG[i][j].nota].Nom);
+                                        fputs (wbuf, fn);
+                                        
+                                        }     
+                                   }
+                                                        
                           }    
+
                        }   
+
+
    memset (wbuf, 0, sizeof (wbuf));
    sprintf(wbuf,"\n\n");    
    fputs (wbuf, fn);
