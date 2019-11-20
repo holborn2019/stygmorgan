@@ -5,7 +5,6 @@
 //Copyright(c) 2006 Josep Andreu (holborn)
 //License GNU/GPL version 2
 #include <stygmicon128.xpm>
-static Fl_Widget *old; 
 
 MiSlider::MiSlider(int x,int y, int w, int h, const char *label):Fl_Slider(x,y,w,h,label) {
 }
@@ -2117,11 +2116,12 @@ Fl_Double_Window* stygmorgan::make_window() {
     rmgmorganwin->selection_color(FL_DARK1);
     rmgmorganwin->labelcolor(FL_BACKGROUND2_COLOR);
     rmgmorganwin->callback((Fl_Callback*)cb_rmgmorganwin, (void*)(this));
-    { Fl_Group* o = new Fl_Group(1, 325, 70, 450);
-      o->box(FL_BORDER_BOX);
-      o->color((Fl_Color)44);
-      o->selection_color(FL_BACKGROUND2_COLOR);
-      o->labelfont(1);
+    { Mix0 = new Fl_Group(1, 325, 70, 450);
+      Mix0->box(FL_BORDER_BOX);
+      Mix0->color((Fl_Color)44);
+      Mix0->selection_color(FL_BACKGROUND2_COLOR);
+      Mix0->labelfont(1);
+      Mix0->align(Fl_Align(65));
       { Pan0 = new MiDial(20, 415, 35, 35, gettext("Pan"));
         Pan0->box(FL_GTK_ROUND_UP_BOX);
         Pan0->color((Fl_Color)44);
@@ -2234,14 +2234,15 @@ Fl_Double_Window* stygmorgan::make_window() {
         P0->callback((Fl_Callback*)cb_P0);
         P0->align(Fl_Align(FL_ALIGN_TOP));
       } // Fl_Counter* P0
-      o->end();
-    } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(72, 325, 70, 450);
-      o->box(FL_BORDER_BOX);
-      o->color((Fl_Color)44);
-      o->labelfont(1);
-      o->labelsize(17);
-      o->labelcolor((Fl_Color)1);
+      Mix0->end();
+    } // Fl_Group* Mix0
+    { Mix1 = new Fl_Group(72, 325, 70, 450);
+      Mix1->box(FL_BORDER_BOX);
+      Mix1->color((Fl_Color)44);
+      Mix1->labelfont(1);
+      Mix1->labelsize(17);
+      Mix1->labelcolor((Fl_Color)1);
+      Mix1->align(Fl_Align(65));
       { Pan1 = new MiDial(90, 415, 35, 35, gettext("Pan"));
         Pan1->box(FL_GTK_ROUND_UP_BOX);
         Pan1->color((Fl_Color)44);
@@ -2353,11 +2354,12 @@ Fl_Double_Window* stygmorgan::make_window() {
         P1->callback((Fl_Callback*)cb_P1);
         P1->align(Fl_Align(FL_ALIGN_TOP));
       } // Fl_Counter* P1
-      o->end();
-    } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(143, 325, 70, 450);
-      o->box(FL_BORDER_BOX);
-      o->color((Fl_Color)44);
+      Mix1->end();
+    } // Fl_Group* Mix1
+    { Mix2 = new Fl_Group(143, 325, 70, 450);
+      Mix2->box(FL_BORDER_BOX);
+      Mix2->color((Fl_Color)44);
+      Mix2->align(Fl_Align(65));
       { Pan2 = new MiDial(160, 415, 35, 35, gettext("Pan"));
         Pan2->box(FL_GTK_ROUND_UP_BOX);
         Pan2->color((Fl_Color)44);
@@ -2470,11 +2472,12 @@ Fl_Double_Window* stygmorgan::make_window() {
         P2->callback((Fl_Callback*)cb_P2);
         P2->align(Fl_Align(FL_ALIGN_TOP));
       } // Fl_Counter* P2
-      o->end();
-    } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(214, 325, 70, 450);
-      o->box(FL_BORDER_BOX);
-      o->color((Fl_Color)44);
+      Mix2->end();
+    } // Fl_Group* Mix2
+    { Mix3 = new Fl_Group(214, 325, 70, 450);
+      Mix3->box(FL_BORDER_BOX);
+      Mix3->color((Fl_Color)44);
+      Mix3->align(Fl_Align(65));
       { Pan3 = new MiDial(230, 415, 35, 35, gettext("Pan"));
         Pan3->box(FL_GTK_ROUND_UP_BOX);
         Pan3->color((Fl_Color)44);
@@ -2586,11 +2589,12 @@ Fl_Double_Window* stygmorgan::make_window() {
         P3->callback((Fl_Callback*)cb_P3);
         P3->align(Fl_Align(FL_ALIGN_TOP));
       } // Fl_Counter* P3
-      o->end();
-    } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(285, 325, 70, 450);
-      o->box(FL_BORDER_BOX);
-      o->color((Fl_Color)44);
+      Mix3->end();
+    } // Fl_Group* Mix3
+    { Mix4 = new Fl_Group(285, 325, 70, 450);
+      Mix4->box(FL_BORDER_BOX);
+      Mix4->color((Fl_Color)44);
+      Mix4->align(Fl_Align(65));
       { Pan4 = new MiDial(300, 415, 35, 35, gettext("Pan"));
         Pan4->box(FL_GTK_ROUND_UP_BOX);
         Pan4->color((Fl_Color)44);
@@ -2703,11 +2707,12 @@ Fl_Double_Window* stygmorgan::make_window() {
         P4->callback((Fl_Callback*)cb_P4);
         P4->align(Fl_Align(FL_ALIGN_TOP));
       } // Fl_Counter* P4
-      o->end();
-    } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(515, 325, 70, 450);
-      o->box(FL_BORDER_BOX);
-      o->color((Fl_Color)44);
+      Mix4->end();
+    } // Fl_Group* Mix4
+    { Mix9 = new Fl_Group(515, 325, 70, 450);
+      Mix9->box(FL_BORDER_BOX);
+      Mix9->color((Fl_Color)44);
+      Mix9->align(Fl_Align(65));
       { Pan9 = new MiDial(531, 415, 35, 35, gettext("Pan"));
         Pan9->box(FL_GTK_ROUND_UP_BOX);
         Pan9->color((Fl_Color)44);
@@ -2858,11 +2863,12 @@ Fl_Double_Window* stygmorgan::make_window() {
         P9->callback((Fl_Callback*)cb_P9);
         P9->align(Fl_Align(FL_ALIGN_TOP));
       } // Fl_Counter* P9
-      o->end();
-    } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(586, 325, 70, 450);
-      o->box(FL_BORDER_BOX);
-      o->color((Fl_Color)44);
+      Mix9->end();
+    } // Fl_Group* Mix9
+    { Mix10 = new Fl_Group(586, 325, 70, 450);
+      Mix10->box(FL_BORDER_BOX);
+      Mix10->color((Fl_Color)44);
+      Mix10->align(Fl_Align(65));
       { Pan10 = new MiDial(604, 415, 35, 35, gettext("Pan"));
         Pan10->box(FL_GTK_ROUND_UP_BOX);
         Pan10->color((Fl_Color)44);
@@ -3012,11 +3018,12 @@ Fl_Double_Window* stygmorgan::make_window() {
         P10->callback((Fl_Callback*)cb_P10);
         P10->align(Fl_Align(FL_ALIGN_TOP));
       } // Fl_Counter* P10
-      o->end();
-    } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(657, 325, 70, 450);
-      o->box(FL_BORDER_BOX);
-      o->color((Fl_Color)44);
+      Mix10->end();
+    } // Fl_Group* Mix10
+    { Mix11 = new Fl_Group(657, 325, 70, 450);
+      Mix11->box(FL_BORDER_BOX);
+      Mix11->color((Fl_Color)44);
+      Mix11->align(Fl_Align(65));
       { Pan11 = new MiDial(674, 415, 35, 35, gettext("Pan"));
         Pan11->box(FL_GTK_ROUND_UP_BOX);
         Pan11->color((Fl_Color)44);
@@ -3166,11 +3173,12 @@ Fl_Double_Window* stygmorgan::make_window() {
         P11->callback((Fl_Callback*)cb_P11);
         P11->align(Fl_Align(FL_ALIGN_TOP));
       } // Fl_Counter* P11
-      o->end();
-    } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(728, 325, 70, 450);
-      o->box(FL_BORDER_BOX);
-      o->color((Fl_Color)44);
+      Mix11->end();
+    } // Fl_Group* Mix11
+    { Mix12 = new Fl_Group(728, 325, 70, 450);
+      Mix12->box(FL_BORDER_BOX);
+      Mix12->color((Fl_Color)44);
+      Mix12->align(Fl_Align(65));
       { Pan12 = new MiDial(745, 415, 35, 35, gettext("Pan"));
         Pan12->box(FL_GTK_ROUND_UP_BOX);
         Pan12->color((Fl_Color)44);
@@ -3320,11 +3328,12 @@ Fl_Double_Window* stygmorgan::make_window() {
         P12->callback((Fl_Callback*)cb_P12);
         P12->align(Fl_Align(FL_ALIGN_TOP));
       } // Fl_Counter* P12
-      o->end();
-    } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(799, 325, 70, 450);
-      o->box(FL_BORDER_BOX);
-      o->color((Fl_Color)44);
+      Mix12->end();
+    } // Fl_Group* Mix12
+    { Mix13 = new Fl_Group(799, 325, 70, 450);
+      Mix13->box(FL_BORDER_BOX);
+      Mix13->color((Fl_Color)44);
+      Mix13->align(Fl_Align(65));
       { Pan13 = new MiDial(815, 415, 35, 35, gettext("Pan"));
         Pan13->box(FL_GTK_ROUND_UP_BOX);
         Pan13->color((Fl_Color)44);
@@ -3474,11 +3483,12 @@ Fl_Double_Window* stygmorgan::make_window() {
         P13->callback((Fl_Callback*)cb_P13);
         P13->align(Fl_Align(FL_ALIGN_TOP));
       } // Fl_Counter* P13
-      o->end();
-    } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(870, 325, 69, 450);
-      o->box(FL_BORDER_BOX);
-      o->color((Fl_Color)44);
+      Mix13->end();
+    } // Fl_Group* Mix13
+    { Mix14 = new Fl_Group(870, 325, 69, 450);
+      Mix14->box(FL_BORDER_BOX);
+      Mix14->color((Fl_Color)44);
+      Mix14->align(Fl_Align(65));
       { Pan14 = new MiDial(885, 415, 35, 35, gettext("Pan"));
         Pan14->box(FL_GTK_ROUND_UP_BOX);
         Pan14->color((Fl_Color)44);
@@ -3628,12 +3638,13 @@ Fl_Double_Window* stygmorgan::make_window() {
         P14->callback((Fl_Callback*)cb_P14);
         P14->align(Fl_Align(FL_ALIGN_TOP));
       } // Fl_Counter* P14
-      o->end();
-    } // Fl_Group* o
-    { Fl_Group* o = new Fl_Group(940, 325, 70, 450);
-      o->box(FL_BORDER_BOX);
-      o->color((Fl_Color)44);
-      o->labeltype(FL_ENGRAVED_LABEL);
+      Mix14->end();
+    } // Fl_Group* Mix14
+    { Mix15 = new Fl_Group(940, 325, 70, 450);
+      Mix15->box(FL_BORDER_BOX);
+      Mix15->color((Fl_Color)44);
+      Mix15->labeltype(FL_ENGRAVED_LABEL);
+      Mix15->align(Fl_Align(65));
       { Pan15 = new MiDial(955, 415, 35, 35, gettext("Pan"));
         Pan15->box(FL_GTK_ROUND_UP_BOX);
         Pan15->color((Fl_Color)44);
@@ -3783,8 +3794,8 @@ Fl_Double_Window* stygmorgan::make_window() {
         P15->callback((Fl_Callback*)cb_P15);
         P15->align(Fl_Align(FL_ALIGN_TOP));
       } // Fl_Counter* P15
-      o->end();
-    } // Fl_Group* o
+      Mix15->end();
+    } // Fl_Group* Mix15
     { Menu = new Fl_Menu_Bar(0, 0, 1020, 25);
       Menu->box(FL_FLAT_BOX);
       Menu->color((Fl_Color)44);
@@ -3804,7 +3815,7 @@ Fl_Double_Window* stygmorgan::make_window() {
       ElBueno->box(FL_BORDER_BOX);
       ElBueno->color((Fl_Color)44);
       ElBueno->selection_color(FL_BACKGROUND2_COLOR);
-      ElBueno->align(Fl_Align(FL_ALIGN_TOP_LEFT|FL_ALIGN_INSIDE));
+      ElBueno->align(Fl_Align(69|FL_ALIGN_INSIDE));
       { Fl_Group* o = new Fl_Group(812, 139, 89, 132);
         o->box(FL_BORDER_BOX);
         o->color((Fl_Color)44);
@@ -4140,6 +4151,7 @@ Fl_Double_Window* stygmorgan::make_window() {
     { Botones = new Fl_Group(355, 325, 160, 450);
       Botones->box(FL_BORDER_BOX);
       Botones->color((Fl_Color)44);
+      Botones->align(Fl_Align(65));
       { Fl_Group* o = new Fl_Group(355, 345, 160, 345);
         o->color((Fl_Color)44);
         { bMainA = new Fl_Button(360, 345, 151, 30, gettext("Main A"));
@@ -4368,13 +4380,10 @@ Fl_Double_Window* stygmorgan::make_window() {
 stygmorgan::stygmorgan(int argc, char **argv,RMGMO *rmgmo_) {
   int x,y,w,h;
   
-  
   Fl::scheme("none");
   fl_open_display();
   Fl::visual(FL_DOUBLE|FL_INDEX);
   Fl::visual(FL_RGB);
-  
-  old = NULL;
   
   rmgmo=rmgmo_;
   make_window();
@@ -4405,12 +4414,10 @@ stygmorgan::stygmorgan(int argc, char **argv,RMGMO *rmgmo_) {
   Leer_Sounds();
   
   Fl::background(163,163,163);
-  
   rmgmorganwin->show(argc,argv);
   put_icon(rmgmorganwin);
   
   while (espera == 0) usleep(1);
-  
   rmgmo->panico(1,0,15);
   
   if (rmgmo->numsounds > 0) 

@@ -122,23 +122,23 @@ rmgmpref::rmgmpref(RMGMO *rmgmo_) {
 }
 
 Fl_Double_Window* rmgmpref::make_window() {
-  { rmgmprefwin = new Fl_Double_Window(540, 536);
+  { rmgmprefwin = new Fl_Double_Window(540, 515);
     rmgmprefwin->color((Fl_Color)44);
     rmgmprefwin->selection_color((Fl_Color)48);
     rmgmprefwin->callback((Fl_Callback*)cb_rmgmprefwin, (void*)(this));
-    { Fl_Button* o = new Fl_Button(455, 475, 80, 25, gettext("Cancel"));
+    { Fl_Button* o = new Fl_Button(455, 455, 80, 25, gettext("Cancel"));
       o->box(FL_PLASTIC_THIN_UP_BOX);
       o->color((Fl_Color)11);
       o->selection_color((Fl_Color)3);
       o->callback((Fl_Callback*)cb_Cancel);
     } // Fl_Button* o
-    { Fl_Button* o = new Fl_Button(370, 475, 80, 25, gettext("Ok"));
+    { Fl_Button* o = new Fl_Button(370, 455, 80, 25, gettext("Ok"));
       o->box(FL_PLASTIC_THIN_UP_BOX);
       o->color((Fl_Color)11);
       o->selection_color((Fl_Color)3);
       o->callback((Fl_Callback*)cb_Ok);
     } // Fl_Button* o
-    { ASF = new Fl_Check_Button(5, 215, 267, 25, gettext("Use asfxload to load soundfont at startup?"));
+    { ASF = new Fl_Check_Button(5, 205, 267, 25, gettext("Use asfxload to load soundfont at startup?"));
       ASF->down_box(FL_DOWN_BOX);
       ASF->color((Fl_Color)44);
       ASF->selection_color((Fl_Color)3);
@@ -146,11 +146,11 @@ Fl_Double_Window* rmgmpref::make_window() {
       ASF->labelcolor(FL_BACKGROUND2_COLOR);
       ASF->callback((Fl_Callback*)cb_ASF);
     } // Fl_Check_Button* ASF
-    { ASFGroup = new Fl_Group(5, 230, 530, 50);
+    { ASFGroup = new Fl_Group(5, 226, 530, 54);
       ASFGroup->color((Fl_Color)44);
       ASFGroup->selection_color(FL_DARK1);
       ASFGroup->labelcolor(FL_BACKGROUND2_COLOR);
-      { SFPath = new Fl_File_Input(5, 250, 530, 30, gettext("SoundFont"));
+      { SFPath = new Fl_File_Input(5, 240, 530, 30, gettext("SoundFont"));
         SFPath->color((Fl_Color)44);
         SFPath->labelsize(11);
         SFPath->labelcolor(FL_BACKGROUND2_COLOR);
@@ -174,12 +174,12 @@ Fl_Double_Window* rmgmpref::make_window() {
       AConnect->labelcolor(FL_BACKGROUND2_COLOR);
       AConnect->callback((Fl_Callback*)cb_AConnect);
     } // Fl_Check_Button* AConnect
-    { MBros = new Fl_Group(5, 35, 525, 175);
+    { MBros = new Fl_Group(5, 35, 525, 165);
       MBros->box(FL_DOWN_BOX);
       MBros->color((Fl_Color)44);
       MBros->selection_color(FL_DARK1);
       MBros->labelcolor(FL_BACKGROUND2_COLOR);
-      { BrIn = new Fl_Browser(15, 60, 250, 145, gettext("Midi Input Devices"));
+      { BrIn = new Fl_Browser(15, 60, 250, 135, gettext("Midi Input Devices"));
         BrIn->type(2);
         BrIn->color((Fl_Color)44);
         BrIn->selection_color(FL_DARK1);
@@ -189,7 +189,7 @@ Fl_Double_Window* rmgmpref::make_window() {
         BrIn->align(Fl_Align(FL_ALIGN_TOP));
         BrIn->when(FL_WHEN_CHANGED);
       } // Fl_Browser* BrIn
-      { BrOut = new Fl_Browser(270, 60, 255, 145, gettext("Midi Output Devices "));
+      { BrOut = new Fl_Browser(270, 60, 255, 135, gettext("Midi Output Devices "));
         BrOut->type(2);
         BrOut->color((Fl_Color)44);
         BrOut->selection_color(FL_DARK1);
@@ -201,7 +201,7 @@ Fl_Double_Window* rmgmpref::make_window() {
       } // Fl_Browser* BrOut
       MBros->end();
     } // Fl_Group* MBros
-    { TempFilesDir = new Fl_File_Input(5, 305, 530, 30, gettext("Directory for temporal files"));
+    { TempFilesDir = new Fl_File_Input(5, 286, 530, 30, gettext("Directory for temporal files"));
       TempFilesDir->color((Fl_Color)44);
       TempFilesDir->selection_color(FL_DARK1);
       TempFilesDir->labelsize(11);
@@ -209,21 +209,21 @@ Fl_Double_Window* rmgmpref::make_window() {
       TempFilesDir->textcolor(FL_BACKGROUND2_COLOR);
       TempFilesDir->align(Fl_Align(FL_ALIGN_TOP_LEFT));
     } // Fl_File_Input* TempFilesDir
-    { Fl_Button* o = new Fl_Button(455, 282, 70, 20, gettext("Browse"));
+    { Fl_Button* o = new Fl_Button(455, 272, 70, 20, gettext("Browse"));
       o->box(FL_PLASTIC_THIN_UP_BOX);
       o->color((Fl_Color)11);
       o->selection_color((Fl_Color)3);
       o->labelsize(11);
       o->callback((Fl_Callback*)cb_Browse1);
     } // Fl_Button* o
-    { DRespect = new Fl_Check_Button(5, 460, 270, 25, gettext("Maintain Mutes when pattern changes"));
+    { DRespect = new Fl_Check_Button(5, 440, 270, 25, gettext("Maintain Mutes when pattern changes"));
       DRespect->down_box(FL_DOWN_BOX);
       DRespect->color((Fl_Color)44);
       DRespect->selection_color((Fl_Color)3);
       DRespect->labelsize(12);
       DRespect->labelcolor(FL_BACKGROUND2_COLOR);
     } // Fl_Check_Button* DRespect
-    { DUseSysEx = new Fl_Check_Button(5, 345, 270, 25, gettext("Use SysEx messages for Start/AutoF"));
+    { DUseSysEx = new Fl_Check_Button(5, 320, 270, 25, gettext("Use SysEx messages for Start/AutoF"));
       DUseSysEx->tooltip(gettext("Input form: F0 43 10 .... F7"));
       DUseSysEx->down_box(FL_DOWN_BOX);
       DUseSysEx->color((Fl_Color)44);
@@ -232,7 +232,7 @@ Fl_Double_Window* rmgmpref::make_window() {
       DUseSysEx->labelcolor(FL_BACKGROUND2_COLOR);
       DUseSysEx->callback((Fl_Callback*)cb_DUseSysEx);
     } // Fl_Check_Button* DUseSysEx
-    { DTextStart = new Fl_Input(5, 385, 465, 25, gettext("SysEx for Start button "));
+    { DTextStart = new Fl_Input(5, 360, 465, 25, gettext("SysEx for Start button "));
       DTextStart->tooltip(gettext("Input form: F0 43 10 .... F7"));
       DTextStart->color((Fl_Color)44);
       DTextStart->selection_color(FL_DARK1);
@@ -242,7 +242,7 @@ Fl_Double_Window* rmgmpref::make_window() {
       DTextStart->callback((Fl_Callback*)cb_DTextStart);
       DTextStart->align(Fl_Align(FL_ALIGN_TOP_LEFT));
     } // Fl_Input* DTextStart
-    { DTextAutoF = new Fl_Input(5, 430, 465, 25, gettext("SysEx for Auto Fill-In button "));
+    { DTextAutoF = new Fl_Input(5, 410, 465, 25, gettext("SysEx for Auto Fill-In button "));
       DTextAutoF->tooltip(gettext("Input form: F0 43 10 .... F7"));
       DTextAutoF->color((Fl_Color)44);
       DTextAutoF->selection_color(FL_DARK1);
@@ -252,21 +252,21 @@ Fl_Double_Window* rmgmpref::make_window() {
       DTextAutoF->callback((Fl_Callback*)cb_DTextAutoF);
       DTextAutoF->align(Fl_Align(FL_ALIGN_TOP_LEFT));
     } // Fl_Input* DTextAutoF
-    { BANKLSB0 = new Fl_Check_Button(5, 476, 90, 25, gettext("BANK LSB 0"));
+    { BANKLSB0 = new Fl_Check_Button(5, 465, 90, 25, gettext("BANK LSB 0"));
       BANKLSB0->down_box(FL_DOWN_BOX);
       BANKLSB0->color((Fl_Color)44);
       BANKLSB0->selection_color((Fl_Color)3);
       BANKLSB0->labelsize(12);
       BANKLSB0->labelcolor(FL_BACKGROUND2_COLOR);
     } // Fl_Check_Button* BANKLSB0
-    { BANKTRUCO = new Fl_Check_Button(100, 476, 100, 25, gettext("BANK Truco"));
+    { BANKTRUCO = new Fl_Check_Button(95, 465, 100, 25, gettext("BANK Truco"));
       BANKTRUCO->down_box(FL_DOWN_BOX);
       BANKTRUCO->color((Fl_Color)44);
       BANKTRUCO->selection_color((Fl_Color)3);
       BANKTRUCO->labelsize(12);
       BANKTRUCO->labelcolor(FL_BACKGROUND2_COLOR);
     } // Fl_Check_Button* BANKTRUCO
-    { JTRANSPORT = new Fl_Check_Button(4, 493, 100, 25, gettext("Use Jack Transport Tempo"));
+    { JTRANSPORT = new Fl_Check_Button(4, 488, 181, 22, gettext("Use Jack Transport Tempo"));
       JTRANSPORT->down_box(FL_DOWN_BOX);
       JTRANSPORT->color((Fl_Color)44);
       JTRANSPORT->selection_color((Fl_Color)3);
@@ -307,9 +307,6 @@ Fl_Double_Window* rmgmpref::make_window() {
   JTRANSPORT->clear_visible_focus();
   JTRANSPORT->down_box(FL_NO_BOX);
   JTRANSPORT->selection_color((Fl_Color)3);
-  
-  
-  
   
   MiraClientes();
   
@@ -414,6 +411,7 @@ void rmgmpref::GuardaPrefs() {
   
   rmgmo->usesysex=(int)DUseSysEx->value();
   stygmorgan.set("UseSysEX",rmgmo->usesysex);
+  
   
   if (rmgmo->usesysex)
   {

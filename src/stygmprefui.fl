@@ -20,7 +20,8 @@ decl {\#include <Fl/Fl_File_Chooser.H>} {private local
 decl {\#include "stygmorgan.h"} {public local
 }
 
-class rmgmpref {} {
+class rmgmpref {open
+} {
   Function {rmgmpref(RMGMO *rmgmo_)} {C
   } {
     code {Fl::visual(FL_DOUBLE|FL_INDEX);
@@ -46,36 +47,37 @@ rmgmprefwin->show(argc,argv);} {}
   }
   decl {RMGMO *rmgmo;} {private local
   }
-  Function {make_window()} {} {
+  Function {make_window()} {open
+  } {
     Fl_Window rmgmprefwin {
       callback {rmgmprefwin->hide();
 rmgmo->wpreferences=0;
 rmgmprefwin->clear();
 delete rmgmprefwin;} open
-      xywh {725 170 540 536} type Double color 44 selection_color 48 hide
+      xywh {626 137 540 515} type Double color 44 selection_color 48 hide
     } {
       Fl_Button {} {
         label Cancel
         callback {rmgmprefwin->do_callback();}
-        xywh {455 475 80 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3
+        xywh {455 455 80 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3
       }
       Fl_Button {} {
         label Ok
         callback {GuardaPrefs();
 rmgmprefwin->do_callback();}
-        xywh {370 475 80 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3
+        xywh {370 455 80 25} box PLASTIC_THIN_UP_BOX color 11 selection_color 3
       }
       Fl_Check_Button ASF {
         label {Use asfxload to load soundfont at startup?}
         callback {if ((int) o->value() ) ASFGroup->activate(); else ASFGroup->deactivate();}
-        xywh {5 215 267 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
+        xywh {5 205 267 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
       }
       Fl_Group ASFGroup {
-        xywh {5 230 530 50} color 44 selection_color 47 labelcolor 7
+        xywh {5 226 530 54} color 44 selection_color 47 labelcolor 7
       } {
         Fl_File_Input SFPath {
           label SoundFont
-          xywh {5 250 530 30} color 44 labelsize 11 labelcolor 7 align 5 textcolor 7
+          xywh {5 240 530 30} color 44 labelsize 11 labelcolor 7 align 5 textcolor 7
         }
         Fl_Button {} {
           label Browse
@@ -92,21 +94,21 @@ strcpy(rmgmo->ASFFilename,filename);}
         callback {if ((int) o->value()) MBros->activate(); else MBros->deactivate();}
         xywh {5 10 270 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
       }
-      Fl_Group MBros {
-        xywh {5 35 525 175} box DOWN_BOX color 44 selection_color 47 labelcolor 7
+      Fl_Group MBros {open selected
+        xywh {5 35 525 165} box DOWN_BOX color 44 selection_color 47 labelcolor 7
       } {
         Fl_Browser BrIn {
           label {Midi Input Devices}
-          xywh {15 60 250 145} type Hold color 44 selection_color 47 labelsize 11 labelcolor 7 align 1 when 1 textcolor 7
+          xywh {15 60 250 135} type Hold color 44 selection_color 47 labelsize 11 labelcolor 7 align 1 when 1 textcolor 7
         }
         Fl_Browser BrOut {
           label {Midi Output Devices }
-          xywh {270 60 255 145} type Hold color 44 selection_color 47 labelsize 11 labelcolor 7 align 1 when 1 textcolor 7
+          xywh {270 60 255 135} type Hold color 44 selection_color 47 labelsize 11 labelcolor 7 align 1 when 1 textcolor 7
         }
       }
       Fl_File_Input TempFilesDir {
         label {Directory for temporal files}
-        xywh {5 305 530 30} color 44 selection_color 47 labelsize 11 labelcolor 7 align 5 textcolor 7
+        xywh {5 286 530 30} color 44 selection_color 47 labelsize 11 labelcolor 7 align 5 textcolor 7
       }
       Fl_Button {} {
         label Browse
@@ -115,11 +117,11 @@ filename=fl_dir_chooser("Browse:",rmgmo->TempDir,0);
 if (filename==NULL) return;
 TempFilesDir->value(filename);
 strcpy(rmgmo->TempDir,filename);}
-        xywh {455 282 70 20} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 11
+        xywh {455 272 70 20} box PLASTIC_THIN_UP_BOX color 11 selection_color 3 labelsize 11
       }
       Fl_Check_Button DRespect {
         label {Maintain Mutes when pattern changes}
-        xywh {5 460 270 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
+        xywh {5 440 270 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
       }
       Fl_Check_Button DUseSysEx {
         label {Use SysEx messages for Start/AutoF}
@@ -133,29 +135,29 @@ strcpy(rmgmo->TempDir,filename);}
  DTextStart->deactivate();
  DTextAutoF->deactivate();
  }}
-        tooltip {Input form: F0 43 10 .... F7} xywh {5 345 270 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
+        tooltip {Input form: F0 43 10 .... F7} xywh {5 320 270 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
       }
       Fl_Input DTextStart {
         label {SysEx for Start button }
         callback {strcpy(rmgmo->TextSTART,o->value());}
-        tooltip {Input form: F0 43 10 .... F7} xywh {5 385 465 25} color 44 selection_color 47 labelsize 10 labelcolor 7 align 5 textcolor 7
+        tooltip {Input form: F0 43 10 .... F7} xywh {5 360 465 25} color 44 selection_color 47 labelsize 10 labelcolor 7 align 5 textcolor 7
       }
       Fl_Input DTextAutoF {
         label {SysEx for Auto Fill-In button }
         callback {strcpy(rmgmo->TextAUTOF,o->value());}
-        tooltip {Input form: F0 43 10 .... F7} xywh {5 430 465 25} color 44 selection_color 47 labelsize 10 labelcolor 7 align 5 textcolor 7
+        tooltip {Input form: F0 43 10 .... F7} xywh {5 410 465 25} color 44 selection_color 47 labelsize 10 labelcolor 7 align 5 textcolor 7
       }
       Fl_Check_Button BANKLSB0 {
         label {BANK LSB 0}
-        xywh {5 476 90 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
+        xywh {5 465 90 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
       }
       Fl_Check_Button BANKTRUCO {
         label {BANK Truco}
-        xywh {100 476 100 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
+        xywh {95 465 100 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
       }
       Fl_Check_Button JTRANSPORT {
         label {Use Jack Transport Tempo}
-        xywh {4 493 100 25} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
+        xywh {4 488 181 22} down_box DOWN_BOX color 44 selection_color 3 labelsize 12 labelcolor 7
       }
     }
     code {int i;
@@ -190,9 +192,6 @@ BANKTRUCO->selection_color((Fl_Color)3);
 JTRANSPORT->clear_visible_focus();
 JTRANSPORT->down_box(FL_NO_BOX);
 JTRANSPORT->selection_color((Fl_Color)3);
-
-
-
 
 MiraClientes();
 
@@ -296,6 +295,7 @@ stygmorgan.set("usejacktransport",rmgmo->usejacktransport);
 rmgmo->usesysex=(int)DUseSysEx->value();
 stygmorgan.set("UseSysEX",rmgmo->usesysex);
 
+
 if (rmgmo->usesysex)
 {
  stygmorgan.set("ButStart",rmgmo->TextSTART);
@@ -303,8 +303,7 @@ if (rmgmo->usesysex)
  rmgmo->ConvierteHexString();
 }} {}
   }
-  Function {MiraClientes()} {selected
-  } {
+  Function {MiraClientes()} {} {
     code {FILE *fp;
 char temp[128];
 char temp1[128];

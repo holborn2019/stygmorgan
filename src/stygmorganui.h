@@ -41,6 +41,7 @@ private:
   inline void cb_rmgmorganwin_i(Fl_Double_Window*, void*);
   static void cb_rmgmorganwin(Fl_Double_Window*, void*);
 public:
+  Fl_Group *Mix0;
   MiDial *Pan0;
 private:
   inline void cb_Pan0_i(MiDial*, void*);
@@ -82,6 +83,7 @@ private:
   inline void cb_P0_i(Fl_Counter*, void*);
   static void cb_P0(Fl_Counter*, void*);
 public:
+  Fl_Group *Mix1;
   MiDial *Pan1;
 private:
   inline void cb_Pan1_i(MiDial*, void*);
@@ -123,6 +125,7 @@ private:
   inline void cb_P1_i(Fl_Counter*, void*);
   static void cb_P1(Fl_Counter*, void*);
 public:
+  Fl_Group *Mix2;
   MiDial *Pan2;
 private:
   inline void cb_Pan2_i(MiDial*, void*);
@@ -164,6 +167,7 @@ private:
   inline void cb_P2_i(Fl_Counter*, void*);
   static void cb_P2(Fl_Counter*, void*);
 public:
+  Fl_Group *Mix3;
   MiDial *Pan3;
 private:
   inline void cb_Pan3_i(MiDial*, void*);
@@ -205,6 +209,7 @@ private:
   inline void cb_P3_i(Fl_Counter*, void*);
   static void cb_P3(Fl_Counter*, void*);
 public:
+  Fl_Group *Mix4;
   MiDial *Pan4;
 private:
   inline void cb_Pan4_i(MiDial*, void*);
@@ -246,6 +251,7 @@ private:
   inline void cb_P4_i(Fl_Counter*, void*);
   static void cb_P4(Fl_Counter*, void*);
 public:
+  Fl_Group *Mix9;
   MiDial *Pan9;
 private:
   inline void cb_Pan9_i(MiDial*, void*);
@@ -288,6 +294,7 @@ private:
   inline void cb_P9_i(Fl_Counter*, void*);
   static void cb_P9(Fl_Counter*, void*);
 public:
+  Fl_Group *Mix10;
   MiDial *Pan10;
 private:
   inline void cb_Pan10_i(MiDial*, void*);
@@ -330,6 +337,7 @@ private:
   inline void cb_P10_i(Fl_Counter*, void*);
   static void cb_P10(Fl_Counter*, void*);
 public:
+  Fl_Group *Mix11;
   MiDial *Pan11;
 private:
   inline void cb_Pan11_i(MiDial*, void*);
@@ -372,6 +380,7 @@ private:
   inline void cb_P11_i(Fl_Counter*, void*);
   static void cb_P11(Fl_Counter*, void*);
 public:
+  Fl_Group *Mix12;
   MiDial *Pan12;
 private:
   inline void cb_Pan12_i(MiDial*, void*);
@@ -414,6 +423,7 @@ private:
   inline void cb_P12_i(Fl_Counter*, void*);
   static void cb_P12(Fl_Counter*, void*);
 public:
+  Fl_Group *Mix13;
   MiDial *Pan13;
 private:
   inline void cb_Pan13_i(MiDial*, void*);
@@ -456,6 +466,7 @@ private:
   inline void cb_P13_i(Fl_Counter*, void*);
   static void cb_P13(Fl_Counter*, void*);
 public:
+  Fl_Group *Mix14;
   MiDial *Pan14;
 private:
   inline void cb_Pan14_i(MiDial*, void*);
@@ -498,6 +509,7 @@ private:
   inline void cb_P14_i(Fl_Counter*, void*);
   static void cb_P14(Fl_Counter*, void*);
 public:
+  Fl_Group *Mix15;
   MiDial *Pan15;
 private:
   inline void cb_Pan15_i(MiDial*, void*);
