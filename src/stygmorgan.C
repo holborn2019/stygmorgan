@@ -273,7 +273,7 @@ strcpy(CCn[127].Nom,"MONO2");
 
 {
 static const char *stnom[] = {"8 Beat","16 Beat","Jazz","Swing","Salsa","Disco-Dance","March-Polka","Reggae","Country",
-"World","Ballad","Waltz","Rock","Blues","Shuffle","Brasilian","Funk","Other"};
+"World","Ballad","Waltz","Rock","Blues","Shuffle","Brazilian","Funk","Other"};
 for (int i=0; i<=17; i++) strcpy(CStyle[i].Nom, stnom[i]);
 }
 
