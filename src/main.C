@@ -136,17 +136,17 @@
     if (exitwithhelp != 0)
       {
 
-        fprintf (stderr, "\nUsage: rmgmorgan [OPTIONS]\n\n");
+        fprintf (stderr, "\nUsage: stygmorgan [OPTIONS]\n\n");
 
         fprintf (stderr, "\tProgram Options:\n");
         fprintf (stderr, "\t----------------\n\n");
-        fprintf (stderr, "\t-h       --help          \t Display this command-help.\n");
+        fprintf (stderr, "\t-h         --help          \t Display this command-help.\n");
+        fprintf (stderr, "\t-a         --alsa          \t Just use ALSA.\n");
         fprintf (stderr, "\t-l <File>, --load <File>   \t Read styles file.\n");
         fprintf (stderr, "\t-d <File>, --sload <File>  \t Read sounds file.\n");
         fprintf (stderr, "\t-e <File>, --rload <File>  \t Read registrations file.\n");
         fprintf (stderr, "\t-p <File>, --ppreset <File>\t Load preset program names.\n");
         fprintf (stderr, "\t-r <File>, --rpreset <File>\t Load preset drums note names.\n\n");
-        fprintf (stderr, "\t-a        --alsa          \t  Just use ALSA\n"); 
         fprintf (stderr, "\tFLTK Options:\n");
         fprintf (stderr, "\t-------------\n\n");
         fprintf (stderr, "\t-bg2 color\n");
