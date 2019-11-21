@@ -7,6 +7,7 @@ doc_DATA= stygmorgan.html \
 	stygmicon128back2.jpg \
 	editevent.png \
 	editevent1.png \
+	stygmicon128.png \
 	EvWin.png \
 	EdPatWin.png \
 	EdStyWin.png \
