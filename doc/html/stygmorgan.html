@@ -5,7 +5,7 @@
 	<title>stygmorgan Help</title>
 	<meta name="generator" content="LibreOfficeDev 6.4.0.0.beta1 (Linux)"/>
 	<meta name="created" content="2006-08-01T00:00:00.014142700"/>
-	<meta name="changed" content="2019-11-21T18:17:23.310835325"/>
+	<meta name="changed" content="2019-11-22T10:28:00.494903494"/>
 	<style type="text/css">
 		@page { size: 3.5cm 2.5cm; margin-left: 2cm; margin-right: 1cm; margin-top: 1cm; margin-bottom: 1cm }
 		p { margin-bottom: 0.25cm; background: transparent; color: #000000; line-height: 115%; background: transparent }
@@ -244,6 +244,8 @@ Edit</span></a></p>
 <p><a href="#EditorEstilos_Texto"><span style="text-decoration: none"><span lang="en-US">Style
 Edit</span></span></a></p>
 <h3 class="western"><a href="#Secuenciador_Texto"><span style="text-decoration: none"><span lang="en-US">Sequencer</span></span></a></h3>
+<h3 class="western"><a href="#DrumsNoteMix"><span style="text-decoration: none"><span lang="en-US">Drum
+Note Mixer</span></span></a></h3>
 <h3 class="western"><a href="#Consejos_Texto"><span style="text-decoration: none"><span lang="en-US">Tips
 and Tricks</span></span></a></h3>
 <hr/>
@@ -1069,7 +1071,7 @@ Options</strong></h2>
 <strong><span style="text-decoration: none">Menu File</span></strong></h4>
 <hr/>
 
-<h4 class="western"><a name="OM_Sonidos_Texto"></a><b><strong>Sounds</strong></b></h4>
+<h4 class="western"><a name="OM_Sonidos_Texto"></a><strong><b>Sounds</b></strong></h4>
 <p><strong>New sound. Create a new sound in memory, it is not
 included in the list of sounds until you use the Save Sound option.</strong></p>
 <p><strong>Read Sounds. It allows you to choose a new sound file, the
@@ -1085,7 +1087,7 @@ mentioned above, you will add the new sound to the list of sounds.</strong></p>
 Attention, remember that registrations only store the sound number,
 if you delete previous sounds it could affect the content of the
 registration.</strong></p>
-<h4 class="western"><a name="OM_Estilos_Texto"></a><b><strong>Styles</strong></b></h4>
+<h4 class="western"><a name="OM_Estilos_Texto"></a><strong><b>Styles</b></strong></h4>
 <p><strong>Read Styles. It allows you to choose a new style file, the
 style list will be replaced by the content of the selected file,
 likewise that file will be saved in the preferences as the default
@@ -1123,7 +1125,7 @@ the third is that the first pattern, the first bar and the duration
 of a bar need to be called 'SInt', in this pattern you could put the
 program data and MIDI controls although the latter is not strictly
 necessary. See the sample file 50pop.mid for more details.</strong></p>
-<h4 class="western"><a name="OM_Registraciones_Texto"></a><b><strong>Registrations</strong></b></h4>
+<h4 class="western"><a name="OM_Registraciones_Texto"></a><strong><b>Registrations</b></strong></h4>
 <p><strong>New Registration. Create a new registration in memory, it
 is not included in the list of registrations, if you want to save it,
 use the Save Registration option.</strong></p>
@@ -1139,8 +1141,8 @@ registration with the aforementioned menu option, you will add the
 new registration to the registration list.</strong></p>
 <p><strong>Delete Registration. Deletes the registration selected in
 the registration list.</strong></p>
-<h4 class="western"><a name="OM_FicherosNombre_Texto"></a><b><strong>Preset
-Name Files</strong></b></h4>
+<h4 class="western"><a name="OM_FicherosNombre_Texto"></a><strong><b>Preset
+Name Files</b></strong></h4>
 <p><strong>Load Instrument Names. If you want to use stygmorgan with
 a sound source that is not General Midi compatible, or you want to
 add new sounds in new banks, you should edit the instrument name file
@@ -1162,8 +1164,8 @@ preferences as default and load with this menu option.</strong></p>
 <hr/>
 
 <h4 class="western"><a name="MenuEditar_Texto"></a><strong>MenuEdit</strong></h4>
-<h4 class="western"><a name="EditordeEventos_Texto"></a><b><strong>Event
-Editor</strong></b></h4>
+<h4 class="western"><a name="EditordeEventos_Texto"></a><strong><b>Event
+Editor</b></strong></h4>
 <p><strong>The event editor allows you to modify, delete or insert
 new events in the selected pattern. The format in which stygmorgan
 stores the styles allows a pattern to have 16 different tracks
@@ -1203,7 +1205,7 @@ the menu 'Drums' would show the events of channels 9 and 10.</strong></p>
 <p><strong>Selecting a channel the event list will show all the
 events of the channel unless we use the event type selectors to
 display. These are Note, Control, Program Change, Pitch Bend.</strong></p>
-<p><b><strong>Select Section</strong></b></p>
+<p><strong><b>Select Section</b></strong></p>
 <p><strong>The selection section gives us the possibility to either
 select an individual event or by checking the option 'All Equal
 Events' select all the events similar to the selected one.</strong></p>
@@ -1283,12 +1285,12 @@ increase the volume of a specific drum instrument for example,</strong></p>
 <p><strong>The “% Length” parameter adds a percentage to the
 value of the duration of each selected event, that is, preserving its
 value and adding a percentage of it.</strong></p>
-<p><b><strong>Insert Section</strong></b></p>
+<p><strong><b>Insert Section</b></strong></p>
 <p><strong>It allows you to insert events in the selected position,
 you can select the type of event as well as the MIDI channel of that
 event, the events are inserted with default values ​​that you
 will have to edit later.</strong></p>
-<p><b><strong>Chord Base Section</strong></b></p>
+<p><strong><b>Chord Base Section</b></strong></p>
 <p><strong>It informs you of the base chord with which this track was
 performed, you will notice that many patterns have tracks based on
 different chords. If you activate the button with the speaker, you
@@ -1572,7 +1574,7 @@ enter values, the number of values ​​to be entered is limited to
 one for each cell, enough to make delay or acceleration effects. In
 the window you have the options to add, modify, or delete.</strong></p>
 <p><strong>Menu Options</strong></p>
-<p style="text-decoration: none"><strong>File Menu</strong></p>
+<p><strong><span style="text-decoration: none">File Menu</span></strong></p>
 <p><strong>The songs are saved in the .stysong format of stygmorgan,
 in the menu you have the options of</strong></p>
 <p><strong>Load Song / Save Song to load / save your work.</strong></p>
@@ -1583,7 +1585,7 @@ contains the sequencer to the MIDI file format, before you can export
 the song you must meet a series of requirements, such as a cell
 marked with End, (End of the song ), if the requirements are not met,
 stygmorgan will inform you of what you have to do.</strong></p>
-<p style="text-decoration: none"><strong>Edit Menu</strong></p>
+<p><strong><span style="text-decoration: none">Edit Menu</span></strong></p>
 <p><strong>In the edit menu you have the options Copy, Move and
 Delete cells, a window will open where you must enter the cell
 numbers that you want to copy, move or delete.</strong></p>
@@ -1593,6 +1595,46 @@ numbers that you want to copy, move or delete.</strong></p>
 </p>
 <hr/>
 
+<h2 class="western"><a name="DrumsNoteMix"></a><strong>Drums Note Mix</strong></h2>
+<p><br/>
+<br/>
+
+</p>
+<p><strong><span style="font-weight: normal">This is the most easy
+way to mix the Drums on each pattern when you import a style file, or
+even to adjust drums volumes at your taste.</span></strong></p>
+<p><strong><img src="MidiDrum.png" name="Image3" align="bottom" width="345" height="414" border="0"/>
+
+</strong>
+</p>
+<p><br/>
+<br/>
+
+</p>
+<p><strong><span style="font-weight: normal">stygmorgan read the
+existing drum sounds on the pattern and let you modify the velocity
++/- for each one, also here you can discover if the pattern has
+“orphan” notes, that are displayed as musical notation “D1 Db1
+G0...” that you will need to edit with the event editor, they are
+many “one click” functions to fix this orphan notes, but they are
+cases that you will need to put some imagination.</span></strong></p>
+<p><strong><span style="font-weight: normal">The Apply Changes
+button, is to apply the changes you made and reset the mixer to the
+initial state, because this window just add a percentage to the
+velocity sensitivity of the notes and in some cases you will need to
+apply twice.</span></strong></p>
+<p><strong><span style="font-weight: normal">The changes only will be
+applied as always if you press the Ok button. Is really fun to
+experiment with this, is sure you can adjust better many of the
+patterns delivered with stygmorgan.</span></strong></p>
+<p><strong><span style="font-weight: normal">When you import a
+pattern that has “Latin Percussion”, stygmorgan mix this tracks
+on the drum track, and many times or even always you will need to mix
+this, because normally the percussion has high volume.</span></strong></p>
+<h2 class="western"><br/>
+<br/>
+
+</h2>
 <h2 class="western"><a name="Consejos_Texto"></a><strong>Tips and
 Tricks</strong></h2>
 <p><br/>
@@ -1611,7 +1653,7 @@ and not with the patterns, it is much easier to create sounds than to
 be editing the mixer of each pattern, in fact with 3 clicks you can
 create sounds with other soundfonts that will sound much better .</strong></p>
 <p><strong>Use the registrations, it will save a lot of time.</strong></p>
-<p><b><strong>Considerations when importing styles.</strong></b></p>
+<p><strong><b>Considerations when importing styles.</b></strong></p>
 <p><strong>Many styles are made under the XG standard, owned by
 Yamaha, many of the sounds are coincident with the GM, so in case of
 importing an XG-based style it is not the end of the world, yes, it
@@ -1664,6 +1706,21 @@ the Event Editor to convert, they are many functions that just need a
 single click. Sometimes can happened that they are notes that cant be
 converted, because GM standard don’t have this sounds. They don’t
 disturb so much, but u can always delete with the Event Editor. </strong>
+</p>
+<p><strong>If you really interested on import styles I recommend this
+website <a href="http://www.jososoft.dk/yamaha/stylesites.htm">http://www.jososoft.dk/yamaha/stylesites.htm</a>
+they have tones of styles already converted to GM that is really easy
+to import. Recently I discover that has also has some JAVA apps that
+works perfect on Linux to convert the styles, then is always better
+first use this applications before you import to stygmorgan, less
+problems. :-)</strong></p>
+<p><strong>Probably the styles delivered with stygmorgan are more
+focused on Jazz, Swing  and Brazilian music, on this website you will
+find any kind of style that you will need. Most don’t need so much
+edit work.</strong></p>
+<p><br/>
+<br/>
+
 </p>
 <p><br/>
 <br/>
