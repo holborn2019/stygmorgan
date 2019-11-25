@@ -119,11 +119,12 @@ class stygmorgan {open
 } {
   decl {RMGMO *rmgmo;} {private local
   }
-  Function {make_window()} {} {
+  Function {make_window()} {open
+  } {
     Fl_Window rmgmorganwin {
       callback {GuardaPref();
 Pexitprogram=1;
-o->hide();}
+o->hide();} open
       xywh {1362 101 1010 780} type Double box GTK_UP_BOX color 44 selection_color 47 labelcolor 7 hide resizable size_range {800 600 0 0}
     } {
       Fl_Group Mix0 {
@@ -1591,7 +1592,7 @@ rmgmo->ventana=1;}
           }
         }
       }
-      Fl_Group ElBueno {
+      Fl_Group ElBueno {open
         xywh {0 25 1010 250} box BORDER_BOX color 44 selection_color 7 align 85
       } {
         Fl_Group {} {
@@ -1826,11 +1827,11 @@ Leer_Styles(1);}
         }
         Fl_Output DMidiInDevice {
           label {Midi In Device}
-          xywh {640 45 140 25} box BORDER_BOX color 47 selection_color 47 labelsize 11 labelcolor 52 align 5 textcolor 1
+          xywh {640 45 140 25} box BORDER_BOX color 44 selection_color 47 labelsize 11 labelcolor 52 align 5 textsize 11 textcolor 7
         }
         Fl_Output DMidiOutDevice {
-          label {Midi Out Device}
-          xywh {640 90 140 25} box BORDER_BOX color 47 selection_color 47 labelsize 11 labelcolor 52 align 5 textcolor 1
+          label {Midi Out Device} selected
+          xywh {640 90 140 25} box BORDER_BOX color 44 selection_color 47 labelsize 11 labelcolor 52 align 5 textsize 11 textcolor 7
         }
         Fl_Browser BroReg {
           label Registrations
@@ -3102,7 +3103,7 @@ CVari(0,rmgmo->Variacion);} {}
              {
                rmgmo->CambiaMidi=0;
                ActuaMidDevices();
-               rmgmo->Conecta();
+               if(alsa)rmgmo->Conecta();
              }  
 
 
@@ -3253,8 +3254,7 @@ if (rmgmo->CambiaTempo)
      rmgmo->pbAutoF=0;
      if (AutoFill->value()) AutoFill->value(0); else AutoFill->value(1);
      AutoFill->do_callback();
-   }} {selected
-    }
+   }} {}
   }
   Function {MoreSolo()} {} {
     code {ActuaOnOff();

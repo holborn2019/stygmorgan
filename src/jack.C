@@ -117,6 +117,7 @@ jackprocess (jack_nframes_t nframes, void *arg)
     jack_midi_event_t midievent;
     jack_position_t pos;
     jack_transport_state_t astate;
+    const char **gilipuerto;
  
 
      astate = jack_transport_query(jackclient, &pos);
@@ -136,6 +137,33 @@ jackprocess (jack_nframes_t nframes, void *arg)
   
      if ((astate == 1) && (JackOUT->bplay==0)) JackOUT->rtplay=1;
      if ((astate == 0) && (JackOUT->rtplay==3)) JackOUT->rtplay=2;
+
+    int jnumpmi = jack_port_connected(JackOUT->jack_midi_in);
+    if(jnumpmi != JackOUT->numpmi) {
+        JackOUT->numpmi = jnumpmi;
+        if(jnumpmi>0)
+        {
+        gilipuerto  =jack_port_get_connections(JackOUT->jack_midi_in); 
+        strcpy(JackOUT->MID,(char *)gilipuerto[0]);
+        }
+        if(jnumpmi==0) bzero(JackOUT->MID,sizeof JackOUT->MID);        
+        
+        JackOUT->CambiaMidi = 1;
+    }
+
+    int jnumpmo = jack_port_connected(JackOUT->jack_midi_out);
+    if(jnumpmo != JackOUT->numpmo) {
+       JackOUT->numpmo = jnumpmo;
+       if(jnumpmo >0)
+       {
+       gilipuerto = jack_port_get_connections(JackOUT->jack_midi_out); 
+       strcpy(JackOUT->MOD,(char *)gilipuerto[0]);
+       }
+       if(jnumpmo==0) bzero(JackOUT->MOD,sizeof JackOUT->MOD);
+        
+        JackOUT->CambiaMidi = 1;
+    }
+
 
 
 

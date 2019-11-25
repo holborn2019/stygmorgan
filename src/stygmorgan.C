@@ -41,6 +41,8 @@ RMGMO::RMGMO ()
   
   //inicio de variables
   jack=1;
+  numpmi=0;
+  numpmo=0;	
   usesysex=0;
   pbStart=0;
   pbAutoF=0;

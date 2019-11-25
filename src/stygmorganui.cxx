@@ -4066,20 +4066,22 @@ Fl_Double_Window* stygmorgan::make_window() {
       } // Fl_Button* STSync
       { DMidiInDevice = new Fl_Output(640, 45, 140, 25, gettext("Midi In Device"));
         DMidiInDevice->box(FL_BORDER_BOX);
-        DMidiInDevice->color(FL_DARK1);
+        DMidiInDevice->color((Fl_Color)44);
         DMidiInDevice->selection_color(FL_DARK1);
         DMidiInDevice->labelsize(11);
         DMidiInDevice->labelcolor(FL_LIGHT2);
-        DMidiInDevice->textcolor((Fl_Color)1);
+        DMidiInDevice->textsize(11);
+        DMidiInDevice->textcolor(FL_BACKGROUND2_COLOR);
         DMidiInDevice->align(Fl_Align(FL_ALIGN_TOP_LEFT));
       } // Fl_Output* DMidiInDevice
       { DMidiOutDevice = new Fl_Output(640, 90, 140, 25, gettext("Midi Out Device"));
         DMidiOutDevice->box(FL_BORDER_BOX);
-        DMidiOutDevice->color(FL_DARK1);
+        DMidiOutDevice->color((Fl_Color)44);
         DMidiOutDevice->selection_color(FL_DARK1);
         DMidiOutDevice->labelsize(11);
         DMidiOutDevice->labelcolor(FL_LIGHT2);
-        DMidiOutDevice->textcolor((Fl_Color)1);
+        DMidiOutDevice->textsize(11);
+        DMidiOutDevice->textcolor(FL_BACKGROUND2_COLOR);
         DMidiOutDevice->align(Fl_Align(FL_ALIGN_TOP_LEFT));
       } // Fl_Output* DMidiOutDevice
       { BroReg = new Fl_Browser(500, 50, 135, 220, gettext("Registrations"));
@@ -5337,7 +5339,7 @@ void stygmorgan::sema() {
                {
                  rmgmo->CambiaMidi=0;
                  ActuaMidDevices();
-                 rmgmo->Conecta();
+                 if(alsa)rmgmo->Conecta();
                }  
   
   

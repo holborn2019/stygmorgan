@@ -282,6 +282,8 @@ public:
   
   
   int rtplay;
+  int numpmi;
+  int numpmo;
   int SNomi;
   int TiempoBase;
   int genmidi;
