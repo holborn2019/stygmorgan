@@ -115,7 +115,7 @@ snd_seq_ev_clear(&ev1);
 if (!CM[gcanal].OnOff) return;
 cocas[gcanal]=1;
 int len=3;
-lastvelo[gcanal]=(int)((double)gvelocity*((double)CM[gcanal].vol/127.0)*((double)(AccVol)/96.0));
+lastvelo[gcanal]=(int)((double)gvelocity*((double)CM[gcanal].vol/127.0)*((double)(AccVol)/85.3));
 
 if ((wdrummixer) && (gcanal == 9)) 
 {
