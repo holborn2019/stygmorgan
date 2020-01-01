@@ -569,7 +569,7 @@ int LLim;
 int HLim;
 int RTR;
 int u[16];
-long ChM;
+int ChM;
 } C;
 
 struct StylePattern
